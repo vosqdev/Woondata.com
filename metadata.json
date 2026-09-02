@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Nieuwbouw Dronten - Woonmarkt \u0026 Ontwikkelplatform",
+  "description": "Onafhankelijk lokaal woonmarkt- en ontwikkelplatform dat inwonerssignalen, transactiedata, beleidsdoelen en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

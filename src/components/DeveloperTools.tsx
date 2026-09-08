@@ -143,6 +143,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
   // Contact Dialog State
   const [contactSubject, setContactSubject] = useState<string | null>(null);
   const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [attachedImage, setAttachedImage] = useState<MediaItem | null>(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -153,23 +154,51 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
     notes: ''
   });
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setContactSubmitted(true);
-    setTimeout(() => {
-      setContactSubmitted(false);
-      setContactSubject(null);
-      setSelectedProduct(null);
-      setAttachedImage(null);
-      setFormData({
-        name: '',
-        organization: '',
-        email: '',
-        phone: '',
-        planLocation: 'Dronten',
-        notes: ''
+    setIsSubmitting(true);
+
+    try {
+      const netlifyData = new URLSearchParams();
+      netlifyData.append('form-name', 'contact-advies');
+      netlifyData.append('ontvanger', 'aanvraag@woondata.com');
+      netlifyData.append('onderwerp', `Nieuwe aanvraag Contact & Advies: ${contactSubject || 'Algemeen'} (${formData.organization || formData.name})`);
+      netlifyData.append('onderwerp_keuze', contactSubject || 'Algemene kennismaking & planadvies');
+      netlifyData.append('naam', formData.name.trim());
+      netlifyData.append('organisatie', formData.organization.trim());
+      netlifyData.append('plangebied', formData.planLocation);
+      netlifyData.append('email', formData.email.trim());
+      netlifyData.append('telefoon', formData.phone.trim() || 'Niet ingevuld');
+      netlifyData.append('toelichting', formData.notes.trim() || 'Geen toelichting opgegeven');
+      if (attachedImage?.variants?.thumbnail?.url || attachedImage?.url) {
+        netlifyData.append('bijlage_url', attachedImage.variants?.thumbnail?.url || attachedImage.url);
+      }
+
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: netlifyData.toString(),
       });
-    }, 2400);
+    } catch (err) {
+      console.warn('Netlify contact submit fallback (preview/lokaal):', err);
+    } finally {
+      setIsSubmitting(false);
+      setContactSubmitted(true);
+      setTimeout(() => {
+        setContactSubmitted(false);
+        setContactSubject(null);
+        setSelectedProduct(null);
+        setAttachedImage(null);
+        setFormData({
+          name: '',
+          organization: '',
+          email: '',
+          phone: '',
+          planLocation: 'Dronten',
+          notes: ''
+        });
+      }, 3500);
+    }
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -1026,7 +1055,28 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleContactSubmit} className="space-y-4">
+              <form 
+                name="contact-advies"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleContactSubmit} 
+                className="space-y-4"
+              >
+                {/* Hidden Netlify fields */}
+                <input type="hidden" name="form-name" value="contact-advies" />
+                <input type="hidden" name="ontvanger" value="aanvraag@woondata.com" />
+                <input type="hidden" name="onderwerp" value={`Nieuwe aanvraag Contact & Advies: ${contactSubject || 'Algemeen'} (${formData.organization || formData.name})`} />
+                <input type="hidden" name="onderwerp_keuze" value={contactSubject || 'Algemene kennismaking & planadvies'} />
+                <input type="hidden" name="bijlage_url" value={attachedImage?.variants?.thumbnail?.url || attachedImage?.url || ''} />
+
+                {/* Honeypot field for bot protection */}
+                <p className="hidden" aria-hidden="true">
+                  <label>
+                    Niet invullen: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </p>
+
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-[#C9F31D] block font-display">
                     Contact &amp; Advies
@@ -1046,6 +1096,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                     </label>
                     <input
                       type="text"
+                      name="naam"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -1061,6 +1112,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                       </label>
                       <input
                         type="text"
+                        name="organisatie"
                         required
                         value={formData.organization}
                         onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
@@ -1073,6 +1125,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                         Plangebied / Kern
                       </label>
                       <select
+                        name="plangebied"
                         value={formData.planLocation}
                         onChange={(e) => setFormData({ ...formData, planLocation: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-[#121829] text-xs text-white focus:outline-hidden focus:ring-2 focus:ring-[#C9F31D]"
@@ -1092,6 +1145,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -1105,6 +1159,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                       </label>
                       <input
                         type="tel"
+                        name="telefoon"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="06 - 12345678"
@@ -1119,6 +1174,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                     </label>
                     <textarea
                       rows={2}
+                      name="toelichting"
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                       placeholder="Beschrijf beknopt de locatie, gewenste woningtypologieën of toetsingsvraag..."
@@ -1142,16 +1198,27 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                   <button
                     type="button"
                     onClick={() => setContactSubject(null)}
-                    className="px-4 py-2.5 rounded-full text-xs font-bold text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer font-display"
+                    disabled={isSubmitting}
+                    className="px-4 py-2.5 rounded-full text-xs font-bold text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer font-display disabled:opacity-50"
                   >
                     Annuleren
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2.5 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-black text-xs font-extrabold flex items-center gap-1.5 transition-all cursor-pointer font-display shadow-[0_0_15px_rgba(201,243,29,0.3)]"
+                    disabled={isSubmitting}
+                    className="px-6 py-2.5 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-black text-xs font-extrabold flex items-center gap-1.5 transition-all cursor-pointer font-display shadow-[0_0_15px_rgba(201,243,29,0.3)] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-3.5 h-3.5 text-black" />
-                    <span>Verstuur Aanvraag</span>
+                    {isSubmitting ? (
+                      <>
+                        <span className="w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                        <span>Versturen...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-3.5 h-3.5 text-black" />
+                        <span>Verstuur Aanvraag</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

@@ -13,6 +13,70 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Netlify Forms prerender detectie voor SPA deployment -->
+    <form name="blijf-op-de-hoogte" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="hidden" name="form-name" value="blijf-op-de-hoogte" />
+      <input type="hidden" name="ontvanger" value="nieuwsbrief@woondata.com" />
+      <input type="hidden" name="onderwerp" value="Nieuwe aanmelding Blijf op de Hoogte - WoonData Dronten" />
+      <input type="text" name="voornaam" />
+      <input type="text" name="achternaam" />
+      <input type="email" name="email" />
+    </form>
+
+    <form name="woonwensenscan" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="hidden" name="form-name" value="woonwensenscan" />
+      <input type="hidden" name="ontvanger" value="woonwens@woondata.com" />
+      <input type="hidden" name="onderwerp" value="Nieuwe inzending WoonwensenScan Dronten" />
+      <input type="text" name="huidige_woonplaats" />
+      <input type="text" name="postcode_cijfers" />
+      <input type="text" name="binding_met_gemeente" />
+      <input type="text" name="verhuisintentie" />
+      <input type="text" name="verhuisbelemmering" />
+      <input type="text" name="toelichting_belemmering" />
+      <input type="text" name="huishoudensfase" />
+      <input type="text" name="eerste_voorkeur_woningtype" />
+      <input type="text" name="alternatieve_woningtypen" />
+      <input type="text" name="levensloopgeschiktheid" />
+      <input type="text" name="buitenruimte_behoefte" />
+      <input type="text" name="buurttype_en_contact" />
+      <input type="text" name="koop_of_huur" />
+      <input type="text" name="max_maandlasten" />
+      <input type="text" name="prijscategorie_koop" />
+      <input type="text" name="zorgbehoefte" />
+      <input type="text" name="vervoerswijzen" />
+      <input type="text" name="bereikbaarheid_voorwaarden" />
+      <input type="text" name="acceptabele_energielasten" />
+      <input type="text" name="afweging_investering_energie" />
+      <input type="text" name="duurzaamheid_prioriteiten" />
+      <input type="text" name="afweging_woning_vs_lasten" />
+      <input type="text" name="afweging_tuin_vs_groen" />
+      <input type="text" name="afweging_parkeren_vs_autoluw" />
+      <input type="text" name="afweging_aankoopprijs_vs_energie" />
+      <input type="text" name="afweging_privacy_vs_ontmoeting" />
+      <input type="text" name="top_kwaliteiten" />
+      <input type="text" name="absolute_voorwaarde" />
+      <input type="email" name="email" />
+      <input type="text" name="deelnemen_aan_panel" />
+      <input type="text" name="toestemming_onderzoek" />
+    </form>
+
+    <form name="contact-advies" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="hidden" name="form-name" value="contact-advies" />
+      <input type="hidden" name="ontvanger" value="aanvraag@woondata.com" />
+      <input type="hidden" name="onderwerp" value="Nieuwe aanvraag Contact & Advies - WoonData" />
+      <input type="text" name="onderwerp_keuze" />
+      <input type="text" name="naam" />
+      <input type="text" name="organisatie" />
+      <input type="text" name="plangebied" />
+      <input type="email" name="email" />
+      <input type="text" name="telefoon" />
+      <textarea name="toelichting"></textarea>
+      <input type="text" name="bijlage_url" />
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

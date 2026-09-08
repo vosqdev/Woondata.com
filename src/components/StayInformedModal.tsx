@@ -21,11 +21,12 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
   const [password, setPassword] = useState('');
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
 
@@ -38,15 +39,38 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
         setErrorMessage('Ga akkoord met de algemene voorwaarden om verder te gaan.');
         return;
       }
+
+      setIsSubmitting(true);
+
+      try {
+        const formData = new URLSearchParams();
+        formData.append('form-name', 'blijf-op-de-hoogte');
+        formData.append('voornaam', firstName.trim());
+        formData.append('achternaam', lastName.trim());
+        formData.append('email', email.trim());
+        formData.append('ontvanger', 'nieuwsbrief@woondata.com');
+        formData.append('onderwerp', 'Nieuwe aanmelding Blijf op de Hoogte - WoonData Dronten');
+
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: formData.toString(),
+        });
+      } catch (err) {
+        console.warn('Formulier submit fallback (bijv. lokale dev/preview):', err);
+      } finally {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+      }
     } else {
       if (!email.trim() || !password.trim()) {
         setErrorMessage('Vul je e-mailadres en wachtwoord in.');
         return;
       }
-    }
 
-    // Simulate successful registration / login
-    setIsSubmitted(true);
+      // Login modus
+      setIsSubmitted(true);
+    }
   };
 
   const handleReset = () => {
@@ -131,8 +155,27 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
               </div>
             )}
 
-            {/* Registration Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Registration Form (Netlify Form) */}
+            <form 
+              name="blijf-op-de-hoogte"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit} 
+              className="space-y-4"
+            >
+              {/* Hidden Netlify fields */}
+              <input type="hidden" name="form-name" value="blijf-op-de-hoogte" />
+              <input type="hidden" name="ontvanger" value="nieuwsbrief@woondata.com" />
+              <input type="hidden" name="onderwerp" value="Nieuwe aanmelding Blijf op de Hoogte - WoonData Dronten" />
+              
+              {/* Honeypot field for bot protection */}
+              <p className="hidden" aria-hidden="true">
+                <label>
+                  Niet invullen indien menselijk: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                </label>
+              </p>
+
               {/* Voornaam & Achternaam 2-column grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
@@ -141,6 +184,7 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
                   </label>
                   <input
                     type="text"
+                    name="voornaam"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="bijv. Jan"
@@ -155,6 +199,7 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
                   </label>
                   <input
                     type="text"
+                    name="achternaam"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="bijv. de Vries"
@@ -171,6 +216,7 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
                 </label>
                 <input
                   type="email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="naam@voorbeeld.nl"
@@ -200,10 +246,20 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#D6F830] hover:bg-[#c6ea23] text-black text-sm font-bold transition-all shadow-[0_0_15px_rgba(214,248,48,0.25)] cursor-pointer active:scale-98 font-display"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#D6F830] hover:bg-[#c6ea23] text-black text-sm font-bold transition-all shadow-[0_0_15px_rgba(214,248,48,0.25)] cursor-pointer active:scale-98 font-display disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <ArrowRight className="w-4 h-4" />
-                  <span>Aanmelden</span>
+                  {isSubmitting ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      <span>Versturen...</span>
+                    </>
+                  ) : (
+                    <>
+                      <ArrowRight className="w-4 h-4" />
+                      <span>Aanmelden</span>
+                    </>
+                  )}
                 </button>
               </div>
             </form>

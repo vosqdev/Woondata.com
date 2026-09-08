@@ -107,6 +107,7 @@ export const WoonwensenScan: React.FC = () => {
   const [joinPanel, setJoinPanel] = useState<boolean>(true);
   const [consentResearch, setConsentResearch] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   // ==========================================
   // Handlers & Toggles
@@ -197,15 +198,77 @@ export const WoonwensenScan: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!consentResearch) return;
-    setIsSubmitted(true);
-    confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+
+    setIsSubmitting(true);
+
+    try {
+      const formData = new URLSearchParams();
+      formData.append('form-name', 'woonwensenscan');
+      formData.append('ontvanger', 'woonwens@woondata.com');
+      formData.append('onderwerp', `Nieuwe WoonwensenScan Dronten: ${currentResidence} (${postcodeDigits}) - ${tenureType} ${primaryHousingType}`);
+
+      // Stap 1: Profiel, Binding en Verhuisintentie
+      formData.append('huidige_woonplaats', currentResidence);
+      formData.append('postcode_cijfers', postcodeDigits);
+      formData.append('binding_met_gemeente', bindingOptions.join(', '));
+      formData.append('verhuisintentie', moveIntention);
+      formData.append('verhuisbelemmering', moveBarrier);
+      formData.append('toelichting_belemmering', moveBarrierCustom || '-');
+      formData.append('huishoudensfase', householdPhase);
+
+      // Stap 2: Woning, Buitenruimte en Woonvorm
+      formData.append('eerste_voorkeur_woningtype', primaryHousingType);
+      formData.append('alternatieve_woningtypen', alternativeHousingTypes.join(', '));
+      formData.append('levensloopgeschiktheid', lifespanSuitability);
+      formData.append('buitenruimte_behoefte', outdoorSpaceNeed);
+      formData.append('buurttype_en_contact', socialContactType);
+
+      // Stap 3: Betaalbaarheid
+      formData.append('koop_of_huur', tenureType);
+      formData.append('max_maandlasten', maxMonthlyCosts);
+      formData.append('prijscategorie_koop', priceSegment);
+
+      // Stap 4: Zorg & Bereikbaarheid
+      formData.append('zorgbehoefte', careNeedLevel);
+      formData.append('vervoerswijzen', transportModes.join(', '));
+      formData.append('bereikbaarheid_voorwaarden', accessibilityConditions.join(', '));
+
+      // Stap 5: Energie en Totale Woonlasten
+      formData.append('acceptabele_energielasten', acceptableEnergyCosts);
+      formData.append('afweging_investering_energie', energyTradeoffChoice);
+      formData.append('duurzaamheid_prioriteiten', sustainabilityPriorities.join(', '));
+
+      // Stap 6: Afwegingen, Prioriteiten & Voorwaarden
+      formData.append('afweging_woning_vs_lasten', `${tradeOffs.woningVsLasten}% (0=Grotere woning, 100=Lagere lasten)`);
+      formData.append('afweging_tuin_vs_groen', `${tradeOffs.tuinVsGroen}% (0=Privétuin, 100=Gedeeld groen & lagere prijs)`);
+      formData.append('afweging_parkeren_vs_autoluw', `${tradeOffs.parkerenVsAutoluw}% (0=Parkeren bij woning, 100=Autoluw & groen)`);
+      formData.append('afweging_aankoopprijs_vs_energie', `${tradeOffs.aankoopprijsVsEnergie}% (0=Lagere aankoopprijs, 100=Investering lage energielasten)`);
+      formData.append('afweging_privacy_vs_ontmoeting', `${tradeOffs.privacyVsOntmoeting}% (0=Volledige privacy, 100=Meer ontmoeting)`);
+      formData.append('top_kwaliteiten', topQualities.join(', '));
+      formData.append('absolute_voorwaarde', absoluteCondition || '-');
+      formData.append('email', email || 'Niet ingevuld');
+      formData.append('deelnemen_aan_panel', joinPanel ? 'Ja' : 'Nee');
+      formData.append('toestemming_onderzoek', consentResearch ? 'Ja (Akkoord met AVG)' : 'Nee');
+
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString(),
+      });
+    } catch (err) {
+      console.warn('WoonwensenScan submit fallback (preview/lokaal):', err);
+    } finally {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
   };
 
   // 10 Housing Types List
@@ -350,7 +413,24 @@ export const WoonwensenScan: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit}>
+              <form 
+                name="woonwensenscan"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+              >
+                {/* Hidden Netlify configuration fields */}
+                <input type="hidden" name="form-name" value="woonwensenscan" />
+                <input type="hidden" name="ontvanger" value="woonwens@woondata.com" />
+                <input type="hidden" name="onderwerp" value="Nieuwe inzending WoonwensenScan Dronten" />
+
+                {/* Honeypot field for bot protection */}
+                <p className="hidden" aria-hidden="true">
+                  <label>
+                    Niet invullen indien menselijk: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </p>
 
                 {/* ======================================================== */}
                 {/* STAP 1: PROFIEL, BINDING EN VERHUISINTENTIE              */}
@@ -1376,15 +1456,24 @@ export const WoonwensenScan: React.FC = () => {
                   ) : (
                     <button
                       type="submit"
-                      disabled={!consentResearch}
+                      disabled={!consentResearch || isSubmitting}
                       className={`px-8 py-3 rounded-full text-xs font-black font-display transition-all flex items-center gap-2 shadow-md ${
-                        consentResearch
+                        consentResearch && !isSubmitting
                           ? 'bg-[#C9F31D] hover:bg-[#BFE51A] text-black cursor-pointer hover:scale-105'
                           : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                       }`}
                     >
-                      <Send className="w-4 h-4" />
-                      <span>Woonwensen Definitief Versturen</span>
+                      {isSubmitting ? (
+                        <>
+                          <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                          <span>Versturen...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          <span>Woonwensen Definitief Versturen</span>
+                        </>
+                      )}
                     </button>
                   )}
                 </div>

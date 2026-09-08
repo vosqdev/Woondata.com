@@ -257,13 +257,9 @@ export default function App() {
         {/* Portal Footer */}
         <footer className="bg-[#07111E] border-t border-slate-800 text-slate-400 text-xs py-8 px-4 sm:px-8">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#D6F830]" />
-                <span>Nieuwbouw Dronten Intelligence Suite</span>
-              </div>
-              <span className="hidden sm:inline text-slate-600">•</span>
-              <span className="text-[11px] text-slate-400">De rechten, het design en het platform zijn van VOVON.</span>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-[#D6F830]" />
+              <span>Nieuwbouw Dronten Intelligence Suite</span>
             </div>
             <button
               onClick={closeDeveloperPortal}

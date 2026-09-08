@@ -165,11 +165,8 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Divider & Navigation / Copyright */}
         <div className="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4 font-display">
-          <div className="text-xs text-slate-400 text-center md:text-left space-y-1">
+          <div className="text-xs text-slate-400 text-center md:text-left">
             <div>© 2026 Nieuwbouw Dronten. Alle rechten voorbehouden.</div>
-            <div className="text-slate-400 text-[11px]">
-              De rechten, het design en het platform zijn van <span className="font-semibold text-slate-200">VOVON</span>.
-            </div>
           </div>
 
           {/* Nav Links */}

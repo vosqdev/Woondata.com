@@ -44,6 +44,7 @@ export default function App() {
   const [isBuurtPaspoortOpen, setIsBuurtPaspoortOpen] = useState(false);
   const [selectedParticipationProject, setSelectedParticipationProject] = useState<Project | null>(null);
   const [isParticipationPortalOpen, setIsParticipationPortalOpen] = useState(false);
+  const [showFloatingButton, setShowFloatingButton] = useState(false);
 
   // Sync state with URL hash for direct standalone page opening
   useEffect(() => {
@@ -83,6 +84,28 @@ export default function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  // Alleen 'Blijf op de hoogte' floating button tonen wanneer naar onderen / richting de onderkant van de pagina is gescrold
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
+
+      // Zichtbaar zodra de bezoeker naar beneden is gescrold (voorbij de header/bovenkant, richting het onderste paginagedeelte)
+      const isScrolledDown = scrollY > 400 && (
+        (scrollY + windowHeight) / fullHeight >= 0.35 ||
+        (fullHeight - (scrollY + windowHeight) <= 1500)
+      );
+
+      setShowFloatingButton(isScrolledDown);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeTab]);
 
   const openStayInformed = (mode: 'register' | 'login' = 'register') => {
     setStayInformedMode(mode);
@@ -474,8 +497,14 @@ export default function App() {
         openStayInformed={openStayInformed}
       />
 
-      {/* Floating Blijf op de hoogte Action Button (positioned higher to prevent blocking footer navigation & bottom menu) */}
-      <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 md:right-8 z-30 pointer-events-auto">
+      {/* Floating Blijf op de hoogte Action Button (verschijnt alleen wanneer naar beneden / onderaan de pagina gescrold) */}
+      <div 
+        className={`fixed bottom-20 sm:bottom-24 right-4 sm:right-6 md:right-8 z-30 transition-all duration-500 ease-in-out ${
+          showFloatingButton 
+            ? 'opacity-100 translate-y-0 pointer-events-auto' 
+            : 'opacity-0 translate-y-8 pointer-events-none'
+        }`}
+      >
         <button
           onClick={() => openStayInformed('register')}
           className="flex items-center gap-2.5 px-4.5 py-3 sm:px-5 sm:py-3.5 bg-[#080E18]/95 hover:bg-black text-white text-xs sm:text-sm font-bold rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.45)] border border-white/20 hover:border-[#C9F31D]/50 transition-all cursor-pointer group transform hover:-translate-y-0.5 active:translate-y-0 backdrop-blur-md"

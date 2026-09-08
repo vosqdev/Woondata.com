@@ -49,6 +49,8 @@ interface DeveloperToolsProps {
   onOpenPortal?: () => void;
   onOpenBuurtPaspoort?: () => void;
   onOpenWoningmarktData?: () => void;
+  onOpenRealtimeDashboard?: () => void;
+  onOpenOntdekPlatform?: () => void;
 }
 
 interface ResearchProduct {
@@ -136,7 +138,9 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
   onNavigateToWoonwaarden,
   onOpenPortal,
   onOpenBuurtPaspoort,
-  onOpenWoningmarktData
+  onOpenWoningmarktData,
+  onOpenRealtimeDashboard,
+  onOpenOntdekPlatform
 }) => {
   const [selectedProduct, setSelectedProduct] = useState<ResearchProduct | null>(null);
   
@@ -252,35 +256,35 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
               Onderbouw plannen met actuele woonwensen, regionale marktdata en gevalideerde vraagbehoefte in Dronten, Biddinghuizen en Swifterbant.
             </p>
 
+            {/* Voor ontwikkelaars actieknoppen: uitsluitend Ontdek het platform en Neem contact op */}
             <div className="flex flex-wrap items-center gap-3.5 mt-8 pt-2">
               <button
-                onClick={() => scrollToSection('data-bouwt')}
-                className="px-5 py-3.5 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-black text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all cursor-pointer font-display shadow-[0_0_20px_rgba(201,243,29,0.35)] hover:scale-[1.02] active:scale-[0.98]"
+                onClick={() => {
+                  if (onOpenOntdekPlatform) {
+                    onOpenOntdekPlatform();
+                  } else if (onOpenPortal) {
+                    onOpenPortal();
+                  } else {
+                    scrollToSection('data-bouwt');
+                  }
+                }}
+                className="px-6 py-3.5 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-black text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all cursor-pointer font-display shadow-[0_0_20px_rgba(201,243,29,0.35)] hover:scale-[1.02] active:scale-[0.98] group"
               >
+                <TrendingUp className="w-4 h-4 text-black" />
                 <span>Ontdek het platform</span>
-                <ArrowRight className="w-4 h-4 text-black" />
+                <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-0.5 transition-transform" />
               </button>
 
               <button
-                onClick={() => setContactSubject('Algemene kennismaking & planadvies')}
-                className="px-5 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-bold flex items-center gap-2 transition-all cursor-pointer font-display backdrop-blur-md"
+                onClick={() => {
+                  setContactSubject('Algemene kennismaking & planadvies');
+                  scrollToSection('contact-advies');
+                }}
+                className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-bold flex items-center gap-2 transition-all cursor-pointer font-display backdrop-blur-md"
               >
                 <Mail className="w-4 h-4 text-slate-300" />
                 <span>Neem contact op</span>
               </button>
-
-              {onOpenWoningmarktData && (
-                <button
-                  type="button"
-                  onClick={onOpenWoningmarktData}
-                  className="px-4 py-3.5 rounded-full bg-[#C9F31D]/15 hover:bg-[#C9F31D]/25 text-[#C9F31D] hover:text-white font-bold text-xs sm:text-sm flex items-center gap-2 border border-[#C9F31D]/40 transition-all cursor-pointer font-display shadow-xs group"
-                  title="Open de interactieve Woningmarkt Data module met CBS en PDOK kerncijfers"
-                >
-                  <BarChart2 className="w-4 h-4 text-inherit" />
-                  <span>Woningmarkt data</span>
-                  <ArrowRight className="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              )}
             </div>
           </div>
         </div>
@@ -456,6 +460,60 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
 
           </div>
 
+          {/* REALTIME WOONWENSEN SCAN DASHBOARD SPOTLIGHT (Onder Ontdek het platform) */}
+          <div className="mt-10 bg-gradient-to-r from-[#080E1B] via-[#0E1B33] to-[#080E1B] text-white rounded-3xl p-7 sm:p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[#C9F31D]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              <div className="space-y-3 max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-black bg-black/60 text-[#C9F31D] border border-[#C9F31D]/30 font-display">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse" />
+                  <span className="uppercase tracking-wider">Realtime Firestore Database Live</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-black text-white font-display">
+                  Realtime Woonwensen &amp; Benchmark Dashboard
+                </h3>
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal">
+                  Ingevulde WoonwensenScans stromen realtime binnen in de Firestore cloud-database. Vergelijk direct de concrete woningbehoefte per kern (Dronten, Swifterbant, Biddinghuizen) en toets uw plannen aan de 30-35-35 Woonvisienorm.
+                </p>
+                <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-300">
+                  <span className="flex items-center gap-1.5 font-medium">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C9F31D]" />
+                    <span>Live burgerinzendingen</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 font-medium">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C9F31D]" />
+                    <span>30-35-35 Woonvisie toets</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 font-medium">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C9F31D]" />
+                    <span>5 Kwalitatieve dilemma-sliders</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 font-medium">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C9F31D]" />
+                    <span>Directe CSV-export</span>
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <button
+                  onClick={() => {
+                    if (onOpenOntdekPlatform) {
+                      onOpenOntdekPlatform();
+                    } else if (onOpenRealtimeDashboard) {
+                      onOpenRealtimeDashboard();
+                    }
+                  }}
+                  className="px-6 py-4 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-black text-xs sm:text-sm font-black flex items-center justify-center gap-2.5 transition-all cursor-pointer font-display shadow-[0_0_25px_rgba(201,243,29,0.35)] hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <TrendingUp className="w-4 h-4 text-black" />
+                  <span>Ontdek het platform</span>
+                  <ArrowRight className="w-4 h-4 text-black" />
+                </button>
+              </div>
+            </div>
+          </div>
+
           {/* Bottom Category Navigation Strip */}
           <div className="mt-12 pt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm font-semibold text-slate-700 border-t border-slate-200/80">
             <button 
@@ -528,8 +586,10 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
               <div className="pt-2">
                 <button
                   onClick={() => {
-                    if (onOpenWoningmarktData) {
-                      onOpenWoningmarktData();
+                    if (onOpenOntdekPlatform) {
+                      onOpenOntdekPlatform();
+                    } else if (onOpenRealtimeDashboard) {
+                      onOpenRealtimeDashboard();
                     } else {
                       scrollToSection('onderzoek-advies');
                     }

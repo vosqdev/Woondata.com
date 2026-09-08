@@ -19,7 +19,7 @@ import { QuarterlyReport } from '../types';
 
 export const MarketDataDashboard: React.FC = () => {
   const [selectedReport] = useState<QuarterlyReport>(QUARTERLY_REPORTS[0]);
-  const [activeView, setActiveView] = useState<'funnel' | 'capacity' | 'reports'>('funnel');
+  const [activeView, setActiveView] = useState<'funnel' | 'capacity' | 'reports' | 'panel'>('funnel');
   const [downloadSuccess, setDownloadSuccess] = useState(false);
 
   const handleDownload = () => {
@@ -76,6 +76,16 @@ export const MarketDataDashboard: React.FC = () => {
               }`}
             >
               Kwartaalpublicaties
+            </button>
+            <button
+              onClick={() => setActiveView('panel')}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                activeView === 'panel' 
+                  ? 'bg-[#070D1C] text-[#C9F31D] shadow-sm' 
+                  : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
+              }`}
+            >
+              Woonpanel &amp; Doelgroepen
             </button>
           </div>
         </div>
@@ -404,6 +414,144 @@ export const MarketDataDashboard: React.FC = () => {
                 <div className="flex justify-between text-slate-700 py-1.5 font-medium">
                   <span>Vertegenwoordiging huurders:</span>
                   <span className="font-bold text-slate-950">{selectedReport.sampleStats.vertegenwoordiging.huurders}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* VIEW 4: WOONPANEL & DOELGROEPEN */}
+        {activeView === 'panel' && (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+            <div className="lg:col-span-8 bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-900 uppercase tracking-wider mb-1 font-display">
+                  <Users2 className="w-4 h-4 text-purple-600" />
+                  <span>Demografisch Panel Dronten</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-slate-950 tracking-tight font-display">
+                  1.420 Geregistreerde Burgerpanelleden
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1 font-normal leading-relaxed">
+                  Actieve inwoners uit Dronten, Biddinghuizen en Swifterbant die periodiek meedenken over nieuwbouw, voorzieningen, woningtypologieën en leefomgevingskwaliteit.
+                </p>
+              </div>
+
+              {/* Verdeling per kern */}
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider font-display">
+                  Spreiding Panelleden per Dorpskern
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-bold text-slate-900">Dronten</span>
+                      <span className="text-xs font-bold text-purple-600">62%</span>
+                    </div>
+                    <div className="text-xl font-extrabold text-slate-950">880 <span className="text-[11px] font-normal text-slate-500">leden</span></div>
+                    <p className="text-[11px] text-slate-500 mt-1">Centrum, Gilden, Munten, Hanzekwartier</p>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-bold text-slate-900">Biddinghuizen</span>
+                      <span className="text-xs font-bold text-blue-600">19%</span>
+                    </div>
+                    <div className="text-xl font-extrabold text-slate-950">270 <span className="text-[11px] font-normal text-slate-500">leden</span></div>
+                    <p className="text-[11px] text-slate-500 mt-1">De Weide, Korenmolen, Havenweg</p>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-bold text-slate-900">Swifterbant</span>
+                      <span className="text-xs font-bold text-emerald-600">19%</span>
+                    </div>
+                    <div className="text-xl font-extrabold text-slate-950">270 <span className="text-[11px] font-normal text-slate-500">leden</span></div>
+                    <p className="text-[11px] text-slate-500 mt-1">Bloemenbuurt, Houtsnip, Spil</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Typologie voorkeuren */}
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider font-display">
+                  Gevalideerde Woningtypologie Voorkeuren
+                </h4>
+                <div className="space-y-2.5">
+                  <div>
+                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                      <span>Tweekappers &amp; Vrijstaand (levensloop / gezin)</span>
+                      <span className="font-bold text-slate-950">32%</span>
+                    </div>
+                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div className="bg-[#070D1C] h-full w-[32%] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                      <span>Rijwoningen &amp; Starterswoningen (&lt; € 390.000)</span>
+                      <span className="font-bold text-slate-950">29%</span>
+                    </div>
+                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div className="bg-blue-600 h-full w-[29%] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                      <span>Levensloopgeschikte Hofjes &amp; Appartementen met lift</span>
+                      <span className="font-bold text-slate-950">26%</span>
+                    </div>
+                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div className="bg-emerald-600 h-full w-[26%] rounded-full"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                      <span>Collectief Particulier Opdrachtgeverschap (CPO) &amp; Zelfbouw</span>
+                      <span className="font-bold text-slate-950">13%</span>
+                    </div>
+                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div className="bg-amber-600 h-full w-[13%] rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Panel Insights & Duiding */}
+            <div className="lg:col-span-4 space-y-6">
+              <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-7 space-y-3 shadow-sm">
+                <div className="flex items-center gap-2 text-xs font-black text-slate-900 uppercase tracking-wider font-display">
+                  <Sparkles className="w-4 h-4 text-purple-600" />
+                  <span>Doorstroom Intelligence</span>
+                </div>
+                <h4 className="text-base font-extrabold text-slate-950 font-display">
+                  Ketenreactie bij Verhuizing
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  64% van de senioren in het panel bezit nu een ruime eengezinswoning in Dronten. Bij oplevering van kwalitatieve gelijkvloerse hofjes ontstaat een gemiddelde doorstroomketen van <strong className="text-slate-950 font-bold">2,4 vervolgverhuizingen</strong> per gerealiseerde seniorenwoning.
+                </p>
+                <div className="p-4 bg-purple-50/70 rounded-2xl border border-purple-100 text-xs text-purple-900 leading-relaxed">
+                  <strong className="block mb-1 font-bold font-display">Woonvisie borging:</strong>
+                  Levensloopbestendige nieuwbouw levert de snelste verlichting op voor lokale startersgezinnen.
+                </div>
+              </div>
+
+              <div className="bg-white border border-slate-200/90 rounded-3xl p-6 space-y-3 shadow-sm">
+                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider font-display">
+                  Enquête Frequentie
+                </h4>
+                <div className="space-y-2 text-xs">
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center">
+                    <span className="text-slate-700">Verdiepende Kwartaalpeiling</span>
+                    <span className="font-bold text-slate-950">4x per jaar</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center">
+                    <span className="text-slate-700">Locatiespecifieke Toets</span>
+                    <span className="font-bold text-slate-950">Op aanvraag</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center">
+                    <span className="text-slate-700">Representatieve Weging</span>
+                    <span className="font-bold text-emerald-700">CBS Standaard</span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -23,9 +23,10 @@ import { ProjectsMapSection } from './components/ProjectsMapSection';
 import { KnowledgePlatformSection } from './components/KnowledgePlatformSection';
 import { WonenInDrontenDataDashboard } from './components/WonenInDrontenDataDashboard';
 import { WoonwensenScan } from './components/WoonwensenScan';
+import { WoonwensenRealtimeDashboard } from './components/WoonwensenRealtimeDashboard';
 import { MarketDataDashboard } from './components/MarketDataDashboard';
 import { DeveloperTools } from './components/DeveloperTools';
-import { ProjectontwikkelaarDashboard } from './components/ProjectontwikkelaarDashboard';
+import { OntdekPlatformPortal } from './components/OntdekPlatformPortal';
 import { ProjectParticipationPortal } from './components/ProjectParticipationPortal';
 import { BuurtGebiedspaspoortModule } from './components/BuurtGebiedspaspoortModule';
 import { ImpactRegister } from './components/ImpactRegister';
@@ -50,9 +51,8 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.toLowerCase();
-      if (hash === '#portaal' || hash === '#portal' || hash === '#developer-portal' || hash === '#besloten-portaal') {
-        setActiveTab('ontwikkelaars');
-        setIsDeveloperPortalOpen(false);
+      if (hash === '#portaal' || hash === '#portal' || hash === '#developer-portal' || hash === '#besloten-portaal' || hash === '#ontdek-platform') {
+        setIsDeveloperPortalOpen(true);
         setIsBuurtPaspoortOpen(false);
         setIsParticipationPortalOpen(false);
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -72,6 +72,11 @@ export default function App() {
       } else if (hash === '#woningmarkt-data' || hash === '#data' || hash === '#woningmarkt' || hash === '#data-dashboard') {
         setActiveTab('woningmarkt-data');
         setIsDeveloperPortalOpen(false);
+      } else if (hash === '#woonwensen-dashboard' || hash === '#realtime-dashboard' || hash === '#realtime' || hash === '#woonwensen-data') {
+        setActiveTab('woonwensen-dashboard');
+        setIsDeveloperPortalOpen(false);
+        setIsBuurtPaspoortOpen(false);
+        setIsParticipationPortalOpen(false);
       } else if (hash === '#praat-mee' || hash === '#woonwensen') {
         setActiveTab('praat-mee');
         setIsDeveloperPortalOpen(false);
@@ -113,15 +118,22 @@ export default function App() {
   };
 
   const openDeveloperPortal = () => {
-    setActiveTab('ontwikkelaars');
-    setIsDeveloperPortalOpen(false);
+    setIsDeveloperPortalOpen(true);
     setIsBuurtPaspoortOpen(false);
+    setIsParticipationPortalOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openOntdekPlatform = () => {
+    setIsDeveloperPortalOpen(true);
+    setIsBuurtPaspoortOpen(false);
+    setIsParticipationPortalOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const closeDeveloperPortal = () => {
     setIsDeveloperPortalOpen(false);
-    if (window.location.hash.toLowerCase() === '#portaal' || window.location.hash.toLowerCase() === '#portal' || window.location.hash.toLowerCase() === '#developer-portal' || window.location.hash.toLowerCase() === '#besloten-portaal') {
+    if (window.location.hash.toLowerCase() === '#portaal' || window.location.hash.toLowerCase() === '#portal' || window.location.hash.toLowerCase() === '#developer-portal' || window.location.hash.toLowerCase() === '#besloten-portaal' || window.location.hash.toLowerCase() === '#ontdek-platform') {
       history.pushState(null, '', window.location.pathname + window.location.search);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -211,89 +223,28 @@ export default function App() {
     );
   }
 
-  // IF SEPARATE DEVELOPER PORTAL IS OPEN:
+  // IF SEPARATE DEVELOPER PORTAL (BESLOTEN PORTAAL: ONTDEK HET PLATFORM) IS OPEN:
   if (isDeveloperPortalOpen) {
     return (
-      <div className="min-h-screen flex flex-col bg-[#0B192C] text-slate-100 font-sans">
-        {/* Dedicated Professional Portal Top Navigation Bar */}
-        <header className="sticky top-0 z-50 bg-[#07111E]/95 backdrop-blur-md border-b border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-20">
-              
-              {/* Brand & Portal Identification */}
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-2xl bg-white text-black flex items-center justify-center font-extrabold shadow-md">
-                  <Building2 className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="text-lg sm:text-xl font-black tracking-tight text-white font-display">
-                      WOON<span className="text-[#C9F31D]">DATA</span>
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#D6F830]/15 text-[#D6F830] border border-[#D6F830]/30 font-display">
-                      Ontwikkelaars & Gemeente Portal
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-400 font-medium flex items-center gap-2">
-                    <span>Besloten analyse- & toetsingsomgeving</span>
-                    <span className="text-slate-600">•</span>
-                    <span className="text-[#D6F830] font-semibold">BAG + CBS + Kadaster + WOZ</span>
-                  </p>
-                </div>
-              </div>
-
-              {/* Top Actions & Return to Website Button */}
-              <div className="flex items-center gap-3">
-                <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-stone-300">
-                  <span className="w-2 h-2 rounded-full bg-[#D6F830] animate-pulse" />
-                  <span>Sessie: <strong className="text-white">VOSQ Development / Partner</strong></span>
-                </div>
-
-                {/* Return to Public Website Button */}
-                <button
-                  onClick={closeDeveloperPortal}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold border border-white/20 transition-all cursor-pointer shadow-xs hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  <ArrowLeft className="w-4 h-4 text-amber-400" />
-                  <span>Terug naar Website</span>
-                </button>
-              </div>
-
-            </div>
-          </div>
-        </header>
-
-        {/* Dedicated Professional Portal Main Content (Intelligence Suite) */}
-        <main className="flex-1 bg-stone-900 pb-16">
-          <ProjectontwikkelaarDashboard
-            isLoggedIn={isDeveloperLoggedIn}
-            onLogin={() => setIsDeveloperLoggedIn(true)}
-            onLogout={() => setIsDeveloperLoggedIn(false)}
-            onNavigateToWoonwaarden={() => {
-              setIsDeveloperPortalOpen(false);
-              openWoonwaarden();
-            }}
-            onOpenBuurtPaspoort={openBuurtPaspoort}
-          />
-        </main>
-
-        {/* Portal Footer */}
-        <footer className="bg-[#07111E] border-t border-slate-800 text-slate-400 text-xs py-8 px-4 sm:px-8">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#D6F830]" />
-              <span>Nieuwbouw Dronten Intelligence Suite</span>
-            </div>
-            <button
-              onClick={closeDeveloperPortal}
-              className="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1.5 cursor-pointer"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Verlaat Portal en keer terug naar Publieke Website</span>
-            </button>
-          </div>
-        </footer>
-      </div>
+      <OntdekPlatformPortal
+        onBackToWebsite={closeDeveloperPortal}
+        onOpenWoonwensenScanStats={() => {
+          setIsDeveloperPortalOpen(false);
+          setActiveTab('woonwensen-dashboard');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onOpenWoningmarktData={() => {
+          setIsDeveloperPortalOpen(false);
+          setActiveTab('woningmarkt-data');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onOpenParticipatieProjecten={() => {
+          setIsDeveloperPortalOpen(false);
+          setActiveTab('wonen');
+          setWonenActiveLayer('lijst');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
     );
   }
 
@@ -309,6 +260,7 @@ export default function App() {
         openSurvey={openSurvey}
         openStayInformed={openStayInformed}
         isDeveloperLoggedIn={isDeveloperLoggedIn}
+        onOpenDeveloperPortal={openOntdekPlatform}
       />
 
       {/* Main Content Body */}
@@ -334,6 +286,7 @@ export default function App() {
             <DeveloperTools 
               onNavigateToWoonwaarden={openWoonwaarden}
               onOpenBuurtPaspoort={openBuurtPaspoort}
+              onOpenOntdekPlatform={openOntdekPlatform}
             />
             <WoonwaardenGrid />
             <ImpactRegister />
@@ -476,14 +429,35 @@ export default function App() {
           </div>
         )}
 
+        {/* TAB: REALTIME WOONWENSEN DASHBOARD (Aparte pagina voor ontwikkelaars & beleid) */}
+        {activeTab === 'woonwensen-dashboard' && (
+          <div>
+            <WoonwensenRealtimeDashboard 
+              onBack={() => {
+                setActiveTab('ontwikkelaars');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onOpenWoonwensenScan={() => {
+                setActiveTab('praat-mee');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
         {/* TAB: ONTWIKKELAARS (Programma-advies, Woningmarktberaad, Beleidscyclus & Vaste Onderzoeksproducten) */}
         {activeTab === 'ontwikkelaars' && (
           <div>
             <DeveloperTools 
               onNavigateToWoonwaarden={openWoonwaarden}
               onOpenBuurtPaspoort={openBuurtPaspoort}
+              onOpenOntdekPlatform={openOntdekPlatform}
               onOpenWoningmarktData={() => {
                 setActiveTab('woningmarkt-data');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onOpenRealtimeDashboard={() => {
+                setActiveTab('woonwensen-dashboard');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />

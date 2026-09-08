@@ -1,203 +1,194 @@
 import React, { useState } from 'react';
 import { 
-  BookOpen, 
-  FileText, 
-  Download, 
-  CheckCircle2, 
-  Layers, 
-  Compass, 
-  ShieldCheck, 
-  Sparkles, 
-  ArrowRight, 
-  TrendingUp, 
-  Calendar,
-  Search,
-  ExternalLink,
-  ChevronRight
+  ExternalLink, 
+  FileText,
+  Globe
 } from 'lucide-react';
-import { GEMEENTELIJKE_WOONWAARDEN } from '../data/mockData';
 
 interface KnowledgePlatformSectionProps {
   onOpenQuickscan?: () => void;
   onOpenWoonwaarden?: () => void;
 }
 
+interface KnowledgeCardItem {
+  id: string;
+  category: 'woonvisie' | 'participatie' | 'gebiedsontwikkeling';
+  badge: string;
+  readingTime: string;
+  title: string;
+  description: string;
+  meta: string;
+  url: string;
+  featured?: boolean;
+}
+
 export const KnowledgePlatformSection: React.FC<KnowledgePlatformSectionProps> = ({
   onOpenQuickscan,
   onOpenWoonwaarden
 }) => {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'woonvisie' | 'woonwaarden' | 'methode' | 'publicaties'>('all');
-  const [downloadSuccess, setDownloadSuccess] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('all');
 
-  const handleDownload = (docTitle: string) => {
-    setDownloadSuccess(docTitle);
-    setTimeout(() => setDownloadSuccess(null), 3500);
-  };
-
-  const knowledgeItems = [
+  const knowledgeCards: KnowledgeCardItem[] = [
     {
-      id: 'woonvisie-2050',
+      id: 'woonperspectief-dronten',
       category: 'woonvisie',
-      badge: 'Gemeentelijk Kader',
-      title: 'Woonvisie Dronten 2026 – 2050: Ruimte voor Kwaliteit',
-      summary: 'Hoofdlijnen van de ruimtelijke opgave: 3.309 nieuwe woningen tot 2030, gefaseerde doorgroei naar 60.000 inwoners en sturing op dorps karakter.',
-      readTime: '12 min leestijd',
-      date: 'Vastgesteld mei 2026',
-      downloadLabel: 'Download Handreiking PDF'
+      badge: 'GEMEENTELIJK KADER',
+      readingTime: '12 min leestijd',
+      title: 'Woonvisie Dronten: Ruimte voor Kwaliteit',
+      description: 'Hoofdlijnen van de ruimtelijke opgave en het officiële toetsingskader voor nieuwe woningbouw, verbouwingen, functiewijzigingen en sturing op dorps karakter.',
+      meta: 'Vastgesteld mei 2026',
+      url: 'https://www.dronten.nl/direct-regelen/leefomgeving/verbouwen-plaatsen-of-veranderen/woonperspectief/'
     },
     {
-      id: 'woonwaarden-toetsingskader',
-      category: 'woonwaarden',
-      badge: 'Kwaliteitsleidraad',
-      title: 'De 7 Woonwaarden in de Praktijk: Beoordelingsmatrix',
-      summary: 'Concrete toepassing van de 7 waarden in ruimtelijke plannen: groennormen (min. 40%), ontmoetingsruimtes, BENG+ energieprestatie en mix-segmentering.',
-      readTime: '8 min leestijd',
-      date: 'Versie 2.1 • 2026',
-      downloadLabel: 'Download Matrix PDF'
-    },
-    {
-      id: 'methodiek-vraagvalidatie',
-      category: 'methode',
-      badge: 'Data & Methodiek',
-      title: 'Vraagvalidatiemodel: De 5 Trechterfasen van Woningvraag',
-      summary: 'Hoe de hardheid van de woningvraag wordt bepaald: van vrijblijvende interesse tot getoetste, koopklare concrete vraag met CBS-representativiteit.',
-      readTime: '6 min leestijd',
-      date: 'Geactualiseerd Q2 2026',
-      downloadLabel: 'Download Methodiek PDF'
-    },
-    {
-      id: 'woningmarktberaad-protocol',
+      id: 'toekomstvisie-documenten',
       category: 'woonvisie',
-      badge: 'Bestuurlijke Besluitvorming',
-      title: 'Protocol Woningmarktberaad: Fasering & Regie',
-      summary: 'De 5-fasen cyclus voor projectaanmelding, Quickscan-beoordeling, advies aan B&W en borging in de gemeentelijke bestemmingsplannen.',
-      readTime: '9 min leestijd',
-      date: 'Gemeenteblad Dronten',
-      downloadLabel: 'Download Protocol PDF'
+      badge: 'TOEKOMSTVISIE & STRATEGIE',
+      readingTime: '10 min leestijd',
+      title: 'Toekomstvisie & Beleidsdocumenten Dronten',
+      description: 'Officiële raadskaders, structuurvisies en lange-termijndocumenten die richting geven aan wonen, werken, landschap en de gefaseerde groei naar 60.000 inwoners.',
+      meta: 'Koersdocumenten & Raadsbesluiten',
+      url: 'https://www.dronten.nl/toekomstvisie-documenten/'
     },
     {
-      id: 'kwartaalmonitor-q2',
-      category: 'publicaties',
-      badge: 'Kwartaalmonitor',
-      title: 'Woonmarktmonitor Q2 2026: Doorstroomonderzoek Senioren',
-      summary: 'Resultaten van het panelonderzoek onder 842 inwoners over de bereidheid tot verhuizen naar gelijkvloerse hofjes in Biddinghuizen en Swifterbant.',
-      readTime: '15 min leestijd',
-      date: 'Juli 2026',
-      downloadLabel: 'Download Rapport Q2 PDF'
+      id: 'mijnkijkopdronten-projecten',
+      category: 'participatie',
+      badge: 'BURGERPARTICIPATIE',
+      readingTime: '8 min leestijd',
+      title: 'Participatieprojecten: Mijn Kijk op Dronten',
+      description: 'Centraal burgerparticipatieplatform van de gemeente Dronten waar inwoners, buurten en belanghebbenden actief meedenken, reageren op plannen en stemmen.',
+      meta: 'Actuele projecten • Participatie',
+      url: 'https://www.mijnkijkopdronten.nl/projecten',
+      featured: true
     },
     {
-      id: 'datastatuut-onafhankelijkheid',
-      category: 'methode',
-      badge: 'Privacy & Governance',
-      title: 'Onafhankelijkheids- & Datastatuut Woonpanel Dronten',
-      summary: 'Waarborgen voor privacy, representatieve weging, onafhankelijk databeheer en de scheiding tussen burgerpeiling en commerciële belangen.',
-      readTime: '5 min leestijd',
-      date: 'AVG-conform 2026',
-      downloadLabel: 'Download Statuut PDF'
+      id: 'mijnkijkopdronten-dronten-zuid',
+      category: 'gebiedsontwikkeling',
+      badge: 'GEBIEDSONTWIKKELING',
+      readingTime: '6 min leestijd',
+      title: 'Gebiedsproject Dronten-Zuid: Uitbreidingslocatie',
+      description: 'Projectvisie en participatietraject voor nieuwbouw Dronten-Zuid met ruimte voor groennormen, ontmoetingsruimtes, moderne woonmilieus en voorzieningen.',
+      meta: 'Projectdossier • Dronten-Zuid',
+      url: 'https://www.mijnkijkopdronten.nl/projecten/dronten-zuid'
     }
   ];
 
-  const filteredItems = knowledgeItems.filter(
-    item => activeCategory === 'all' || item.category === activeCategory
+  const filterTabs = [
+    { id: 'all', label: `Alles (${knowledgeCards.length})` },
+    { id: 'woonvisie', label: 'Woonvisie' },
+    { id: 'participatie', label: 'Participatie' },
+    { id: 'gebiedsontwikkeling', label: 'Gebiedsontwikkeling' }
+  ];
+
+  const filteredCards = knowledgeCards.filter(
+    card => activeCategory === 'all' || card.category === activeCategory
   );
 
   return (
-    <section id="kennis" className="py-16 sm:py-24 bg-white border-b border-slate-200 text-slate-900 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="kennis" className="py-16 sm:py-20 bg-[#F9FAF8] border-b border-slate-200 text-slate-900 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-black text-[#D6F830] font-display">
-              <BookOpen className="w-3.5 h-3.5 text-[#D6F830]" />
-              <span className="uppercase tracking-wider">Kennis & Publicaties</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight font-display">
+        {/* Section Header: Matches screenshot layout with left title & text, right pill filters */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight font-display">
               Kennisplatform
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 font-normal">
+            <p className="text-sm sm:text-base text-slate-600 mt-2.5 font-normal leading-relaxed">
               Objectieve informatie, handreikingen, kwartaalmonitors en het woonwensen onderzoeken voor Dronten, Biddinghuizen en Swifterbant.
             </p>
           </div>
 
-          {/* Quick Filter Pills */}
-          <div className="flex flex-wrap gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
-            {[
-              { id: 'all', label: 'Alles (6)' },
-              { id: 'woonvisie', label: 'Woonvisie' },
-              { id: 'woonwaarden', label: 'Woonwaarden' },
-              { id: 'methode', label: 'Methodiek' },
-              { id: 'publicaties', label: 'Publicaties' },
-            ].map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveCategory(tab.id as any)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer font-display ${
-                  activeCategory === tab.id
-                    ? 'bg-black text-[#D6F830] shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white'
+          {/* Filter Pills in top-right rounded container */}
+          <div className="flex flex-wrap items-center gap-1.5 bg-slate-200/70 p-1.5 rounded-full self-start lg:self-end">
+            {filterTabs.map(tab => {
+              const isActive = activeCategory === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveCategory(tab.id)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer font-display ${
+                    isActive
+                      ? 'bg-black text-[#C9F31D] shadow-sm'
+                      : 'text-slate-700 hover:text-slate-950 hover:bg-white/60'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Cards Grid: Matches the exact style in the screenshot */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 lg:gap-8">
+          {filteredCards.map(card => {
+            return (
+              <div
+                key={card.id}
+                className={`bg-white rounded-[26px] p-7 sm:p-8 transition-all duration-200 flex flex-col justify-between group ${
+                  card.featured 
+                    ? 'border-2 border-black shadow-md' 
+                    : 'border border-slate-200 hover:border-slate-400 shadow-xs hover:shadow-md'
                 }`}
               >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
+                <div>
+                  {/* Top Row: Black Badge on Left + Reading Time on Right */}
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="px-3 py-1 bg-black text-white text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider rounded-md font-display">
+                      {card.badge}
+                    </span>
+                    <span className="text-xs text-slate-400 font-medium">
+                      {card.readingTime}
+                    </span>
+                  </div>
 
-        {/* Download notification banner if clicked */}
-        {downloadSuccess && (
-          <div className="mb-8 p-4 rounded-xl bg-slate-900 text-white text-xs font-medium flex items-center justify-between shadow-md">
-            <div className="flex items-center gap-2.5">
-              <CheckCircle2 className="w-4 h-4 text-[#D6F830] shrink-0" />
-              <span>Document <strong>'{downloadSuccess}'</strong> is succesvol klaargezet voor download.</span>
-            </div>
-            <span className="text-[11px] text-[#D6F830] font-bold">PDF • Compleet</span>
-          </div>
-        )}
+                  {/* Card Title */}
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-950 tracking-tight leading-snug mt-5 font-display group-hover:text-black transition-colors">
+                    {card.title}
+                  </h3>
 
-        {/* Knowledge Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredItems.map(item => (
-            <div
-              key={item.id}
-              className="bg-white rounded-3xl p-6 border border-slate-200 flex flex-col justify-between shadow-xs hover:shadow-lg hover:border-black transition-all duration-200 group"
-            >
-              <div className="space-y-3.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md bg-black text-[#D6F830] font-display">
-                    {item.badge}
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium">{item.readTime}</span>
+                  {/* Card Description */}
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-3 font-normal">
+                    {card.description}
+                  </p>
+
+                  {/* Metadata / Subtext */}
+                  <p className="text-xs text-slate-400 font-medium mt-6">
+                    {card.meta}
+                  </p>
                 </div>
 
-                <h3 className="text-base sm:text-lg font-extrabold text-slate-950 group-hover:text-black transition-colors leading-snug font-display">
-                  {item.title}
-                </h3>
+                {/* Bottom Row: Website link on left + Document icon on right */}
+                <div className="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <a
+                    href={card.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-900 hover:text-black group-hover:underline cursor-pointer"
+                  >
+                    <ExternalLink className="w-4 h-4 text-slate-700" />
+                    <span>Website link</span>
+                  </a>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                  {item.summary}
-                </p>
-
-                <div className="pt-2 text-xs text-slate-500 font-medium">
-                  {item.date}
-                </div>
-              </div>
-
-              <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between">
-                <button
-                  onClick={() => handleDownload(item.title)}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-slate-900 hover:text-black group-hover:underline transition-colors cursor-pointer"
-                >
-                  <Download className="w-3.5 h-3.5 text-slate-700" />
-                  <span>{item.downloadLabel}</span>
-                </button>
-                <div className="w-8 h-8 rounded-xl bg-slate-100 group-hover:bg-[#D6F830] text-slate-700 group-hover:text-black flex items-center justify-center transition-all font-bold">
-                  <FileText className="w-4 h-4" />
+                  <a
+                    href={card.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all ${
+                      card.featured
+                        ? 'bg-[#C9F31D] text-slate-950 shadow-xs hover:scale-105'
+                        : 'bg-slate-100 text-slate-500 hover:bg-slate-200 group-hover:bg-[#C9F31D] group-hover:text-slate-950'
+                    }`}
+                    title="Open website link"
+                  >
+                    <FileText className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

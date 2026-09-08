@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // WoonwensenScan Inzendingen (Realtime Burgerpeiling)
+    match /woonwensenscan_inzendingen/{submissionId} {
+      // Iedereen kan de geaggregeerde data lezen voor statistieken en benchmarking
+      allow read: if true;
+      // Inwoners kunnen anoniem hun scan indienen mits akkoord met verwerking
+      allow create: if request.resource.data.consentResearch == true;
+      // Verwijderen toegestaan voor beheer en dataset resets
+      allow delete: if true;
+      allow update: if false;
+    }
+
+    // Projecten & Plancapaciteit
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Default deny all other paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

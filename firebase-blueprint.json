@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "WoonwensenSubmission": {
+      "title": "WoonwensenSubmission",
+      "description": "Inwonersreactie op de WoonwensenScan Dronten voor objectieve marktanalyse en toetsing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "currentResidence": { "type": "string" },
+        "postcodeDigits": { "type": "string" },
+        "bindingOptions": { "type": "array" },
+        "moveIntention": { "type": "string" },
+        "moveBarrier": { "type": "string" },
+        "householdPhase": { "type": "string" },
+        "primaryHousingType": { "type": "string" },
+        "alternativeHousingTypes": { "type": "array" },
+        "lifespanSuitability": { "type": "string" },
+        "outdoorSpaceNeed": { "type": "string" },
+        "socialContactType": { "type": "string" },
+        "tenureType": { "type": "string" },
+        "maxMonthlyCosts": { "type": "string" },
+        "priceSegment": { "type": "string" },
+        "careNeedLevel": { "type": "string" },
+        "transportModes": { "type": "array" },
+        "acceptableEnergyCosts": { "type": "string" },
+        "tradeOffs": { "type": "object" },
+        "topQualities": { "type": "array" },
+        "joinPanel": { "type": "boolean" },
+        "consentResearch": { "type": "boolean" }
+      },
+      "required": ["currentResidence", "primaryHousingType", "tenureType", "consentResearch"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Nieuwbouwproject en plancapaciteit in de gemeente Dronten",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "kern": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/woonwensenscan_inzendingen/{submissionId}": {
+      "schema": { "$ref": "#/entities/WoonwensenSubmission" },
+      "description": "Verzameling van alle realtime woonwensenscan enquêtes ingediend door inwoners"
+    },
+    "/projects/{projectId}": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Projecten en plancapaciteit in de gemeente"
+    }
+  }
+}

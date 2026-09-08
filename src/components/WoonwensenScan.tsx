@@ -24,9 +24,11 @@ import {
   Sliders,
   CheckSquare,
   Square,
-  AlertCircle
+  AlertCircle,
+  BarChart3
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { woonwensenService } from '../services/woonwensenService';
 
 export const WoonwensenScan: React.FC = () => {
   const [step, setStep] = useState<number>(1);
@@ -253,6 +255,41 @@ export const WoonwensenScan: React.FC = () => {
       formData.append('deelnemen_aan_panel', joinPanel ? 'Ja' : 'Nee');
       formData.append('toestemming_onderzoek', consentResearch ? 'Ja (Akkoord met AVG)' : 'Nee');
 
+      // 1. Opslaan in Firebase Firestore voor realtime statistieken en benchmarking
+      try {
+        await woonwensenService.saveSubmission({
+          currentResidence,
+          postcodeDigits,
+          bindingOptions,
+          moveIntention,
+          moveBarrier,
+          moveBarrierCustom: moveBarrierCustom || undefined,
+          householdPhase,
+          primaryHousingType,
+          alternativeHousingTypes,
+          lifespanSuitability,
+          outdoorSpaceNeed,
+          socialContactType,
+          tenureType,
+          maxMonthlyCosts,
+          priceSegment,
+          careNeedLevel,
+          transportModes,
+          accessibilityConditions,
+          acceptableEnergyCosts,
+          energyTradeoffChoice,
+          sustainabilityPriorities,
+          tradeOffs,
+          topQualities,
+          absoluteCondition: absoluteCondition || undefined,
+          email: email || undefined,
+          joinPanel,
+          consentResearch
+        });
+      } catch (firestoreErr) {
+        console.warn('Fout bij opslaan in Firestore:', firestoreErr);
+      }
+
       await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -400,8 +437,19 @@ export const WoonwensenScan: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
                   <button
+                    type="button"
+                    onClick={() => {
+                      window.location.hash = '#woonwensen-dashboard';
+                    }}
+                    className="px-6 py-2.5 rounded-full bg-black text-[#C9F31D] text-xs font-black font-display hover:bg-slate-800 transition-all cursor-pointer flex items-center gap-2 shadow-md hover:scale-105"
+                  >
+                    <BarChart3 className="w-4 h-4" />
+                    <span>Bekijk Resultaten Dashboard</span>
+                  </button>
+                  <button
+                    type="button"
                     onClick={() => {
                       setIsSubmitted(false);
                       setStep(1);

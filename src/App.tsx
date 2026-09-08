@@ -331,7 +331,6 @@ export default function App() {
               onOpenQuickscan={openQuickscan}
               onOpenWoonwaarden={openWoonwaarden}
             />
-            <MarketDataDashboard />
             <DeveloperTools 
               onNavigateToWoonwaarden={openWoonwaarden}
               onOpenBuurtPaspoort={openBuurtPaspoort}
@@ -461,6 +460,7 @@ export default function App() {
               backgroundImage="https://www.image2url.com/r2/default/images/1788464129594-e0860c93-a90d-4878-b5e6-d10d0cdd8bd4.webp"
             />
             <WoonperspectiefSection />
+            <MarketDataDashboard />
           </div>
         )}
 

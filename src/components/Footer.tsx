@@ -1,7 +1,5 @@
 import React from 'react';
-import { 
-  Building2
-} from 'lucide-react';
+import { WoonDataLogo } from './WoonDataLogo';
 
 interface FooterProps {
   setActiveTab: (tab: string) => void;
@@ -29,24 +27,11 @@ export const Footer: React.FC<FooterProps> = ({
           
           {/* Left Brand Statement (5 cols) */}
           <div className="lg:col-span-5 space-y-4 pr-0 lg:pr-8">
-            <div 
+            <WoonDataLogo 
+              size="md"
               onClick={() => setActiveTab('home')}
-              className="flex items-center gap-3 cursor-pointer group select-none"
-            >
-              <div className="w-10 h-10 rounded-2xl bg-white text-black flex items-center justify-center font-extrabold shadow-md group-hover:scale-105 transition-all">
-                <Building2 className="w-5 h-5 text-black" />
-              </div>
-              <div>
-                <div className="flex items-center gap-1">
-                  <span className="text-xl font-black tracking-tight text-white font-display">
-                    WOON<span className="text-[#C9F31D]">DATA</span>
-                  </span>
-                </div>
-                <p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">
-                  WONEN • PROJECTEN • INZICHT
-                </p>
-              </div>
-            </div>
+              className="hover:opacity-95 transition-opacity"
+            />
 
             <p className="text-sm text-slate-400 leading-relaxed font-normal">
               Het onafhankelijke woonmarkt en dataplatform dat inwonerssignalen, transactiedata, beleid zoals de 7 gemeentelijke woonwaarden, bewonersperspectief 2040 en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { WoonDataLogoIcon } from './WoonDataLogo';
 import {
   Building2,
   Lock,

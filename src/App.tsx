@@ -18,9 +18,9 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { ThreeRoutesSection } from './components/ThreeRoutesSection';
 import { WoonwaardenGrid } from './components/WoonwaardenGrid';
+import { WoonperspectiefSection } from './components/WoonperspectiefSection';
 import { ProjectsMapSection } from './components/ProjectsMapSection';
 import { KnowledgePlatformSection } from './components/KnowledgePlatformSection';
-import { InzichtenDataMiniDashboard } from './components/InzichtenDataMiniDashboard';
 import { WonenInDrontenDataDashboard } from './components/WonenInDrontenDataDashboard';
 import { WoonwensenScan } from './components/WoonwensenScan';
 import { MarketDataDashboard } from './components/MarketDataDashboard';
@@ -32,14 +32,12 @@ import { ImpactRegister } from './components/ImpactRegister';
 import { Footer } from './components/Footer';
 import { AiAdvisorModal } from './components/AiAdvisorModal';
 import { StayInformedModal } from './components/StayInformedModal';
-import { MediaLibraryModal } from './components/MediaLibraryModal';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
   const [wonenActiveLayer, setWonenActiveLayer] = useState<'kaart' | 'lijst' | 'datalaag'>('kaart');
   const [aiAdvisorOpen, setAiAdvisorOpen] = useState(false);
   const [stayInformedOpen, setStayInformedOpen] = useState(false);
-  const [mediaLibraryOpen, setMediaLibraryOpen] = useState(false);
   const [stayInformedMode, setStayInformedMode] = useState<'register' | 'login'>('register');
   const [isDeveloperLoggedIn, setIsDeveloperLoggedIn] = useState(true);
   const [isDeveloperPortalOpen, setIsDeveloperPortalOpen] = useState(false);
@@ -207,7 +205,7 @@ export default function App() {
                 <div>
                   <div className="flex items-center gap-2.5">
                     <span className="text-lg sm:text-xl font-black tracking-tight text-white font-display">
-                      NIEUWBOUW<span className="text-[#D6F830]">DRONTEN</span>
+                      WOON<span className="text-[#C9F31D]">DATA</span>
                     </span>
                     <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#D6F830]/15 text-[#D6F830] border border-[#D6F830]/30 font-display">
                       Ontwikkelaars & Gemeente Portal
@@ -292,7 +290,6 @@ export default function App() {
         openSurvey={openSurvey}
         openStayInformed={openStayInformed}
         isDeveloperLoggedIn={isDeveloperLoggedIn}
-        onOpenMediaLibrary={() => setMediaLibraryOpen(true)}
       />
 
       {/* Main Content Body */}
@@ -436,20 +433,15 @@ export default function App() {
               </div>
             </div>
 
-            {/* Klein Woningmarktdashboard (gekoppeld aan de aparte module) */}
-            <InzichtenDataMiniDashboard 
-              onOpenFullDashboard={() => {
-                setActiveTab('woningmarkt-data');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            />
-
             {/* Kennisplatform & Publicaties */}
             <KnowledgePlatformSection
               onOpenQuickscan={openQuickscan}
               onOpenWoonwaarden={openWoonwaarden}
             />
-            <WoonwaardenGrid />
+            <WoonwaardenGrid 
+              backgroundImage="https://www.image2url.com/r2/default/images/1788464129594-e0860c93-a90d-4878-b5e6-d10d0cdd8bd4.webp"
+            />
+            <WoonperspectiefSection />
           </div>
         )}
 
@@ -509,12 +501,6 @@ export default function App() {
       {aiAdvisorOpen && (
         <AiAdvisorModal onClose={() => setAiAdvisorOpen(false)} />
       )}
-
-      {/* Central Media Library & Firebase Cloud Storage Modal */}
-      <MediaLibraryModal
-        isOpen={mediaLibraryOpen}
-        onClose={() => setMediaLibraryOpen(false)}
-      />
     </div>
   );
 }

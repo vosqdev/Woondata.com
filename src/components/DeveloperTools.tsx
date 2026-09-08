@@ -42,7 +42,6 @@ import {
   Inbox
 } from 'lucide-react';
 import { ImageUploader } from './ImageUploader';
-import { MediaLibraryModal } from './MediaLibraryModal';
 import { MediaItem } from '../types';
 
 interface DeveloperToolsProps {
@@ -145,7 +144,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
   const [contactSubject, setContactSubject] = useState<string | null>(null);
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [attachedImage, setAttachedImage] = useState<MediaItem | null>(null);
-  const [isMediaLibraryOpen, setIsMediaLibraryOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     organization: '',
@@ -1131,10 +1129,9 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                   <div className="pt-1 border-t border-slate-700">
                     <ImageUploader
                       label="Plankaart, schets of situatietekening bijvoegen (Optioneel)"
-                      helperText="Sleep een bestand of selecteer uit de mediabibliotheek. Automatische WebP conversie (max 2MB)."
+                      helperText="Sleep een bestand of blader op uw apparaat. Automatische WebP conversie (max 2MB)."
                       currentImageUrl={attachedImage?.variants.thumbnail.url || attachedImage?.url}
                       onImageSelected={(item) => setAttachedImage(item)}
-                      onOpenMediaLibrary={() => setIsMediaLibraryOpen(true)}
                       category="projecten"
                       projectName={formData.organization || 'Ontwikkelaar Plan'}
                     />
@@ -1162,16 +1159,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
           </div>
         </div>
       )}
-
-      {/* Media Library Selector Modal */}
-      <MediaLibraryModal
-        isOpen={isMediaLibraryOpen}
-        onClose={() => setIsMediaLibraryOpen(false)}
-        onSelectImage={(item) => {
-          setAttachedImage(item);
-          setIsMediaLibraryOpen(false);
-        }}
-      />
 
     </div>
   );

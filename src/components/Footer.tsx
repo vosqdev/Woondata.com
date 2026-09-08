@@ -35,7 +35,7 @@ export const Footer: React.FC<FooterProps> = ({
               <div>
                 <div className="flex items-center gap-1">
                   <span className="text-xl font-black tracking-tight text-white font-display">
-                    NIEUWBOUW<span className="text-[#C9F31D]">DRONTEN</span>
+                    WOON<span className="text-[#C9F31D]">DATA</span>
                   </span>
                 </div>
                 <p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">
@@ -47,10 +47,6 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="text-sm text-slate-400 leading-relaxed font-normal">
               Het onafhankelijke woonmarkt en dataplatform dat inwonerssignalen, transactiedata, beleid zoals de 7 gemeentelijke woonwaarden, bewonersperspectief 2040 en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.
             </p>
-
-            <div className="text-xs text-slate-400 pt-1">
-              Kennis- &amp; procesregie: <strong className="text-white font-semibold">Vovon Development</strong>
-            </div>
           </div>
 
           {/* Right Navigation & Direct Links (7 cols) */}

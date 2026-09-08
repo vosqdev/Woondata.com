@@ -48,7 +48,6 @@ import L from 'leaflet';
 import { Project, MediaItem } from '../types';
 import { PROJECTS_DATA } from '../data/mockData';
 import { ImageUploader } from './ImageUploader';
-import { MediaLibraryModal } from './MediaLibraryModal';
 
 interface ProjectParticipationPortalProps {
   project: Project;
@@ -507,7 +506,6 @@ export const ProjectParticipationPortal: React.FC<ProjectParticipationPortalProp
   const [newIdeaAuthor, setNewIdeaAuthor] = useState('');
   const [newIdeaAuthorType, setNewIdeaAuthorType] = useState<'Omwonende' | 'Woningzoekende' | 'Inwoner Dronten' | 'Ondernemer'>('Woningzoekende');
   const [newIdeaAttachedImage, setNewIdeaAttachedImage] = useState<MediaItem | null>(null);
-  const [isMediaLibraryOpen, setIsMediaLibraryOpen] = useState(false);
   const [newIdeaSubmitted, setNewIdeaSubmitted] = useState(false);
 
   // Survey state
@@ -646,7 +644,7 @@ export const ProjectParticipationPortal: React.FC<ProjectParticipationPortalProp
               <div>
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <span className="text-lg sm:text-xl font-black tracking-tight text-white font-display">
-                    NIEUWBOUW<span className="text-[#C9F31D]">DRONTEN</span>
+                    WOON<span className="text-[#C9F31D]">DATA</span>
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C9F31D]/15 text-[#C9F31D] border border-[#C9F31D]/30 font-display">
                     Participatie & Co-Creatie Portal
@@ -2047,10 +2045,9 @@ export const ProjectParticipationPortal: React.FC<ProjectParticipationPortalProp
                   <div className="pt-2 border-t border-white/10">
                     <ImageUploader
                       label="Afbeelding of inspiratiefoto toevoegen (Optioneel)"
-                      helperText="Plak via Ctrl+V / Cmd+V, sleep een bestand of kies uit de centrale Media Library. Automatisch geconverteerd naar WebP (max 2MB)."
+                      helperText="Plak via Ctrl+V / Cmd+V of sleep een bestand. Automatisch geconverteerd naar WebP (max 2MB)."
                       currentImageUrl={newIdeaAttachedImage?.variants?.thumbnail?.url || newIdeaAttachedImage?.url}
                       onImageSelected={(item) => setNewIdeaAttachedImage(item)}
-                      onOpenMediaLibrary={() => setIsMediaLibraryOpen(true)}
                       category="participatie"
                       projectName={project.title}
                     />
@@ -2078,16 +2075,6 @@ export const ProjectParticipationPortal: React.FC<ProjectParticipationPortalProp
           </div>
         </div>
       )}
-
-      {/* Media Library Selection Modal */}
-      <MediaLibraryModal
-        isOpen={isMediaLibraryOpen}
-        onClose={() => setIsMediaLibraryOpen(false)}
-        onSelectImage={(item) => {
-          setNewIdeaAttachedImage(item);
-          setIsMediaLibraryOpen(false);
-        }}
-      />
 
       {/* ========================================================================= */}
       {/* MODAL: AI SNEL CLUSTEREN */}

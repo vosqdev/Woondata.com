@@ -6,8 +6,7 @@ import {
   Sparkles,
   ClipboardList,
   Lock,
-  ExternalLink,
-  FolderOpen
+  ExternalLink
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -19,7 +18,6 @@ interface HeaderProps {
   openStayInformed?: (mode?: 'register' | 'login') => void;
   isDeveloperLoggedIn?: boolean;
   onOpenDeveloperPortal?: () => void;
-  onOpenMediaLibrary?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -30,8 +28,7 @@ export const Header: React.FC<HeaderProps> = ({
   openSurvey,
   openStayInformed,
   isDeveloperLoggedIn,
-  onOpenDeveloperPortal,
-  onOpenMediaLibrary
+  onOpenDeveloperPortal
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -81,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               <div className="flex items-center gap-1">
                 <span className="text-xl font-black tracking-tight text-white font-display">
-                  NIEUWBOUW<span className="text-[#C9F31D]">DRONTEN</span>
+                  WOON<span className="text-[#C9F31D]">DATA</span>
                 </span>
               </div>
               <p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">
@@ -116,20 +113,8 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </nav>
 
-          {/* Action CTAs: Mediabibliotheek & Woonwens Doorgeven */}
+          {/* Action CTA: Woonwens Doorgeven */}
           <div className="hidden sm:flex items-center gap-2.5">
-            {onOpenMediaLibrary && (
-              <button
-                type="button"
-                onClick={onOpenMediaLibrary}
-                className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-slate-200 hover:text-white border border-white/10 transition-all cursor-pointer font-display"
-                title="Open centrale Mediabibliotheek met Firebase Cloud Storage"
-              >
-                <FolderOpen className="w-3.5 h-3.5 text-[#C9F31D]" />
-                <span>Media</span>
-              </button>
-            )}
-
             <button
               onClick={handleWoonwensClick}
               className="flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-extrabold rounded-full bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 shadow-[0_2px_14px_rgba(201,243,29,0.22)] transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98] font-display"
@@ -172,20 +157,6 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           ))}
           <div className="pt-4 border-t border-white/[0.08] flex flex-col gap-2.5">
-            {onOpenMediaLibrary && (
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenMediaLibrary();
-                }}
-                className="w-full py-3 px-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-xs text-center flex items-center justify-center gap-2 border border-white/15 cursor-pointer font-display"
-              >
-                <FolderOpen className="w-4 h-4 text-[#C9F31D]" />
-                <span>Mediabibliotheek (Cloud Storage)</span>
-              </button>
-            )}
-
             <button
               onClick={handleWoonwensClick}
               className="w-full py-3 px-4 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 font-extrabold rounded-xl text-xs text-center flex items-center justify-center gap-2 shadow-md cursor-pointer font-display"

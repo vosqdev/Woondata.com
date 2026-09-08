@@ -4,7 +4,6 @@ import {
   Image as ImageIcon,
   CheckCircle2,
   AlertCircle,
-  FolderOpen,
   X,
   Sparkles,
   Layers,
@@ -21,7 +20,6 @@ import {
 interface ImageUploaderProps {
   currentImageUrl?: string;
   onImageSelected: (item: MediaItem) => void;
-  onOpenMediaLibrary?: () => void;
   category?: MediaCategory;
   projectId?: string;
   projectName?: string;
@@ -34,11 +32,10 @@ interface ImageUploaderProps {
 export const ImageUploader: React.FC<ImageUploaderProps> = ({
   currentImageUrl,
   onImageSelected,
-  onOpenMediaLibrary,
   category = 'projecten',
   projectId,
   projectName,
-  label = 'Afbeelding uploaden of selecteren',
+  label = 'Afbeelding uploaden',
   helperText = 'Automatische conversie naar WebP (max. 2 MB) met 3 resolutievarianten (Thumbnail, Medium, Full).',
   className = '',
   compact = false
@@ -203,17 +200,6 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
                 <Upload className="w-3.5 h-3.5 text-[#C9F31D]" />
                 <span>Nieuwe foto uploaden</span>
               </button>
-
-              {onOpenMediaLibrary && (
-                <button
-                  type="button"
-                  onClick={onOpenMediaLibrary}
-                  className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 border border-slate-300 text-xs font-bold font-display flex items-center gap-1.5 cursor-pointer transition-all shadow-xs"
-                >
-                  <FolderOpen className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Kies uit Mediabibliotheek</span>
-                </button>
-              )}
             </div>
           </div>
         ) : (
@@ -248,17 +234,6 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
                 <Upload className="w-3.5 h-3.5 text-[#C9F31D]" />
                 <span>Upload vanaf computer</span>
               </button>
-
-              {onOpenMediaLibrary && (
-                <button
-                  type="button"
-                  onClick={onOpenMediaLibrary}
-                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300 text-xs font-bold font-display flex items-center gap-1.5 cursor-pointer transition-all shadow-xs"
-                >
-                  <FolderOpen className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Mediabibliotheek openen</span>
-                </button>
-              )}
             </div>
           </div>
         )}

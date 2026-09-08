@@ -180,21 +180,6 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                 {st}
               </button>
             ))}
-
-            <span className="font-bold text-slate-500 ml-3 mr-1 uppercase tracking-wider text-[10px] font-display">Segment:</span>
-            {['Alle', 'Betaalbare koop', 'Middensegment', 'Huur'].map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-full border text-xs transition-all cursor-pointer font-semibold ${
-                  selectedCategory === cat
-                    ? 'bg-[#080E18] text-white border-slate-950 shadow-xs'
-                    : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400 hover:bg-slate-50'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
           </div>
         </div>
 

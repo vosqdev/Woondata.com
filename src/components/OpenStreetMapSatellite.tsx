@@ -132,7 +132,7 @@ export const OpenStreetMapSatellite: React.FC<OpenStreetMapSatelliteProps> = ({
   onSelectProject,
   onHoverProject
 }) => {
-  const [mapLayer, setMapLayer] = useState<'satellite' | 'osm' | 'hybrid'>('satellite');
+  const [mapLayer, setMapLayer] = useState<'satellite' | 'osm'>('satellite');
   const [activeKernFilter, setActiveKernFilter] = useState<string>('Gemeente');
 
   const tileLayerConfig = useMemo(() => {
@@ -141,11 +141,6 @@ export const OpenStreetMapSatellite: React.FC<OpenStreetMapSatelliteProps> = ({
         return {
           url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        };
-      case 'hybrid':
-        return {
-          url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         };
       case 'satellite':
       default:
@@ -194,16 +189,6 @@ export const OpenStreetMapSatellite: React.FC<OpenStreetMapSatelliteProps> = ({
               }`}
             >
               Stratenkaart
-            </button>
-            <button
-              onClick={() => setMapLayer('hybrid')}
-              className={`px-2.5 py-1 text-xs rounded-lg transition-all cursor-pointer ${
-                mapLayer === 'hybrid'
-                  ? 'bg-[#D6F830] text-black shadow-[0_0_10px_rgba(214,248,48,0.3)] font-extrabold'
-                  : 'text-slate-300 hover:text-white hover:bg-white/5 font-medium'
-              }`}
-            >
-              Hybride
             </button>
           </div>
 

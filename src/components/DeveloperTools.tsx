@@ -154,31 +154,42 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
     notes: ''
   });
 
-  const handleContactSubmit = async (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
+      const formEl = e.currentTarget;
+      const formObj = new FormData(formEl);
       const netlifyData = new URLSearchParams();
-      netlifyData.append('form-name', 'contact-advies');
-      netlifyData.append('ontvanger', 'aanvraag@woondata.com');
-      netlifyData.append('onderwerp', `Nieuwe aanvraag Contact & Advies: ${contactSubject || 'Algemeen'} (${formData.organization || formData.name})`);
-      netlifyData.append('onderwerp_keuze', contactSubject || 'Algemene kennismaking & planadvies');
-      netlifyData.append('naam', formData.name.trim());
-      netlifyData.append('organisatie', formData.organization.trim());
-      netlifyData.append('plangebied', formData.planLocation);
-      netlifyData.append('email', formData.email.trim());
-      netlifyData.append('telefoon', formData.phone.trim() || 'Niet ingevuld');
-      netlifyData.append('toelichting', formData.notes.trim() || 'Geen toelichting opgegeven');
+
+      formObj.forEach((val, key) => {
+        netlifyData.append(key, val.toString());
+      });
+
+      netlifyData.set('form-name', 'contact-advies');
+      netlifyData.set('ontvanger', 'aanvraag@woondata.com');
+      netlifyData.set('onderwerp', `Nieuwe aanvraag Contact & Advies: ${contactSubject || 'Algemeen'} (${formData.organization || formData.name})`);
+      netlifyData.set('onderwerp_keuze', contactSubject || 'Algemene kennismaking & planadvies');
+      netlifyData.set('naam', formData.name.trim());
+      netlifyData.set('organisatie', formData.organization.trim());
+      netlifyData.set('plangebied', formData.planLocation);
+      netlifyData.set('email', formData.email.trim());
+      netlifyData.set('telefoon', formData.phone.trim() || 'Niet ingevuld');
+      netlifyData.set('toelichting', formData.notes.trim() || 'Geen toelichting opgegeven');
       if (attachedImage?.variants?.thumbnail?.url || attachedImage?.url) {
-        netlifyData.append('bijlage_url', attachedImage.variants?.thumbnail?.url || attachedImage.url);
+        netlifyData.set('bijlage_url', attachedImage.variants?.thumbnail?.url || attachedImage.url);
       }
 
-      await fetch('/', {
+      const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: netlifyData.toString(),
       });
+
+      if (!res.ok) {
+        console.warn('Netlify contact submit status:', res.status, res.statusText);
+      }
     } catch (err) {
       console.warn('Netlify contact submit fallback (preview/lokaal):', err);
     } finally {

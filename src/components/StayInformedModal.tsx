@@ -1,74 +1,74 @@
 import React, { useState } from 'react';
-import { X, ArrowRight, Info, CheckCircle2, Lock, Mail, User, AlertCircle } from 'lucide-react';
+import { X, ArrowRight, CheckCircle2, AlertCircle, ShieldCheck, Mail } from 'lucide-react';
 
 interface StayInformedModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultMode?: 'register' | 'login';
+  defaultMode?: string;
   onOpenDeveloperPortal?: () => void;
 }
 
 export const StayInformedModal: React.FC<StayInformedModalProps> = ({
   isOpen,
   onClose,
-  defaultMode = 'register',
   onOpenDeveloperPortal
 }) => {
-  const [mode, setMode] = useState<'register' | 'login'>(defaultMode);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
+  const [showPrivacyInfo, setShowPrivacyInfo] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrorMessage('');
 
-    if (mode === 'register') {
-      if (!firstName.trim() || !lastName.trim() || !email.trim()) {
-        setErrorMessage('Vul alle verplichte velden in.');
-        return;
-      }
-      if (!agreedToTerms) {
-        setErrorMessage('Ga akkoord met de algemene voorwaarden om verder te gaan.');
-        return;
-      }
+    if (!firstName.trim() || !lastName.trim() || !email.trim()) {
+      setErrorMessage('Vul alle verplichte velden in.');
+      return;
+    }
+    if (!agreedToPrivacy) {
+      setErrorMessage('Ga akkoord met het privacy- en gegevensverwerkingsbeleid om je aan te melden.');
+      return;
+    }
 
-      setIsSubmitting(true);
+    setIsSubmitting(true);
 
-      try {
-        const formData = new URLSearchParams();
-        formData.append('form-name', 'blijf-op-de-hoogte');
-        formData.append('voornaam', firstName.trim());
-        formData.append('achternaam', lastName.trim());
-        formData.append('email', email.trim());
-        formData.append('ontvanger', 'nieuwsbrief@woondata.com');
-        formData.append('onderwerp', 'Nieuwe aanmelding Blijf op de Hoogte - WoonData Dronten');
+    try {
+      const formEl = e.currentTarget;
+      const formData = new FormData(formEl);
+      const urlSearchParams = new URLSearchParams();
+      
+      formData.forEach((value, key) => {
+        urlSearchParams.append(key, value.toString());
+      });
 
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: formData.toString(),
-        });
-      } catch (err) {
-        console.warn('Formulier submit fallback (bijv. lokale dev/preview):', err);
-      } finally {
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+      urlSearchParams.set('form-name', 'blijf-op-de-hoogte');
+      urlSearchParams.set('voornaam', firstName.trim());
+      urlSearchParams.set('achternaam', lastName.trim());
+      urlSearchParams.set('email', email.trim());
+      urlSearchParams.set('privacy_akkoord', 'Akkoord met privacy- en gegevensverwerkingsbeleid');
+      urlSearchParams.set('ontvanger', 'nieuwsbrief@woondata.com');
+      urlSearchParams.set('onderwerp', 'Nieuwe aanmelding Nieuwsbrief - WoonData Dronten');
+
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: urlSearchParams.toString(),
+      });
+
+      if (!res.ok) {
+        console.warn('Netlify submit response status:', res.status, res.statusText);
       }
-    } else {
-      if (!email.trim() || !password.trim()) {
-        setErrorMessage('Vul je e-mailadres en wachtwoord in.');
-        return;
-      }
-
-      // Login modus
+    } catch (err) {
+      console.warn('Formulier submit fallback (lokale dev/preview):', err);
+    } finally {
+      setIsSubmitting(false);
       setIsSubmitted(true);
     }
   };
@@ -78,8 +78,8 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
     setFirstName('');
     setLastName('');
     setEmail('');
-    setPassword('');
-    setAgreedToTerms(false);
+    setAgreedToPrivacy(false);
+    setShowPrivacyInfo(false);
     setErrorMessage('');
     onClose();
   };
@@ -104,35 +104,37 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
         </button>
 
         {isSubmitted ? (
-          <div className="py-8 text-center space-y-4 relative z-10">
-            <div className="w-16 h-16 rounded-2xl bg-[#D6F830] text-black flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(214,248,48,0.3)]">
-              <CheckCircle2 className="w-9 h-9 text-black" />
+          /* ======================================================== */
+          /* BEDANK SCHERM (ZIE AFBEELDING 2)                         */
+          /* ======================================================== */
+          <div className="py-8 sm:py-10 text-center space-y-5 relative z-10 animate-fadeIn">
+            {/* Groen-gele rounded icon box conform afbeelding 2 */}
+            <div className="w-16 h-16 rounded-2xl bg-[#D6F830] text-black flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(214,248,48,0.35)]">
+              <CheckCircle2 className="w-9 h-9 text-black stroke-[2.5]" />
             </div>
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white tracking-tight">
-                {mode === 'register' ? 'Registratie ontvangen!' : 'Succesvol ingelogd!'}
+
+            <div className="space-y-3">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+                Aanmelding ontvangen!
               </h2>
-              <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed font-normal">
-                {mode === 'register' ? (
-                  <>
-                    Bedankt <strong className="text-[#D6F830]">{firstName}</strong>! We hebben een bevestigingsmail gestuurd naar <strong className="text-white">{email}</strong> om je wachtwoord in te stellen en je projectnotificaties te activeren.
-                  </>
-                ) : (
-                  <>Welkom terug! Je bent succesvol ingelogd op je persoonlijke nieuwbouw-dashboard.</>
-                )}
+              <p className="text-sm sm:text-base text-slate-300 max-w-md mx-auto leading-relaxed font-normal">
+                Bedankt <strong className="text-[#D6F830]">{firstName}</strong>! We hebben je aanmelding voor de nieuwsbrief ontvangen. We houden je via <strong className="text-white">{email}</strong> als eerste op de hoogte van nieuwe projecten, faseringen en ontwikkelingen in Dronten, Biddinghuizen en Swifterbant.
               </p>
             </div>
-            <div className="pt-4">
+
+            <div className="pt-3">
               <button
                 onClick={handleReset}
-                className="px-6 py-3 rounded-xl bg-[#D6F830] hover:bg-[#c6ea23] text-black text-sm font-bold transition-all shadow-md cursor-pointer active:scale-98 font-display"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-[#D6F830] hover:bg-[#c6ea23] text-black text-sm font-extrabold transition-all shadow-[0_0_20px_rgba(214,248,48,0.25)] cursor-pointer active:scale-98 font-display"
               >
                 Sluiten en verder kijken
               </button>
             </div>
           </div>
-        ) : mode === 'register' ? (
-          /* REGISTRATIE / BLIJF OP DE HOOGTE VIEW */
+        ) : (
+          /* ======================================================== */
+          /* AANMELDEN VOOR NIEUWSBRIEF (ZIE AFBEELDING 1)            */
+          /* ======================================================== */
           <div className="relative z-10">
             {/* Header */}
             <div className="pr-8 mb-6">
@@ -167,7 +169,8 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
               {/* Hidden Netlify fields */}
               <input type="hidden" name="form-name" value="blijf-op-de-hoogte" />
               <input type="hidden" name="ontvanger" value="nieuwsbrief@woondata.com" />
-              <input type="hidden" name="onderwerp" value="Nieuwe aanmelding Blijf op de Hoogte - WoonData Dronten" />
+              <input type="hidden" name="onderwerp" value="Nieuwe aanmelding Nieuwsbrief - WoonData Dronten" />
+              <input type="hidden" name="privacy_akkoord" value="Akkoord met privacy- en gegevensverwerkingsbeleid" />
               
               {/* Honeypot field for bot protection */}
               <p className="hidden" aria-hidden="true">
@@ -225,20 +228,28 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
                 />
               </div>
 
-              {/* Voorwaarden Checkbox */}
+              {/* Privacy en Gegevensverwerking Checkbox met Link naar Informatie */}
               <div className="pt-1 flex items-start gap-2.5">
                 <input
                   type="checkbox"
-                  id="modal-terms"
-                  checked={agreedToTerms}
-                  onChange={(e) => setAgreedToTerms(e.target.checked)}
+                  id="modal-privacy-policy"
+                  checked={agreedToPrivacy}
+                  onChange={(e) => setAgreedToPrivacy(e.target.checked)}
                   className="mt-1 w-4 h-4 rounded border-white/20 bg-white/[0.06] text-[#D6F830] focus:ring-[#D6F830] cursor-pointer"
+                  required
                 />
-                <label htmlFor="modal-terms" className="text-xs sm:text-[13px] text-slate-400 leading-snug cursor-pointer select-none">
-                  Door een account aan te maken ga je akkoord met{' '}
-                  <span className="text-[#D6F830] underline font-medium hover:text-white">
-                    onze algemene voorwaarden
-                  </span>
+                <label htmlFor="modal-privacy-policy" className="text-xs sm:text-[13px] text-slate-300 leading-snug cursor-pointer select-none">
+                  Ik ga akkoord met het{' '}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowPrivacyInfo(true);
+                    }}
+                    className="text-[#D6F830] underline font-medium hover:text-white transition-colors cursor-pointer inline text-left"
+                  >
+                    privacy- en gegevensverwerkingsbeleid
+                  </button>
                 </label>
               </div>
 
@@ -257,141 +268,85 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
                   ) : (
                     <>
                       <ArrowRight className="w-4 h-4" />
-                      <span>Aanmelden</span>
+                      <span>Aanmelden voor nieuwsbrief</span>
                     </>
                   )}
                 </button>
               </div>
             </form>
 
-            {/* Bottom Inloggen Bar */}
-            <div className="mt-6 bg-[#050A12]/80 border border-white/[0.08] rounded-2xl p-4 sm:px-5 sm:py-3.5 text-white flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5">
-                <Info className="w-4 h-4 sm:w-5 sm:h-5 text-[#D6F830] shrink-0" />
-                <span className="text-xs sm:text-sm font-medium text-slate-300">
-                  Heb je al een account?
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setErrorMessage('');
-                  setMode('login');
-                }}
-                className="w-full sm:w-auto px-5 py-2 rounded-xl border border-white/[0.1] hover:bg-white/[0.08] text-white text-xs sm:text-sm font-bold transition-colors text-center cursor-pointer"
-              >
-                Direct inloggen
-              </button>
-            </div>
-          </div>
-        ) : (
-          /* INLOGGEN VIEW */
-          <div className="relative z-10">
-            {/* Header */}
-            <div className="pr-8 mb-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold bg-[#D6F830]/10 text-[#D6F830] border border-[#D6F830]/20 mb-2 backdrop-blur-xl font-display">
-                <span>INWONERS & INVESTEERDERS</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                Direct inloggen
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-2 font-normal leading-relaxed">
-                Log in met je e-mailadres en wachtwoord om je opgeslagen projecten en voorkeuren te beheren.
-              </p>
-            </div>
-
-            {/* Error Message */}
-            {errorMessage && (
-              <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs flex items-center gap-2 font-medium">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span>{errorMessage}</span>
+            {onOpenDeveloperPortal && (
+              <div className="mt-6 pt-4 border-t border-white/[0.08] text-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onOpenDeveloperPortal();
+                  }}
+                  className="text-xs text-slate-400 hover:text-[#D6F830] transition-colors cursor-pointer"
+                >
+                  🏢 Bent u een projectontwikkelaar of corporatie? <span className="underline text-slate-300 hover:text-[#D6F830]">Ga naar het Ontwikkelaarsportaal →</span>
+                </button>
               </div>
             )}
+          </div>
+        )}
 
-            {/* Login Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="block text-xs sm:text-sm font-bold text-slate-300">
-                  E-mailadres
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="naam@voorbeeld.nl"
-                  className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-white/[0.08] text-white text-sm focus:outline-hidden focus:ring-2 focus:ring-[#D6F830] bg-white/[0.04] placeholder-slate-500 transition-all"
-                  required
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="block text-xs sm:text-sm font-bold text-slate-300">
-                  Wachtwoord
-                </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-white/[0.08] text-white text-sm focus:outline-hidden focus:ring-2 focus:ring-[#D6F830] bg-white/[0.04] placeholder-slate-500 transition-all"
-                  required
-                />
-              </div>
-
-              {/* Submit Button */}
-              <div className="pt-2 flex items-center justify-between">
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#D6F830] hover:bg-[#c6ea23] text-black text-sm font-bold transition-all shadow-[0_0_15px_rgba(214,248,48,0.25)] cursor-pointer active:scale-98 font-display"
-                >
-                  <Lock className="w-4 h-4" />
-                  <span>Inloggen</span>
-                </button>
-                <a
-                  href="#wachtwoord-vergeten"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert('Er is een wachtwoordherstel-link gestuurd naar je e-mailadres.');
-                  }}
-                  className="text-xs text-[#D6F830] hover:underline font-bold"
-                >
-                  Wachtwoord vergeten?
-                </a>
-              </div>
-
-              {onOpenDeveloperPortal && (
-                <div className="pt-3 text-center border-t border-white/[0.08] mt-3">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      onClose();
-                      onOpenDeveloperPortal();
-                    }}
-                    className="text-xs font-bold text-slate-300 hover:text-[#D6F830] transition-colors cursor-pointer font-display"
-                  >
-                    🏢 Bent u een projectontwikkelaar? <span className="text-[#D6F830] underline">Open het Projectontwikkelaar-dashboard →</span>
-                  </button>
+        {/* ======================================================== */}
+        {/* PRIVACY- & GEGEVENSVERWERKINGSBELEID DETAIL OVERLAY     */}
+        {/* ======================================================== */}
+        {showPrivacyInfo && (
+          <div className="absolute inset-0 bg-[#080E18]/98 backdrop-blur-2xl z-30 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto animate-fadeIn">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <div className="flex items-center gap-2 text-[#D6F830]">
+                  <ShieldCheck className="w-5 h-5" />
+                  <span className="text-xs font-bold uppercase tracking-wider font-display">
+                    Privacy- &amp; Gegevensverwerking
+                  </span>
                 </div>
-              )}
-            </form>
-
-            {/* Bottom Register Switcher */}
-            <div className="mt-6 bg-[#050A12]/80 border border-white/[0.08] rounded-2xl p-4 sm:px-5 sm:py-3.5 text-white flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5">
-                <Info className="w-4 h-4 sm:w-5 sm:h-5 text-[#D6F830] shrink-0" />
-                <span className="text-xs sm:text-sm font-medium text-slate-300">
-                  Nog geen account?
-                </span>
+                <button
+                  onClick={() => setShowPrivacyInfo(false)}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 cursor-pointer transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
+
+              <div className="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                <h3 className="text-base font-bold text-white font-display">
+                  Hoe gaat WoonData om met jouw gegevens?
+                </h3>
+                <p>
+                  Wij hechten grote waarde aan jouw privacy. Wanneer je je aanmeldt voor onze nieuwsbrief en projectnotificaties, worden jouw gegevens zorgvuldig en volgens de Algemene Verordening Gegevensbescherming (AVG / GDPR) verwerkt.
+                </p>
+
+                <div className="space-y-2 pt-1">
+                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                    <span className="font-bold text-white block mb-0.5">1. Doel van gegevensverwerking</span>
+                    <span>Jouw voornaam, achternaam en e-mailadres worden uitsluitend gebruikt om je periodiek te informeren over nieuwbouwprojecten, participatierondes, verkoopfaseringen en marktinzichten in de gemeente Dronten.</span>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                    <span className="font-bold text-white block mb-0.5">2. Geen verkoop aan derden</span>
+                    <span>Wij verkopen of delen jouw persoonsgegevens nooit met externe commerciële partijen voor ongevraagde marketingdoeleinden.</span>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                    <span className="font-bold text-white block mb-0.5">3. Eenvoudig uitschrijven</span>
+                    <span>Onder iedere nieuwsbrief die je ontvangt, staat een directe afmeldlink. Je kunt je op elk moment met één klik uitschrijven en je gegevens laten verwijderen.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-white/10 flex justify-end">
               <button
                 type="button"
-                onClick={() => {
-                  setErrorMessage('');
-                  setMode('register');
-                }}
-                className="w-full sm:w-auto px-5 py-2 rounded-xl border border-white/[0.1] hover:bg-white/[0.08] text-white text-xs sm:text-sm font-bold transition-colors text-center cursor-pointer"
+                onClick={() => setShowPrivacyInfo(false)}
+                className="px-6 py-2.5 rounded-xl bg-[#D6F830] hover:bg-[#c6ea23] text-black text-xs sm:text-sm font-bold transition-all cursor-pointer font-display"
               >
-                Account aanmaken
+                Begrepen en terug naar formulier
               </button>
             </div>
           </div>

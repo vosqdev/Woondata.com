@@ -33,6 +33,9 @@ import { ImpactRegister } from './components/ImpactRegister';
 import { Footer } from './components/Footer';
 import { AiAdvisorModal } from './components/AiAdvisorModal';
 import { StayInformedModal } from './components/StayInformedModal';
+import { PrivacyStatementModal } from './components/PrivacyStatementModal';
+import { DisclaimerModal } from './components/DisclaimerModal';
+import { CookieConsentBanner } from './components/CookieConsentBanner';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -45,13 +48,19 @@ export default function App() {
   const [isBuurtPaspoortOpen, setIsBuurtPaspoortOpen] = useState(false);
   const [selectedParticipationProject, setSelectedParticipationProject] = useState<Project | null>(null);
   const [isParticipationPortalOpen, setIsParticipationPortalOpen] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isDisclaimerModalOpen, setIsDisclaimerModalOpen] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
 
   // Sync state with URL hash for direct standalone page opening
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.toLowerCase();
-      if (hash === '#portaal' || hash === '#portal' || hash === '#developer-portal' || hash === '#besloten-portaal' || hash === '#ontdek-platform') {
+      if (hash === '#privacy' || hash === '#privacystatement' || hash === '#avg') {
+        setIsPrivacyModalOpen(true);
+      } else if (hash === '#disclaimer' || hash === '#voorwaarden') {
+        setIsDisclaimerModalOpen(true);
+      } else if (hash === '#portaal' || hash === '#portal' || hash === '#developer-portal' || hash === '#besloten-portaal' || hash === '#ontdek-platform') {
         setIsDeveloperPortalOpen(true);
         setIsBuurtPaspoortOpen(false);
         setIsParticipationPortalOpen(false);
@@ -115,6 +124,20 @@ export default function App() {
   const openStayInformed = (mode: 'register' | 'login' = 'register') => {
     setStayInformedMode(mode);
     setStayInformedOpen(true);
+  };
+
+  const closePrivacyModal = () => {
+    setIsPrivacyModalOpen(false);
+    if (window.location.hash.toLowerCase() === '#privacy' || window.location.hash.toLowerCase() === '#privacystatement' || window.location.hash.toLowerCase() === '#avg') {
+      history.pushState(null, '', window.location.pathname + window.location.search);
+    }
+  };
+
+  const closeDisclaimerModal = () => {
+    setIsDisclaimerModalOpen(false);
+    if (window.location.hash.toLowerCase() === '#disclaimer' || window.location.hash.toLowerCase() === '#voorwaarden') {
+      history.pushState(null, '', window.location.pathname + window.location.search);
+    }
   };
 
   const openDeveloperPortal = () => {
@@ -469,6 +492,8 @@ export default function App() {
       <Footer 
         setActiveTab={setActiveTab} 
         openStayInformed={openStayInformed}
+        openPrivacyStatement={() => setIsPrivacyModalOpen(true)}
+        openDisclaimer={() => setIsDisclaimerModalOpen(true)}
       />
 
       {/* Floating Blijf op de hoogte Action Button (verschijnt alleen wanneer naar beneden / onderaan de pagina gescrold) */}
@@ -494,12 +519,33 @@ export default function App() {
         isOpen={stayInformedOpen}
         onClose={() => setStayInformedOpen(false)}
         defaultMode={stayInformedMode}
+        onOpenFullPrivacyStatement={() => setIsPrivacyModalOpen(true)}
+      />
+
+      {/* Privacystatement WoonData Modal */}
+      <PrivacyStatementModal
+        isOpen={isPrivacyModalOpen}
+        onClose={closePrivacyModal}
+        onOpenDisclaimer={() => setIsDisclaimerModalOpen(true)}
+      />
+
+      {/* Disclaimer WoonData Modal */}
+      <DisclaimerModal
+        isOpen={isDisclaimerModalOpen}
+        onClose={closeDisclaimerModal}
+        onOpenPrivacyStatement={() => setIsPrivacyModalOpen(true)}
       />
 
       {/* AI Woonadviseur Modal */}
       {aiAdvisorOpen && (
         <AiAdvisorModal onClose={() => setAiAdvisorOpen(false)} />
       )}
+
+      {/* Cookie & Voorwaarden Consent Banner (onderaan scherm, conform inspiratie) */}
+      <CookieConsentBanner
+        onOpenPrivacyStatement={() => setIsPrivacyModalOpen(true)}
+        onOpenDisclaimer={() => setIsDisclaimerModalOpen(true)}
+      />
     </div>
   );
 }

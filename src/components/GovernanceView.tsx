@@ -133,6 +133,16 @@ export const GovernanceView: React.FC = () => {
                   <strong className="text-white">Pseudonimisering:</strong> Onderzoeksbestanden worden ontdaan van herleidbare persoonsgegevens conform de AVG-handleiding.
                 </span>
               </div>
+
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => { window.location.hash = '#privacy'; }}
+                  className="inline-flex items-center gap-1.5 text-xs text-[#D6F830] hover:text-white font-semibold underline transition-colors cursor-pointer"
+                >
+                  Raadpleeg het volledige WoonData Privacystatement (14 artikelen) →
+                </button>
+              </div>
             </div>
           </div>
 

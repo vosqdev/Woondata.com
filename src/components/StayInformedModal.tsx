@@ -6,12 +6,14 @@ interface StayInformedModalProps {
   onClose: () => void;
   defaultMode?: string;
   onOpenDeveloperPortal?: () => void;
+  onOpenFullPrivacyStatement?: () => void;
 }
 
 export const StayInformedModal: React.FC<StayInformedModalProps> = ({
   isOpen,
   onClose,
-  onOpenDeveloperPortal
+  onOpenDeveloperPortal,
+  onOpenFullPrivacyStatement
 }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -337,14 +339,41 @@ export const StayInformedModal: React.FC<StayInformedModalProps> = ({
                     <span>Onder iedere nieuwsbrief die je ontvangt, staat een directe afmeldlink. Je kunt je op elk moment met één klik uitschrijven en je gegevens laten verwijderen.</span>
                   </div>
                 </div>
+
+                {onOpenFullPrivacyStatement && (
+                  <div className="pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowPrivacyInfo(false);
+                        onOpenFullPrivacyStatement();
+                      }}
+                      className="text-xs text-[#D6F830] hover:text-white underline font-medium cursor-pointer transition-colors"
+                    >
+                      Bekijk het complete WoonData Privacystatement (14 artikelen) →
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 
-            <div className="pt-4 mt-4 border-t border-white/10 flex justify-end">
+            <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between gap-3">
+              {onOpenFullPrivacyStatement && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowPrivacyInfo(false);
+                    onOpenFullPrivacyStatement();
+                  }}
+                  className="text-xs text-slate-300 hover:text-[#D6F830] transition-colors cursor-pointer"
+                >
+                  Volledig privacystatement
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => setShowPrivacyInfo(false)}
-                className="px-6 py-2.5 rounded-xl bg-[#D6F830] hover:bg-[#c6ea23] text-black text-xs sm:text-sm font-bold transition-all cursor-pointer font-display"
+                className="px-6 py-2.5 rounded-xl bg-[#D6F830] hover:bg-[#c6ea23] text-black text-xs sm:text-sm font-bold transition-all cursor-pointer font-display ml-auto"
               >
                 Begrepen en terug naar formulier
               </button>

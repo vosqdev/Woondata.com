@@ -8,13 +8,17 @@ interface FooterProps {
   openSurvey?: () => void;
   openDeveloperPortal?: () => void;
   openStayInformed?: (mode?: 'register' | 'login') => void;
+  openPrivacyStatement?: () => void;
+  openDisclaimer?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ 
   setActiveTab,
   openSurvey,
   openDeveloperPortal,
-  openStayInformed
+  openStayInformed,
+  openPrivacyStatement,
+  openDisclaimer
 }) => {
   return (
     <footer className="bg-[#050A14] text-white border-t border-slate-800/80 pt-14 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -88,6 +92,22 @@ export const Footer: React.FC<FooterProps> = ({
                     className="hover:text-white transition-colors cursor-pointer"
                   >
                     Woningmarkt Data
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => openPrivacyStatement && openPrivacyStatement()} 
+                    className="hover:text-[#C9F31D] transition-colors cursor-pointer font-medium"
+                  >
+                    Privacystatement
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => openDisclaimer && openDisclaimer()} 
+                    className="hover:text-[#C9F31D] transition-colors cursor-pointer font-medium"
+                  >
+                    Disclaimer
                   </button>
                 </li>
               </ul>
@@ -204,6 +224,20 @@ export const Footer: React.FC<FooterProps> = ({
               className="hover:text-[#C9F31D] transition-colors cursor-pointer"
             >
               Woningmarkt data
+            </button>
+            <span className="text-slate-600">•</span>
+            <button 
+              onClick={() => openPrivacyStatement && openPrivacyStatement()} 
+              className="hover:text-[#C9F31D] text-slate-300 transition-colors cursor-pointer font-medium"
+            >
+              Privacystatement
+            </button>
+            <span className="text-slate-600">•</span>
+            <button 
+              onClick={() => openDisclaimer && openDisclaimer()} 
+              className="hover:text-[#C9F31D] text-slate-300 transition-colors cursor-pointer font-medium"
+            >
+              Disclaimer
             </button>
           </div>
         </div>

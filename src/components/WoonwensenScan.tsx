@@ -1469,7 +1469,20 @@ export const WoonwensenScan: React.FC = () => {
                             required
                             className="mt-0.5 rounded-md accent-[#C9F31D]"
                           />
-                          <span>Ik geef toestemming voor anonieme verwerking van mijn gegevens conform de AVG ten behoeve van het woningmarktonderzoek. <span className="text-[#C9F31D]">*</span></span>
+                          <span>
+                            Ik geef toestemming voor anonieme verwerking van mijn gegevens conform de AVG ten behoeve van het woningmarktonderzoek (zie ons{' '}
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                window.location.hash = '#privacy';
+                              }}
+                              className="text-[#C9F31D] underline hover:text-white font-medium"
+                            >
+                              Privacystatement
+                            </button>
+                            ). <span className="text-[#C9F31D]">*</span>
+                          </span>
                         </label>
                       </div>
                     </div>

@@ -38,42 +38,90 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
 }) => {
   return (
     <>
-      {/* SECTION 1: Geen aannames. Lokale onderbouwing. & Waarom Woondata anders is */}
-      <section className="pt-12 sm:pt-16 pb-16 sm:pb-20 text-slate-900 bg-[#FAFAFA] relative overflow-hidden border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+      {/* SECTION 1: Kerncijfers & Data-gedreven Visual Sequence */}
+      <section className="pt-8 sm:pt-12 pb-16 sm:pb-20 text-slate-900 bg-[#FAFAFA] relative overflow-hidden border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-12">
           
-          {/* Header block: Geen aannames. Lokale onderbouwing. */}
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black bg-black text-[#D6F830] font-display shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#D6F830]" />
-              <span className="tracking-wider uppercase">Data-gedreven &amp; Lokaal Gevalideerd</span>
-            </div>
+          {/* Numerical Stats Bar (Boven) */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
+                  <Building className="w-5 h-5 text-[#D6F830]" />
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
+                    3.309
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
+                    Nieuwe Woningen Opgave
+                  </div>
+                </div>
+              </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-tight font-display">
-              Geen aannames. Lokale onderbouwing.
-            </h2>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
+                  <Users className="w-5 h-5 text-[#D6F830]" />
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
+                    840+
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
+                    Inwoners Woonpanel
+                  </div>
+                </div>
+              </div>
 
-            <div className="space-y-2 pt-1 text-slate-700 text-base sm:text-lg leading-relaxed font-normal max-w-2xl mx-auto">
-              <p>
-                Woondata brengt openbare databronnen samen met eigen marktinformatie, actuele woonwensen en de kennis van lokale professionals.
-              </p>
-              <p className="font-bold text-slate-950">
-                Zo ontstaat niet alleen inzicht in wat er is, maar vooral in wat er nodig is.
-              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
+                  <ShieldCheck className="w-5 h-5 text-[#D6F830]" />
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
+                    7
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
+                    Gemeentelijke Woonwaarden
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#D6F830] text-black flex items-center justify-center shrink-0 font-bold shadow-xs">
+                  <Check className="w-5 h-5 text-black stroke-[3]" />
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
+                    100%
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
+                    Onafhankelijk &amp; Lokaal
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
-
-
-          {/* Visual Sequence: DATA → KENNIS → INZICHT → BOUWEN */}
+          {/* Visual Sequence: DATA → KENNIS → INZICHT → BOUWEN (Onder) */}
           <div className="bg-black text-white rounded-3xl sm:rounded-[32px] p-6 sm:p-10 border border-slate-800 shadow-xl relative overflow-hidden">
-            <div className="text-center mb-8">
-              <span className="text-xs font-black uppercase tracking-widest text-[#D6F830] font-display">
-                Het Woondata Waardemodel
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
+              <span className="inline-block text-xs font-black uppercase tracking-widest text-[#D6F830] font-display">
+                Data-gedreven
               </span>
-              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white mt-1 font-display">
-                Van ruwe gegevens naar versnelde realisatie
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white font-display">
+                Geen aannames. Lokale onderbouwing.
               </h3>
+              <div className="space-y-1.5 pt-1 text-slate-300 text-sm sm:text-base leading-relaxed font-normal max-w-2xl mx-auto">
+                <p>
+                  Woondata brengt openbare databronnen samen met eigen marktinformatie, actuele woonwensen en de kennis van lokale professionals.
+                </p>
+                <p className="font-bold text-white">
+                  Zo ontstaat niet alleen inzicht in wat er is, maar vooral in wat er nodig is.
+                </p>
+              </div>
             </div>
 
             {/* Step-by-step visual chain */}
@@ -164,69 +212,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                     <p className="text-xs text-slate-800 mt-1 leading-relaxed font-semibold">
                       Snellere planvorming &amp; 100% verkoopzekerheid
                     </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          {/* Numerical Stats Bar */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
-                  <Building className="w-5 h-5 text-[#D6F830]" />
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                    3.309
-                  </div>
-                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
-                    Nieuwe Woningen Opgave
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
-                  <Users className="w-5 h-5 text-[#D6F830]" />
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                    840+
-                  </div>
-                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
-                    Inwoners Woonpanel
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
-                  <ShieldCheck className="w-5 h-5 text-[#D6F830]" />
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                    7
-                  </div>
-                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
-                    Gemeentelijke Woonwaarden
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#D6F830] text-black flex items-center justify-center shrink-0 font-bold shadow-xs">
-                  <Check className="w-5 h-5 text-black stroke-[3]" />
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                    100%
-                  </div>
-                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
-                    Onafhankelijk &amp; Lokaal
                   </div>
                 </div>
               </div>

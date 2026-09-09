@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { WoonDataLogoIcon } from './WoonDataLogo';
 import { 
   ArrowLeft, 
   Building2, 
@@ -638,9 +639,7 @@ export const ProjectParticipationPortal: React.FC<ProjectParticipationPortalProp
             
             {/* Brand & Project Identification */}
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-white text-black flex items-center justify-center font-extrabold shadow-md">
-                <Building2 className="w-5 h-5 text-black" />
-              </div>
+              <WoonDataLogoIcon size={40} />
               <div>
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <span className="text-lg sm:text-xl font-black tracking-tight text-white font-display">

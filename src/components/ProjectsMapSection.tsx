@@ -31,6 +31,10 @@ interface ProjectsMapSectionProps {
   activeLayer?: 'kaart' | 'lijst' | 'datalaag';
   onLayerChange?: (layer: 'kaart' | 'lijst' | 'datalaag') => void;
   hideTopSwitcher?: boolean;
+  initialStatus?: string;
+  initialKern?: string;
+  onStatusChange?: (status: string) => void;
+  onKernChange?: (kern: string) => void;
 }
 
 export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
@@ -38,7 +42,11 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
   onOpenParticipation,
   activeLayer: externalActiveLayer,
   onLayerChange,
-  hideTopSwitcher = false
+  hideTopSwitcher = false,
+  initialStatus,
+  initialKern,
+  onStatusChange,
+  onKernChange
 }) => {
   const [internalActiveLayer, setInternalActiveLayer] = useState<'kaart' | 'lijst' | 'datalaag'>('kaart');
   const activeLayer = externalActiveLayer !== undefined ? externalActiveLayer : internalActiveLayer;
@@ -50,14 +58,44 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
     setInternalActiveLayer(layer);
   };
 
-  const [selectedKern, setSelectedKern] = useState<string>('Alle');
-  const [selectedStatus, setSelectedStatus] = useState<string>('Alle');
+  const [selectedKern, setSelectedKern] = useState<string>(initialKern || 'Alle');
+  const [selectedStatus, setSelectedStatus] = useState<string>(initialStatus || 'Alle');
   const [selectedCategory, setSelectedCategory] = useState<string>('Alle');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [mapHoveredProject, setMapHoveredProject] = useState<Project | null>(PROJECTS_DATA[0]);
   const [interestSubmitted, setInterestSubmitted] = useState(false);
   const [interestEmail, setInterestEmail] = useState('');
+
+  // Synchronize filters when initialStatus or initialKern prop changes
+  React.useEffect(() => {
+    if (initialStatus !== undefined) {
+      setSelectedStatus(initialStatus);
+    }
+  }, [initialStatus]);
+
+  React.useEffect(() => {
+    if (initialKern !== undefined) {
+      setSelectedKern(initialKern);
+    }
+  }, [initialKern]);
+
+  const handleKernClick = (k: string) => {
+    setSelectedKern(k);
+    if (onKernChange) onKernChange(k);
+  };
+
+  const handleStatusClick = (st: string) => {
+    setSelectedStatus(st);
+    if (onStatusChange) onStatusChange(st);
+  };
+
+  const handleClearFilters = () => {
+    handleKernClick('Alle');
+    handleStatusClick('Alle');
+    setSelectedCategory('Alle');
+    setSearchQuery('');
+  };
 
   // Filter logic
   const filteredProjects = PROJECTS_DATA.filter((project) => {
@@ -151,7 +189,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
               {kernen.map((k) => (
                 <button
                   key={k}
-                  onClick={() => setSelectedKern(k)}
+                  onClick={() => handleKernClick(k)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer font-display ${
                     selectedKern === k
                       ? 'bg-[#080E18] text-white shadow-xs'
@@ -170,7 +208,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
             {statuses.map((st) => (
               <button
                 key={st}
-                onClick={() => setSelectedStatus(st)}
+                onClick={() => handleStatusClick(st)}
                 className={`px-3.5 py-1.5 rounded-full border text-xs transition-all cursor-pointer font-semibold ${
                   selectedStatus === st
                     ? 'bg-[#080E18] text-white border-slate-950 shadow-xs'
@@ -305,18 +343,67 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
         {/* LAYER 2: PROJECTEN OVERZICHT (Cards Grid) - Light background card layout */}
         {activeLayer === 'lijst' && (
           <div>
+            {/* Active Filter Notification Banner */}
+            {(selectedStatus !== 'Alle' || selectedKern !== 'Alle' || searchQuery) && (
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6 px-4 py-3 bg-white rounded-2xl border border-slate-200/90 shadow-2xs">
+                <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 flex-wrap">
+                  <span className="text-slate-400 font-display uppercase tracking-wider text-[10px]">Actieve filter:</span>
+                  {selectedStatus !== 'Alle' && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#080E18] text-white text-xs font-bold shadow-xs">
+                      <span>Status: {selectedStatus}</span>
+                      <button
+                        onClick={() => handleStatusClick('Alle')}
+                        className="hover:text-[#C9F31D] cursor-pointer text-sm leading-none ml-0.5"
+                        title="Verwijder status filter"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                  {selectedKern !== 'Alle' && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
+                      <span>Kern: {selectedKern}</span>
+                      <button
+                        onClick={() => handleKernClick('Alle')}
+                        className="hover:text-red-600 cursor-pointer text-sm leading-none ml-0.5"
+                        title="Verwijder kern filter"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                  {searchQuery && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
+                      <span>Zoekterm: &quot;{searchQuery}&quot;</span>
+                      <button
+                        onClick={() => setSearchQuery('')}
+                        className="hover:text-red-600 cursor-pointer text-sm leading-none ml-0.5"
+                        title="Verwijder zoekterm"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                  <span className="text-slate-500 font-normal ml-1">
+                    ({filteredProjects.length} {filteredProjects.length === 1 ? 'project gevonden' : 'projecten gevonden'})
+                  </span>
+                </div>
+                <button
+                  onClick={handleClearFilters}
+                  className="text-xs text-slate-600 hover:text-slate-950 font-bold underline cursor-pointer font-display"
+                >
+                  Alle filters wissen
+                </button>
+              </div>
+            )}
+
             {filteredProjects.length === 0 ? (
               <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 shadow-sm">
                 <Building className="w-10 h-10 text-slate-400 mx-auto mb-3" />
                 <h3 className="text-base font-extrabold text-slate-950 font-display">Geen projecten gevonden</h3>
                 <p className="text-xs text-slate-500 mt-1">Wis uw filters om het volledige aanbod te zien.</p>
                 <button
-                  onClick={() => {
-                    setSelectedKern('Alle');
-                    setSelectedStatus('Alle');
-                    setSelectedCategory('Alle');
-                    setSearchQuery('');
-                  }}
+                  onClick={handleClearFilters}
                   className="mt-4 px-5 py-2.5 bg-[#080E18] text-xs font-bold rounded-2xl text-white hover:bg-black cursor-pointer font-display shadow-sm"
                 >
                   Filters herstellen

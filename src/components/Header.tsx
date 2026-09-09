@@ -37,11 +37,13 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'wonen', label: 'Projecten' },
     { id: 'kennis', label: 'Inzichten' },
     { id: 'ontwikkelaars', label: 'Voor ontwikkelaars' },
+    { id: 'nieuws', label: 'Nieuws' },
   ];
 
   const handleNavClick = (id: string) => {
     setActiveTab(id);
     setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleWoonwensClick = () => {

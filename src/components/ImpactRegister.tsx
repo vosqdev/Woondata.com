@@ -54,7 +54,7 @@ export const ImpactRegister: React.FC = () => {
 
           {/* Kern Filter Pills */}
           <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-full self-start md:self-auto shadow-lg border border-slate-200 font-display">
-            {['Alle', 'Dronten', 'Biddinghuizen', 'Swifterbant'].map((k) => (
+            {['Alle', 'Dronten'].map((k) => (
               <button
                 key={k}
                 onClick={() => setSelectedKern(k)}

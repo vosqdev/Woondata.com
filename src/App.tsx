@@ -29,6 +29,7 @@ import { DeveloperTools } from './components/DeveloperTools';
 import { OntdekPlatformPortal } from './components/OntdekPlatformPortal';
 import { ProjectParticipationPortal } from './components/ProjectParticipationPortal';
 import { BuurtGebiedspaspoortModule } from './components/BuurtGebiedspaspoortModule';
+import { WeetDagelijksWatErSpeelt } from './components/WeetDagelijksWatErSpeelt';
 import { ImpactRegister } from './components/ImpactRegister';
 import { Footer } from './components/Footer';
 import { AiAdvisorModal } from './components/AiAdvisorModal';
@@ -40,6 +41,8 @@ import { CookieConsentBanner } from './components/CookieConsentBanner';
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
   const [wonenActiveLayer, setWonenActiveLayer] = useState<'kaart' | 'lijst' | 'datalaag'>('kaart');
+  const [projectFilterStatus, setProjectFilterStatus] = useState<string>('Alle');
+  const [projectFilterKern, setProjectFilterKern] = useState<string>('Alle');
   const [aiAdvisorOpen, setAiAdvisorOpen] = useState(false);
   const [stayInformedOpen, setStayInformedOpen] = useState(false);
   const [stayInformedMode, setStayInformedMode] = useState<'register' | 'login'>('register');
@@ -51,6 +54,20 @@ export default function App() {
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isDisclaimerModalOpen, setIsDisclaimerModalOpen] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
+
+  const handleHeroFilterNavigate = (filter: { status?: string; kern?: string }) => {
+    if (filter.status) {
+      setProjectFilterStatus(filter.status);
+    }
+    if (filter.kern && filter.kern !== 'Alle kernen (3)') {
+      setProjectFilterKern(filter.kern);
+    } else {
+      setProjectFilterKern('Alle');
+    }
+    setWonenActiveLayer('lijst');
+    setActiveTab('wonen');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Sync state with URL hash for direct standalone page opening
   useEffect(() => {
@@ -295,13 +312,27 @@ export default function App() {
               setActiveTab={setActiveTab}
               openQuickscan={openQuickscan}
               openSurvey={openSurvey}
+              onFilterNavigate={handleHeroFilterNavigate}
+              onOpenMarktdata={() => {
+                setActiveTab('woningmarkt-data');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onOpenAnalyseLocatie={() => {
+                openBuurtPaspoort();
+              }}
             />
             <ThreeRoutesSection
               setActiveTab={setActiveTab}
               openQuickscan={openQuickscan}
               openSurvey={openSurvey}
             />
-            <ProjectsMapSection onOpenParticipation={openParticipationPortal} />
+            <ProjectsMapSection
+              onOpenParticipation={openParticipationPortal}
+              initialStatus={projectFilterStatus}
+              initialKern={projectFilterKern}
+              onStatusChange={setProjectFilterStatus}
+              onKernChange={setProjectFilterKern}
+            />
             <KnowledgePlatformSection
               onOpenQuickscan={openQuickscan}
               onOpenWoonwaarden={openWoonwaarden}
@@ -376,6 +407,10 @@ export default function App() {
               onLayerChange={setWonenActiveLayer}
               hideTopSwitcher={true}
               onOpenParticipation={openParticipationPortal}
+              initialStatus={projectFilterStatus}
+              initialKern={projectFilterKern}
+              onStatusChange={setProjectFilterStatus}
+              onKernChange={setProjectFilterKern}
             />
           </div>
         )}
@@ -436,7 +471,6 @@ export default function App() {
               backgroundImage="https://www.image2url.com/r2/default/images/1788464129594-e0860c93-a90d-4878-b5e6-d10d0cdd8bd4.webp"
             />
             <WoonperspectiefSection />
-            <MarketDataDashboard />
           </div>
         )}
 
@@ -482,6 +516,29 @@ export default function App() {
               onOpenRealtimeDashboard={() => {
                 setActiveTab('woonwensen-dashboard');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* TAB: NIEUWS (Weet dagelijks wat er speelt: Marketupdates, Kennisbank, Artikelen & Publicaties) */}
+        {activeTab === 'nieuws' && (
+          <div className="bg-white min-h-screen">
+            <WeetDagelijksWatErSpeelt 
+              onOpenMarketUpdates={() => {
+                setActiveTab('woningmarkt-data');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onOpenKennisbank={() => {
+                setActiveTab('kennis');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onOpenArticles={() => {
+                setActiveTab('kennis');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onOpenNewsletter={() => {
+                openStayInformed('register');
               }}
             />
           </div>

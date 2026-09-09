@@ -73,6 +73,14 @@ export const Footer: React.FC<FooterProps> = ({
                 </li>
                 <li>
                   <button 
+                    onClick={() => setActiveTab('nieuws')} 
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    Nieuws &amp; Publicaties
+                  </button>
+                </li>
+                <li>
+                  <button 
                     onClick={() => setActiveTab('woningmarkt-data')} 
                     className="hover:text-white transition-colors cursor-pointer"
                   >

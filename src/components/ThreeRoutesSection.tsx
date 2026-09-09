@@ -1,4 +1,5 @@
 import React from 'react';
+import { WoonDataLogo } from './WoonDataLogo';
 import { 
   Users, 
   Landmark, 
@@ -6,20 +7,20 @@ import {
   ArrowRight, 
   CheckCircle2, 
   Sparkles, 
-  FileText, 
   ShieldCheck, 
   TrendingUp, 
-  Layers,
-  Compass,
-  Check,
-  Building,
-  Activity,
-  ChevronRight,
-  ExternalLink,
-  MapPin,
-  Phone,
-  Mail,
-  Globe
+  Compass, 
+  Check, 
+  Building, 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Globe,
+  Quote,
+  Database,
+  BookOpen,
+  BarChart3,
+  Layers
 } from 'lucide-react';
 
 interface ThreeRoutesSectionProps {
@@ -37,88 +38,214 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
 }) => {
   return (
     <>
-      <section className="pt-8 sm:pt-10 pb-12 sm:pb-16 text-slate-900 bg-[#F9FAFB] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Numerical Stats Bar - Placed just above 'Wat is Nieuwbouw Dronten' */}
-        <div className="bg-white rounded-3xl sm:rounded-[28px] p-6 sm:p-8 border border-slate-200/90 shadow-sm mb-12 sm:mb-16">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            
-            {/* Stat 1: 3.309 NIEUWE WONINGEN OPGAVE */}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
-                <Building className="w-5 h-5 text-[#D6F830]" />
-              </div>
-              <div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                  3.309
-                </div>
-                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
-                  Nieuwe Woningen Opgave
-                </div>
-              </div>
+      {/* SECTION 1: Geen aannames. Lokale onderbouwing. & Waarom Woondata anders is */}
+      <section className="pt-12 sm:pt-16 pb-16 sm:pb-20 text-slate-900 bg-[#FAFAFA] relative overflow-hidden border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+          
+          {/* Header block: Geen aannames. Lokale onderbouwing. */}
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black bg-black text-[#D6F830] font-display shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#D6F830]" />
+              <span className="tracking-wider uppercase">Data-gedreven &amp; Lokaal Gevalideerd</span>
             </div>
 
-            {/* Stat 2: 840+ INWONERS WOONPANEL */}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
-                <Users className="w-5 h-5 text-[#D6F830]" />
-              </div>
-              <div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                  840+
-                </div>
-                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
-                  Inwoners Woonpanel
-                </div>
-              </div>
-            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-tight font-display">
+              Geen aannames. Lokale onderbouwing.
+            </h2>
 
-            {/* Stat 3: 7 GEMEENTELIJKE WOONWAARDEN */}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
-                <ShieldCheck className="w-5 h-5 text-[#D6F830]" />
-              </div>
-              <div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                  7
-                </div>
-                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
-                  Gemeentelijke Woonwaarden
-                </div>
-              </div>
+            <div className="space-y-2 pt-1 text-slate-700 text-base sm:text-lg leading-relaxed font-normal max-w-2xl mx-auto">
+              <p>
+                Woondata brengt openbare databronnen samen met eigen marktinformatie, actuele woonwensen en de kennis van lokale professionals.
+              </p>
+              <p className="font-bold text-slate-950">
+                Zo ontstaat niet alleen inzicht in wat er is, maar vooral in wat er nodig is.
+              </p>
             </div>
-
-            {/* Stat 4: 100% ONAFHANKELIJK & LOKAAL */}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#D6F830] text-black flex items-center justify-center shrink-0 font-bold shadow-xs">
-                <Check className="w-5 h-5 text-black stroke-[3]" />
-              </div>
-              <div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                  100%
-                </div>
-                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
-                  Onafhankelijk &amp; Lokaal
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div>
 
-        {/* Wat is Nieuwbouw Dronten? - Clean Agency Card */}
-        <div className="mb-16 sm:mb-20">
-          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm relative overflow-hidden">
+
+
+          {/* Visual Sequence: DATA → KENNIS → INZICHT → BOUWEN */}
+          <div className="bg-black text-white rounded-3xl sm:rounded-[32px] p-6 sm:p-10 border border-slate-800 shadow-xl relative overflow-hidden">
+            <div className="text-center mb-8">
+              <span className="text-xs font-black uppercase tracking-widest text-[#D6F830] font-display">
+                Het Woondata Waardemodel
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white mt-1 font-display">
+                Van ruwe gegevens naar versnelde realisatie
+              </h3>
+            </div>
+
+            {/* Step-by-step visual chain */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 relative">
+              
+              {/* Step 1: DATA */}
+              <div className="bg-slate-900/80 rounded-2xl p-5 border border-slate-800 flex flex-col justify-between relative group hover:border-[#D6F830]/40 transition-colors">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="w-7 h-7 rounded-full bg-slate-800 text-[#D6F830] flex items-center justify-center text-xs font-black">
+                      1
+                    </span>
+                    <Database className="w-5 h-5 text-slate-400 group-hover:text-[#D6F830] transition-colors" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-black text-white tracking-wider font-display">
+                      DATA
+                    </h4>
+                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                      CBS, BAG, WOZ &amp; Woonwensen panel
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden md:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black border border-slate-700 items-center justify-center text-slate-400">
+                  <ArrowRight className="w-3.5 h-3.5 text-[#D6F830]" />
+                </div>
+              </div>
+
+              {/* Step 2: KENNIS */}
+              <div className="bg-slate-900/80 rounded-2xl p-5 border border-slate-800 flex flex-col justify-between relative group hover:border-[#D6F830]/40 transition-colors">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="w-7 h-7 rounded-full bg-slate-800 text-[#D6F830] flex items-center justify-center text-xs font-black">
+                      2
+                    </span>
+                    <BookOpen className="w-5 h-5 text-slate-400 group-hover:text-[#D6F830] transition-colors" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-black text-white tracking-wider font-display">
+                      KENNIS
+                    </h4>
+                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                      Lokale makelaarsexpertise &amp; marktdynamiek
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden md:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black border border-slate-700 items-center justify-center text-slate-400">
+                  <ArrowRight className="w-3.5 h-3.5 text-[#D6F830]" />
+                </div>
+              </div>
+
+              {/* Step 3: INZICHT */}
+              <div className="bg-slate-900/80 rounded-2xl p-5 border border-slate-800 flex flex-col justify-between relative group hover:border-[#D6F830]/40 transition-colors">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="w-7 h-7 rounded-full bg-slate-800 text-[#D6F830] flex items-center justify-center text-xs font-black">
+                      3
+                    </span>
+                    <BarChart3 className="w-5 h-5 text-slate-400 group-hover:text-[#D6F830] transition-colors" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-black text-white tracking-wider font-display">
+                      INZICHT
+                    </h4>
+                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                      Wat, waar, voor wie &amp; tegen welke prijs
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden md:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black border border-slate-700 items-center justify-center text-slate-400">
+                  <ArrowRight className="w-3.5 h-3.5 text-[#D6F830]" />
+                </div>
+              </div>
+
+              {/* Step 4: BOUWEN */}
+              <div className="bg-[#D6F830] text-black rounded-2xl p-5 border border-[#D6F830] flex flex-col justify-between relative group shadow-lg">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="w-7 h-7 rounded-full bg-black text-[#D6F830] flex items-center justify-center text-xs font-black">
+                      4
+                    </span>
+                    <Building2 className="w-5 h-5 text-black" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-black text-black tracking-wider font-display">
+                      BOUWEN
+                    </h4>
+                    <p className="text-xs text-slate-800 mt-1 leading-relaxed font-semibold">
+                      Snellere planvorming &amp; 100% verkoopzekerheid
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Numerical Stats Bar */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
+                  <Building className="w-5 h-5 text-[#D6F830]" />
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
+                    3.309
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
+                    Nieuwe Woningen Opgave
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
+                  <Users className="w-5 h-5 text-[#D6F830]" />
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
+                    840+
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
+                    Inwoners Woonpanel
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 font-bold shadow-xs">
+                  <ShieldCheck className="w-5 h-5 text-[#D6F830]" />
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
+                    7
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
+                    Gemeentelijke Woonwaarden
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#D6F830] text-black flex items-center justify-center shrink-0 font-bold shadow-xs">
+                  <Check className="w-5 h-5 text-black stroke-[3]" />
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
+                    100%
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
+                    Onafhankelijk &amp; Lokaal
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Oude makelaars opzet (Afbeelding 1): Wat is woondata.com? */}
+          <div className="bg-white rounded-3xl sm:rounded-[36px] p-6 sm:p-10 lg:p-12 border border-slate-200/90 shadow-xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Left Column: Mission & Text */}
+              
+              {/* Left text column */}
               <div className="lg:col-span-7 space-y-5">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-black text-[#D6F830]">
-                  <Compass className="w-3.5 h-3.5 text-[#D6F830]" />
-                  <span className="tracking-wide uppercase font-display">Onafhankelijk Platform &amp; Marktregie</span>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-[#080E1B] text-[#C9F31D] font-display shadow-xs uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5 text-[#C9F31D]" />
+                  <span>ONAFHANKELIJK PLATFORM &amp; MARKTREGIE</span>
                 </div>
 
-                <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight font-display">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight font-display leading-[1.15]">
                   Wat is woondata.com?
                 </h2>
 
@@ -126,76 +253,101 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                   Woondata fungeert als een onafhankelijk platform, adviesloket en marktregisseur voor de lokale nieuwbouwketen. Door hoogwaardige lokale gebieds- en marktkennis, objectieve transactiedata en een strategische koppeling tussen beleid en realisatie willen we bijdragen aan de woningbouw voor Dronten, Biddinghuizen en Swifterbant.
                 </p>
 
-                <div className="p-4.5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 text-xs sm:text-sm font-medium leading-relaxed flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-xl bg-black text-[#D6F830] flex items-center justify-center shrink-0 mt-0.5 font-bold shadow-xs">
-                    <Sparkles className="w-4 h-4 text-[#D6F830]" />
+                {/* Highlight Goal Box */}
+                <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 sm:p-5 flex items-start gap-4 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] shrink-0 shadow-xs">
+                    <Sparkles className="w-5 h-5 text-[#C9F31D]" />
                   </div>
                   <div>
-                    <span className="font-bold text-slate-950 block mb-0.5 font-display">Ons gezamenlijk doel:</span>
-                    Plannen sneller vooruit, betere besluiten en een toekomstbestendig Dronten waar nieuwbouw daadwerkelijk aansluit bij de marktvraag.
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Right Column: Visual Photo Card & Ecosystem */}
-              <div className="lg:col-span-5">
-                <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md p-2.5">
-                  <div className="relative h-60 sm:h-64 rounded-xl overflow-hidden group">
-                    <img 
-                      src="https://www.image2url.com/r2/default/images/1787323790041-97401bfd-2320-4544-a9eb-0e042b9e9be2.png" 
-                      alt="Initiatiefnemers Nieuwbouw Dronten voor Gemeente Dronten" 
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-                    <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-[#D6F830] block mb-0.5 font-display">Lokale Samenwerking &amp; Regie</span>
-                      <p className="text-xs sm:text-sm font-bold text-white">
-                        De Makelaars van 5VOOR12 • Van der Linden • Kerremans
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Connecting Ecosystem Triad */}
-                  <div className="p-2.5 grid grid-cols-3 gap-2 text-center mt-1">
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                      <div className="w-7 h-7 rounded-full bg-black text-[#D6F830] mx-auto flex items-center justify-center mb-1 font-bold">
-                        <Users className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="text-xs font-bold text-slate-900 font-display">Inwoners</div>
-                      <div className="text-[10px] text-slate-500">Woonpanel</div>
-                    </div>
-
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                      <div className="w-7 h-7 rounded-full bg-black text-[#D6F830] mx-auto flex items-center justify-center mb-1 font-bold">
-                        <Landmark className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="text-xs font-bold text-slate-900 font-display">Gemeente</div>
-                      <div className="text-[10px] text-slate-500">Regie &amp; Beleid</div>
-                    </div>
-
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                      <div className="w-7 h-7 rounded-full bg-black text-[#D6F830] mx-auto flex items-center justify-center mb-1 font-bold">
-                        <Building2 className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="text-xs font-bold text-slate-900 font-display">Ontwikkelaars</div>
-                      <div className="text-[10px] text-slate-500">Toetsing</div>
-                    </div>
+                    <h4 className="text-sm font-bold text-slate-900 font-display">
+                      Ons gezamenlijk doel:
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed font-normal">
+                      Plannen sneller vooruit, betere besluiten en een toekomstbestendig Dronten waar nieuwbouw daadwerkelijk aansluit bij de marktvraag.
+                    </p>
                   </div>
                 </div>
               </div>
+
+              {/* Right media & pills column */}
+              <div className="lg:col-span-5 space-y-3.5">
+                {/* Photo with gradient bar */}
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-slate-200">
+                  <img
+                    src="https://www.image2url.com/r2/default/images/1788079010026-45646df3-9976-4226-b7fd-6cab4add9c2b.jpg"
+                    alt="De Makelaars van 5VOOR12 • Van der Linden • Kerremans"
+                    className="w-full h-56 sm:h-64 object-cover object-center"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent p-4 pt-8 text-white">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-[#C9F31D] font-display block mb-0.5">
+                      LOKALE SAMENWERKING &amp; REGIE
+                    </span>
+                    <p className="text-xs sm:text-sm font-bold text-white font-display">
+                      De Makelaars van 5VOOR12 • Van der Linden • Kerremans
+                    </p>
+                  </div>
+                </div>
+
+                {/* 3 mini pill cards */}
+                <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-3 text-center flex flex-col items-center justify-center shadow-xs">
+                    <div className="w-8 h-8 rounded-full bg-[#080E1B] text-[#C9F31D] flex items-center justify-center mb-1.5 shadow-xs">
+                      <Users className="w-4 h-4 text-[#C9F31D]" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-900 font-display block">Inwoners</span>
+                    <span className="text-[10px] text-slate-500 block">Woonpanel</span>
+                  </div>
+
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-3 text-center flex flex-col items-center justify-center shadow-xs">
+                    <div className="w-8 h-8 rounded-full bg-[#080E1B] text-[#C9F31D] flex items-center justify-center mb-1.5 shadow-xs">
+                      <Landmark className="w-4 h-4 text-[#C9F31D]" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-900 font-display block">Gemeente</span>
+                    <span className="text-[10px] text-slate-500 block">Regie &amp; Beleid</span>
+                  </div>
+
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-3 text-center flex flex-col items-center justify-center shadow-xs">
+                    <div className="w-8 h-8 rounded-full bg-[#080E1B] text-[#C9F31D] flex items-center justify-center mb-1.5 shadow-xs">
+                      <Building2 className="w-4 h-4 text-[#C9F31D]" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-900 font-display block">Ontwikkelaars</span>
+                    <span className="text-[10px] text-slate-500 block">Toetsing</span>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    {/* Full-width Section: Drie Routes with Full-Width Background Image & Filter */}
-    <section className="relative w-full overflow-hidden py-16 sm:py-24 bg-[#070D1C] border-t border-slate-200">
+          {/* Quote (Afbeelding 2): Tussen het tekstvlak en donkere vlak */}
+          <div className="bg-[#0A1120] border border-slate-800/90 rounded-3xl sm:rounded-[32px] p-8 sm:p-12 lg:p-14 text-center shadow-2xl relative overflow-hidden">
+            <div className="flex items-center justify-center mb-5">
+              <svg 
+                className="w-10 h-10 sm:w-12 sm:h-12 text-[#C9F31D]" 
+                viewBox="0 0 24 24" 
+                fill="currentColor"
+              >
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+            </div>
+
+            <blockquote className="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-black text-white font-display tracking-tight leading-snug max-w-4xl mx-auto">
+              &ldquo;Data vertelt wat er gebeurt. Onze lokale marktkennis helpt verklaren waarom.&rdquo;
+            </blockquote>
+
+            <p className="text-xs sm:text-sm font-extrabold text-[#C9F31D] uppercase tracking-widest font-display mt-4 sm:mt-5">
+              KERREMANS MAKELAARDIJ • MAKELAARDIJ VAN DER LINDEN • DE MAKELAARS VAN 5VOOR12
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* SECTION 2: Donkere vlak (4-koloms Makelaars overzicht + 3 Routes) */}
+      <section className="relative w-full overflow-hidden py-16 sm:py-24 bg-[#070D1C] border-t border-slate-800">
         
-        {/* Full-Width Background Image with Dark Navy Warm Filter */}
+        {/* Background Image with dark navy overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="https://www.image2url.com/r2/default/images/1788079010026-45646df3-9976-4226-b7fd-6cab4add9c2b.jpg"
@@ -203,58 +355,41 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
           />
-          {/* Filter overlay for contrast and premium cohesion */}
-          <div className="absolute inset-0 bg-[#070D1C]/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/75 via-[#070D1C]/50 to-[#070D1C]/80" />
+          <div className="absolute inset-0 bg-[#070D1C]/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/90 via-[#070D1C]/70 to-[#070D1C]/95" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
         </div>
 
-        {/* Inner Content Container */}
+        {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
           
-          {/* Top Row: Brand Statement (Left) + 3 Makelaars Cards (Right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pb-12 border-b border-slate-800/80">
+          {/* 4-koloms header zoals in Afbeelding 1: WoonData Logo & tekst + 3 Makelaars contact cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             
-            {/* Left Brand Statement (4 cols) */}
-            <div className="lg:col-span-4 space-y-5 pr-0 lg:pr-6 text-left">
-              <div 
-                onClick={() => setActiveTab('home')}
-                className="flex items-center gap-3 cursor-pointer group select-none"
-              >
-                <div className="w-10 h-10 rounded-2xl bg-white text-black flex items-center justify-center font-extrabold shadow-md group-hover:scale-105 transition-all">
-                  <Building2 className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xl font-black tracking-tight text-white font-display">
-                      WOON<span className="text-[#C9F31D]">DATA</span>
-                    </span>
-                  </div>
-                  <p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">
-                    WONEN • PROJECTEN • INZICHT
-                  </p>
-                </div>
+            {/* Col 1: WoonData Logo + Introductie */}
+            <div className="lg:col-span-3 bg-[#0B1322]/95 backdrop-blur-md rounded-3xl p-6 border border-slate-800/90 shadow-xl flex flex-col justify-between">
+              <div className="space-y-4">
+                <WoonDataLogo variant="dark" size="sm" />
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  Het onafhankelijke woonmarkt en dataplatform dat inwonerssignalen, transactiedata, beleid zoals de 7 gemeentelijke woonwaarden, bewonersperspectief 2040 en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.
+                </p>
               </div>
-
-              <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-normal">
-                Het onafhankelijke woonmarkt en dataplatform dat inwonerssignalen, transactiedata, beleid zoals de 7 gemeentelijke woonwaarden, bewonersperspectief 2040 en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.
-              </p>
             </div>
 
-            {/* Right 3 Makelaars Cards (8 cols: 3 cards grid) */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Col 2, 3, 4: De 3 Makelaars Cards */}
+            <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-3 gap-6">
               
               {/* Card 1: 5VOOR12 (Groen) */}
-              <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-2xl p-5 border border-slate-800/90 shadow-lg hover:border-emerald-500/40 transition-all flex flex-col justify-between group text-left">
-                <div className="space-y-3.5">
+              <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-3xl p-6 border border-slate-800/90 shadow-xl hover:border-emerald-500/50 transition-all flex flex-col justify-between group text-left">
+                <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
-                    <h4 className="text-xs font-black text-white font-display tracking-wider uppercase truncate">
+                    <h4 className="text-xs sm:text-sm font-black text-white font-display tracking-wider uppercase">
                       DE MAKELAARS VAN 5VOOR12
                     </h4>
                   </div>
 
-                  <div className="space-y-2.5 text-xs text-slate-300">
+                  <div className="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800/80">
                     <div className="flex items-start gap-2.5">
                       <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span className="leading-snug">
@@ -273,32 +408,21 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                         info@5-voor-12.nl
                       </a>
                     </div>
-                    <div className="flex items-center gap-2.5">
-                      <Globe className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <a 
-                        href="https://www.5-voor-12.nl" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="hover:text-emerald-300 transition-colors truncate"
-                      >
-                        www.5-voor-12.nl
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Card 2: Van der Linden (Oranje) */}
-              <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-2xl p-5 border border-slate-800/90 shadow-lg hover:border-orange-500/40 transition-all flex flex-col justify-between group text-left">
-                <div className="space-y-3.5">
+              <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-3xl p-6 border border-slate-800/90 shadow-xl hover:border-orange-500/50 transition-all flex flex-col justify-between group text-left">
+                <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-orange-500 shrink-0" />
-                    <h4 className="text-xs font-black text-white font-display tracking-wider uppercase truncate">
+                    <h4 className="text-xs sm:text-sm font-black text-white font-display tracking-wider uppercase">
                       MAKELAARDIJ VAN DER LINDEN
                     </h4>
                   </div>
 
-                  <div className="space-y-2.5 text-xs text-slate-300">
+                  <div className="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800/80">
                     <div className="flex items-start gap-2.5">
                       <MapPin className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
                       <span className="leading-snug">
@@ -314,18 +438,7 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                     <div className="flex items-center gap-2.5">
                       <Mail className="w-4 h-4 text-orange-400 shrink-0" />
                       <a href="mailto:info.dronten@vanderlinden.nl" className="hover:text-orange-300 transition-colors truncate">
-                        info.dronten@vanderl...
-                      </a>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <Globe className="w-4 h-4 text-orange-400 shrink-0" />
-                      <a 
-                        href="https://www.vanderlinden.nl" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="hover:text-orange-300 transition-colors truncate"
-                      >
-                        www.vanderlinden.nl
+                        info.dronten@vanderlinden.nl
                       </a>
                     </div>
                   </div>
@@ -333,16 +446,16 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
               </div>
 
               {/* Card 3: Kerremans (Blauw) */}
-              <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-2xl p-5 border border-slate-800/90 shadow-lg hover:border-blue-500/40 transition-all flex flex-col justify-between group text-left">
-                <div className="space-y-3.5">
+              <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-3xl p-6 border border-slate-800/90 shadow-xl hover:border-blue-500/50 transition-all flex flex-col justify-between group text-left">
+                <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-blue-600 shrink-0" />
-                    <h4 className="text-xs font-black text-white font-display tracking-wider uppercase truncate">
+                    <h4 className="text-xs sm:text-sm font-black text-white font-display tracking-wider uppercase">
                       KERREMANS MAKELAARDIJ
                     </h4>
                   </div>
 
-                  <div className="space-y-2.5 text-xs text-slate-300">
+                  <div className="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800/80">
                     <div className="flex items-start gap-2.5">
                       <MapPin className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                       <span className="leading-snug">
@@ -358,18 +471,7 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                     <div className="flex items-center gap-2.5">
                       <Mail className="w-4 h-4 text-blue-400 shrink-0" />
                       <a href="mailto:info@kerremansmakelaardij.nl" className="hover:text-blue-300 transition-colors truncate">
-                        info@kerremansmake...
-                      </a>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <Globe className="w-4 h-4 text-blue-400 shrink-0" />
-                      <a 
-                        href="https://www.kerremansmakelaardij.nl" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="hover:text-blue-300 transition-colors truncate"
-                      >
-                        www.kerremansmakelaardij.nl
+                        info@kerremansmakelaardij.nl
                       </a>
                     </div>
                   </div>
@@ -377,10 +479,11 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
               </div>
 
             </div>
+
           </div>
 
           {/* Section Header: Voor wie is NieuwbouwDronten? */}
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto pt-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black bg-[#070D1C]/90 text-[#C9F31D] border border-white/15 mb-3.5 font-display backdrop-blur-md shadow-md">
               <span>WONEN • PROJECTEN • INZICHT</span>
             </div>
@@ -555,4 +658,3 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
     </>
   );
 };
-

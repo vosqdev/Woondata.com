@@ -267,6 +267,54 @@ export const PROJECTS_DATA: Project[] = [
     sourceUrl: 'https://www.funda.nl/nieuwbouw/biddinghuizen/'
   },
   {
+    id: 'havenkade-biddinghuizen',
+    title: 'Havenkade & De Havenlob',
+    kern: 'Biddinghuizen',
+    locationName: 'Havenkade / Noorderbaan / Veluwemeerzone',
+    coordinates: { lat: 52.4590, lng: 5.6980 },
+    status: 'In voorbereiding',
+    totalHomes: 64,
+    availableHomes: 52,
+    priceRange: '€ 285.000 – € 515.000',
+    category: ['Betaalbare koop (< €405k)', 'Middensegment (€405k - €550k)', 'Middenhuur (€850 - €1.150)'],
+    targetGroups: ['Gezinnen', 'Starters & Jongeren', 'Senioren & Doorstromers'],
+    completionYear: '2027 – 2028',
+    developer: 'Gemeente Dronten & Ontwikkelcombinatie Oost',
+    architect: 'Korfker Architecten',
+    makelaarRef: 'Funda.nl / Sinke Makelaardij',
+    description: 'Nieuw waterrijk woongebied aan de havenrand van Biddinghuizen met 64 kadewoningen, dijkwoningen en levensloopbestendige patio\'s. Focus op verbinding met het water en energieneutraal bouwen.',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
+    woonwaarden: ['Dorps leven en naar elkaar omzien', 'Duurzaamheid en balans met de aarde', 'Groen en ruimtelijk'],
+    highlights: ['Aan het water met aanlegsteigers', 'Circulaire houtskeletbouw', 'Betaalbare starterswoningen'],
+    planType: 'Zachte plancapaciteit',
+    hasActiveSurvey: true,
+    sourceUrl: 'https://www.funda.nl/nieuwbouw/biddinghuizen/'
+  },
+  {
+    id: 'bloemenweide-swifterbant',
+    title: 'De Bloemenweide (\'t Luweland Fase 2)',
+    kern: 'Swifterbant',
+    locationName: 'Swifterbant Zuid / Kamperweg',
+    coordinates: { lat: 52.5640, lng: 5.6420 },
+    status: 'In voorbereiding',
+    totalHomes: 85,
+    availableHomes: 75,
+    priceRange: '€ 295.000 – € 540.000',
+    category: ['Betaalbare koop (< €405k)', 'Middensegment (€405k - €550k)', 'Sociaal (< €280k)'],
+    targetGroups: ['Starters & Jongeren', 'Gezinnen', 'Senioren & Doorstromers'],
+    completionYear: '2027 Q2',
+    developer: 'Bemog Projectontwikkeling & Gemeente Dronten',
+    architect: 'BDG Architecten Almere',
+    makelaarRef: 'Funda.nl / Sinke Makelaardij Swifterbant',
+    description: 'Vervolgfase van de zuidelijke dorpsuitbreiding in Swifterbant. Biedt een natuurinclusieve mix van 85 duurzame rijwoningen, levensloopbestendige semibungalows en vrije bouwkavels aan een brede parkzoom.',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+    woonwaarden: ['Dorps leven en naar elkaar omzien', 'Groen en ruimtelijk', 'Compleet wonen, van de wieg tot het graf'],
+    highlights: ['Parkachtige setting met boomgaarden', 'Levensloopbestendige hofwoningen', 'Energiepositief met zonnepanelen & warmtepomp'],
+    planType: 'Zachte plancapaciteit',
+    hasActiveSurvey: true,
+    sourceUrl: 'https://www.funda.nl/nieuwbouw/swifterbant/'
+  },
+  {
     id: 'dronten-oost-haringweg-4',
     title: 'Dronten Oost - Haringweg 4',
     kern: 'Dronten',
@@ -391,32 +439,12 @@ export const IMPACT_CASES: ImpactCase[] = [
   {
     id: 'impact-1',
     kern: 'Dronten',
-    project: 'Havenkwartier fase 1',
+    project: 'Hanzekwartier fase 1',
     year: '2025/2026',
     watWeHoorden: 'Starters gaven in het panel massaal aan dat de oorspronkelijke plannen voor louter villa’s en dure penthouses (> €650k) onbereikbaar waren voor jonge Drontenaren.',
     watWeAdviseerden: 'Aanpassing van het programma in het Woningmarktberaad: toevoegen van 45 compacte 2- en 3-kamerappartementen (< €310k) en 20 middenhuurwoningen.',
     watIsGedaan: 'Gemeenteraad heeft het bestemmingsplan gewijzigd; projectontwikkelaar heeft 35% betaalbaar vastgelegd in de anterieure overeenkomst.',
     status: 'Opgenomen in bestemmingsplan'
-  },
-  {
-    id: 'impact-2',
-    kern: 'Swifterbant',
-    project: 'De Houtsnip Groenzone',
-    year: '2025',
-    watWeHoorden: 'Omwonenden en toekomstige kopers vroegen om behoud van de bestaande bomenrij en een centrale ontmoetingswadi in plaats van aaneengesloten parkeerplaatsen.',
-    watWeAdviseerden: 'Herinrichting van het stedenbouwkundig plan: gecentraliseerd parkeren aan de rand met een autovrij groen hof.',
-    watIsGedaan: 'Bouwer Van Wijnen heeft het ontwerp aangepast; 1.200 m² extra groen gerealiseerd.',
-    status: 'Gerealiseerd'
-  },
-  {
-    id: 'impact-3',
-    kern: 'Biddinghuizen',
-    project: 'Hof van Biddinghuizen',
-    year: '2026',
-    watWeHoorden: 'Lokale senioren wilden niet verhuizen naar een standaard flat in Dronten-Centrum, maar een grondgebonden hofje in het eigen dorp met ontmoetingsruimte.',
-    watWeAdviseerden: 'Faciliteren van een CPO/Knarrenhof initiatief met gemeentelijke kaveltoewijzing en voorrang voor doorstromers uit Biddinghuizen.',
-    watIsGedaan: 'Locatie Havenweg gereserveerd, 32 gelijkvloerse woningen in procedure.',
-    status: 'In uitvoering'
   }
 ];
 

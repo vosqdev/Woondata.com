@@ -34,6 +34,8 @@ export interface DeveloperApplication {
   phone: string;
   organizationType: string;
   projectScope: string;
+  productTier?: 'Woondata Open' | 'Woondata PRO' | 'Woondata Project' | 'Woondata Research' | string;
+  waardeproducten?: string[];
   notes?: string;
   status: 'nieuw' | 'in_behandeling' | 'contact_opgenomen' | 'account_toegewezen';
   createdAt: string;
@@ -288,6 +290,8 @@ class PortalAuthService {
     phone: string;
     organizationType: string;
     projectScope: string;
+    productTier?: string;
+    waardeproducten?: string[];
     notes?: string;
   }): Promise<{ success: boolean; application: DeveloperApplication }> {
     const newApp: DeveloperApplication = {
@@ -298,6 +302,8 @@ class PortalAuthService {
       phone: data.phone.trim(),
       organizationType: data.organizationType,
       projectScope: data.projectScope.trim(),
+      productTier: data.productTier || 'Woondata Project',
+      waardeproducten: data.waardeproducten || [],
       notes: data.notes?.trim() || '',
       status: 'nieuw',
       createdAt: new Date().toISOString()

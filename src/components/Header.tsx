@@ -2,42 +2,38 @@ import React, { useState } from 'react';
 import { 
   Menu, 
   X, 
-  Sparkles,
-  ClipboardList,
+  Search,
   Lock,
-  ExternalLink
+  Vote,
+  ArrowRight
 } from 'lucide-react';
 import { WoonDataLogo } from './WoonDataLogo';
 
 interface HeaderProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  openAiAdvisor?: () => void;
-  openQuickscan?: () => void;
+  onOpenSearch: () => void;
+  onOpenLogin: () => void;
+  onOpenOpiniepeiler?: () => void;
   openSurvey?: () => void;
-  openStayInformed?: (mode?: 'register' | 'login') => void;
-  isDeveloperLoggedIn?: boolean;
-  onOpenDeveloperPortal?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeTab,
   setActiveTab,
-  openAiAdvisor,
-  openQuickscan,
-  openSurvey,
-  openStayInformed,
-  isDeveloperLoggedIn,
-  onOpenDeveloperPortal
+  onOpenSearch,
+  onOpenLogin,
+  onOpenOpiniepeiler,
+  openSurvey
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Hoofdmenu (Inzicht tijdelijk uitgezet op verzoek):
   const navItems = [
-    { id: 'home', label: 'Woonmarkt' },
-    { id: 'wonen', label: 'Projecten' },
-    { id: 'kennis', label: 'Inzichten' },
+    { id: 'wonen', label: 'Wonen' },
+    { id: 'projecten', label: 'Projecten' },
     { id: 'ontwikkelaars', label: 'Voor ontwikkelaars' },
-    { id: 'nieuws', label: 'Nieuws' },
+    { id: 'over-woondata', label: 'Over Woondata' },
   ];
 
   const handleNavClick = (id: string) => {
@@ -46,37 +42,21 @@ export const Header: React.FC<HeaderProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleWoonwensClick = () => {
-    setMobileMenuOpen(false);
-    if (openSurvey) {
-      openSurvey();
-    } else {
-      setActiveTab('praat-mee');
-    }
-  };
-
-  const handlePortalClick = (e: React.MouseEvent) => {
-    setMobileMenuOpen(false);
-    if (onOpenDeveloperPortal) {
-      e.preventDefault();
-      onOpenDeveloperPortal();
-    }
-  };
-
   return (
     <header className="sticky top-0 z-40 bg-[#070D1C]/95 text-white backdrop-blur-xl border-b border-white/[0.08] transition-all">
-      {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo & Platform Name (Officieel WoonData merkbeeld met huis-grafiek icoon) */}
-          <WoonDataLogo
-            size="md"
-            onClick={() => handleNavClick('home')}
-            className="hover:opacity-95 transition-opacity"
-          />
+          {/* Logo (Clicks to home) */}
+          <div className="flex items-center gap-3">
+            <WoonDataLogo
+              size="md"
+              onClick={() => handleNavClick('home')}
+              className="hover:opacity-95 transition-opacity cursor-pointer"
+            />
+          </div>
 
-          {/* Desktop Navigation Links: Calm text on navy with subtle 2px lime indicator */}
+          {/* Desktop Navigation Links: Wonen | Projecten | Inzicht | Voor ontwikkelaars | Over Woondata */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
@@ -84,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`group relative py-2 text-sm font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
+                  className={`group relative py-2 text-sm font-semibold transition-colors cursor-pointer flex items-center gap-1 ${
                     isActive
                       ? 'text-white font-bold'
                       : 'text-slate-300 hover:text-white'
@@ -93,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <span>{item.label}</span>
                   {/* Subtle 2px lime bottom line indicator */}
                   {isActive ? (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#C9F31D] rounded-full shadow-[0_0_8px_rgba(201,243,29,0.4)]" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#C9F31D] rounded-full shadow-[0_0_8px_rgba(201,243,29,0.5)]" />
                   ) : (
                     <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-transparent group-hover:bg-white/20 transition-all rounded-full" />
                   )}
@@ -102,22 +82,61 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </nav>
 
-          {/* Action CTA: Woonwens Doorgeven */}
+          {/* Right Side Actions: Knop Aanmelden opiniepeiler, Zoeken & Inloggen */}
           <div className="hidden sm:flex items-center gap-2.5">
+            
+            {/* Knop: Aanmelden als inwoner voor opiniepeiler */}
             <button
-              onClick={handleWoonwensClick}
-              className="flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-extrabold rounded-full bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 shadow-[0_2px_14px_rgba(201,243,29,0.22)] transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98] font-display"
+              onClick={() => onOpenOpiniepeiler ? onOpenOpiniepeiler() : (openSurvey ? openSurvey() : handleNavClick('wonen'))}
+              className="flex items-center gap-2 px-4 py-2 text-xs font-black rounded-full bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 shadow-[0_2px_14px_rgba(201,243,29,0.28)] transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98] font-display shrink-0"
+              title="Aanmelden als inwoner voor de opiniepeiler"
             >
-              <ClipboardList className="w-4 h-4 text-slate-950 stroke-[2.3]" />
-              <span>Woonwens doorgeven</span>
+              <Vote className="w-3.5 h-3.5 text-slate-950 stroke-[2.5]" />
+              <span>Aanmelden opiniepeiler</span>
             </button>
+
+            {/* Search Button */}
+            <button
+              onClick={onOpenSearch}
+              aria-label="Zoeken"
+              className="flex items-center gap-2 px-3.5 py-2 text-xs font-bold rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white border border-white/10 transition-all cursor-pointer"
+            >
+              <Search className="w-3.5 h-3.5 text-slate-300" />
+              <span>Zoeken</span>
+            </button>
+
+            {/* Login Button */}
+            <button
+              onClick={onOpenLogin}
+              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-white border border-white/15 transition-all cursor-pointer"
+            >
+              <Lock className="w-3.5 h-3.5 text-slate-300 stroke-[2.2]" />
+              <span>Inloggen</span>
+            </button>
+
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Right Controls */}
           <div className="flex lg:hidden items-center gap-2">
             <button
+              onClick={() => onOpenOpiniepeiler ? onOpenOpiniepeiler() : handleNavClick('wonen')}
+              className="px-3 py-1.5 bg-[#C9F31D] text-slate-950 text-xs font-black rounded-full flex items-center gap-1.5 font-display shadow-xs"
+            >
+              <Vote className="w-3.5 h-3.5 stroke-[2.5]" />
+              <span>Opiniepeiler</span>
+            </button>
+
+            <button
+              onClick={onOpenSearch}
+              aria-label="Zoeken"
+              className="p-2 rounded-full bg-white/[0.08] border border-white/15 text-slate-200 hover:bg-white/[0.15] cursor-pointer transition-colors"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-full bg-white/[0.08] border border-white/15 text-slate-200 hover:bg-white/[0.15] cursor-pointer transition-colors"
+              className="p-2 rounded-full bg-white/[0.08] border border-white/15 text-slate-200 hover:bg-white/[0.15] cursor-pointer transition-colors"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -145,13 +164,44 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </button>
           ))}
+
+          {/* Mobile Actions in Drawer */}
           <div className="pt-4 border-t border-white/[0.08] flex flex-col gap-2.5">
             <button
-              onClick={handleWoonwensClick}
-              className="w-full py-3 px-4 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 font-extrabold rounded-xl text-xs text-center flex items-center justify-center gap-2 shadow-md cursor-pointer font-display"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (onOpenOpiniepeiler) {
+                  onOpenOpiniepeiler();
+                } else {
+                  handleNavClick('wonen');
+                }
+              }}
+              className="w-full py-3 px-4 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 font-black rounded-xl text-xs text-center flex items-center justify-center gap-2 shadow-md cursor-pointer font-display"
             >
-              <ClipboardList className="w-4 h-4 text-slate-950 stroke-[2.3]" />
-              <span>Woonwens doorgeven</span>
+              <Vote className="w-4 h-4 text-slate-950 stroke-[2.5]" />
+              <span>Aanmelden als inwoner voor opiniepeiler</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenSearch();
+              }}
+              className="w-full py-3 px-4 bg-white/[0.08] hover:bg-white/[0.14] text-white font-bold rounded-xl text-xs text-center flex items-center justify-center gap-2 border border-white/10 transition-colors"
+            >
+              <Search className="w-4 h-4 text-[#C9F31D]" />
+              <span>Zoeken in projecten en data</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenLogin();
+              }}
+              className="w-full py-3 px-4 bg-white/[0.08] hover:bg-white/[0.14] text-white font-bold rounded-xl text-xs text-center flex items-center justify-center gap-2 border border-white/10 cursor-pointer"
+            >
+              <Lock className="w-4 h-4 text-slate-300 stroke-[2.2]" />
+              <span>Inloggen bij Woondata</span>
             </button>
           </div>
         </div>

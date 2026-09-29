@@ -256,22 +256,14 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
 
               {/* Right media & pills column */}
               <div className="lg:col-span-5 space-y-3.5">
-                {/* Photo with gradient bar */}
+                {/* Photo */}
                 <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-slate-200">
                   <img
                     src="https://www.image2url.com/r2/default/images/1788079010026-45646df3-9976-4226-b7fd-6cab4add9c2b.jpg"
-                    alt="De Makelaars van 5VOOR12 • Van der Linden • Kerremans"
+                    alt="Dronten centrum en leefomgeving"
                     className="w-full h-56 sm:h-64 object-cover object-center"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent p-4 pt-8 text-white">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-[#C9F31D] font-display block mb-0.5">
-                      LOKALE SAMENWERKING &amp; REGIE
-                    </span>
-                    <p className="text-xs sm:text-sm font-bold text-white font-display">
-                      De Makelaars van 5VOOR12 • Van der Linden • Kerremans
-                    </p>
-                  </div>
                 </div>
 
                 {/* 3 mini pill cards */}
@@ -348,21 +340,21 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
         {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
           
-          {/* 4-koloms header zoals in Afbeelding 1: WoonData Logo & tekst + 3 Makelaars contact cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          {/* Header zoals in Afbeelding 1: WoonData Logo & introductie + 4 Partner contact cards */}
+          <div className="space-y-6">
             
-            {/* Col 1: WoonData Logo + Introductie */}
-            <div className="lg:col-span-3 bg-[#0B1322]/95 backdrop-blur-md rounded-3xl p-6 border border-slate-800/90 shadow-xl flex flex-col justify-between">
-              <div className="space-y-4">
+            {/* WoonData Logo + Introductie */}
+            <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-slate-800/90 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-5">
+              <div className="shrink-0">
                 <WoonDataLogo variant="dark" size="sm" />
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Het onafhankelijke woonmarkt en dataplatform dat inwonerssignalen, transactiedata, beleid zoals de 7 gemeentelijke woonwaarden, bewonersperspectief 2040 en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.
-                </p>
               </div>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal max-w-4xl">
+                Het onafhankelijke woonmarkt en dataplatform dat inwonerssignalen, transactiedata, beleid zoals de 7 gemeentelijke woonwaarden, bewonersperspectief 2040 en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.
+              </p>
             </div>
 
-            {/* Col 2, 3, 4: De 3 Makelaars Cards */}
-            <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {/* De 4 Partner Cards: 5VOOR12, Van der Linden, Kerremans & Vovon Development */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               
               {/* Card 1: 5VOOR12 (Groen) */}
               <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-3xl p-6 border border-slate-800/90 shadow-xl hover:border-emerald-500/50 transition-all flex flex-col justify-between group text-left">
@@ -457,6 +449,39 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                       <Mail className="w-4 h-4 text-blue-400 shrink-0" />
                       <a href="mailto:info@kerremansmakelaardij.nl" className="hover:text-blue-300 transition-colors truncate">
                         info@kerremansmakelaardij.nl
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4: Vovon Development (Limoengroen) */}
+              <div className="bg-[#0B1322]/95 backdrop-blur-md rounded-3xl p-6 border border-slate-800/90 shadow-xl hover:border-[#C9F31D]/50 transition-all flex flex-col justify-between group text-left">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#C9F31D] shrink-0" />
+                    <h4 className="text-xs sm:text-sm font-black text-white font-display tracking-wider uppercase">
+                      VOVON DEVELOPMENT
+                    </h4>
+                  </div>
+
+                  <div className="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800/80">
+                    <div className="flex items-start gap-2.5">
+                      <MapPin className="w-4 h-4 text-[#C9F31D] shrink-0 mt-0.5" />
+                      <span className="leading-snug">
+                        Leeuwerik 4<br />8081 ZJ Elburg
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <Phone className="w-4 h-4 text-[#C9F31D] shrink-0" />
+                      <a href="tel:0611692001" className="hover:text-[#C9F31D] transition-colors">
+                        06 - 11 69 20 01
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <Mail className="w-4 h-4 text-[#C9F31D] shrink-0" />
+                      <a href="mailto:info@vovon.nl" className="hover:text-[#C9F31D] transition-colors truncate">
+                        info@vovon.nl
                       </a>
                     </div>
                   </div>

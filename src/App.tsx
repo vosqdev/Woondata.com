@@ -1,52 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Map as MapIcon, 
-  ListFilter, 
-  BarChart3, 
   Bell, 
   ArrowLeft, 
-  Building2, 
-  ShieldCheck, 
-  Sparkles,
-  ExternalLink,
-  BookOpen,
-  Lock
+  Map as MapIcon, 
+  ListFilter, 
+  BarChart3
 } from 'lucide-react';
 import { Project } from './types';
 import { PROJECTS_DATA } from './data/mockData';
 import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { ThreeRoutesSection } from './components/ThreeRoutesSection';
-import { WoonwaardenGrid } from './components/WoonwaardenGrid';
-import { WoonperspectiefSection } from './components/WoonperspectiefSection';
-import { ProjectsMapSection } from './components/ProjectsMapSection';
-import { KnowledgePlatformSection } from './components/KnowledgePlatformSection';
-import { WonenInDrontenDataDashboard } from './components/WonenInDrontenDataDashboard';
-import { WoonwensenScan } from './components/WoonwensenScan';
-import { WoonwensenRealtimeDashboard } from './components/WoonwensenRealtimeDashboard';
-import { MarketDataDashboard } from './components/MarketDataDashboard';
-import { DeveloperTools } from './components/DeveloperTools';
-import { OntdekPlatformPortal } from './components/OntdekPlatformPortal';
-import { ProjectParticipationPortal } from './components/ProjectParticipationPortal';
-import { BuurtGebiedspaspoortModule } from './components/BuurtGebiedspaspoortModule';
-import { WeetDagelijksWatErSpeelt } from './components/WeetDagelijksWatErSpeelt';
-import { ImpactRegister } from './components/ImpactRegister';
 import { Footer } from './components/Footer';
-import { AiAdvisorModal } from './components/AiAdvisorModal';
+import { HomepageRestructured } from './components/HomepageRestructured';
+import { WonenView } from './components/WonenView';
+import { ProjectsMapSection } from './components/ProjectsMapSection';
+import { InzichtView } from './components/InzichtView';
+import { DeveloperTools } from './components/DeveloperTools';
+import { AboutWoondataView } from './components/AboutWoondataView';
+import { QuickSearchModal } from './components/QuickSearchModal';
+import { LoginModal } from './components/LoginModal';
+import { OpiniepeilerModal } from './components/OpiniepeilerModal';
 import { StayInformedModal } from './components/StayInformedModal';
 import { PrivacyStatementModal } from './components/PrivacyStatementModal';
 import { DisclaimerModal } from './components/DisclaimerModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
+import { BuurtGebiedspaspoortModule } from './components/BuurtGebiedspaspoortModule';
+import { ProjectParticipationPortal } from './components/ProjectParticipationPortal';
+import { OntdekPlatformPortal } from './components/OntdekPlatformPortal';
 
 export default function App() {
+  // Main tabs: home | wonen | projecten | inzicht | ontwikkelaars | over-woondata
   const [activeTab, setActiveTab] = useState<string>('home');
-  const [wonenActiveLayer, setWonenActiveLayer] = useState<'kaart' | 'lijst' | 'datalaag'>('kaart');
   const [projectFilterStatus, setProjectFilterStatus] = useState<string>('Alle');
   const [projectFilterKern, setProjectFilterKern] = useState<string>('Alle');
-  const [aiAdvisorOpen, setAiAdvisorOpen] = useState(false);
+  const [wonenActiveLayer, setWonenActiveLayer] = useState<'kaart' | 'lijst' | 'datalaag'>('kaart');
+  
+  // Modals & Panels
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isOpiniepeilerOpen, setIsOpiniepeilerOpen] = useState(false);
   const [stayInformedOpen, setStayInformedOpen] = useState(false);
   const [stayInformedMode, setStayInformedMode] = useState<'register' | 'login'>('register');
-  const [isDeveloperLoggedIn, setIsDeveloperLoggedIn] = useState(true);
   const [isDeveloperPortalOpen, setIsDeveloperPortalOpen] = useState(false);
   const [isBuurtPaspoortOpen, setIsBuurtPaspoortOpen] = useState(false);
   const [selectedParticipationProject, setSelectedParticipationProject] = useState<Project | null>(null);
@@ -55,21 +48,7 @@ export default function App() {
   const [isDisclaimerModalOpen, setIsDisclaimerModalOpen] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
 
-  const handleHeroFilterNavigate = (filter: { status?: string; kern?: string }) => {
-    if (filter.status) {
-      setProjectFilterStatus(filter.status);
-    }
-    if (filter.kern && filter.kern !== 'Alle kernen (3)') {
-      setProjectFilterKern(filter.kern);
-    } else {
-      setProjectFilterKern('Alle');
-    }
-    setWonenActiveLayer('lijst');
-    setActiveTab('wonen');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // Sync state with URL hash for direct standalone page opening
+  // Sync state with URL hash
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.toLowerCase();
@@ -89,24 +68,25 @@ export default function App() {
       } else if (hash === '#wonen') {
         setActiveTab('wonen');
         setIsDeveloperPortalOpen(false);
-      } else if (hash === '#kennis' || hash === '#inzichten') {
-        setActiveTab('kennis');
+      } else if (hash === '#projecten') {
+        setActiveTab('projecten');
+        setIsDeveloperPortalOpen(false);
+      } else if (hash === '#inzicht' || hash === '#kennis' || hash === '#woningmarkt-data') {
+        setActiveTab('home');
         setIsDeveloperPortalOpen(false);
       } else if (hash === '#ontwikkelaars') {
         setActiveTab('ontwikkelaars');
         setIsDeveloperPortalOpen(false);
-      } else if (hash === '#woningmarkt-data' || hash === '#data' || hash === '#woningmarkt' || hash === '#data-dashboard') {
-        setActiveTab('woningmarkt-data');
+      } else if (hash === '#over' || hash === '#over-woondata') {
+        setActiveTab('over-woondata');
         setIsDeveloperPortalOpen(false);
-      } else if (hash === '#woonwensen-dashboard' || hash === '#realtime-dashboard' || hash === '#realtime' || hash === '#woonwensen-data') {
-        setActiveTab('woonwensen-dashboard');
-        setIsDeveloperPortalOpen(false);
-        setIsBuurtPaspoortOpen(false);
-        setIsParticipationPortalOpen(false);
+      } else if (hash === '#opiniepeiler' || hash === '#opiniepeiler-aanmelden') {
+        setIsOpiniepeilerOpen(true);
       } else if (hash === '#praat-mee' || hash === '#woonwensen') {
-        setActiveTab('praat-mee');
+        setActiveTab('wonen');
         setIsDeveloperPortalOpen(false);
       } else if (hash === '' || hash === '#home') {
+        setActiveTab('home');
         setIsDeveloperPortalOpen(false);
       }
     };
@@ -116,14 +96,13 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Alleen 'Blijf op de hoogte' floating button tonen wanneer naar onderen / richting de onderkant van de pagina is gescrold
+  // Floating notification / stay informed trigger
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       const windowHeight = window.innerHeight;
       const fullHeight = document.documentElement.scrollHeight;
 
-      // Zichtbaar zodra de bezoeker naar beneden is gescrold (voorbij de header/bovenkant, richting het onderste paginagedeelte)
       const isScrolledDown = scrollY > 400 && (
         (scrollY + windowHeight) / fullHeight >= 0.35 ||
         (fullHeight - (scrollY + windowHeight) <= 1500)
@@ -143,28 +122,7 @@ export default function App() {
     setStayInformedOpen(true);
   };
 
-  const closePrivacyModal = () => {
-    setIsPrivacyModalOpen(false);
-    if (window.location.hash.toLowerCase() === '#privacy' || window.location.hash.toLowerCase() === '#privacystatement' || window.location.hash.toLowerCase() === '#avg') {
-      history.pushState(null, '', window.location.pathname + window.location.search);
-    }
-  };
-
-  const closeDisclaimerModal = () => {
-    setIsDisclaimerModalOpen(false);
-    if (window.location.hash.toLowerCase() === '#disclaimer' || window.location.hash.toLowerCase() === '#voorwaarden') {
-      history.pushState(null, '', window.location.pathname + window.location.search);
-    }
-  };
-
   const openDeveloperPortal = () => {
-    setIsDeveloperPortalOpen(true);
-    setIsBuurtPaspoortOpen(false);
-    setIsParticipationPortalOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const openOntdekPlatform = () => {
     setIsDeveloperPortalOpen(true);
     setIsBuurtPaspoortOpen(false);
     setIsParticipationPortalOpen(false);
@@ -173,9 +131,6 @@ export default function App() {
 
   const closeDeveloperPortal = () => {
     setIsDeveloperPortalOpen(false);
-    if (window.location.hash.toLowerCase() === '#portaal' || window.location.hash.toLowerCase() === '#portal' || window.location.hash.toLowerCase() === '#developer-portal' || window.location.hash.toLowerCase() === '#besloten-portaal' || window.location.hash.toLowerCase() === '#ontdek-platform') {
-      history.pushState(null, '', window.location.pathname + window.location.search);
-    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -203,30 +158,15 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const openQuickscan = () => {
-    setActiveTab('ontwikkelaars');
+  const handleNavigateWithFilters = (tab: string, extra?: { kern?: string; status?: string }) => {
+    if (extra?.kern) {
+      setProjectFilterKern(extra.kern);
+    }
+    if (extra?.status) {
+      setProjectFilterStatus(extra.status);
+    }
+    setActiveTab(tab);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const openSurvey = () => {
-    setIsDeveloperPortalOpen(false);
-    setIsBuurtPaspoortOpen(false);
-    setActiveTab('praat-mee');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const openWoonwaarden = () => {
-    setIsDeveloperPortalOpen(false);
-    setIsBuurtPaspoortOpen(false);
-    setActiveTab('kennis');
-    setTimeout(() => {
-      const el = document.getElementById('woonwaarden');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: 800, behavior: 'smooth' });
-      }
-    }, 100);
   };
 
   // IF BUURT- & GEBIEDSPASPOORT PORTAL IS OPEN:
@@ -241,7 +181,7 @@ export default function App() {
         }}
         onOpenWoonwensenScan={() => {
           setIsBuurtPaspoortOpen(false);
-          setActiveTab('praat-mee');
+          setActiveTab('wonen');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onOpenDeveloperPortal={() => {
@@ -252,7 +192,7 @@ export default function App() {
     );
   }
 
-  // IF DEDICATED PARTICIPATION & CO-CREATION PORTAL IS OPEN:
+  // IF DEDICATED PARTICIPATION PORTAL IS OPEN:
   if (isParticipationPortalOpen && selectedParticipationProject) {
     return (
       <ProjectParticipationPortal
@@ -263,114 +203,101 @@ export default function App() {
     );
   }
 
-  // IF SEPARATE DEVELOPER PORTAL (BESLOTEN PORTAAL: ONTDEK HET PLATFORM) IS OPEN:
+  // IF SEPARATE DEVELOPER PORTAL IS OPEN:
   if (isDeveloperPortalOpen) {
     return (
       <OntdekPlatformPortal
         onBackToWebsite={closeDeveloperPortal}
         onOpenWoonwensenScanStats={() => {
           setIsDeveloperPortalOpen(false);
-          setActiveTab('woonwensen-dashboard');
+          setActiveTab('inzicht');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onOpenWoningmarktData={() => {
           setIsDeveloperPortalOpen(false);
-          setActiveTab('woningmarkt-data');
+          setActiveTab('inzicht');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onOpenParticipatieProjecten={() => {
           setIsDeveloperPortalOpen(false);
-          setActiveTab('wonen');
-          setWonenActiveLayer('lijst');
+          setActiveTab('projecten');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       />
     );
   }
 
-  // PUBLIC ONE-PAGER WEBSITE
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAF8] text-slate-900 font-sans relative">
-      {/* Header with Public Navigation & Action triggers */}
+      
+      {/* Header with requested navigation: Wonen | Projecten | Inzicht | Voor ontwikkelaars | Over Woondata + Zoeken en Inloggen */}
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        openAiAdvisor={() => setAiAdvisorOpen(true)}
-        openQuickscan={openQuickscan}
-        openSurvey={openSurvey}
-        openStayInformed={openStayInformed}
-        isDeveloperLoggedIn={isDeveloperLoggedIn}
-        onOpenDeveloperPortal={openOntdekPlatform}
+        onOpenSearch={() => setIsSearchOpen(true)}
+        onOpenLogin={() => setIsLoginOpen(true)}
+        onOpenOpiniepeiler={() => setIsOpiniepeilerOpen(true)}
+        openSurvey={() => setActiveTab('wonen')}
       />
 
-      {/* Main Content Body */}
+      {/* Main Content Area */}
       <main className="flex-1">
-        {/* HOMEPAGE: One-pager Visitekaartje, Kennisplatform & Startpunt voor Woononderzoek */}
+        
+        {/* HOMEPAGE: Rustig, hoogwaardig & overzichtelijk conform afbeelding 1 & 2 */}
         {activeTab === 'home' && (
-          <div>
-            <HeroSection
-              setActiveTab={setActiveTab}
-              openQuickscan={openQuickscan}
-              openSurvey={openSurvey}
-              onFilterNavigate={handleHeroFilterNavigate}
-              onOpenMarktdata={() => {
-                setActiveTab('woningmarkt-data');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              onOpenAnalyseLocatie={() => {
-                openBuurtPaspoort();
-              }}
-            />
-            <ThreeRoutesSection
-              setActiveTab={setActiveTab}
-              openQuickscan={openQuickscan}
-              openSurvey={openSurvey}
-            />
-            <ProjectsMapSection
-              onOpenParticipation={openParticipationPortal}
-              initialStatus={projectFilterStatus}
-              initialKern={projectFilterKern}
-              onStatusChange={setProjectFilterStatus}
-              onKernChange={setProjectFilterKern}
-            />
-            <KnowledgePlatformSection
-              onOpenQuickscan={openQuickscan}
-              onOpenWoonwaarden={openWoonwaarden}
-            />
-            <DeveloperTools 
-              onNavigateToWoonwaarden={openWoonwaarden}
-              onOpenBuurtPaspoort={openBuurtPaspoort}
-              onOpenOntdekPlatform={openOntdekPlatform}
-            />
-            <WoonwaardenGrid />
-            <ImpactRegister />
-          </div>
+          <HomepageRestructured
+            onNavigate={handleNavigateWithFilters}
+            openSurvey={() => {
+              setActiveTab('wonen');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            openQuickscan={() => {
+              setActiveTab('ontwikkelaars');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            openDeveloperPortal={openDeveloperPortal}
+            onOpenOpiniepeiler={() => setIsOpiniepeilerOpen(true)}
+            onSelectProject={(proj) => openParticipationPortal(proj)}
+          />
         )}
 
-        {/* TAB: WONEN & PROJECTEN (Projecten- & Datalaag) */}
+        {/* TAB 1: WONEN & WOONWENSEN (Inwoners, WoonwensenScan & Woonpanel) */}
         {activeTab === 'wonen' && (
+          <WonenView
+            onNavigateToProjects={() => {
+              setActiveTab('projecten');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onOpenParticipation={openParticipationPortal}
+            onOpenStayInformed={() => openStayInformed('register')}
+            onOpenOpiniepeiler={() => setIsOpiniepeilerOpen(true)}
+          />
+        )}
+
+        {/* TAB 2: PROJECTEN (Nieuwbouwprojecten & interactieve kaart) */}
+        {activeTab === 'projecten' && (
           <div>
-            <div className="bg-[#0B192C] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+            <div className="bg-[#070D1C] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]">
               <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                 <div>
-                  <span className="text-xs font-bold text-[#D6F830] uppercase tracking-wider">
-                    Projecten- & Datalaag
+                  <span className="text-xs font-bold text-[#C9F31D] uppercase tracking-wider font-display">
+                    NIEUWBOUWAANBOD &amp; PLANCAPACITEIT
                   </span>
-                  <h1 className="text-2xl sm:text-4xl font-extrabold text-white mt-1 tracking-tight">
-                    Nieuwbouwprojecten & Plancapaciteit
+                  <h1 className="text-2xl sm:text-4xl font-extrabold text-white mt-1 tracking-tight font-display">
+                    Nieuwbouwprojecten &amp; Plankaart
                   </h1>
                   <p className="text-sm text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
-                    Ontdek alle actuele en toekomstige woningbouwlocaties in Dronten, Biddinghuizen en Swifterbant. Schakel tussen de interactieve kaart, projectkaarten en de Woonvisie-datalaag.
+                    Ontdek alle actuele en toekomstige woningbouwlocaties in Dronten, Biddinghuizen en Swifterbant. Schakel tussen de interactieve kaart, projectlijst en de plancapaciteit datalaag.
                   </p>
                 </div>
 
-                {/* Layer View Switcher in the dark banner */}
-                <div className="flex flex-wrap gap-2 bg-slate-900/80 p-1.5 rounded-full border border-slate-700 shadow-lg self-start lg:self-auto shrink-0 backdrop-blur-md">
+                {/* Layer Switcher */}
+                <div className="flex flex-wrap gap-2 bg-slate-900/90 p-1.5 rounded-full border border-slate-700 shadow-lg self-start lg:self-auto shrink-0 backdrop-blur-md">
                   <button
                     onClick={() => setWonenActiveLayer('kaart')}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                       wonenActiveLayer === 'kaart'
-                        ? 'bg-[#D6F830] text-black shadow-md'
+                        ? 'bg-[#C9F31D] text-slate-950 shadow-md'
                         : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -379,20 +306,20 @@ export default function App() {
                   </button>
                   <button
                     onClick={() => setWonenActiveLayer('lijst')}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                       wonenActiveLayer === 'lijst'
-                        ? 'bg-[#D6F830] text-black shadow-md'
+                        ? 'bg-[#C9F31D] text-slate-950 shadow-md'
                         : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
                     <ListFilter className="w-3.5 h-3.5" />
-                    <span>Projectenoverzicht ({PROJECTS_DATA.length})</span>
+                    <span>Projecten ({PROJECTS_DATA.length})</span>
                   </button>
                   <button
                     onClick={() => setWonenActiveLayer('datalaag')}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                       wonenActiveLayer === 'datalaag'
-                        ? 'bg-[#D6F830] text-black shadow-md'
+                        ? 'bg-[#C9F31D] text-slate-950 shadow-md'
                         : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -402,6 +329,7 @@ export default function App() {
                 </div>
               </div>
             </div>
+
             <ProjectsMapSection
               activeLayer={wonenActiveLayer}
               onLayerChange={setWonenActiveLayer}
@@ -415,145 +343,72 @@ export default function App() {
           </div>
         )}
 
-        {/* TAB: WOONWENSEN & PANEL (Startpunt Woononderzoek) */}
-        {activeTab === 'praat-mee' && (
-          <div>
-            <div className="bg-[#0B192C] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
-              <div className="max-w-7xl mx-auto">
-                <span className="text-xs font-bold text-[#D6F830] uppercase tracking-wider">
-                  Inwonerspeiling & Burgerparticipatie
-                </span>
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-white mt-1 tracking-tight">
-                  Woonwensenscan Dronten
-                </h1>
-                <p className="text-sm text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
-                  Laat weten welke woningen en buurten nodig zijn in Dronten, Biddinghuizen en Swifterbant. Uw anonieme reactie gebruiken wij als input voor nieuwe woningbouwplannen en als inbreng voor het gemeentelijk woningbouwbeleid.
-                </p>
-              </div>
-            </div>
-            <WoonwensenScan />
-            <ImpactRegister />
-          </div>
-        )}
-
-        {/* TAB: WOONMARKT INTELLIGENCE */}
-        {activeTab === 'marktdata' && (
-          <div>
-            <MarketDataDashboard />
-            <ImpactRegister />
-          </div>
-        )}
-
-        {/* TAB: INZICHTEN & KENNISPLATFORM */}
-        {activeTab === 'kennis' && (
-          <div>
-            {/* Header Banner: Gebiedsontwikkeling & Beleid */}
-            <div className="bg-[#080E1B] text-white py-14 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]">
-              <div className="max-w-7xl mx-auto">
-                <span className="text-xs font-bold text-[#C9F31D] uppercase tracking-wider font-display">
-                  GEBIEDSONTWIKKELING &amp; BELEID
-                </span>
-                <h1 className="text-3xl sm:text-5xl font-extrabold text-white mt-2 tracking-tight font-display">
-                  Kennisbank &amp; platform
-                </h1>
-                <p className="text-sm sm:text-base text-slate-300 mt-3 max-w-3xl font-normal leading-relaxed">
-                  Van abstracte beleidsambities naar concrete, haalbare bouwprogramma’s. Kennis delen ook vanuit gemeentelijke beleidsdocumenten, toetsingskaders, vraagvalidatie en kwartaalpublicaties voor Dronten, Biddinghuizen en Swifterbant.
-                </p>
-              </div>
-            </div>
-
-            {/* Kennisplatform & Publicaties */}
-            <KnowledgePlatformSection
-              onOpenQuickscan={openQuickscan}
-              onOpenWoonwaarden={openWoonwaarden}
-            />
-            <WoonwaardenGrid 
-              backgroundImage="https://www.image2url.com/r2/default/images/1788464129594-e0860c93-a90d-4878-b5e6-d10d0cdd8bd4.webp"
-            />
-            <WoonperspectiefSection />
-          </div>
-        )}
-
-        {/* TAB: WONINGMARKT DATA DASHBOARD (Aparte module / pagina) */}
-        {activeTab === 'woningmarkt-data' && (
-          <div>
-            <WonenInDrontenDataDashboard 
-              onBack={() => {
-                setActiveTab('ontwikkelaars');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            />
-          </div>
-        )}
-
-        {/* TAB: REALTIME WOONWENSEN DASHBOARD (Aparte pagina voor ontwikkelaars & beleid) */}
-        {activeTab === 'woonwensen-dashboard' && (
-          <div>
-            <WoonwensenRealtimeDashboard 
-              onBack={() => {
-                setActiveTab('ontwikkelaars');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              onOpenWoonwensenScan={() => {
-                setActiveTab('praat-mee');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            />
-          </div>
-        )}
-
-        {/* TAB: ONTWIKKELAARS (Programma-advies, Woningmarktberaad, Beleidscyclus & Vaste Onderzoeksproducten) */}
+        {/* TAB VOOR ONTWIKKELAARS (Plannen & marktdata – doelgroepanalyse, projectscan, ontwikkelaarsdata) */}
         {activeTab === 'ontwikkelaars' && (
           <div>
             <DeveloperTools 
-              onNavigateToWoonwaarden={openWoonwaarden}
-              onOpenBuurtPaspoort={openBuurtPaspoort}
-              onOpenOntdekPlatform={openOntdekPlatform}
-              onOpenWoningmarktData={() => {
-                setActiveTab('woningmarkt-data');
+              onNavigateToWoonwaarden={() => {
+                setActiveTab('ontwikkelaars');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
+              onOpenBuurtPaspoort={openBuurtPaspoort}
+              onOpenOntdekPlatform={openDeveloperPortal}
+              onOpenWoningmarktData={() => {
+                openDeveloperPortal();
+              }}
               onOpenRealtimeDashboard={() => {
-                setActiveTab('woonwensen-dashboard');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                openDeveloperPortal();
               }}
             />
           </div>
         )}
 
-        {/* TAB: NIEUWS (Weet dagelijks wat er speelt: Marketupdates, Kennisbank, Artikelen & Publicaties) */}
-        {activeTab === 'nieuws' && (
-          <div className="bg-white min-h-screen">
-            <WeetDagelijksWatErSpeelt 
-              onOpenMarketUpdates={() => {
-                setActiveTab('woningmarkt-data');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              onOpenKennisbank={() => {
-                setActiveTab('kennis');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              onOpenArticles={() => {
-                setActiveTab('kennis');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              onOpenNewsletter={() => {
-                openStayInformed('register');
-              }}
-            />
-          </div>
+        {/* TAB 5: OVER WOONDATA (Missie, onafhankelijke marktregie & 4 partners incl. Vovon Development) */}
+        {activeTab === 'over-woondata' && (
+          <AboutWoondataView
+            onNavigateToProjects={() => {
+              setActiveTab('projecten');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onNavigateToSurvey={() => {
+              setActiveTab('wonen');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onNavigateToDeveloper={() => {
+              setActiveTab('ontwikkelaars');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
         )}
+
       </main>
 
       {/* Footer */}
       <Footer 
         setActiveTab={setActiveTab} 
+        openSurvey={() => setActiveTab('wonen')}
+        openDeveloperPortal={openDeveloperPortal}
         openStayInformed={openStayInformed}
         openPrivacyStatement={() => setIsPrivacyModalOpen(true)}
         openDisclaimer={() => setIsDisclaimerModalOpen(true)}
       />
 
-      {/* Floating Blijf op de hoogte Action Button (verschijnt alleen wanneer naar beneden / onderaan de pagina gescrold) */}
+      {/* Quick Search Modal */}
+      <QuickSearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onNavigate={handleNavigateWithFilters}
+      />
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onOpenDeveloperPortal={openDeveloperPortal}
+        onOpenSurvey={() => setActiveTab('wonen')}
+      />
+
+      {/* Floating Action Button (Blijf op de hoogte) */}
       <div 
         className={`fixed bottom-20 sm:bottom-24 right-4 sm:right-6 md:right-8 z-30 transition-all duration-500 ease-in-out ${
           showFloatingButton 
@@ -571,6 +426,13 @@ export default function App() {
         </button>
       </div>
 
+      {/* Opiniepeiler Inwonerspanel Modal */}
+      <OpiniepeilerModal
+        isOpen={isOpiniepeilerOpen}
+        onClose={() => setIsOpiniepeilerOpen(false)}
+        onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
+      />
+
       {/* Stay Informed Popup Modal */}
       <StayInformedModal
         isOpen={stayInformedOpen}
@@ -579,30 +441,26 @@ export default function App() {
         onOpenFullPrivacyStatement={() => setIsPrivacyModalOpen(true)}
       />
 
-      {/* Privacystatement WoonData Modal */}
+      {/* Privacy Statement Modal */}
       <PrivacyStatementModal
         isOpen={isPrivacyModalOpen}
-        onClose={closePrivacyModal}
+        onClose={() => setIsPrivacyModalOpen(false)}
         onOpenDisclaimer={() => setIsDisclaimerModalOpen(true)}
       />
 
-      {/* Disclaimer WoonData Modal */}
+      {/* Disclaimer Modal */}
       <DisclaimerModal
         isOpen={isDisclaimerModalOpen}
-        onClose={closeDisclaimerModal}
+        onClose={() => setIsDisclaimerModalOpen(false)}
         onOpenPrivacyStatement={() => setIsPrivacyModalOpen(true)}
       />
 
-      {/* AI Woonadviseur Modal */}
-      {aiAdvisorOpen && (
-        <AiAdvisorModal onClose={() => setAiAdvisorOpen(false)} />
-      )}
-
-      {/* Cookie & Voorwaarden Consent Banner (onderaan scherm, conform inspiratie) */}
+      {/* Cookie Consent Banner */}
       <CookieConsentBanner
         onOpenPrivacyStatement={() => setIsPrivacyModalOpen(true)}
         onOpenDisclaimer={() => setIsDisclaimerModalOpen(true)}
       />
+
     </div>
   );
 }

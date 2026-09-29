@@ -240,47 +240,32 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-[800px]">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 uppercase tracking-widest mb-4 font-display">
-              <span className="w-2 h-2 rounded-full bg-[#C9F31D] shadow-[0_0_10px_#C9F31D]"></span>
-              <span>Voor ontwikkelaars &amp; partners</span>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 lg:gap-12">
+            <div className="max-w-[750px]">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 uppercase tracking-widest mb-4 font-display">
+                <span className="w-2 h-2 rounded-full bg-[#C9F31D] shadow-[0_0_10px_#C9F31D]"></span>
+                <span>Voor ontwikkelaars &amp; partners</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.12] font-display">
+                Van marktinzicht naar een beter woningbouwplan
+              </h1>
+
+              <p className="text-base sm:text-lg text-slate-300 mt-5 leading-relaxed font-normal">
+                Onderbouw plannen met actuele woonwensen, regionale marktdata en gevalideerde vraagbehoefte in Dronten, Biddinghuizen en Swifterbant.
+              </p>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.12] font-display">
-              Van marktinzicht naar een beter woningbouwplan
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-300 mt-5 max-w-[650px] leading-relaxed font-normal">
-              Onderbouw plannen met actuele woonwensen, regionale marktdata en gevalideerde vraagbehoefte in Dronten, Biddinghuizen en Swifterbant.
-            </p>
-
-            {/* Voor ontwikkelaars actieknoppen: uitsluitend Ontdek het platform en Neem contact op */}
-            <div className="flex flex-wrap items-center gap-3.5 mt-8 pt-2">
-              <button
-                onClick={() => {
-                  if (onOpenOntdekPlatform) {
-                    onOpenOntdekPlatform();
-                  } else if (onOpenPortal) {
-                    onOpenPortal();
-                  } else {
-                    scrollToSection('data-bouwt');
-                  }
-                }}
-                className="px-6 py-3.5 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-black text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all cursor-pointer font-display shadow-[0_0_20px_rgba(201,243,29,0.35)] hover:scale-[1.02] active:scale-[0.98] group"
-              >
-                <TrendingUp className="w-4 h-4 text-black" />
-                <span>Ontdek het platform</span>
-                <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-0.5 transition-transform" />
-              </button>
-
+            {/* Knop Neem contact op: rechts naast de tekst, niet eronder */}
+            <div className="shrink-0 md:pb-1">
               <button
                 onClick={() => {
                   setContactSubject('Algemene kennismaking & planadvies');
                   scrollToSection('contact-advies');
                 }}
-                className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-bold flex items-center gap-2 transition-all cursor-pointer font-display backdrop-blur-md"
+                className="px-6 py-3.5 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-slate-950 text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all cursor-pointer font-display shadow-[0_0_20px_rgba(201,243,29,0.35)] hover:scale-[1.02] active:scale-[0.98]"
               >
-                <Mail className="w-4 h-4 text-slate-300" />
+                <Mail className="w-4 h-4 text-slate-950" />
                 <span>Neem contact op</span>
               </button>
             </div>
@@ -526,25 +511,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
                 Daarnaast combineert het platform actuele woonwensen, markttrends en doelgroepprognoses op een slimme manier.
               </p>
-
-              <div className="pt-2">
-                <button
-                  onClick={() => {
-                    if (onOpenOntdekPlatform) {
-                      onOpenOntdekPlatform();
-                    } else if (onOpenRealtimeDashboard) {
-                      onOpenRealtimeDashboard();
-                    } else {
-                      scrollToSection('onderzoek-advies');
-                    }
-                  }}
-                  className="px-6 py-3.5 rounded-full bg-[#080E1B] hover:bg-[#162038] text-white text-xs sm:text-sm font-extrabold flex items-center gap-2.5 transition-all cursor-pointer shadow-md hover:scale-[1.02] group"
-                >
-                  <TrendingUp className="w-4 h-4 text-[#C9F31D]" />
-                  <span>Ontdek het platform</span>
-                  <ArrowRight className="w-4 h-4 text-[#C9F31D] group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
             </div>
 
             {/* Right Side: 2x2 Rounded Cards */}

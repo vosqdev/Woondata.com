@@ -30,21 +30,25 @@ export const Footer: React.FC<FooterProps> = ({
             <WoonDataLogo 
               size="md"
               onClick={() => setActiveTab('home')}
-              className="hover:opacity-95 transition-opacity"
+              className="hover:opacity-95 transition-opacity cursor-pointer"
             />
 
             <p className="text-sm text-slate-400 leading-relaxed font-normal">
-              Het onafhankelijke woonmarkt en dataplatform dat inwonerssignalen, transactiedata, beleid zoals de 7 gemeentelijke woonwaarden, bewonersperspectief 2040 en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.
+              Het onafhankelijke woonmarkt- en dataplatform dat inwonerssignalen, transactiedata, beleid zoals de 7 gemeentelijke woonwaarden, bewonersperspectief 2040 en uitvoeringskennis samenbrengt voor Dronten, Biddinghuizen en Swifterbant.
             </p>
+
+            <div className="text-xs text-slate-500 pt-2">
+              Samenwerking tussen Kerremans Makelaardij, Makelaardij Van der Linden, De Makelaars van 5VOOR12 en Vovon Development.
+            </div>
           </div>
 
           {/* Right Navigation & Direct Links (7 cols) */}
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6 pt-2">
             
-            {/* Column 1: Platform */}
+            {/* Column 1: Hoofdmenu */}
             <div className="space-y-3">
               <h4 className="text-xs font-bold text-[#C9F31D] tracking-wider uppercase font-display">
-                Platform
+                Navigatie
               </h4>
               <ul className="space-y-2 text-xs text-slate-400">
                 <li>
@@ -52,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({
                     onClick={() => setActiveTab('home')} 
                     className="hover:text-white transition-colors cursor-pointer"
                   >
-                    Woonmarkt Overzicht
+                    Homepage
                   </button>
                 </li>
                 <li>
@@ -60,47 +64,31 @@ export const Footer: React.FC<FooterProps> = ({
                     onClick={() => setActiveTab('wonen')} 
                     className="hover:text-white transition-colors cursor-pointer"
                   >
-                    Nieuwbouwprojecten
+                    Wonen
                   </button>
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('kennis')} 
+                    onClick={() => setActiveTab('projecten')} 
                     className="hover:text-white transition-colors cursor-pointer"
                   >
-                    Kennis &amp; Inzichten
+                    Projecten
                   </button>
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('nieuws')} 
+                    onClick={() => setActiveTab('ontwikkelaars')} 
                     className="hover:text-white transition-colors cursor-pointer"
                   >
-                    Nieuws &amp; Publicaties
+                    Voor ontwikkelaars
                   </button>
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('woningmarkt-data')} 
+                    onClick={() => setActiveTab('over-woondata')} 
                     className="hover:text-white transition-colors cursor-pointer"
                   >
-                    Woningmarkt Data
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => openPrivacyStatement && openPrivacyStatement()} 
-                    className="hover:text-[#C9F31D] transition-colors cursor-pointer font-medium"
-                  >
-                    Privacystatement
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => openDisclaimer && openDisclaimer()} 
-                    className="hover:text-[#C9F31D] transition-colors cursor-pointer font-medium"
-                  >
-                    Disclaimer
+                    Over Woondata
                   </button>
                 </li>
               </ul>
@@ -114,10 +102,26 @@ export const Footer: React.FC<FooterProps> = ({
               <ul className="space-y-2 text-xs text-slate-400">
                 <li>
                   <button 
-                    onClick={() => openSurvey ? openSurvey() : setActiveTab('wonen')} 
+                    onClick={() => setActiveTab('wonen')} 
                     className="hover:text-white transition-colors cursor-pointer"
                   >
-                    Inwoners &amp; Zoekers
+                    Inwoners &amp; Woningzoekenden
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => setActiveTab('ontwikkelaars')} 
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    Ontwikkelaars &amp; Bouwers
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => setActiveTab('inzicht')} 
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    Gemeente &amp; Beleid
                   </button>
                 </li>
                 <li>
@@ -125,15 +129,7 @@ export const Footer: React.FC<FooterProps> = ({
                     onClick={() => openDeveloperPortal ? openDeveloperPortal() : setActiveTab('ontwikkelaars')} 
                     className="hover:text-white transition-colors cursor-pointer"
                   >
-                    Voor Ontwikkelaars
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => setActiveTab('kennis')} 
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Gemeente &amp; Beleid
+                    Besloten Ontwikkelaarsportaal
                   </button>
                 </li>
               </ul>
@@ -142,15 +138,15 @@ export const Footer: React.FC<FooterProps> = ({
             {/* Column 3: Direct Meedoen */}
             <div className="space-y-3 col-span-2 sm:col-span-1">
               <h4 className="text-xs font-bold text-[#C9F31D] tracking-wider uppercase font-display">
-                Direct Meedoen
+                Direct Actie
               </h4>
               <ul className="space-y-2 text-xs text-slate-400">
                 <li>
                   <button 
-                    onClick={() => openSurvey && openSurvey()} 
+                    onClick={() => openSurvey ? openSurvey() : setActiveTab('wonen')} 
                     className="hover:text-white transition-colors cursor-pointer text-left"
                   >
-                    Woonwensen invullen
+                    WoonwensenScan invullen
                   </button>
                 </li>
                 <li>
@@ -158,15 +154,31 @@ export const Footer: React.FC<FooterProps> = ({
                     onClick={() => openStayInformed && openStayInformed('register')} 
                     className="hover:text-white transition-colors cursor-pointer text-left"
                   >
-                    Blijf op de hoogte
+                    Aanmelden Woonpanel
                   </button>
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('ontwikkelaars')} 
+                    onClick={() => setActiveTab('over-woondata')} 
                     className="hover:text-white transition-colors cursor-pointer text-left"
                   >
-                    Samenwerking bespreken
+                    Contact met partners
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => openPrivacyStatement && openPrivacyStatement()} 
+                    className="hover:text-[#C9F31D] transition-colors cursor-pointer text-left font-medium"
+                  >
+                    Privacystatement
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => openDisclaimer && openDisclaimer()} 
+                    className="hover:text-[#C9F31D] transition-colors cursor-pointer text-left font-medium"
+                  >
+                    Disclaimer
                   </button>
                 </li>
               </ul>
@@ -179,30 +191,23 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Bottom Divider & Navigation / Copyright */}
         <div className="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4 font-display">
           <div className="text-xs text-slate-400 text-center md:text-left">
-            <div>© 2026 Nieuwbouw Dronten. Alle rechten voorbehouden.</div>
+            <div>© 2026 Woondata.com · Alle rechten voorbehouden.</div>
           </div>
 
-          {/* Nav Links */}
+          {/* Quick Nav Links */}
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-4 text-xs text-slate-400">
-            <button 
-              onClick={() => setActiveTab('home')} 
-              className="hover:text-[#C9F31D] transition-colors cursor-pointer"
-            >
-              Woonmarkt
-            </button>
-            <span className="text-slate-600">•</span>
             <button 
               onClick={() => setActiveTab('wonen')} 
               className="hover:text-[#C9F31D] transition-colors cursor-pointer"
             >
-              Projecten
+              Wonen
             </button>
             <span className="text-slate-600">•</span>
             <button 
-              onClick={() => setActiveTab('kennis')} 
+              onClick={() => setActiveTab('projecten')} 
               className="hover:text-[#C9F31D] transition-colors cursor-pointer"
             >
-              Inzichten
+              Projecten
             </button>
             <span className="text-slate-600">•</span>
             <button 
@@ -213,17 +218,17 @@ export const Footer: React.FC<FooterProps> = ({
             </button>
             <span className="text-slate-600">•</span>
             <button 
-              onClick={() => setActiveTab('woningmarkt-data')} 
+              onClick={() => setActiveTab('over-woondata')} 
               className="hover:text-[#C9F31D] transition-colors cursor-pointer"
             >
-              Woningmarkt data
+              Over Woondata
             </button>
             <span className="text-slate-600">•</span>
             <button 
               onClick={() => openPrivacyStatement && openPrivacyStatement()} 
               className="hover:text-[#C9F31D] text-slate-300 transition-colors cursor-pointer font-medium"
             >
-              Privacystatement
+              Privacy
             </button>
             <span className="text-slate-600">•</span>
             <button 

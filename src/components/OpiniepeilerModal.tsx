@@ -151,7 +151,7 @@ export const OpiniepeilerModal: React.FC<OpiniepeilerModalProps> = ({
                 Aanmelden als inwoner voor de opiniepeiler
               </h2>
               <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-                Geef uw mening over nieuwe bouwplannen, voorzieningen en woonbehoeften in Dronten, Biddinghuizen en Swifterbant.
+                Het Woonpanel bestaat uit inwoners die periodiek hun mening geven over woonwensen, woningbouwlocaties, gewenste woningtypen, voorzieningen en de kwaliteit van leefomgevingen.
               </p>
             </div>
 

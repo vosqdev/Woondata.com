@@ -163,7 +163,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                 }`}
               >
                 <BarChart3 className="w-3.5 h-3.5" />
-                <span>Plancapaciteit Datalaag</span>
+                <span>Plancapaciteit</span>
               </button>
             </div>
           </div>
@@ -531,7 +531,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-8 bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
               <div>
-                <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block mb-1 font-display">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1 font-display">
                   Woondeal Dronten 2026 – 2030
                 </span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-950 font-display">
@@ -547,7 +547,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                 <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
                   <div className="flex justify-between items-center">
                     <h4 className="text-sm font-bold text-slate-900 font-display">Dronten</h4>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-200 font-display">68%</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#080E18] text-[#C9F31D] font-bold border border-slate-800 font-display">68%</span>
                   </div>
                   <div className="text-2xl font-black text-slate-950 font-display">2.250 <span className="text-xs text-slate-500 font-normal">woningen</span></div>
                   <p className="text-[11px] text-slate-500 font-normal">Havenkwartier, Spoorpark, De Gilden Zuid.</p>
@@ -556,7 +556,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                 <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
                   <div className="flex justify-between items-center">
                     <h4 className="text-sm font-bold text-slate-900 font-display">Biddinghuizen</h4>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-bold border border-blue-200 font-display">16%</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200 font-display">16%</span>
                   </div>
                   <div className="text-2xl font-black text-slate-950 font-display">530 <span className="text-xs text-slate-500 font-normal">woningen</span></div>
                   <p className="text-[11px] text-slate-500 font-normal">De Kleine Weide, Havenweg CPO, Noordoostrand.</p>
@@ -565,7 +565,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                 <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
                   <div className="flex justify-between items-center">
                     <h4 className="text-sm font-bold text-slate-900 font-display">Swifterbant</h4>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold border border-amber-200 font-display">16%</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200 font-display">16%</span>
                   </div>
                   <div className="text-2xl font-black text-slate-950 font-display">529 <span className="text-xs text-slate-500 font-normal">woningen</span></div>
                   <p className="text-[11px] text-slate-500 font-normal">De Houtsnip, Swifterzant Zuid, dorpshofjes.</p>
@@ -577,49 +577,71 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                 <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider font-display">
                   Wettelijk Segmenteringskader per Uitbreidingslocatie
                 </h4>
-                <div className="w-full h-8 rounded-xl overflow-hidden flex text-[11px] font-bold text-white text-center leading-8 shadow-xs">
-                  <div className="bg-emerald-700 w-[30%]">30% Sociaal</div>
-                  <div className="bg-blue-600 w-[35%]">35% Betaalbaar</div>
-                  <div className="bg-slate-800 w-[35%]">35% Vrije sector</div>
+                <div className="w-full h-8 rounded-xl overflow-hidden flex text-[11px] font-bold text-center leading-8 shadow-xs">
+                  <div className="bg-[#080E18] text-white w-[30%] font-display">30% Sociaal</div>
+                  <div className="bg-[#C9F31D] text-slate-950 font-black w-[35%] font-display">35% Betaalbaar</div>
+                  <div className="bg-slate-700 text-white w-[35%] font-display">35% Vrije sector</div>
                 </div>
-                <div className="flex flex-wrap justify-between text-xs text-slate-600 pt-1 font-medium">
-                  <span>Min. 30% Sociaal (&lt; € 280k)</span>
-                  <span>Min. 35% Betaalbaar (&lt; € 405k / Middenhuur)</span>
-                  <span>Max. 35% Vrije sector</span>
+                <div className="flex flex-wrap items-center justify-between text-xs text-slate-600 pt-1 font-medium gap-2">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#080E18] inline-block shrink-0" />
+                    <span>Min. 30% Sociaal (&lt; € 280k)</span>
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#C9F31D] border border-slate-300 inline-block shrink-0" />
+                    <span>Min. 35% Betaalbaar (&lt; € 405k / Middenhuur)</span>
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block shrink-0" />
+                    <span>Max. 35% Vrije sector</span>
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* Strategic Reserve Box */}
-            <div className="lg:col-span-4 bg-white text-slate-900 border border-slate-200/90 rounded-3xl p-6 sm:p-7 space-y-4 shadow-sm">
-              <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block font-display">
-                Plancapaciteitsreserve 130%
-              </span>
-              <h4 className="text-lg font-extrabold text-slate-950 font-display">
-                Zekerheid van Realisatie
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                Om de doelstelling van 3.309 woningen te waarborgen, hanteert de gemeente een plancapaciteitsreserve van 130% om eventuele vertraging of uitval op te vangen.
-              </p>
+            <div className="lg:col-span-4 bg-white text-slate-900 border border-slate-200/90 rounded-3xl p-6 sm:p-7 space-y-4 shadow-sm flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block font-display">
+                    Plancapaciteitsreserve
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#C9F31D] text-slate-950 text-xs font-black font-display shadow-xs">
+                    130%
+                  </span>
+                </div>
+                <h4 className="text-lg font-extrabold text-slate-950 font-display">
+                  Zekerheid van Realisatie
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  Om de doelstelling van 3.309 woningen te waarborgen, hanteert de gemeente een plancapaciteitsreserve van 130% om eventuele vertraging of uitval op te vangen.
+                </p>
+              </div>
 
               <div className="space-y-3.5 text-xs pt-2">
                 <div>
-                  <div className="flex justify-between text-slate-700 mb-1">
-                    <span className="font-semibold">Harde capaciteit (onherroepelijk)</span>
-                    <span className="font-bold text-emerald-700">2.150 woningen</span>
+                  <div className="flex justify-between items-center text-slate-700 mb-1.5">
+                    <span className="font-semibold flex items-center gap-1.5 text-slate-800">
+                      <span className="w-2 h-2 rounded-full bg-[#080E18]" />
+                      Harde capaciteit (onherroepelijk)
+                    </span>
+                    <span className="font-bold text-slate-950 font-display">2.150 woningen</span>
                   </div>
                   <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
-                    <div className="bg-emerald-600 h-full w-[65%]" />
+                    <div className="bg-[#080E18] h-full w-[65%] rounded-full" />
                   </div>
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-slate-700 mb-1">
-                    <span className="font-semibold">Zachte capaciteit (in procedure)</span>
-                    <span className="font-bold text-amber-700">1.680 woningen</span>
+                  <div className="flex justify-between items-center text-slate-700 mb-1.5">
+                    <span className="font-semibold flex items-center gap-1.5 text-slate-600">
+                      <span className="w-2 h-2 rounded-full bg-slate-400" />
+                      Zachte capaciteit (in procedure)
+                    </span>
+                    <span className="font-bold text-slate-600 font-display">1.680 woningen</span>
                   </div>
                   <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
-                    <div className="bg-amber-500 h-full w-[51%]" />
+                    <div className="bg-slate-400 h-full w-[51%] rounded-full" />
                   </div>
                 </div>
               </div>

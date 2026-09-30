@@ -42,7 +42,7 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
           </h1>
 
           <p className="text-base sm:text-xl text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto">
-            Hét centrale, onafhankelijke woningmarkt- en dataplatform voor Dronten, Biddinghuizen en Swifterbant. Waar inwonerssignalen, actuele woningbouwprojecten, gemeentelijk beleid en lokale praktijkkennis samenkomen.
+            Hét centrale, onafhankelijke woningmarkt- en dataplatform. Waar inwoners signalen, actuele woningbouwprojecten, gemeentelijk beleid en lokale praktijkkennis samenkomen.
           </p>
         </div>
       </section>

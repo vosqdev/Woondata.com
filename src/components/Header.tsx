@@ -3,9 +3,7 @@ import {
   Menu, 
   X, 
   Search,
-  Lock,
-  Vote,
-  ArrowRight
+  Lock
 } from 'lucide-react';
 import { WoonDataLogo } from './WoonDataLogo';
 
@@ -82,19 +80,9 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </nav>
 
-          {/* Right Side Actions: Knop Aanmelden opiniepeiler, Zoeken & Inloggen */}
+          {/* Right Side Actions: Zoeken & Inloggen */}
           <div className="hidden sm:flex items-center gap-2.5">
             
-            {/* Knop: Aanmelden als inwoner voor opiniepeiler */}
-            <button
-              onClick={() => onOpenOpiniepeiler ? onOpenOpiniepeiler() : (openSurvey ? openSurvey() : handleNavClick('wonen'))}
-              className="flex items-center gap-2 px-4 py-2 text-xs font-black rounded-full bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 shadow-[0_2px_14px_rgba(201,243,29,0.28)] transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98] font-display shrink-0"
-              title="Aanmelden als inwoner voor de opiniepeiler"
-            >
-              <Vote className="w-3.5 h-3.5 text-slate-950 stroke-[2.5]" />
-              <span>Aanmelden opiniepeiler</span>
-            </button>
-
             {/* Search Button */}
             <button
               onClick={onOpenSearch}
@@ -117,15 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Mobile Right Controls */}
-          <div className="flex lg:hidden items-center gap-2">
-            <button
-              onClick={() => onOpenOpiniepeiler ? onOpenOpiniepeiler() : handleNavClick('wonen')}
-              className="px-3 py-1.5 bg-[#C9F31D] text-slate-950 text-xs font-black rounded-full flex items-center gap-1.5 font-display shadow-xs"
-            >
-              <Vote className="w-3.5 h-3.5 stroke-[2.5]" />
-              <span>Opiniepeiler</span>
-            </button>
-
+          <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={onOpenSearch}
               aria-label="Zoeken"
@@ -167,21 +147,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Mobile Actions in Drawer */}
           <div className="pt-4 border-t border-white/[0.08] flex flex-col gap-2.5">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenOpiniepeiler) {
-                  onOpenOpiniepeiler();
-                } else {
-                  handleNavClick('wonen');
-                }
-              }}
-              className="w-full py-3 px-4 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 font-black rounded-xl text-xs text-center flex items-center justify-center gap-2 shadow-md cursor-pointer font-display"
-            >
-              <Vote className="w-4 h-4 text-slate-950 stroke-[2.5]" />
-              <span>Aanmelden als inwoner voor opiniepeiler</span>
-            </button>
-
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

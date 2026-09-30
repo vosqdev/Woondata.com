@@ -324,7 +324,7 @@ export default function App() {
                     }`}
                   >
                     <BarChart3 className="w-3.5 h-3.5" />
-                    <span>Plancapaciteit Datalaag</span>
+                    <span>Plancapaciteit</span>
                   </button>
                 </div>
               </div>

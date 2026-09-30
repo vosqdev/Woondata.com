@@ -37,10 +37,7 @@ import {
   MapPin,
   BookOpen,
   FileText,
-  Bell
 } from 'lucide-react';
-import { ImageUploader } from './ImageUploader';
-import { MediaItem } from '../types';
 
 interface DeveloperToolsProps {
   onNavigateToWoonwaarden?: () => void;
@@ -146,7 +143,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
   const [contactSubject, setContactSubject] = useState<string | null>(null);
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [attachedImage, setAttachedImage] = useState<MediaItem | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     organization: '',
@@ -179,9 +175,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
       netlifyData.set('email', formData.email.trim());
       netlifyData.set('telefoon', formData.phone.trim() || 'Niet ingevuld');
       netlifyData.set('toelichting', formData.notes.trim() || 'Geen toelichting opgegeven');
-      if (attachedImage?.variants?.thumbnail?.url || attachedImage?.url) {
-        netlifyData.set('bijlage_url', attachedImage.variants?.thumbnail?.url || attachedImage.url);
-      }
 
       const res = await fetch('/', {
         method: 'POST',
@@ -201,7 +194,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
         setContactSubmitted(false);
         setContactSubject(null);
         setSelectedProduct(null);
-        setAttachedImage(null);
         setFormData({
           name: '',
           organization: '',
@@ -832,7 +824,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                 <input type="hidden" name="ontvanger" value="aanvraag@woondata.com" />
                 <input type="hidden" name="onderwerp" value={`Nieuwe aanvraag Contact & Advies: ${contactSubject || 'Algemeen'} (${formData.organization || formData.name})`} />
                 <input type="hidden" name="onderwerp_keuze" value={contactSubject || 'Algemene kennismaking & planadvies'} />
-                <input type="hidden" name="bijlage_url" value={attachedImage?.variants?.thumbnail?.url || attachedImage?.url || ''} />
 
                 {/* Honeypot field for bot protection */}
                 <p className="hidden" aria-hidden="true">
@@ -943,17 +934,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                       placeholder="Beschrijf beknopt de locatie, gewenste woningtypologieën of toetsingsvraag..."
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-[#121829] text-xs text-white placeholder:text-slate-500 focus:outline-hidden focus:ring-2 focus:ring-[#C9F31D] resize-none"
-                    />
-                  </div>
-
-                  <div className="pt-1 border-t border-slate-700">
-                    <ImageUploader
-                      label="Plankaart, schets of situatietekening bijvoegen (Optioneel)"
-                      helperText="Sleep een bestand of blader op uw apparaat. Automatische WebP conversie (max 2MB)."
-                      currentImageUrl={attachedImage?.variants.thumbnail.url || attachedImage?.url}
-                      onImageSelected={(item) => setAttachedImage(item)}
-                      category="projecten"
-                      projectName={formData.organization || 'Ontwikkelaar Plan'}
                     />
                   </div>
                 </div>

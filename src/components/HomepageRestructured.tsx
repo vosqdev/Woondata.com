@@ -84,11 +84,11 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
             </div>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-white font-display tracking-tight leading-[1.08]">
-              Alles over wonen en bouwen in Dronten
+              Alles over wonen en bouwen
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto">
-              Hét centrale, onafhankelijke platform voor inwoners, gemeente en ontwikkelaars in Dronten, Biddinghuizen en Swifterbant. Waar actuele woningbouw, woonwensen en marktdata samenkomen.
+              Hét centrale, onafhankelijke platform voor inwoners, gemeente en ontwikkelaars. Waar actuele woningbouw, woonwensen en marktdata samenkomen.
             </p>
 
             {/* Quick Filter Strip for Fast Navigation */}

@@ -141,7 +141,7 @@ export const WonenView: React.FC<WonenViewProps> = ({
                 Het Woonpanel van Dronten, Biddinghuizen &amp; Swifterbant
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Het Woonpanel bestaat inmiddels uit ruim 840 inwoners die periodiek hun mening geven over woningbouwlocaties, gewenste woningtypen, voorzieningen en de kwaliteit van leefomgevingen. De uitkomsten worden direct gedeeld met de gemeente en ontwikkelaars.
+                Het Woonpanel bestaat uit inwoners die periodiek hun mening geven over woonwensen, woningbouwlocaties, gewenste woningtypen, voorzieningen en de kwaliteit van leefomgevingen.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
@@ -154,8 +154,8 @@ export const WonenView: React.FC<WonenViewProps> = ({
                   <div className="text-xs text-slate-500 mt-1">Korte online peiling over nieuwbouw</div>
                 </div>
                 <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/80">
-                  <div className="text-2xl font-black text-slate-900 font-display">100% AVG</div>
-                  <div className="text-xs text-slate-500 mt-1">Volledig anonieme verwerking</div>
+                  <div className="text-2xl font-black text-slate-900 font-display">Directe invloed</div>
+                  <div className="text-xs text-slate-500 mt-1">Op nieuwbouw en leefomgeving</div>
                 </div>
               </div>
 

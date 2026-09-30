@@ -145,19 +145,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                 </button>
 
               </div>
-
-              {/* Resident Opiniepeiler Button */}
-              <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
-                <button
-                  onClick={() => onOpenOpiniepeiler ? onOpenOpiniepeiler() : openSurvey()}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-[#C9F31D]/40 text-white text-xs sm:text-sm font-bold transition-all cursor-pointer hover:border-[#C9F31D] group backdrop-blur-md shadow-md"
-                >
-                  <span className="w-2 h-2 rounded-full bg-[#C9F31D] animate-pulse" />
-                  <Vote className="w-4 h-4 text-[#C9F31D]" />
-                  <span>Aanmelden als inwoner voor opiniepeiler</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C9F31D] group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
             </div>
 
           </div>
@@ -537,7 +524,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
               Wonen in cijfers
             </h2>
             <p className="text-sm text-slate-300">
-              Objectieve cijfers en lokale onderbouwing voor een toekomstbestendig Dronten.
+              Objectieve cijfers en lokale onderbouwing voor een toekomstbestendig Wonen.
             </p>
           </div>
 

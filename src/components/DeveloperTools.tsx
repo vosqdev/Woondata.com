@@ -266,7 +266,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
       </section>
 
       {/* ========================================================= */}
-      {/* 2. AFBEELDING 1: DATA DIE BOUWT AAN SLIMME ONTWIKKELING    */}
+      {/* 2. AFBEELDING 1: DATA DIE BOUWT AAN WONEN & BOUWEN        */}
       {/* ========================================================= */}
       <section id="data-bouwt" className="py-20 sm:py-28 bg-[#FFFFFF] text-slate-900 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -276,37 +276,37 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
             <div className="lg:col-span-6 space-y-3">
               <h2 className="text-3xl sm:text-5xl font-black text-[#080E1B] tracking-tight leading-[1.1] font-display">
                 Data die bouwt <br />
-                aan slimme <br />
-                <span className="text-[#080E1B] underline decoration-[#C9F31D] decoration-4 underline-offset-4">ontwikkeling</span>
+                aan wonen en <br />
+                <span className="text-[#080E1B] underline decoration-[#C9F31D] decoration-4 underline-offset-4">woningbouw</span>
               </h2>
               <div className="pt-2 text-xs font-bold tracking-widest text-slate-500 uppercase font-display flex items-center gap-2">
-                <span className="font-extrabold text-[#080E1B]">WOONDATA</span>
+                <span className="font-extrabold text-[#080E1B]">WONEN • BOUWEN • DATA</span>
                 <span>•</span>
-                <span>ONTWIKKELAARSPLATFORM</span>
+                <span>DRONTEN &amp; REGIO</span>
               </div>
             </div>
 
             <div className="lg:col-span-6">
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-                Woondata verzamelt, valideert en verbindt woningmarktdata uit tientallen bronnen. Van vraag en aanbod tot plannen en vergunningen. Alles realtime beschikbaar in één platform — zodat ontwikkelaars, makelaars en gemeenten sneller en slimmer kunnen bouwen aan de juiste woningen op de juiste plek.
+                Woondata brengt actuele woningbouw, woonwensen en marktdata samen in één onafhankelijk platform. Van vraag, aanbod en verhuisbewegingen tot plancapaciteit, bestemmingsplannen en vergunningen — zodat inwoners, gemeente en ontwikkelaars sneller en doordachter bouwen aan de juiste woningen op de juiste plek.
               </p>
             </div>
           </div>
 
-          {/* 4 Feature Cards Grid */}
+          {/* 4 Feature Cards Grid: Wonen - Bouwen - Data */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            {/* Card 1: Slimme data */}
+            {/* Card 1: Woningmarktdata */}
             <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md">
                   <BarChart3 className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 font-display">
-                  Slimme data
+                  Woningmarktdata
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Data uit meer dan 50 bronnen, geactualiseerd en gekoppeld. Van WOZ en CBS tot Funda, vergunningen en plannen.
+                  Actuele marktcijfers, transactieprijzen, WOZ-trends en vraag- en aanbodverhoudingen per wijk en kern.
                 </p>
               </div>
 
@@ -316,118 +316,117 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                     50+
                   </div>
                   <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Databronnen
+                    Databronnen (CBS, Kadaster, Funda, WOZ)
                   </div>
                 </div>
                 <div className="pt-2">
-                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    1M+
-                  </div>
-                  <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Datapunten
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2: Real-time inzicht */}
-            <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md">
-                  <Zap className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3 font-display">
-                  Real-time inzicht
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Actuele woningmarktdata, plannen en signalen direct beschikbaar in je dashboard.
-                </p>
-              </div>
-
-              <div className="pt-8 mt-8 border-t border-slate-700/60 space-y-4">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    15
-                  </div>
-                  <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Seconden <br />
-                    <span className="text-slate-400 text-[11px]">Gemiddelde verversing</span>
-                  </div>
-                </div>
-                <div className="pt-2">
-                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    24/7
-                  </div>
-                  <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Altijd actueel
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3: Betrouwbaar */}
-            <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3 font-display">
-                  Betrouwbaar
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Automatische validatie, kwaliteitschecks en dubbele controle op elke datapunt.
-                </p>
-              </div>
-
-              <div className="pt-8 mt-8 border-t border-slate-700/60 space-y-4">
-                <div>
                   <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
                     100%
                   </div>
                   <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Geverifieerd
-                  </div>
-                </div>
-                <div className="pt-2">
-                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    98%
-                  </div>
-                  <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Datakwaliteit
+                    Onafhankelijke data
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Card 4: Ontwikkelaarsplatform */}
+            {/* Card 2: Woningbouw & Plannen */}
             <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md">
                   <Building2 className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 font-display">
-                  Ontwikkelaarsplatform
+                  Woningbouw &amp; Plannen
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Alles wat je nodig hebt om kansrijk te ontwikkelen — samenwerken, analyseren en beslissen.
+                  Monitoring van de bouwopgave, plancapaciteit, kavels, faseringen en vergunningen van initiatief tot oplevering.
                 </p>
               </div>
 
               <div className="pt-8 mt-8 border-t border-slate-700/60 space-y-4">
                 <div>
                   <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    1
+                    3.309
                   </div>
                   <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Platform
+                    Woningen bouwopgave (tot 2030)
                   </div>
                 </div>
                 <div className="pt-2">
                   <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    ∞
+                    18+
                   </div>
                   <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Mogelijkheden
+                    Actieve projecten &amp; locaties
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: Woonwensen & Behoefte */}
+            <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md">
+                  <Users className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 font-display">
+                  Woonwensen &amp; Behoefte
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  Inzicht in wat inwoners écht zoeken: starters, gezinnen, senioren, gewenste woningtypen en prijsklassen.
+                </p>
+              </div>
+
+              <div className="pt-8 mt-8 border-t border-slate-700/60 space-y-4">
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
+                    840+
+                  </div>
+                  <div className="text-xs text-slate-400 font-medium mt-0.5">
+                    Betrokken inwoners in woonpanel
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
+                    3 kernen
+                  </div>
+                  <div className="text-xs text-slate-400 font-medium mt-0.5">
+                    Dronten, Biddinghuizen &amp; Swifterbant
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4: Gevalideerd Bouwen */}
+            <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 font-display">
+                  Gevalideerd Bouwen
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  Toetsing aan gemeentelijke woonwaarden en beleidskaders voor snellere besluitvorming en haalbare plannen.
+                </p>
+              </div>
+
+              <div className="pt-8 mt-8 border-t border-slate-700/60 space-y-4">
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
+                    7
+                  </div>
+                  <div className="text-xs text-slate-400 font-medium mt-0.5">
+                    Woonwaarden kwaliteitstoets
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
+                    30-35-35
+                  </div>
+                  <div className="text-xs text-slate-400 font-medium mt-0.5">
+                    Woondeal segmentverdeling
                   </div>
                 </div>
               </div>
@@ -450,15 +449,15 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
               className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
             >
               <Layers className="w-4 h-4 text-[#080E1B]" />
-              <span>Plannen &amp; Vergunningen</span>
+              <span>Woningbouw &amp; Plannen</span>
             </button>
             <span className="text-slate-300 hidden sm:inline">•</span>
             <button 
-              onClick={() => setContactSubject('Samenwerking & Coalitievorming')}
+              onClick={() => setContactSubject('Woonwensen & Behoefte')}
               className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
             >
               <Users className="w-4 h-4 text-[#080E1B]" />
-              <span>Samenwerken</span>
+              <span>Woonwensen &amp; Doelgroepen</span>
             </button>
             <span className="text-slate-300 hidden sm:inline">•</span>
             <button 
@@ -466,15 +465,15 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
               className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
             >
               <MapPin className="w-4 h-4 text-[#080E1B]" />
-              <span>Locatie-intelligentie</span>
+              <span>Buurt- &amp; Locatiepaspoort</span>
             </button>
             <span className="text-slate-300 hidden sm:inline">•</span>
             <button 
               onClick={() => scrollToSection('onderzoek-advies')}
               className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
             >
-              <TrendingUp className="w-4 h-4 text-[#080E1B]" />
-              <span>Scenario&apos;s &amp; Analyses</span>
+              <ShieldCheck className="w-4 h-4 text-[#080E1B]" />
+              <span>7 Woonwaarden toetsing</span>
             </button>
           </div>
 

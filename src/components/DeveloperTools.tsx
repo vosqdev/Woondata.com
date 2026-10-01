@@ -398,35 +398,35 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
               </div>
             </div>
 
-            {/* Card 4: Gevalideerd Bouwen */}
+            {/* Card 4: Participatie & Draagvlak */}
             <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md">
-                  <ShieldCheck className="w-6 h-6" />
+                  <Zap className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 font-display">
-                  Gevalideerd Bouwen
+                  Participatie &amp; Draagvlak
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Toetsing aan gemeentelijke woonwaarden en beleidskaders voor snellere besluitvorming en haalbare plannen.
+                  Actuele input uit de Woonwensenscan, co-creatie reacties en bewonerswensen om bezwaarrisico&apos;s en procedures vooraf te minimaliseren.
                 </p>
               </div>
 
               <div className="pt-8 mt-8 border-t border-slate-700/60 space-y-4">
                 <div>
                   <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    7
+                    6
                   </div>
                   <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Woonwaarden kwaliteitstoets
+                    Participatieniveaus (Omgevingswet)
                   </div>
                 </div>
                 <div className="pt-2">
                   <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    30-35-35
+                    100%
                   </div>
                   <div className="text-xs text-slate-400 font-medium mt-0.5">
-                    Woondeal segmentverdeling
+                    Draagvlak- en omgevingsdialoog
                   </div>
                 </div>
               </div>
@@ -472,8 +472,8 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
               onClick={() => scrollToSection('onderzoek-advies')}
               className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
             >
-              <ShieldCheck className="w-4 h-4 text-[#080E1B]" />
-              <span>7 Woonwaarden toetsing</span>
+              <Zap className="w-4 h-4 text-[#080E1B]" />
+              <span>Participatie &amp; Draagvlak</span>
             </button>
           </div>
 
@@ -552,17 +552,17 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
                 </div>
               </div>
 
-              {/* Feature 4: Participatie & Draagvlak */}
+              {/* Feature 4: Gevalideerd Bouwen */}
               <div className="bg-white text-slate-900 rounded-3xl p-6 sm:p-7 shadow-md border border-slate-200/90 flex flex-col justify-between hover:border-slate-400 hover:shadow-lg transition-all">
                 <div>
                   <div className="w-11 h-11 rounded-2xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] mb-5 shadow-xs">
-                    <Zap className="w-5 h-5" />
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
                   <h3 className="text-lg font-bold text-[#080E1B] mb-2.5 font-display">
-                    Participatie &amp; Draagvlak
+                    Gevalideerd Bouwen
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Actuele input uit de Woonwensenscan, co-creatie reacties en bewonerswensen om bezwaarrisico&apos;s en procedures vooraf te minimaliseren.
+                    Toetsing aan gemeentelijke woonwaarden en beleidskaders voor snellere besluitvorming en haalbare plannen.
                   </p>
                 </div>
               </div>

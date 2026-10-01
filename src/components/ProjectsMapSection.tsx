@@ -252,7 +252,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                   <div className="bg-emerald-600 h-full w-[65%]" />
                 </div>
                 <p className="text-[11px] text-slate-500 font-normal">
-                  65% geborgd in harde plancapaciteit (onherroepelijke bestemmingsplannen).
+                  65% geborgd in plancapaciteit (of omgevingsvergunning proces loopt).
                 </p>
               </div>
 

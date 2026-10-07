@@ -21,20 +21,17 @@ import {
   BarChart3,
   Users2,
   ShieldCheck,
-  Layers,
   Compass,
   CheckCircle2,
   Target,
   Trees,
   HeartHandshake,
   Users,
-  Home,
   Leaf,
   TrendingUp,
   Zap,
   Scale,
   Sun,
-  MapPin,
   BookOpen,
   FileText,
 } from 'lucide-react';
@@ -434,48 +431,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
 
           </div>
 
-          {/* Bottom Category Navigation Strip */}
-          <div className="mt-12 pt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm font-semibold text-slate-700 border-t border-slate-200/80">
-            <button 
-              onClick={onOpenWoningmarktData}
-              className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
-            >
-              <Home className="w-4 h-4 text-[#080E1B]" />
-              <span>Woningmarktdata</span>
-            </button>
-            <span className="text-slate-300 hidden sm:inline">•</span>
-            <button 
-              onClick={() => scrollToSection('onderzoek-advies')}
-              className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
-            >
-              <Layers className="w-4 h-4 text-[#080E1B]" />
-              <span>Woningbouw &amp; Plannen</span>
-            </button>
-            <span className="text-slate-300 hidden sm:inline">•</span>
-            <button 
-              onClick={() => setContactSubject('Woonwensen & Behoefte')}
-              className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
-            >
-              <Users className="w-4 h-4 text-[#080E1B]" />
-              <span>Woonwensen &amp; Doelgroepen</span>
-            </button>
-            <span className="text-slate-300 hidden sm:inline">•</span>
-            <button 
-              onClick={onOpenBuurtPaspoort}
-              className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
-            >
-              <MapPin className="w-4 h-4 text-[#080E1B]" />
-              <span>Buurt- &amp; Locatiepaspoort</span>
-            </button>
-            <span className="text-slate-300 hidden sm:inline">•</span>
-            <button 
-              onClick={() => scrollToSection('onderzoek-advies')}
-              className="flex items-center gap-2 hover:text-black transition-colors cursor-pointer"
-            >
-              <Zap className="w-4 h-4 text-[#080E1B]" />
-              <span>Participatie &amp; Draagvlak</span>
-            </button>
-          </div>
 
         </div>
       </section>

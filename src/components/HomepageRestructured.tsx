@@ -624,16 +624,18 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                 </p>
               </div>
 
-              <div className="bg-slate-900/90 rounded-2xl p-5 border border-slate-800 space-y-2">
-                <div className="w-7 h-7 rounded-full bg-slate-800 text-[#C9F31D] flex items-center justify-center text-xs font-black">
+              {/* 2: KENNIS - Colored */}
+              <div className="bg-[#C9F31D] text-slate-950 rounded-2xl p-5 border border-[#C9F31D] space-y-2 shadow-lg">
+                <div className="w-7 h-7 rounded-full bg-slate-950 text-[#C9F31D] flex items-center justify-center text-xs font-black">
                   2
                 </div>
-                <h4 className="text-lg font-black text-white tracking-wider font-display">KENNIS</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <h4 className="text-lg font-black text-slate-950 tracking-wider font-display">KENNIS</h4>
+                <p className="text-xs text-slate-900 font-semibold leading-relaxed">
                   Lokale makelaarsexpertise &amp; marktdynamiek
                 </p>
               </div>
 
+              {/* 3: INZICHT */}
               <div className="bg-slate-900/90 rounded-2xl p-5 border border-slate-800 space-y-2">
                 <div className="w-7 h-7 rounded-full bg-slate-800 text-[#C9F31D] flex items-center justify-center text-xs font-black">
                   3
@@ -644,12 +646,13 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                 </p>
               </div>
 
-              <div className="bg-[#C9F31D] text-slate-950 rounded-2xl p-5 border border-[#C9F31D] space-y-2 shadow-lg">
-                <div className="w-7 h-7 rounded-full bg-slate-950 text-[#C9F31D] flex items-center justify-center text-xs font-black">
+              {/* 4: BOUWEN */}
+              <div className="bg-slate-900/90 rounded-2xl p-5 border border-slate-800 space-y-2">
+                <div className="w-7 h-7 rounded-full bg-slate-800 text-[#C9F31D] flex items-center justify-center text-xs font-black">
                   4
                 </div>
-                <h4 className="text-lg font-black text-slate-950 tracking-wider font-display">BOUWEN</h4>
-                <p className="text-xs text-slate-900 font-semibold leading-relaxed">
+                <h4 className="text-lg font-black text-white tracking-wider font-display">BOUWEN</h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
                   Snellere planvorming &amp; 100% verkoopzekerheid
                 </p>
               </div>

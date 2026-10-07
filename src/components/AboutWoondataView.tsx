@@ -11,7 +11,10 @@ import {
   Database,
   BarChart3,
   BookOpen,
-  Check
+  Check,
+  Home,
+  Compass,
+  Zap,
 } from 'lucide-react';
 import { WoonDataLogo } from './WoonDataLogo';
 
@@ -96,151 +99,248 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
         </div>
       </section>
 
-      {/* The 4 Partner & Contact Cards */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider font-display">
-            LOKALE PARTNERS &amp; EXPERTISE
-          </span>
-          <h3 className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-            Samenwerking &amp; Contact
-          </h3>
-          <p className="text-sm text-slate-600">
-            Heeft u vragen over lopende projecten, marktdata of wilt u meedenken? Neem direct contact op met de aangesloten partners.
-          </p>
+      {/* The 4 Partner & Contact Cards (Inspired by Image 1 style) */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Top Header Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12 sm:mb-14">
+          <div className="lg:col-span-6 space-y-3">
+            <h2 className="text-3xl sm:text-5xl font-black text-[#080E1B] tracking-tight leading-[1.1] font-display">
+              Samenwerking <br />
+              &amp; directe <br />
+              <span className="text-[#080E1B] underline decoration-[#C9F31D] decoration-4 underline-offset-4">contacten</span>
+            </h2>
+            <div className="pt-2 text-xs font-bold tracking-widest text-slate-500 uppercase font-display flex items-center gap-2">
+              <span className="font-extrabold text-[#080E1B]">LOKALE PARTNERS</span>
+              <span>•</span>
+              <span>EXPERTISE &amp; REGIE</span>
+              <span>•</span>
+              <span>DRONTEN &amp; REGIO</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+              Heeft u vragen over lopende projecten, marktdata of wilt u meedenken? Neem direct contact op met de aangesloten partners. Een unieke bundeling van lokale marktkennis, nieuwbouwexpertise, onafhankelijke marktregie en getoetste data.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* 4 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* Card 1: 5VOOR12 */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-emerald-500/50 transition-all text-left group">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
-                <h4 className="text-xs sm:text-sm font-black text-slate-950 font-display tracking-wider uppercase">
-                  DE MAKELAARS VAN 5VOOR12
-                </h4>
+          <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md group-hover:scale-105 transition-transform">
+                <Home className="w-6 h-6" />
+              </div>
+              <span className="text-[11px] font-bold text-[#C9F31D] uppercase tracking-wider font-display block mb-1.5">
+                Aankoop- &amp; Verkoopmakelaar
+              </span>
+              <h3 className="text-xl font-bold text-white mb-2 font-display">
+                De Makelaars van 5VOOR12
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Lokale makelaardij met diepe wortels in Dronten. Specialist in bewonerswensen, particuliere verkoop en bestaande woningvoorraad.
+              </p>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
+              <div>
+                <a 
+                  href="tel:0321388000" 
+                  className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                >
+                  0321 - 388 000
+                </a>
+                <div className="text-xs text-slate-400 font-medium mt-0.5">
+                  Direct telefonisch contact
+                </div>
               </div>
 
-              <div className="space-y-2 text-xs text-slate-600 pt-3 border-t border-slate-100">
-                <div className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="leading-snug">
-                    De Rede 80<br />8254 KE Dronten
-                  </span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <a href="tel:0321388000" className="hover:text-emerald-700 transition-colors font-medium">
-                    0321 - 388 000
-                  </a>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <a href="mailto:dronten@5voor12.nl" className="hover:text-emerald-700 transition-colors truncate font-medium">
-                    dronten@5voor12.nl
-                  </a>
+              <div className="pt-1 space-y-2 border-t border-slate-800/80">
+                <a 
+                  href="mailto:dronten@5voor12.nl"
+                  className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                  <span className="truncate">dronten@5voor12.nl</span>
+                </a>
+                <div className="text-xs text-slate-400 flex items-start gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#C9F31D] shrink-0 mt-0.5" />
+                  <span>De Rede 80, 8254 KE Dronten</span>
                 </div>
               </div>
+
+              <a
+                href="tel:0321388000"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-[#C9F31D] text-slate-200 hover:text-black text-xs font-bold font-display transition-all flex items-center justify-center gap-2 group-hover:bg-[#C9F31D] group-hover:text-black mt-2"
+              >
+                <span>Neem contact op</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
 
           {/* Card 2: Van der Linden */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all text-left group">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
-                <h4 className="text-xs sm:text-sm font-black text-slate-950 font-display tracking-wider uppercase">
-                  MAKELAARDIJ VAN DER LINDEN
-                </h4>
+          <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md group-hover:scale-105 transition-transform">
+                <Building2 className="w-6 h-6" />
+              </div>
+              <span className="text-[11px] font-bold text-[#C9F31D] uppercase tracking-wider font-display block mb-1.5">
+                NVM Nieuwbouwspecialist
+              </span>
+              <h3 className="text-xl font-bold text-white mb-2 font-display">
+                Makelaardij Van der Linden
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Gespecialiseerd in grootschalige nieuwbouwprojecten, marktvalidatie, verkoopbegeleiding en projectmatige marktontwikkeling.
+              </p>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
+              <div>
+                <a 
+                  href="tel:0321318888" 
+                  className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                >
+                  0321 - 318 888
+                </a>
+                <div className="text-xs text-slate-400 font-medium mt-0.5">
+                  Direct telefonisch contact
+                </div>
               </div>
 
-              <div className="space-y-2 text-xs text-slate-600 pt-3 border-t border-slate-100">
-                <div className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span className="leading-snug">
-                    De Bolder 2<br />8251 KC Dronten
-                  </span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 text-blue-600 shrink-0" />
-                  <a href="tel:0321318888" className="hover:text-blue-700 transition-colors font-medium">
-                    0321 - 318 888
-                  </a>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-blue-600 shrink-0" />
-                  <a href="mailto:dronten@vanderlinden.nl" className="hover:text-blue-700 transition-colors truncate font-medium">
-                    dronten@vanderlinden.nl
-                  </a>
+              <div className="pt-1 space-y-2 border-t border-slate-800/80">
+                <a 
+                  href="mailto:dronten@vanderlinden.nl"
+                  className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                  <span className="truncate">dronten@vanderlinden.nl</span>
+                </a>
+                <div className="text-xs text-slate-400 flex items-start gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#C9F31D] shrink-0 mt-0.5" />
+                  <span>De Bolder 2, 8251 KC Dronten</span>
                 </div>
               </div>
+
+              <a
+                href="tel:0321318888"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-[#C9F31D] text-slate-200 hover:text-black text-xs font-bold font-display transition-all flex items-center justify-center gap-2 group-hover:bg-[#C9F31D] group-hover:text-black mt-2"
+              >
+                <span>Neem contact op</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
 
           {/* Card 3: Kerremans Makelaardij */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-sky-500/50 transition-all text-left group">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-sky-500 shrink-0" />
-                <h4 className="text-xs sm:text-sm font-black text-slate-950 font-display tracking-wider uppercase">
-                  KERREMANS MAKELAARDIJ
-                </h4>
+          <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md group-hover:scale-105 transition-transform">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <span className="text-[11px] font-bold text-[#C9F31D] uppercase tracking-wider font-display block mb-1.5">
+                Woningmarktspecialist
+              </span>
+              <h3 className="text-xl font-bold text-white mb-2 font-display">
+                Kerremans Makelaardij
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Jarenlang een vertrouwd baken in Dronten. Uitgebreide marktervaring in de dorpskernen, vrije kavels en particuliere verkoop.
+              </p>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
+              <div>
+                <a 
+                  href="tel:0321317070" 
+                  className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                >
+                  0321 - 317 070
+                </a>
+                <div className="text-xs text-slate-400 font-medium mt-0.5">
+                  Direct telefonisch contact
+                </div>
               </div>
 
-              <div className="space-y-2 text-xs text-slate-600 pt-3 border-t border-slate-100">
-                <div className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" />
-                  <span className="leading-snug">
-                    De Rede 44<br />8251 EX Dronten
-                  </span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 text-sky-600 shrink-0" />
-                  <a href="tel:0321317070" className="hover:text-sky-700 transition-colors font-medium">
-                    0321 - 317 070
-                  </a>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-sky-600 shrink-0" />
-                  <a href="mailto:info@kerremansmakelaardij.nl" className="hover:text-sky-700 transition-colors truncate font-medium">
-                    info@kerremansmakelaardij.nl
-                  </a>
+              <div className="pt-1 space-y-2 border-t border-slate-800/80">
+                <a 
+                  href="mailto:info@kerremansmakelaardij.nl"
+                  className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                  <span className="truncate">info@kerremansmakelaardij.nl</span>
+                </a>
+                <div className="text-xs text-slate-400 flex items-start gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#C9F31D] shrink-0 mt-0.5" />
+                  <span>De Rede 44, 8251 EX Dronten</span>
                 </div>
               </div>
+
+              <a
+                href="tel:0321317070"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-[#C9F31D] text-slate-200 hover:text-black text-xs font-bold font-display transition-all flex items-center justify-center gap-2 group-hover:bg-[#C9F31D] group-hover:text-black mt-2"
+              >
+                <span>Neem contact op</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
 
           {/* Card 4: VOVON DEVELOPMENT */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-[#C9F31D] transition-all text-left group">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#95B810] shrink-0" />
-                <h4 className="text-xs sm:text-sm font-black text-slate-950 font-display tracking-wider uppercase">
-                  VOVON DEVELOPMENT
-                </h4>
+          <div className="bg-[#0D1527] text-white rounded-3xl p-7 border border-slate-800/80 shadow-xl flex flex-col justify-between hover:border-[#C9F31D]/50 transition-all group">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#C9F31D] flex items-center justify-center text-black mb-6 shadow-md group-hover:scale-105 transition-transform">
+                <Compass className="w-6 h-6" />
+              </div>
+              <span className="text-[11px] font-bold text-[#C9F31D] uppercase tracking-wider font-display block mb-1.5">
+                Gebiedsregie &amp; Data-analyse
+              </span>
+              <h3 className="text-xl font-bold text-white mb-2 font-display">
+                Vovon Development
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Onafhankelijke strategische schakel tussen beleid, marktpartijen en gemeente. Focus op planhaalbaarheid en data-analyses.
+              </p>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
+              <div>
+                <a 
+                  href="tel:0611692001" 
+                  className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                >
+                  06 - 11 69 20 01
+                </a>
+                <div className="text-xs text-slate-400 font-medium mt-0.5">
+                  Direct telefonisch contact
+                </div>
               </div>
 
-              <div className="space-y-2 text-xs text-slate-600 pt-3 border-t border-slate-100">
-                <div className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-[#95B810] shrink-0 mt-0.5" />
-                  <span className="leading-snug">
-                    Leeuwerik 4<br />8081 ZJ Elburg
-                  </span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 text-[#95B810] shrink-0" />
-                  <a href="tel:0611692001" className="hover:text-slate-900 transition-colors font-medium">
-                    06 - 11 69 20 01
-                  </a>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-[#95B810] shrink-0" />
-                  <a href="mailto:info@vovon.nl" className="hover:text-slate-900 transition-colors truncate font-medium">
-                    info@vovon.nl
-                  </a>
+              <div className="pt-1 space-y-2 border-t border-slate-800/80">
+                <a 
+                  href="mailto:info@vovon.nl"
+                  className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                  <span className="truncate">info@vovon.nl</span>
+                </a>
+                <div className="text-xs text-slate-400 flex items-start gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#C9F31D] shrink-0 mt-0.5" />
+                  <span>Leeuwerik 4, 8081 ZJ Elburg</span>
                 </div>
               </div>
+
+              <a
+                href="tel:0611692001"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-[#C9F31D] text-slate-200 hover:text-black text-xs font-bold font-display transition-all flex items-center justify-center gap-2 group-hover:bg-[#C9F31D] group-hover:text-black mt-2"
+              >
+                <span>Neem contact op</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
 

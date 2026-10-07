@@ -42,8 +42,8 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Right Navigation & Direct Links (7 cols) */}
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6 pt-2">
+          {/* Right Navigation & Direct Links */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 pt-2">
             
             {/* Column 1: Hoofdmenu */}
             <div className="space-y-3">
@@ -94,49 +94,8 @@ export const Footer: React.FC<FooterProps> = ({
               </ul>
             </div>
 
-            {/* Column 2: Doelgroepen */}
+            {/* Column 2: Direct Actie */}
             <div className="space-y-3">
-              <h4 className="text-xs font-bold text-[#C9F31D] tracking-wider uppercase font-display">
-                Doelgroepen
-              </h4>
-              <ul className="space-y-2 text-xs text-slate-400">
-                <li>
-                  <button 
-                    onClick={() => setActiveTab('wonen')} 
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Inwoners &amp; Woningzoekenden
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => setActiveTab('ontwikkelaars')} 
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Ontwikkelaars &amp; Bouwers
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => setActiveTab('inzicht')} 
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Gemeente &amp; Beleid
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => openDeveloperPortal ? openDeveloperPortal() : setActiveTab('ontwikkelaars')} 
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Besloten Ontwikkelaarsportaal
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 3: Direct Meedoen */}
-            <div className="space-y-3 col-span-2 sm:col-span-1">
               <h4 className="text-xs font-bold text-[#C9F31D] tracking-wider uppercase font-display">
                 Direct Actie
               </h4>

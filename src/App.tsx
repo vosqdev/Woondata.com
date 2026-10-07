@@ -363,7 +363,7 @@ export default function App() {
           </div>
         )}
 
-        {/* TAB 5: OVER WOONDATA (Missie, onafhankelijke marktregie & 4 partners incl. Vovon Development) */}
+        {/* TAB 5: OVER WOONDATA (Missie, onafhankelijk platform & 4 partners incl. Vovon Development) */}
         {activeTab === 'over-woondata' && (
           <AboutWoondataView
             onNavigateToProjects={() => {

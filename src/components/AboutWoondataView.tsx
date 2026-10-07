@@ -37,7 +37,7 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
         <div className="max-w-5xl mx-auto text-center space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-wider backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5 text-[#C9F31D]" />
-            <span>Onafhankelijk Platform &amp; Marktregie</span>
+            <span>Onafhankelijk Platform</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-tight">
@@ -112,7 +112,7 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
             <div className="pt-2 text-xs font-bold tracking-widest text-slate-500 uppercase font-display flex items-center gap-2">
               <span className="font-extrabold text-[#080E1B]">LOKALE PARTNERS</span>
               <span>•</span>
-              <span>EXPERTISE &amp; REGIE</span>
+              <span>EXPERTISE &amp; DATA</span>
               <span>•</span>
               <span>DRONTEN &amp; REGIO</span>
             </div>
@@ -120,7 +120,7 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
 
           <div className="lg:col-span-6">
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              Heeft u vragen over lopende projecten, marktdata of wilt u meedenken? Neem direct contact op met de aangesloten partners. Een unieke bundeling van lokale marktkennis, nieuwbouwexpertise, onafhankelijke marktregie en getoetste data.
+              Heeft u vragen over lopende projecten, marktdata of wilt u meedenken? Neem direct contact op met de aangesloten partners. Een unieke bundeling van lokale marktkennis, nieuwbouwexpertise en getoetste data.
             </p>
           </div>
         </div>
@@ -146,19 +146,14 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
             </div>
 
             <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
-              <div>
+              <div className="space-y-2">
                 <a 
-                  href="tel:0321388000" 
-                  className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                  href="tel:0321388000"
+                  className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium"
                 >
-                  0321 - 388 000
+                  <Phone className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                  <span>0321 - 388 000</span>
                 </a>
-                <div className="text-xs text-slate-400 font-medium mt-0.5">
-                  Direct telefonisch contact
-                </div>
-              </div>
-
-              <div className="pt-1 space-y-2 border-t border-slate-800/80">
                 <a 
                   href="mailto:dronten@5voor12.nl"
                   className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
@@ -200,19 +195,14 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
             </div>
 
             <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
-              <div>
+              <div className="space-y-2">
                 <a 
-                  href="tel:0321318888" 
-                  className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                  href="tel:0321318888"
+                  className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium"
                 >
-                  0321 - 318 888
+                  <Phone className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                  <span>0321 - 318 888</span>
                 </a>
-                <div className="text-xs text-slate-400 font-medium mt-0.5">
-                  Direct telefonisch contact
-                </div>
-              </div>
-
-              <div className="pt-1 space-y-2 border-t border-slate-800/80">
                 <a 
                   href="mailto:dronten@vanderlinden.nl"
                   className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
@@ -254,19 +244,14 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
             </div>
 
             <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
-              <div>
+              <div className="space-y-2">
                 <a 
-                  href="tel:0321317070" 
-                  className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                  href="tel:0321317070"
+                  className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium"
                 >
-                  0321 - 317 070
+                  <Phone className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                  <span>0321 - 317 070</span>
                 </a>
-                <div className="text-xs text-slate-400 font-medium mt-0.5">
-                  Direct telefonisch contact
-                </div>
-              </div>
-
-              <div className="pt-1 space-y-2 border-t border-slate-800/80">
                 <a 
                   href="mailto:info@kerremansmakelaardij.nl"
                   className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
@@ -308,19 +293,14 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
             </div>
 
             <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
-              <div>
+              <div className="space-y-2">
                 <a 
-                  href="tel:0611692001" 
-                  className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                  href="tel:0611692001"
+                  className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium"
                 >
-                  06 - 11 69 20 01
+                  <Phone className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                  <span>06 - 11 69 20 01</span>
                 </a>
-                <div className="text-xs text-slate-400 font-medium mt-0.5">
-                  Direct telefonisch contact
-                </div>
-              </div>
-
-              <div className="pt-1 space-y-2 border-t border-slate-800/80">
                 <a 
                   href="mailto:info@vovon.nl"
                   className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"

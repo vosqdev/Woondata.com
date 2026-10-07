@@ -228,7 +228,7 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
               <div className="lg:col-span-7 space-y-5">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-[#080E1B] text-[#C9F31D] font-display shadow-xs uppercase tracking-wider">
                   <Sparkles className="w-3.5 h-3.5 text-[#C9F31D]" />
-                  <span>ONAFHANKELIJK PLATFORM &amp; MARKTREGIE</span>
+                  <span>ONAFHANKELIJK PLATFORM</span>
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight font-display leading-[1.15]">
@@ -236,7 +236,7 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                 </h2>
 
                 <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-                  Woondata fungeert als een onafhankelijk platform, adviesloket en marktregisseur voor de lokale nieuwbouwketen. Door hoogwaardige lokale gebieds- en marktkennis, objectieve transactiedata en een strategische koppeling tussen beleid en realisatie willen we bijdragen aan de woningbouw voor Dronten, Biddinghuizen en Swifterbant.
+                  Woondata fungeert als een onafhankelijk platform en adviesloket voor de lokale nieuwbouwketen. Door hoogwaardige lokale gebieds- en marktkennis, objectieve transactiedata en een strategische koppeling tussen beleid en realisatie willen we bijdragen aan de woningbouw voor Dronten, Biddinghuizen en Swifterbant.
                 </p>
 
                 {/* Highlight Goal Box */}
@@ -376,19 +376,14 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
-                  <div>
+                  <div className="space-y-2">
                     <a 
-                      href="tel:0321388000" 
-                      className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                      href="tel:0321388000"
+                      className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium"
                     >
-                      0321 - 388 000
+                      <Phone className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                      <span>0321 - 388 000</span>
                     </a>
-                    <div className="text-xs text-slate-400 font-medium mt-0.5">
-                      Direct telefonisch contact
-                    </div>
-                  </div>
-
-                  <div className="pt-1 space-y-2 border-t border-slate-800/80">
                     <a 
                       href="mailto:dronten@5voor12.nl"
                       className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
@@ -430,19 +425,14 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
-                  <div>
+                  <div className="space-y-2">
                     <a 
-                      href="tel:0321318888" 
-                      className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                      href="tel:0321318888"
+                      className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium"
                     >
-                      0321 - 318 888
+                      <Phone className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                      <span>0321 - 318 888</span>
                     </a>
-                    <div className="text-xs text-slate-400 font-medium mt-0.5">
-                      Direct telefonisch contact
-                    </div>
-                  </div>
-
-                  <div className="pt-1 space-y-2 border-t border-slate-800/80">
                     <a 
                       href="mailto:dronten@vanderlinden.nl"
                       className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
@@ -484,19 +474,14 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
-                  <div>
+                  <div className="space-y-2">
                     <a 
-                      href="tel:0321317070" 
-                      className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                      href="tel:0321317070"
+                      className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium"
                     >
-                      0321 - 317 070
+                      <Phone className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                      <span>0321 - 317 070</span>
                     </a>
-                    <div className="text-xs text-slate-400 font-medium mt-0.5">
-                      Direct telefonisch contact
-                    </div>
-                  </div>
-
-                  <div className="pt-1 space-y-2 border-t border-slate-800/80">
                     <a 
                       href="mailto:info@kerremansmakelaardij.nl"
                       className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"
@@ -538,19 +523,14 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
-                  <div>
+                  <div className="space-y-2">
                     <a 
-                      href="tel:0611692001" 
-                      className="text-xl sm:text-2xl font-black text-[#C9F31D] font-display hover:underline block tracking-tight"
+                      href="tel:0611692001"
+                      className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium"
                     >
-                      06 - 11 69 20 01
+                      <Phone className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
+                      <span>06 - 11 69 20 01</span>
                     </a>
-                    <div className="text-xs text-slate-400 font-medium mt-0.5">
-                      Direct telefonisch contact
-                    </div>
-                  </div>
-
-                  <div className="pt-1 space-y-2 border-t border-slate-800/80">
                     <a 
                       href="mailto:info@vovon.nl"
                       className="text-xs sm:text-sm text-slate-200 hover:text-[#C9F31D] transition-colors flex items-center gap-2 font-medium truncate"

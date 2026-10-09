@@ -69,10 +69,14 @@ export const Footer: React.FC<FooterProps> = ({
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('projecten')} 
+                    onClick={() => {
+                      window.location.hash = '#projecten';
+                      setActiveTab('projecten');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }} 
                     className="hover:text-white transition-colors cursor-pointer text-left"
                   >
-                    Projecten
+                    Actuele projecten
                   </button>
                 </li>
                 <li>
@@ -163,10 +167,14 @@ export const Footer: React.FC<FooterProps> = ({
             </button>
             <span className="text-slate-600">•</span>
             <button 
-              onClick={() => setActiveTab('projecten')} 
+              onClick={() => {
+                window.location.hash = '#projecten';
+                setActiveTab('projecten');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }} 
               className="hover:text-[#C9F31D] transition-colors cursor-pointer"
             >
-              Projecten
+              Actuele projecten
             </button>
             <span className="text-slate-600">•</span>
             <button 

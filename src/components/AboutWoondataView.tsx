@@ -32,75 +32,203 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
   return (
     <div className="min-h-screen bg-[#FAFAF8] text-slate-900">
       
-      {/* Hero Header */}
-      <section className="bg-[#070D1C] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-white/[0.08]">
-        <div className="max-w-5xl mx-auto text-center space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-wider backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-[#C9F31D]" />
-            <span>Onafhankelijk Platform</span>
+      {/* =========================================================================
+          HERO ENTRANCE: Mooie binnenkomst met afbeelding rechts
+         ========================================================================= */}
+      <section className="bg-[#070D1C] text-white pt-14 sm:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-white/[0.08]">
+        {/* Subtle Ambient Glow */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-[#C9F31D]/[0.05] blur-[130px] rounded-full pointer-events-none" />
+        <div className="absolute -bottom-20 left-10 w-[400px] h-[300px] bg-blue-500/[0.04] blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left Column: Intro copy & metrics */}
+            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/10 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-widest backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-[#C9F31D] animate-pulse" />
+                <span>Onafhankelijk Platform • Gemeente Dronten</span>
+              </div>
+
+              <div className="space-y-4">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-[1.08]">
+                  Over Woondata
+                </h1>
+                <p className="text-lg sm:text-xl text-[#C9F31D] font-bold font-display">
+                  Waar actuele data, beleid en lokale praktijkkennis samenkomen.
+                </p>
+                <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+                  De gemeente Dronten staat voor een enorme woningbouwopgave: minstens 3.309 nieuwe woningen tot 2030, met sturing op de 7 gemeentelijke Woonwaarden en het Bewonersperspectief 2040. Woondata fungeert als hét onafhankelijke, verbindende platform tussen inwoners, gemeente en marktpartijen.
+                </p>
+              </div>
+
+              {/* 3 Key Metric Pills */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+                <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                  <div className="text-2xl sm:text-3xl font-black text-white font-display">3.309</div>
+                  <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
+                    Woningbouwopgave
+                  </div>
+                </div>
+                <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                  <div className="text-2xl sm:text-3xl font-black text-white font-display">840+</div>
+                  <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
+                    Actieve panelleden
+                  </div>
+                </div>
+                <div className="bg-white/[0.05] border border-[#C9F31D]/30 rounded-2xl p-4 backdrop-blur-sm">
+                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">100%</div>
+                  <div className="text-[11px] font-semibold text-slate-300 mt-1 uppercase tracking-wider">
+                    Onafhankelijk &amp; lokaal
+                  </div>
+                </div>
+              </div>
+
+              {/* Action buttons */}
+              <div className="flex flex-wrap items-center gap-3.5 pt-1">
+                <a
+                  href="#methodiek"
+                  className="px-6 py-3 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-slate-950 text-xs sm:text-sm font-black font-display transition-all cursor-pointer shadow-[0_0_20px_rgba(201,243,29,0.3)] hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2"
+                >
+                  <span>Ontdek de methodiek</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                <a
+                  href="#contacten"
+                  className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-bold font-display border border-white/15 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Bekijk lokale partners &amp; contact
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Mooie afbeelding rechts */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
+                {/* Main high quality visual */}
+                <div className="relative h-80 sm:h-96 lg:h-[440px] w-full overflow-hidden bg-slate-900">
+                  <img
+                    src="https://www.image2url.com/r2/default/images/1788079010026-45646df3-9976-4226-b7fd-6cab4add9c2b.jpg"
+                    alt="Wonen in Dronten - Architectuur en Leefomgeving"
+                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  {/* Gradients for text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070D1C] via-[#070D1C]/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#070D1C]/30 via-transparent to-transparent" />
+                </div>
+
+                {/* Floating Top Badge */}
+                <div className="absolute top-4 right-4 bg-[#070D1C]/85 backdrop-blur-md border border-white/20 rounded-full px-3.5 py-1.5 flex items-center gap-2 shadow-lg">
+                  <MapPin className="w-3.5 h-3.5 text-[#C9F31D]" />
+                  <span className="text-[11px] font-bold text-white uppercase tracking-wider font-display">
+                    Dronten • Biddinghuizen • Swifterbant
+                  </span>
+                </div>
+
+                {/* Floating Bottom Card */}
+                <div className="absolute bottom-4 left-4 right-4 bg-[#070D1C]/90 backdrop-blur-md border border-white/15 rounded-2xl p-4.5 space-y-2 shadow-2xl">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#C9F31D] font-display">
+                    <ShieldCheck className="w-4 h-4 text-[#C9F31D]" />
+                    <span>Lokale validatie &amp; samenwerking</span>
+                  </div>
+                  <p className="text-xs text-slate-300 font-normal leading-relaxed">
+                    Gebaseerd op officiële kerncijfers, continu inwonersonderzoek en de actuele praktijkkennis van lokale makelaars en adviseurs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-tight">
-            Over Woondata
-          </h1>
-
-          <p className="text-base sm:text-xl text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto">
-            Hét centrale, onafhankelijke woningmarkt- en dataplatform. Waar inwoners signalen, actuele woningbouwprojecten, gemeentelijk beleid en lokale praktijkkennis samenkomen.
-          </p>
         </div>
       </section>
 
-      {/* Main Philosophy & Mission */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm space-y-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            <div className="lg:col-span-7 space-y-4">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider font-display">
-                ONZE OPDRACHT &amp; VISIE
+      {/* =========================================================================
+          METHODIEK VAN WOONDATA (Aan de bovenzijde, zoals in afbeelding)
+          1. DATA, 2. KENNIS (Gekleurd in lime), 3. INZICHT, 4. BOUWEN + Citaat
+         ========================================================================= */}
+      <section id="methodiek" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="space-y-8">
+          
+          {/* De Methodiek Card */}
+          <div className="bg-[#0B1322] rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-800 shadow-2xl space-y-8">
+            <div className="text-center max-w-2xl mx-auto space-y-2.5">
+              <span className="text-xs font-black uppercase tracking-widest text-[#C9F31D] font-display">
+                DE METHODIEK VAN WOONDATA
               </span>
-              <h2 className="text-2xl sm:text-4xl font-black text-slate-950 font-display tracking-tight">
-                Geen aannames. Wel lokale feiten en onderbouwing.
+              <h2 className="text-2xl sm:text-4xl font-black text-white font-display tracking-tight">
+                Geen aannames. Lokale onderbouwing.
               </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                De woningmarkt in de gemeente Dronten staat voor een enorme opgave: minstens 3.309 nieuwe woningen tot 2030, met oog voor de 7 gemeentelijke Woonwaarden en het Bewonersperspectief 2040. Woondata fungeert als het verbindende platform tussen inwoners, overheid en bouwende partijen.
-              </p>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Door openbare databronnen (CBS, BAG, WOZ) te combineren met ons eigen actieve inwoners-Woonpanel en de dagelijkse praktijkkennis van lokale makelaars en ontwikkelaars, ontstaat niet alleen inzicht in wat er is gebouwd, maar vooral in wat er écht nodig is.
+              <p className="text-xs sm:text-base text-slate-300 font-normal leading-relaxed">
+                Woondata verbindt openbare bronnen met marktinformatie, actuele woonwensen en makelaarspraktijk.
               </p>
             </div>
 
-            <div className="lg:col-span-5 space-y-3">
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/80">
-                <div className="text-2xl font-black text-slate-900 font-display">3.309 woningen</div>
-                <div className="text-xs text-slate-500 mt-0.5">Woningbouwopgave gemeente Dronten</div>
+            {/* 4 Steps Grid: 1 DATA, 2 KENNIS (Gekleurd!), 3 INZICHT, 4 BOUWEN */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              
+              {/* 1: DATA */}
+              <div className="bg-slate-900/90 rounded-2xl p-5 sm:p-6 border border-slate-800 space-y-2.5 hover:border-slate-700 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-slate-800 text-[#C9F31D] flex items-center justify-center text-xs font-black">
+                  1
+                </div>
+                <h3 className="text-lg font-black text-white tracking-wider font-display">DATA</h3>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                  CBS, BAG, WOZ &amp; continu inwonerspanel
+                </p>
               </div>
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/80">
-                <div className="text-2xl font-black text-slate-900 font-display">840+ panelleden</div>
-                <div className="text-xs text-slate-500 mt-0.5">Inwoners die actief meedenken over plannen</div>
-              </div>
-              <div className="bg-[#070D1C] text-white rounded-2xl p-5 border border-slate-800">
-                <div className="text-2xl font-black text-[#C9F31D] font-display">100% Onafhankelijk</div>
-                <div className="text-xs text-slate-300 mt-0.5">Objectieve sturing op kwaliteit en haalbaarheid</div>
-              </div>
-            </div>
 
+              {/* 2: KENNIS - Gekleurd in lime zoals op screenshot gevraagd */}
+              <div className="bg-[#C9F31D] text-slate-950 rounded-2xl p-5 sm:p-6 border border-[#C9F31D] space-y-2.5 shadow-xl hover:bg-[#bce617] transition-all">
+                <div className="w-8 h-8 rounded-full bg-slate-950 text-[#C9F31D] flex items-center justify-center text-xs font-black">
+                  2
+                </div>
+                <h3 className="text-lg font-black text-slate-950 tracking-wider font-display">KENNIS</h3>
+                <p className="text-xs sm:text-sm text-slate-900 font-semibold leading-relaxed">
+                  Lokale makelaarsexpertise &amp; marktdynamiek
+                </p>
+              </div>
+
+              {/* 3: INZICHT */}
+              <div className="bg-slate-900/90 rounded-2xl p-5 sm:p-6 border border-slate-800 space-y-2.5 hover:border-slate-700 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-slate-800 text-[#C9F31D] flex items-center justify-center text-xs font-black">
+                  3
+                </div>
+                <h3 className="text-lg font-black text-white tracking-wider font-display">INZICHT</h3>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                  Wat, waar, voor wie &amp; tegen welke prijs
+                </p>
+              </div>
+
+              {/* 4: BOUWEN */}
+              <div className="bg-slate-900/90 rounded-2xl p-5 sm:p-6 border border-slate-800 space-y-2.5 hover:border-slate-700 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-slate-800 text-[#C9F31D] flex items-center justify-center text-xs font-black">
+                  4
+                </div>
+                <h3 className="text-lg font-black text-white tracking-wider font-display">BOUWEN</h3>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                  Snellere planvorming &amp; 100% verkoopzekerheid
+                </p>
+              </div>
+
+            </div>
           </div>
 
-          {/* Quote Block */}
-          <div className="bg-[#070D1C] text-white rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden border border-slate-800">
-            <blockquote className="text-lg sm:text-2xl font-black text-white font-display max-w-3xl mx-auto leading-snug">
+          {/* Citaat: Data vertelt wat er gebeurt... */}
+          <div className="bg-[#0A1120] border border-slate-800 rounded-3xl p-6 sm:p-10 text-center max-w-4xl mx-auto space-y-3.5 shadow-xl">
+            <blockquote className="text-lg sm:text-2xl font-black text-white font-display leading-snug">
               &ldquo;Data vertelt wat er gebeurt. Onze lokale marktkennis helpt verklaren waarom.&rdquo;
             </blockquote>
-            <p className="text-xs font-bold text-[#C9F31D] uppercase tracking-widest mt-4 font-display">
-              Kerremans Makelaardij • Makelaardij Van der Linden • De Makelaars van 5VOOR12 • Vovon Development
+            <p className="text-xs font-bold text-[#C9F31D] uppercase tracking-widest font-display">
+              KERREMANS MAKELAARDIJ • MAKELAARDIJ VAN DER LINDEN • DE MAKELAARS VAN 5VOOR12 • VOVON DEVELOPMENT
             </p>
           </div>
+
         </div>
       </section>
 
       {/* The 4 Partner & Contact Cards (Inspired by Image 1 style) */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section id="contacten" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Top Header Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12 sm:mb-14">
           <div className="lg:col-span-6 space-y-3">

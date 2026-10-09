@@ -165,6 +165,7 @@ export default function App() {
     if (extra?.status) {
       setProjectFilterStatus(extra.status);
     }
+    window.location.hash = tab === 'home' ? '' : `#${tab}`;
     setActiveTab(tab);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -265,6 +266,7 @@ export default function App() {
         {activeTab === 'wonen' && (
           <WonenView
             onNavigateToProjects={() => {
+              window.location.hash = '#projecten';
               setActiveTab('projecten');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
@@ -280,9 +282,22 @@ export default function App() {
             <div className="bg-[#070D1C] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08]">
               <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                 <div>
-                  <span className="text-xs font-bold text-[#C9F31D] uppercase tracking-wider font-display">
-                    NIEUWBOUWAANBOD &amp; PLANCAPACITEIT
-                  </span>
+                  <button
+                    onClick={() => {
+                      window.location.hash = '';
+                      setActiveTab('home');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-300 hover:text-[#C9F31D] transition-colors cursor-pointer bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 mb-3"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span>Terug naar home</span>
+                  </button>
+                  <div className="block">
+                    <span className="text-xs font-bold text-[#C9F31D] uppercase tracking-wider font-display">
+                      NIEUWBOUWAANBOD &amp; PLANCAPACITEIT
+                    </span>
+                  </div>
                   <h1 className="text-2xl sm:text-4xl font-extrabold text-white mt-1 tracking-tight font-display">
                     Nieuwbouwprojecten &amp; Plankaart
                   </h1>
@@ -367,6 +382,7 @@ export default function App() {
         {activeTab === 'over-woondata' && (
           <AboutWoondataView
             onNavigateToProjects={() => {
+              window.location.hash = '#projecten';
               setActiveTab('projecten');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}

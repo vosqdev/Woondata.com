@@ -20,7 +20,6 @@ import {
   BarChart2,
   BarChart3,
   Users2,
-  ShieldCheck,
   Compass,
   CheckCircle2,
   Target,
@@ -30,8 +29,6 @@ import {
   Leaf,
   TrendingUp,
   Zap,
-  Scale,
-  Sun,
   BookOpen,
   FileText,
 } from 'lucide-react';
@@ -431,100 +428,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
 
           </div>
 
-
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 3. AFBEELDING 2: ALLES OP ÉÉN PLATFORM (VAN PLAN TOT FLEX)*/}
-      {/* ========================================================= */}
-      <section className="py-20 sm:py-28 bg-[#F8FAFC] text-slate-900 border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Side: Headline & Intro */}
-            <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-3xl sm:text-5xl font-black text-[#080E1B] tracking-tight leading-[1.15] font-display">
-                Alles op één platform. <br />
-                Van <span className="text-[#080E1B] underline decoration-[#C9F31D] decoration-4 underline-offset-4">plan</span> tot <span className="text-[#080E1B] underline decoration-[#C9F31D] decoration-4 underline-offset-4">realisatie.</span>
-              </h2>
-
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-                De Nederlandse woningmarkt bestaat uit tientallen deelmarkten die continu op elkaar inwerken. Woondata brengt ze samen in één platform — van langetermijn woondeals en programmatoetsen tot real-time vraag- en verhuisdynamieken.
-              </p>
-
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-                Daarnaast combineert het platform actuele woonwensen, markttrends en doelgroepprognoses op een slimme manier.
-              </p>
-            </div>
-
-            {/* Right Side: 2x2 Rounded Cards */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              
-              {/* Feature 1: Woningbehoefte & Doelgroepen */}
-              <div className="bg-white text-slate-900 rounded-3xl p-6 sm:p-7 shadow-md border border-slate-200/90 flex flex-col justify-between hover:border-slate-400 hover:shadow-lg transition-all">
-                <div>
-                  <div className="w-11 h-11 rounded-2xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] mb-5 shadow-xs">
-                    <TrendingUp className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-[#080E1B] mb-2.5 font-display">
-                    Woningbehoefte &amp; Doelgroepen
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Demografische prognoses, huishoudensgroei en specifieke doelgroepsegmenten (starters, gezinnen, senioren) voor Dronten en omliggende kernen.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 2: Woondeal & Betaalbaarheid */}
-              <div className="bg-white text-slate-900 rounded-3xl p-6 sm:p-7 shadow-md border border-slate-200/90 flex flex-col justify-between hover:border-slate-400 hover:shadow-lg transition-all">
-                <div>
-                  <div className="w-11 h-11 rounded-2xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] mb-5 shadow-xs">
-                    <Scale className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-[#080E1B] mb-2.5 font-display">
-                    Woondeal &amp; Betaalbaarheid
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Directe toetsing aan de 30-35-35 normering (sociale huur, middenhuur/betaalbare koop en vrije sector) inclusief haalbaarheidsscans.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 3: Locatie-intelligentie & Wijken */}
-              <div className="bg-white text-slate-900 rounded-3xl p-6 sm:p-7 shadow-md border border-slate-200/90 flex flex-col justify-between hover:border-slate-400 hover:shadow-lg transition-all">
-                <div>
-                  <div className="w-11 h-11 rounded-2xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] mb-5 shadow-xs">
-                    <Sun className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-[#080E1B] mb-2.5 font-display">
-                    Locatie-intelligentie &amp; Wijken
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Gebiedspaspoorten van De Gilden, Centrum, Dronten West en dorpskernen met voorzieningendruk en bereikbaarheidsscores.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 4: Gevalideerd Bouwen */}
-              <div className="bg-white text-slate-900 rounded-3xl p-6 sm:p-7 shadow-md border border-slate-200/90 flex flex-col justify-between hover:border-slate-400 hover:shadow-lg transition-all">
-                <div>
-                  <div className="w-11 h-11 rounded-2xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] mb-5 shadow-xs">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-[#080E1B] mb-2.5 font-display">
-                    Gevalideerd Bouwen
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Toetsing aan gemeentelijke woonwaarden en beleidskaders voor snellere besluitvorming en haalbare plannen.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
 
         </div>
       </section>

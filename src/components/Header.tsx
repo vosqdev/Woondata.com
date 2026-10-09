@@ -26,10 +26,9 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Hoofdmenu (Inzicht tijdelijk uitgezet op verzoek):
+  // Hoofdmenu (Projecten is een aparte pagina en staat niet meer in het hoofdmenu):
   const navItems = [
     { id: 'wonen', label: 'Wonen' },
-    { id: 'projecten', label: 'Projecten' },
     { id: 'ontwikkelaars', label: 'Voor ontwikkelaars' },
     { id: 'over-woondata', label: 'Over Woondata' },
   ];

@@ -34,8 +34,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
   onOpenOpiniepeiler,
   onSelectProject
 }) => {
-  const [selectedKern, setSelectedKern] = useState<string>('Alle');
-  const [selectedSegment, setSelectedSegment] = useState<string>('Alle prijscategorieën');
   const [activeProjectFilter, setActiveProjectFilter] = useState<string>('Alle');
 
   // Filtered projects for the compact showcase
@@ -43,13 +41,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
     if (activeProjectFilter === 'Alle') return true;
     return p.kern === activeProjectFilter;
   }).slice(0, 4);
-
-  const handleHeroSearch = () => {
-    onNavigate('projecten', {
-      kern: selectedKern === 'Alle' ? undefined : selectedKern,
-      status: 'Alle'
-    });
-  };
 
   return (
     <div className="w-full bg-[#FAFAF8] text-slate-900 overflow-hidden">
@@ -80,7 +71,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
           <div className="text-center max-w-4xl mx-auto space-y-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/10 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-widest backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#C9F31D] animate-pulse" />
-              <span>WONEN • PROJECTEN • INZICHT</span>
+              <span>WONEN • ONTWIKKELAARS • DATA</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-white font-display tracking-tight leading-[1.08]">
@@ -90,63 +81,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
             <p className="text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto">
               Hét centrale, onafhankelijke platform voor inwoners, gemeente en ontwikkelaars. Waar actuele woningbouw, woonwensen en marktdata samenkomen.
             </p>
-
-            {/* Quick Filter Strip for Fast Navigation */}
-            <div className="pt-2 max-w-3xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-xl p-2 rounded-2xl sm:rounded-full border border-white/15 shadow-2xl flex flex-col sm:flex-row items-center gap-2">
-                
-                {/* Selector 1: Kern */}
-                <div className="w-full sm:w-auto sm:flex-1 px-4 py-2 text-left bg-white/5 hover:bg-white/10 rounded-xl sm:rounded-full transition-colors relative">
-                  <label className="block text-[10px] font-black uppercase tracking-wider text-[#C9F31D] font-display">
-                    KIES KERN
-                  </label>
-                  <div className="relative">
-                    <select
-                      value={selectedKern}
-                      onChange={(e) => setSelectedKern(e.target.value)}
-                      className="w-full bg-transparent text-xs sm:text-sm font-bold text-white focus:outline-hidden cursor-pointer pr-5 appearance-none"
-                    >
-                      <option value="Alle" className="text-slate-900">Alle kernen (3)</option>
-                      <option value="Dronten" className="text-slate-900">Dronten</option>
-                      <option value="Biddinghuizen" className="text-slate-900">Biddinghuizen</option>
-                      <option value="Swifterbant" className="text-slate-900">Swifterbant</option>
-                    </select>
-                    <ChevronDown className="w-3.5 h-3.5 text-slate-300 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
-                  </div>
-                </div>
-
-                {/* Selector 2: Segment */}
-                <div className="w-full sm:w-auto sm:flex-1 px-4 py-2 text-left bg-white/5 hover:bg-white/10 rounded-xl sm:rounded-full transition-colors relative">
-                  <label className="block text-[10px] font-black uppercase tracking-wider text-[#C9F31D] font-display">
-                    PRIJSSEGMENT
-                  </label>
-                  <div className="relative">
-                    <select
-                      value={selectedSegment}
-                      onChange={(e) => setSelectedSegment(e.target.value)}
-                      className="w-full bg-transparent text-xs sm:text-sm font-bold text-white focus:outline-hidden cursor-pointer pr-5 appearance-none"
-                    >
-                      <option value="Alle prijscategorieën" className="text-slate-900">Alle prijscategorieën</option>
-                      <option value="Betaalbaar" className="text-slate-900">Betaalbaar (&lt; € 355.000)</option>
-                      <option value="Middensegment" className="text-slate-900">Middensegment (€ 355k - € 450k)</option>
-                      <option value="Vrije sector" className="text-slate-900">Vrije sector (&gt; € 450.000)</option>
-                    </select>
-                    <ChevronDown className="w-3.5 h-3.5 text-slate-300 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
-                  </div>
-                </div>
-
-                {/* Action CTA */}
-                <button
-                  onClick={handleHeroSearch}
-                  className="w-full sm:w-auto px-6 py-3 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 font-black rounded-xl sm:rounded-full text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg font-display shrink-0"
-                >
-                  <span>Bekijk projecten</span>
-                  <ArrowRight className="w-4 h-4 text-slate-950" />
-                </button>
-
-              </div>
-            </div>
-
           </div>
 
           {/* =========================================================================
@@ -670,6 +604,37 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
             </p>
           </div>
 
+        </div>
+      </section>
+
+      {/* =========================================================================
+          DIRECT AAN DE SLAG OP WOONDATA.COM (Snelle navigatieknoppen)
+         ========================================================================= */}
+      <section className="py-14 bg-white border-t border-slate-200 text-center">
+        <div className="max-w-4xl mx-auto px-4 space-y-5">
+          <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display tracking-tight">
+            Direct aan de slag op Woondata.com
+          </h3>
+          <div className="flex flex-wrap justify-center items-center gap-3.5">
+            <button
+              onClick={() => onNavigate('projecten')}
+              className="px-6 py-3 bg-[#070D1C] hover:bg-black text-white text-xs sm:text-sm font-bold rounded-full transition-all cursor-pointer shadow-md hover:scale-[1.02] active:scale-[0.98] font-display"
+            >
+              Bekijk actuele projecten
+            </button>
+            <button
+              onClick={openSurvey}
+              className="px-6 py-3 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 text-xs sm:text-sm font-bold rounded-full transition-all cursor-pointer shadow-md hover:scale-[1.02] active:scale-[0.98] font-display"
+            >
+              Woonwens doorgeven
+            </button>
+            <button
+              onClick={() => onNavigate('ontwikkelaars')}
+              className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-full transition-all cursor-pointer border border-slate-200/80 hover:scale-[1.02] active:scale-[0.98] font-display"
+            >
+              Voor ontwikkelaars
+            </button>
+          </div>
         </div>
       </section>
 

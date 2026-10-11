@@ -218,11 +218,11 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
           <img 
             src="https://www.image2url.com/r2/default/images/1788079965120-dd102bbe-0e2d-4a09-ba58-215e6a8dcaad.jpeg"
             alt="Woningbouwontwikkeling Dronten"
-            className="w-full h-full object-cover object-center filter brightness-[0.38] contrast-[1.12] saturate-[1.08] transform scale-[1.02]"
+            className="w-full h-full object-cover object-center filter brightness-[0.72] contrast-[1.08] saturate-[1.05] transform scale-[1.02]"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080E1B]/95 via-[#080E1B]/80 to-[#080E1B]/40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080E1B]/50 via-transparent to-[#080E1B]/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080E1B]/80 via-[#080E1B]/55 to-[#080E1B]/25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080E1B]/40 via-transparent to-[#080E1B]/75" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -536,22 +536,23 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
           <img 
             src="https://www.image2url.com/r2/default/images/1788082088937-f93ce974-0653-46db-8114-d34a6f1ded62.jpg"
             alt="Locatie- & projectontwikkeling Dronten"
-            className="w-full h-full object-cover object-center filter brightness-[0.32] contrast-[1.15] saturate-[1.1] transform scale-[1.02]"
+            className="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.08] saturate-[1.05] transform scale-[1.02]"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080E1B]/95 via-[#080E1B]/80 to-[#080E1B]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080E1B]/80 via-transparent to-[#080E1B]/50" />
+          {/* Lighter overlays just like homepage, balancing clear photo visibility with readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080E1B]/75 via-[#080E1B]/45 to-[#080E1B]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080E1B]/60 via-transparent to-[#080E1B]/35" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <span className="text-xs font-bold text-[#C9F31D] uppercase tracking-widest font-display block mb-3">
+            <span className="text-xs font-bold text-[#C9F31D] uppercase tracking-widest font-display block mb-3 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
               Directe Samenwerking
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight font-display">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight font-display drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               Plan of locatie bespreken?
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base mt-4 max-w-2xl font-normal leading-relaxed">
+            <p className="text-slate-200 text-sm sm:text-base mt-4 max-w-2xl font-normal leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
               We denken graag vroegtijdig mee over markt, programma, doelgroepen en de haalbaarheid van woningbouwplannen.
             </p>
 

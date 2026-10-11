@@ -58,8 +58,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           className="w-full h-full object-cover object-center"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-[#070D1C]/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/75 via-[#081224]/50 to-[#070D1C]/80" />
+        <div className="absolute inset-0 bg-[#070D1C]/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/60 via-[#081224]/35 to-[#070D1C]/75" />
       </div>
 
       {/* Hero Content Container */}

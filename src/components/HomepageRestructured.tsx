@@ -51,19 +51,19 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
          ========================================================================= */}
       <section className="relative bg-[#070D1C] text-white pt-14 sm:pt-20 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-white/[0.08]">
         
-        {/* Subtle Background Backdrop with smooth overlay */}
-        <div className="absolute inset-0 z-0 overflow-hidden opacity-30 pointer-events-none">
+        {/* Subtle Background Backdrop with smooth overlay - slightly lighter filter */}
+        <div className="absolute inset-0 z-0 overflow-hidden opacity-55 pointer-events-none">
           <img
             src="https://www.image2url.com/r2/default/images/1788464129594-e0860c93-a90d-4878-b5e6-d10d0cdd8bd4.webp"
             alt="Wonen in Dronten Polder"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/90 via-[#070D1C]/80 to-[#070D1C]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/65 via-[#070D1C]/45 to-[#070D1C]/80" />
         </div>
 
         {/* Ambient Subtle Glow */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[350px] bg-[#C9F31D]/[0.04] blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[350px] bg-[#C9F31D]/[0.05] blur-[120px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto space-y-12 sm:space-y-16">
           
@@ -74,11 +74,11 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
               <span>WONEN • ONTWIKKELAARS • DATA</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-white font-display tracking-tight leading-[1.08]">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-white font-display tracking-tight leading-[1.08] drop-shadow-[0_2px_16px_rgba(0,0,0,0.65)]">
               Alles over wonen en bouwen
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-slate-200 font-normal leading-relaxed max-w-3xl mx-auto drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
               Hét centrale, onafhankelijke platform voor inwoners, gemeente en ontwikkelaars. Waar actuele woningbouw, woonwensen en marktdata samenkomen.
             </p>
           </div>

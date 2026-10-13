@@ -312,7 +312,7 @@ export const OpiniepeilerModal: React.FC<OpiniepeilerModalProps> = ({
 
               <div className="pt-1 flex items-center justify-center gap-2 text-[11px] text-slate-400">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#C9F31D]" />
-                <span>840+ inwoners doen al mee · 100% vrijblijvend &amp; anoniem</span>
+                <span>100+ inwoners doen al mee · 100% vrijblijvend &amp; anoniem</span>
               </div>
 
             </form>

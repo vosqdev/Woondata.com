@@ -42,87 +42,6 @@ interface DeveloperToolsProps {
   onOpenOntdekPlatform?: () => void;
 }
 
-interface ResearchProduct {
-  id: string;
-  number: string;
-  type: string;
-  title: string;
-  icon: React.ElementType;
-  shortDesc: string;
-  fullDesc: string;
-  duration: string;
-  deliverables: string[];
-}
-
-const RESEARCH_PRODUCTS: ResearchProduct[] = [
-  {
-    id: 'quickscan',
-    number: '01',
-    type: 'QUICKSCAN',
-    title: 'Programma- & Locatie Quickscan',
-    icon: Search,
-    shortDesc: 'Snelle toets op doelgroep, programma, typologie, prijs en aantallen op basis van actuele data.',
-    fullDesc: 'Een compacte maar grondige initiële haalbaarheidstoets. Wij spiegelen het voorgenomen woningbouwprogramma aan de actuele vraagdruk, verhuisbewegingen en gemeentelijke kaders in Dronten, Biddinghuizen of Swifterbant.',
-    duration: '5 werkdagen',
-    deliverables: ['Benchmark vraag vs. aanbod', 'Advies over prijssegmentering', 'Toetsing Woondeal-normen (30/35/35)']
-  },
-  {
-    id: 'woonwensen',
-    number: '02',
-    type: 'ONDERZOEK',
-    title: 'Locatiegericht Woonwensenonderzoek',
-    icon: Users,
-    shortDesc: 'Specifiek ophalen van woonwensen en doelgroepvoorkeuren voor één specifiek plangebied of kern.',
-    fullDesc: 'Gericht kwalitatief en kwantitatief onderzoek onder inwoners en geregistreerde woningzoekenden. Geeft exact inzicht in gewenste woningtypen, kavelgroottes, buitenruimte en bereidheid tot doorstroming.',
-    duration: '3–4 weken',
-    deliverables: ['Doelgroepenprofielen', 'Woonwensenanalyse plangebied', 'Input voor stedenbouwkundig plan']
-  },
-  {
-    id: 'varianten',
-    number: '03',
-    type: 'OPTIMALISATIE',
-    title: 'Programmavarianten & Vraagscan',
-    icon: Sliders,
-    shortDesc: 'Toetsing en benchmark van verschillende programmavarianten op marktaansluiting en afzetrisico.',
-    fullDesc: 'Scenario-analyse voor ontwikkelaars en corporaties. We berekenen de afzetkansen en doelgroepoverlap van verschillende samenstellingen (bijv. meer grondgebonden vs. meer appartementen).',
-    duration: '2 weken',
-    deliverables: ['Vergelijking van 2 tot 3 varianten', 'Afzetrisico-matrix', 'Optimaal programma-advies']
-  },
-  {
-    id: 'prijs-afzet',
-    number: '04',
-    type: 'MARKTANALYSE',
-    title: 'Prijs- en Afzetscan',
-    icon: TrendingUp,
-    shortDesc: 'Diepgaande beoordeling van betaalbaarheid, concurrentiekracht, afzetsnelheid en marktrisico.',
-    fullDesc: 'Gedetailleerde analyse van de betaalbaarheidscapaciteit per doelgroep in relatie tot de Woondeal-normen (30% sociaal, 35% betaalbaar tot € 405k, 35% vrije sector). Inclusief prognose voor doorlooptijden.',
-    duration: '10 werkdagen',
-    deliverables: ['Betaalbaarheidsbandbreedtes', 'Concurrentieanalyse omliggende plannen', 'Afzetsnelheidsprognose']
-  },
-  {
-    id: 'participatie',
-    number: '05',
-    type: 'PARTICIPATIE',
-    title: 'Participatie- & Terugkoppelrapport',
-    icon: HeartHandshake,
-    shortDesc: 'Inzichtelijk maken van inwonersinbreng en concrete vertaling naar stedenbouwkundig ontwerp.',
-    fullDesc: 'Gestructureerd bewijsdocument voor de ruimtelijke procedure en de gemeenteraad. Laat zien wat inwoners hebben aangedragen via het woonpanel en hoe dit aantoonbaar is verwerkt in het plan.',
-    duration: '2 weken',
-    deliverables: ['Participatierapportage', 'Tabel: Inbreng → Advies → Resultaat', 'Onderbouwing voor raadsbesluit']
-  },
-  {
-    id: 'evaluatie',
-    number: '06',
-    type: 'EVALUATIE',
-    title: 'Evaluatie na Oplevering',
-    icon: CheckCircle2,
-    shortDesc: 'Vergelijking van werkelijke bewoners, doorstroming en tevredenheid met eerdere uitgangspunten.',
-    fullDesc: 'Post-occupancy evaluatie 6 maanden na sleuteloverdracht. Analyseert wie er daadwerkelijk is gaan wonen, welke verhuisketens zijn ontstaan en hoe de woonkwaliteit in de praktijk wordt ervaren.',
-    duration: '6 mnd na oplevering',
-    deliverables: ['Verhuisketenanalyse', 'Bewonerstevredenheid', 'Lessen voor vervolgfasen']
-  }
-];
-
 export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
   onNavigateToWoonwaarden,
   onOpenPortal,
@@ -131,8 +50,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
   onOpenRealtimeDashboard,
   onOpenOntdekPlatform
 }) => {
-  const [selectedProduct, setSelectedProduct] = useState<ResearchProduct | null>(null);
-  
   // Contact Dialog State
   const [contactSubject, setContactSubject] = useState<string | null>(null);
   const [contactSubmitted, setContactSubmitted] = useState(false);
@@ -187,7 +104,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
       setTimeout(() => {
         setContactSubmitted(false);
         setContactSubject(null);
-        setSelectedProduct(null);
         setFormData({
           name: '',
           organization: '',
@@ -375,7 +291,7 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
               <div className="pt-8 mt-8 border-t border-slate-700/60 space-y-4">
                 <div>
                   <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">
-                    840+
+                    100+
                   </div>
                   <div className="text-xs text-slate-400 font-medium mt-0.5">
                     Betrokken inwoners in woonpanel
@@ -434,101 +350,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
 
 
       {/* ========================================================= */}
-      {/* 5. ONDERZOEK & ADVIES (6 Producten Grid)                  */}
-      {/* ========================================================= */}
-      <section id="onderzoek-advies" className="py-20 sm:py-28 bg-[#FFFFFF] text-slate-900 border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-black bg-[#080E1B] text-[#C9F31D] uppercase tracking-wider font-display mb-3.5 shadow-xs">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Onderzoek &amp; Advies</span>
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-black text-[#080E1B] tracking-tight font-display leading-[1.15]">
-                Instrumenten voor een beter{' '}
-                <span className="relative inline-block whitespace-nowrap">
-                  onderbouwd plan
-                  <span className="absolute -bottom-1 left-0 w-full h-3 bg-[#C9F31D] -z-10 rounded-xs" />
-                </span>
-              </h2>
-              <p className="text-sm sm:text-base text-slate-600 mt-3 max-w-2xl font-normal leading-relaxed">
-                Van eerste quickscan tot evaluatie na oplevering. Modulaire onderzoeksproducten ter versterking van uw haalbaarheidsstudie en ruimtelijke onderbouwing.
-              </p>
-            </div>
-
-            <button
-              onClick={() => setContactSubject('Maatwerk adviestraject & quickscan')}
-              className="px-6 py-3 rounded-full border-2 border-[#080E1B] text-[#080E1B] hover:bg-[#080E1B] hover:text-[#C9F31D] text-xs font-black flex items-center gap-2.5 transition-all duration-200 cursor-pointer font-display self-start md:self-auto shrink-0 shadow-sm group"
-            >
-              <Mail className="w-4 h-4 text-[#080E1B] group-hover:text-[#C9F31D] transition-colors" />
-              <span>Vrijblijvend overleg plannen</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-
-          {/* 6 Products in a Sleek, Energetic 3-Column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-            {RESEARCH_PRODUCTS.map((prod) => (
-              <div
-                key={prod.id}
-                onClick={() => setSelectedProduct(prod)}
-                className="bg-white rounded-[28px] p-6 sm:p-7 border border-slate-200/90 hover:border-[#080E1B] shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between group hover:-translate-y-1.5 relative overflow-hidden text-left"
-              >
-                {/* Background decorative watermark icon */}
-                <div className="absolute -right-3 -bottom-3 opacity-[0.04] group-hover:opacity-[0.09] transition-opacity pointer-events-none text-[#080E1B]">
-                  <prod.icon className="w-36 h-36" />
-                </div>
-
-                <div className="relative z-10">
-                  {/* Top Meta Bar: Icon + Number (Left) + Badge Tag (Right) */}
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-2xl bg-[#080E1B] group-hover:bg-[#C9F31D] text-[#C9F31D] group-hover:text-[#080E1B] flex items-center justify-center font-extrabold shadow-md transition-all duration-300">
-                        <prod.icon className="w-5 h-5" />
-                      </div>
-                      <span className="text-xs font-black text-slate-400 group-hover:text-[#080E1B] font-display transition-colors">
-                        {prod.number}
-                      </span>
-                    </div>
-
-                    <span className="text-[11px] font-black px-3.5 py-1 rounded-full bg-slate-100 text-[#080E1B] border border-slate-200/90 uppercase tracking-wider font-display group-hover:border-slate-300 transition-colors">
-                      {prod.type}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-lg font-black text-[#080E1B] font-display tracking-tight group-hover:text-black transition-colors leading-snug mt-3">
-                    {prod.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed font-normal min-h-[44px]">
-                    {prod.shortDesc}
-                  </p>
-                </div>
-
-                {/* Bottom Meta & CTA */}
-                <div className="pt-5 mt-6 border-t border-slate-100 relative z-10 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold">
-                    <Clock className="w-3.5 h-3.5 text-slate-400" />
-                    <span>{prod.duration}</span>
-                  </div>
-
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 text-[#080E1B] group-hover:bg-[#080E1B] group-hover:text-[#C9F31D] text-xs font-bold transition-all duration-300 shadow-xs">
-                    <span>Bekijk product</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================= */}
       {/* 6. CTA ONDERAAN                                           */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-28 bg-[#080E1B] text-white relative overflow-hidden">
@@ -568,82 +389,6 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
           </div>
         </div>
       </section>
-
-      {/* ========================================================= */}
-      {/* PRODUCT DETAIL MODAL                                      */}
-      {/* ========================================================= */}
-      {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-[#0D1527] rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl border border-slate-700 relative text-white">
-            <button
-              onClick={() => setSelectedProduct(null)}
-              className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-slate-800 text-[#C9F31D] border border-slate-700 font-display">
-                  {selectedProduct.number}
-                </span>
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider font-display">
-                  {selectedProduct.type}
-                </span>
-              </div>
-
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight font-display">
-                {selectedProduct.title}
-              </h3>
-
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {selectedProduct.fullDesc}
-              </p>
-
-              <div className="p-4 bg-[#121829] rounded-2xl border border-slate-700 space-y-2">
-                <span className="text-xs font-black text-[#C9F31D] uppercase tracking-wider block font-display">
-                  Inclusief opleverdocumenten:
-                </span>
-                <ul className="space-y-1.5 text-xs text-slate-200">
-                  {selectedProduct.deliverables.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex items-center justify-between text-xs text-slate-400 pt-2 font-medium">
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4 text-slate-400" />
-                  <span>Doorlooptijd: <strong className="text-white">{selectedProduct.duration}</strong></span>
-                </div>
-              </div>
-
-              <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-700">
-                <button
-                  type="button"
-                  onClick={() => setSelectedProduct(null)}
-                  className="px-4 py-2.5 rounded-full text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 cursor-pointer font-display"
-                >
-                  Sluiten
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setContactSubject(`Aanvraag: ${selectedProduct.title}`);
-                  }}
-                  className="px-6 py-2.5 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-black text-xs font-extrabold flex items-center gap-2 transition-all cursor-pointer font-display shadow-[0_0_15px_rgba(201,243,29,0.3)]"
-                >
-                  <Mail className="w-3.5 h-3.5 text-black" />
-                  <span>Aanvraag indienen</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* ========================================================= */}
       {/* CONTACT & AANVRAAG DIALOG                                 */}

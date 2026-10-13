@@ -67,7 +67,7 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                 </div>
                 <div>
                   <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                    840+
+                    100+
                   </div>
                   <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
                     Inwoners Woonpanel
@@ -594,11 +594,22 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                 </div>
 
                 <div className="space-y-2.5 pt-4 border-t border-slate-100 text-xs sm:text-sm text-slate-700">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 text-xs font-bold">
-                      ✓
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 text-xs font-bold">
+                        ✓
+                      </div>
+                      <span className="font-semibold text-slate-800">Doe de WoonwensenScan</span>
                     </div>
-                    <span className="font-semibold text-slate-800">Doe de WoonwensenScan</span>
+                    <a
+                      href="#woonwensenscan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] font-bold text-slate-500 hover:text-slate-900 underline flex items-center gap-1"
+                    >
+                      <span>In nieuw tabblad</span>
+                      <span className="text-[10px] text-[#C9F31D]">↗</span>
+                    </a>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 text-xs font-bold">

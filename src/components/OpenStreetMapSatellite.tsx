@@ -539,7 +539,7 @@ export const OpenStreetMapSatellite: React.FC<OpenStreetMapSatelliteProps> = ({
         <MapZoomTracker onZoomChange={handleZoomChange} />
 
         <MapViewController
-          targetProject={selectedProject}
+          targetProject={selectedProject || hoveredProject}
           targetKern={activeKernFilter}
         />
 

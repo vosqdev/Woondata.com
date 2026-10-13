@@ -120,7 +120,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                     </div>
                     <div>
                       <span className="font-bold text-slate-900">WoonwensenScan</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Geef binnen 3 minuten uw wensen en voorkeuren door</p>
+                      <p className="text-[11px] text-slate-500 leading-tight">Geef binnen 5 minuten uw wensen en voorkeuren door</p>
                     </div>
                   </div>
 
@@ -130,7 +130,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                     </div>
                     <div>
                       <span className="font-bold text-slate-900">Woonpanel</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Denk mee met 840+ geregistreerde inwoners</p>
+                      <p className="text-[11px] text-slate-500 leading-tight">Denk mee met 100+ geregistreerde inwoners</p>
                     </div>
                   </div>
 
@@ -157,18 +157,21 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                 </button>
                 <button
                   onClick={() => onNavigate('wonen')}
-                  className="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full py-2.5 px-4 bg-slate-100 hover:bg-[#070D1C] text-slate-800 hover:text-white font-bold rounded-2xl text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md group/wonenBtn"
                 >
                   <span>Naar Wonen &amp; Woonwensen</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-700 group-hover/wonenBtn:text-[#C9F31D] group-hover/wonenBtn:translate-x-0.5 transition-all" />
                 </button>
                 <div className="text-center">
-                  <button
-                    onClick={openSurvey}
-                    className="text-[11px] font-bold text-slate-500 hover:text-slate-900 underline cursor-pointer"
+                  <a
+                    href="#woonwensenscan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[11px] font-bold text-slate-500 hover:text-slate-900 underline cursor-pointer"
                   >
-                    Of doe direct de WoonwensenScan →
-                  </button>
+                    <span>Of doe direct de WoonwensenScan</span>
+                    <ArrowRight className="w-3 h-3 inline" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -420,7 +423,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                   {project.totalHomes} woningen
                 </span>
                 <span className="text-slate-500 text-[11px] flex items-center gap-1 group-hover:text-slate-900 font-medium">
-                  <span>Bekijk</span>
+                  <span>Bekijk op kaart</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </div>
@@ -444,7 +447,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
 
       {/* =========================================================================
           COMPACTE SECTIE 2: WONEN IN CIJFERS
-          Kerngetallen (3.309 opgave, 840+ panel, 7 woonwaarden, 100% onafhankelijk)
+          Kerngetallen (3.309 opgave, 100+ panel, 7 woonwaarden, 100% onafhankelijk)
           + Data-gedreven keten (DATA → KENNIS → INZICHT → BOUWEN) & Citaat
          ========================================================================= */}
       <section className="py-16 sm:py-24 bg-[#070D1C] text-white border-y border-white/[0.08] relative overflow-hidden">
@@ -486,7 +489,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                 </div>
                 <div>
                   <div className="text-2xl sm:text-3xl font-black text-slate-950 font-display">
-                    840+
+                    100+
                   </div>
                   <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
                     Inwoners Woonpanel

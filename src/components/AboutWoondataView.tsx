@@ -71,7 +71,7 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
                   </div>
                 </div>
                 <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-display">840+</div>
+                  <div className="text-2xl sm:text-3xl font-black text-white font-display">100+</div>
                   <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
                     Actieve panelleden
                   </div>
@@ -102,39 +102,47 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
               </div>
             </div>
 
-            {/* Right Column: Mooie afbeelding rechts */}
+            {/* Right Column: Lokale Validatie & Kwaliteitsborging Card (afbeelding verwijderd) */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-3xl overflow-hidden border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-                {/* Main high quality visual */}
-                <div className="relative h-80 sm:h-96 lg:h-[440px] w-full overflow-hidden bg-slate-900">
-                  <img
-                    src="https://www.image2url.com/r2/default/images/1788079010026-45646df3-9976-4226-b7fd-6cab4add9c2b.jpg"
-                    alt="Wonen in Dronten - Architectuur en Leefomgeving"
-                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                  />
-                  {/* Gradients for text contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070D1C] via-[#070D1C]/20 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#070D1C]/30 via-transparent to-transparent" />
-                </div>
-
-                {/* Floating Top Badge */}
-                <div className="absolute top-4 right-4 bg-[#070D1C]/85 backdrop-blur-md border border-white/20 rounded-full px-3.5 py-1.5 flex items-center gap-2 shadow-lg">
-                  <MapPin className="w-3.5 h-3.5 text-[#C9F31D]" />
-                  <span className="text-[11px] font-bold text-white uppercase tracking-wider font-display">
-                    Dronten • Biddinghuizen • Swifterbant
-                  </span>
-                </div>
-
-                {/* Floating Bottom Card */}
-                <div className="absolute bottom-4 left-4 right-4 bg-[#070D1C]/90 backdrop-blur-md border border-white/15 rounded-2xl p-4.5 space-y-2 shadow-2xl">
-                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#C9F31D] font-display">
+              <div className="bg-[#0B1322] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#C9F31D]/10 border border-[#C9F31D]/30 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-wider">
                     <ShieldCheck className="w-4 h-4 text-[#C9F31D]" />
-                    <span>Lokale validatie &amp; samenwerking</span>
+                    <span>Lokale Validatie</span>
                   </div>
-                  <p className="text-xs text-slate-300 font-normal leading-relaxed">
-                    Gebaseerd op officiële kerncijfers, continu inwonersonderzoek en de actuele praktijkkennis van lokale makelaars en adviseurs.
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-400 font-display">
+                    <MapPin className="w-3.5 h-3.5 text-[#C9F31D]" />
+                    <span>Dronten • Biddinghuizen • Swifterbant</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-xl sm:text-2xl font-black text-white font-display">
+                    Lokale validatie &amp; samenwerking
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                    Gebaseerd op officiële kerncijfers, continu inwonersonderzoek en de actuele praktijkkennis van lokale makelaars en adviseurs in Dronten, Biddinghuizen en Swifterbant.
                   </p>
+                </div>
+
+                <div className="space-y-3 pt-4 border-t border-white/10">
+                  <div className="flex items-center gap-3 text-xs text-slate-300">
+                    <span className="w-2 h-2 rounded-full bg-[#C9F31D] shrink-0" />
+                    <span>Gemeentelijke Woonwaarden &amp; Visie 2040</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs text-slate-300">
+                    <span className="w-2 h-2 rounded-full bg-[#C9F31D] shrink-0" />
+                    <span>Actieve koppeling met 100+ panelleden</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs text-slate-300">
+                    <span className="w-2 h-2 rounded-full bg-[#C9F31D] shrink-0" />
+                    <span>Lokale makelaarsexpertise &amp; marktdata</span>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-between text-xs text-slate-400 font-medium">
+                  <span className="text-slate-300 font-bold font-display">4 Lokale partners</span>
+                  <span className="text-[#C9F31D] font-bold">100% Onafhankelijk</span>
                 </div>
               </div>
             </div>

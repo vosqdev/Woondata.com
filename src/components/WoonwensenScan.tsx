@@ -30,7 +30,12 @@ import {
 import confetti from 'canvas-confetti';
 import { woonwensenService } from '../services/woonwensenService';
 
-export const WoonwensenScan: React.FC = () => {
+interface WoonwensenScanProps {
+  hideHeader?: boolean;
+  standalone?: boolean;
+}
+
+export const WoonwensenScan: React.FC<WoonwensenScanProps> = ({ hideHeader = false, standalone = false }) => {
   const [step, setStep] = useState<number>(1);
   const totalSteps = 6;
 
@@ -333,40 +338,21 @@ export const WoonwensenScan: React.FC = () => {
     'Bijzondere architectuur en woningtypen'
   ];
 
-  return (
-    <section id="woonwensen" className="py-16 sm:py-24 bg-white text-slate-900 border-b border-slate-200 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-black text-[#D6F830] mb-3.5 font-display uppercase tracking-wider">
-            <Users className="w-3.5 h-3.5 text-[#D6F830]" />
-            <span>Inwonerspeiling & Woonmarktdata</span>
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight font-display">
-            Woonwensenscan Dronten
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed font-normal">
-            Geef in 6 stappen uw woonwensen, betaalbaarheid, zorg, bereikbaarheid en energievoorkeuren door. Uw anonieme inbreng vormt actuele woonmarktdata voor passende nieuwbouw in de gemeente Dronten.
-          </p>
-        </div>
-
-        {/* Form Container */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-          
-          {/* Step Indicator Top Bar */}
-          <div className="bg-slate-50 border-b border-slate-200 px-4 sm:px-6 py-4">
-            <div className="flex items-center justify-between gap-1 sm:gap-2 max-w-3xl mx-auto overflow-x-auto pb-1 sm:pb-0">
-              {[
-                { num: 1, title: 'Profiel' },
-                { num: 2, title: 'Woning' },
-                { num: 3, title: 'Betaalbaarheid' },
-                { num: 4, title: 'Zorg & Bereikbaarheid' },
-                { num: 5, title: 'Energie' },
-                { num: 6, title: 'Afwegingen' }
-              ].map((s) => (
-                <div 
-                  key={s.num}
+  const formCard = (
+    <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden w-full">
+      {/* Step Indicator Top Bar: 6 Hoofdstukken */}
+      <div className="bg-slate-50/90 border-b border-slate-200 px-4 sm:px-6 py-4">
+        <div className="flex items-center justify-between gap-1 sm:gap-2 max-w-3xl mx-auto overflow-x-auto pb-1 sm:pb-0">
+          {[
+            { num: 1, title: '1. Profiel' },
+            { num: 2, title: '2. Woning' },
+            { num: 3, title: '3. Betaalbaarheid' },
+            { num: 4, title: '4. Zorg & Vervoer' },
+            { num: 5, title: '5. Energie' },
+            { num: 6, title: '6. Afwegingen' }
+          ].map((s) => (
+            <div 
+              key={s.num}
                   onClick={() => !isSubmitted && setStep(s.num)}
                   className={`flex items-center gap-1.5 sm:gap-2 cursor-pointer transition-all shrink-0 ${
                     step === s.num 
@@ -487,7 +473,7 @@ export const WoonwensenScan: React.FC = () => {
                   <div className="space-y-8 animate-fadeIn">
                     <div>
                       <span className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-1 font-display">
-                        Stap 1 van {totalSteps}
+                        Hoofdstuk 1 van {totalSteps} • Profiel & Binding
                       </span>
                       <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display">
                         Profiel, binding en verhuisintentie
@@ -683,7 +669,7 @@ export const WoonwensenScan: React.FC = () => {
                   <div className="space-y-8 animate-fadeIn">
                     <div>
                       <span className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-1 font-display">
-                        Stap 2 van {totalSteps}
+                        Hoofdstuk 2 van {totalSteps} • Woningvoorkeur
                       </span>
                       <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display">
                         Woning, buitenruimte en woonvorm
@@ -878,7 +864,7 @@ export const WoonwensenScan: React.FC = () => {
                   <div className="space-y-8 animate-fadeIn">
                     <div>
                       <span className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-1 font-display">
-                        Stap 3 van {totalSteps}
+                        Hoofdstuk 3 van {totalSteps} • Betaalbaarheid
                       </span>
                       <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display">
                         Betaalbaarheid & Woonlasten
@@ -997,7 +983,7 @@ export const WoonwensenScan: React.FC = () => {
                   <div className="space-y-8 animate-fadeIn">
                     <div>
                       <span className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-1 font-display">
-                        Stap 4 van {totalSteps}
+                        Hoofdstuk 4 van {totalSteps} • Zorg & Bereikbaarheid
                       </span>
                       <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display">
                         Zorg & Bereikbaarheid
@@ -1145,7 +1131,7 @@ export const WoonwensenScan: React.FC = () => {
                   <div className="space-y-8 animate-fadeIn">
                     <div>
                       <span className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-1 font-display">
-                        Stap 5 van {totalSteps}
+                        Hoofdstuk 5 van {totalSteps} • Duurzaamheid & Energie
                       </span>
                       <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display">
                         Energie en totale woonlasten
@@ -1273,7 +1259,7 @@ export const WoonwensenScan: React.FC = () => {
                   <div className="space-y-8 animate-fadeIn">
                     <div>
                       <span className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-1 font-display">
-                        Stap 6 van {totalSteps}
+                        Hoofdstuk 6 van {totalSteps} • Afwegingen & Woonkwaliteit
                       </span>
                       <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display">
                         Afwegingen en prioriteiten
@@ -1542,9 +1528,31 @@ export const WoonwensenScan: React.FC = () => {
               </form>
             )}
           </div>
+    </div>
+  );
 
-        </div>
+  if (standalone) {
+    return formCard;
+  }
 
+  return (
+    <section id="woonwensen" className="py-16 sm:py-24 bg-white text-slate-900 border-b border-slate-200 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {!hideHeader && (
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-black text-[#D6F830] mb-3.5 font-display uppercase tracking-wider">
+              <Users className="w-3.5 h-3.5 text-[#D6F830]" />
+              <span>Inwonerspeiling & Woonmarktdata</span>
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight font-display">
+              Woonwensenscan Dronten
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed font-normal">
+              Geef in 6 stappen uw woonwensen, betaalbaarheid, zorg, bereikbaarheid en energievoorkeuren door. Uw anonieme inbreng vormt actuele woonmarktdata voor passende nieuwbouw in de gemeente Dronten.
+            </p>
+          </div>
+        )}
+        {formCard}
       </div>
     </section>
   );

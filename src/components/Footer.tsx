@@ -105,12 +105,15 @@ export const Footer: React.FC<FooterProps> = ({
               </h4>
               <ul className="space-y-2 text-xs text-slate-400">
                 <li>
-                  <button 
-                    onClick={() => openSurvey ? openSurvey() : setActiveTab('wonen')} 
-                    className="hover:text-white transition-colors cursor-pointer text-left"
+                  <a 
+                    href="#woonwensenscan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors cursor-pointer text-left inline-flex items-center gap-1.5"
                   >
-                    WoonwensenScan invullen
-                  </button>
+                    <span>WoonwensenScan invullen</span>
+                    <span className="text-[10px] text-[#C9F31D]">↗</span>
+                  </a>
                 </li>
                 <li>
                   <button 

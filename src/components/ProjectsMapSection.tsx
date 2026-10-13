@@ -35,6 +35,7 @@ interface ProjectsMapSectionProps {
   initialKern?: string;
   onStatusChange?: (status: string) => void;
   onKernChange?: (kern: string) => void;
+  focusedProject?: Project | null;
 }
 
 export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
@@ -46,7 +47,8 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
   initialStatus,
   initialKern,
   onStatusChange,
-  onKernChange
+  onKernChange,
+  focusedProject
 }) => {
   const [internalActiveLayer, setInternalActiveLayer] = useState<'kaart' | 'lijst' | 'datalaag'>('kaart');
   const activeLayer = externalActiveLayer !== undefined ? externalActiveLayer : internalActiveLayer;
@@ -63,9 +65,20 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>('Alle');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [mapHoveredProject, setMapHoveredProject] = useState<Project | null>(PROJECTS_DATA[0]);
+  const [mapHoveredProject, setMapHoveredProject] = useState<Project | null>(focusedProject || PROJECTS_DATA[0]);
   const [interestSubmitted, setInterestSubmitted] = useState(false);
   const [interestEmail, setInterestEmail] = useState('');
+
+  // Synchronize filters when focusedProject changes
+  React.useEffect(() => {
+    if (focusedProject) {
+      setMapHoveredProject(focusedProject);
+      if (focusedProject.kern) {
+        setSelectedKern(focusedProject.kern);
+      }
+      setSelectedStatus('Alle');
+    }
+  }, [focusedProject]);
 
   // Synchronize filters when initialStatus or initialKern prop changes
   React.useEffect(() => {

@@ -26,6 +26,7 @@ import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { BuurtGebiedspaspoortModule } from './components/BuurtGebiedspaspoortModule';
 import { ProjectParticipationPortal } from './components/ProjectParticipationPortal';
 import { OntdekPlatformPortal } from './components/OntdekPlatformPortal';
+import { WoonwensenScanPage } from './components/WoonwensenScanPage';
 
 export default function App() {
   // Main tabs: home | wonen | projecten | inzicht | ontwikkelaars | over-woondata
@@ -44,9 +45,24 @@ export default function App() {
   const [isBuurtPaspoortOpen, setIsBuurtPaspoortOpen] = useState(false);
   const [selectedParticipationProject, setSelectedParticipationProject] = useState<Project | null>(null);
   const [isParticipationPortalOpen, setIsParticipationPortalOpen] = useState(false);
+  const [isWoonwensenScanPageOpen, setIsWoonwensenScanPageOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isDisclaimerModalOpen, setIsDisclaimerModalOpen] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
+  const [focusedMapProject, setFocusedMapProject] = useState<Project | null>(null);
+
+  const handleNavigateToInteractiveMap = (project?: Project) => {
+    setActiveTab('projecten');
+    setWonenActiveLayer('kaart');
+    if (project) {
+      setFocusedMapProject(project);
+      if (project.kern) {
+        setProjectFilterKern(project.kern);
+      }
+    }
+    window.location.hash = '#projecten';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Sync state with URL hash
   useEffect(() => {
@@ -56,38 +72,53 @@ export default function App() {
         setIsPrivacyModalOpen(true);
       } else if (hash === '#disclaimer' || hash === '#voorwaarden') {
         setIsDisclaimerModalOpen(true);
+      } else if (hash === '#woonwensenscan' || hash === '#woonwensen-scan' || hash === '#scan' || hash === '#enquete' || hash === '#inwonerspeiling') {
+        setIsWoonwensenScanPageOpen(true);
+        setIsDeveloperPortalOpen(false);
+        setIsBuurtPaspoortOpen(false);
+        setIsParticipationPortalOpen(false);
+        window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (hash === '#portaal' || hash === '#portal' || hash === '#developer-portal' || hash === '#besloten-portaal' || hash === '#ontdek-platform') {
         setIsDeveloperPortalOpen(true);
         setIsBuurtPaspoortOpen(false);
         setIsParticipationPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (hash === '#buurtpaspoort') {
         setIsBuurtPaspoortOpen(true);
         setIsDeveloperPortalOpen(false);
         setIsParticipationPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
       } else if (hash === '#wonen') {
         setActiveTab('wonen');
         setIsDeveloperPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
       } else if (hash === '#projecten') {
         setActiveTab('projecten');
         setIsDeveloperPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
       } else if (hash === '#inzicht' || hash === '#kennis' || hash === '#woningmarkt-data') {
         setActiveTab('home');
         setIsDeveloperPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
       } else if (hash === '#ontwikkelaars') {
         setActiveTab('ontwikkelaars');
         setIsDeveloperPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
       } else if (hash === '#over' || hash === '#over-woondata') {
         setActiveTab('over-woondata');
         setIsDeveloperPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
       } else if (hash === '#opiniepeiler' || hash === '#opiniepeiler-aanmelden') {
         setIsOpiniepeilerOpen(true);
       } else if (hash === '#praat-mee' || hash === '#woonwensen') {
         setActiveTab('wonen');
         setIsDeveloperPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
       } else if (hash === '' || hash === '#home') {
         setActiveTab('home');
         setIsDeveloperPortalOpen(false);
+        setIsWoonwensenScanPageOpen(false);
       }
     };
 
@@ -228,6 +259,20 @@ export default function App() {
     );
   }
 
+  // IF STANDALONE WOONWENSENSCAN WEBPAGINA IS OPEN:
+  if (isWoonwensenScanPageOpen) {
+    return (
+      <WoonwensenScanPage
+        onBackToWebsite={() => {
+          setIsWoonwensenScanPageOpen(false);
+          window.location.hash = '';
+          setActiveTab('home');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAF8] text-slate-900 font-sans relative">
       
@@ -258,18 +303,15 @@ export default function App() {
             }}
             openDeveloperPortal={openDeveloperPortal}
             onOpenOpiniepeiler={() => setIsOpiniepeilerOpen(true)}
-            onSelectProject={(proj) => openParticipationPortal(proj)}
+            onSelectProject={(proj) => handleNavigateToInteractiveMap(proj)}
           />
         )}
 
         {/* TAB 1: WONEN & WOONWENSEN (Inwoners, WoonwensenScan & Woonpanel) */}
         {activeTab === 'wonen' && (
           <WonenView
-            onNavigateToProjects={() => {
-              window.location.hash = '#projecten';
-              setActiveTab('projecten');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+            onNavigateToProjects={() => handleNavigateToInteractiveMap()}
+            onSelectProject={(proj) => handleNavigateToInteractiveMap(proj)}
             onOpenParticipation={openParticipationPortal}
             onOpenStayInformed={() => openStayInformed('register')}
             onOpenOpiniepeiler={() => setIsOpiniepeilerOpen(true)}
@@ -354,6 +396,7 @@ export default function App() {
               initialKern={projectFilterKern}
               onStatusChange={setProjectFilterStatus}
               onKernChange={setProjectFilterKern}
+              focusedProject={focusedMapProject}
             />
           </div>
         )}

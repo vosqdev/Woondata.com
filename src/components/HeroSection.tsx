@@ -91,7 +91,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           <div className="flex items-center gap-2.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#070D1C]/80 border border-white/20 shadow-lg text-xs sm:text-sm font-semibold text-white backdrop-blur-md">
             <CheckCircle2 className="w-4 h-4 text-[#C9F31D] shrink-0" />
-            <span>1.420+ Woonpanelleden</span>
+            <span>100+ Woonpanelleden</span>
           </div>
         </div>
 

@@ -348,6 +348,193 @@ export const DeveloperTools: React.FC<DeveloperToolsProps> = ({
         </div>
       </section>
 
+      {/* ========================================================= */}
+      {/* 3. ONDERZOEK & ADVIES: INSTRUMENTEN VOOR EEN BETER PLAN   */}
+      {/* ========================================================= */}
+      <section className="py-20 sm:py-28 bg-[#FAFAF8] text-slate-900 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Header Row */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-12">
+            <div className="max-w-3xl space-y-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#080E1B] text-[#C9F31D] text-xs font-black uppercase tracking-wider font-display">
+                <Sparkles className="w-3.5 h-3.5 text-[#C9F31D]" />
+                <span>ONDERZOEK &amp; ADVIES</span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight leading-[1.08] font-display">
+                Instrumenten voor een beter onderbouwd plan
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed font-normal">
+                Van eerste quickscan tot evaluatie na oplevering. Modulaire onderzoeksproducten ter versterking van uw haalbaarheidsstudie en ruimtelijke onderbouwing.
+              </p>
+            </div>
+
+            <div className="shrink-0">
+              <button
+                onClick={() => {
+                  setContactSubject('Vrijblijvend overleg plannen (Onderzoek & Advies)');
+                  scrollToSection('contact-advies');
+                }}
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full border-2 border-slate-950 bg-white hover:bg-slate-950 text-slate-950 hover:text-white text-xs sm:text-sm font-bold font-display transition-all cursor-pointer shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Vrijblijvend overleg plannen</span>
+                <ArrowRight className="w-4 h-4 ml-0.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* 3 Modules Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            
+            {/* MODULE 01: QUICKSCAN */}
+            <div className="bg-white rounded-3xl p-7 sm:p-9 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+              <div className="space-y-6 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-[#080E1B] text-[#C9F31D] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                      <Search className="w-5 h-5 text-[#C9F31D]" />
+                    </div>
+                    <span className="text-sm font-bold text-slate-500 font-display">01</span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 font-display">
+                    QUICKSCAN
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display tracking-tight leading-snug">
+                    Programma- &amp; Locatie Quickscan
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Snelle toets op doelgroep, programma, typologie, prijs en aantallen op basis van actuele data.
+                  </p>
+                </div>
+              </div>
+
+              {/* Watermark Illustration */}
+              <div className="absolute right-2 bottom-6 w-32 h-32 opacity-[0.04] text-slate-900 pointer-events-none">
+                <Search className="w-full h-full" />
+              </div>
+
+              <div className="pt-6 mt-8 border-t border-slate-100 flex items-center justify-between relative z-10">
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  <span>5 werkdagen</span>
+                </div>
+                <button
+                  onClick={() => {
+                    setContactSubject('Programma- & Locatie Quickscan');
+                    scrollToSection('contact-advies');
+                  }}
+                  className="px-4 py-2 rounded-full bg-slate-100 hover:bg-[#080E1B] text-slate-900 hover:text-[#C9F31D] text-xs font-bold font-display transition-all inline-flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>Bekijk product</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* MODULE 02: ONDERZOEK */}
+            <div className="bg-white rounded-3xl p-7 sm:p-9 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+              <div className="space-y-6 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-[#080E1B] text-[#C9F31D] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                      <Users className="w-5 h-5 text-[#C9F31D]" />
+                    </div>
+                    <span className="text-sm font-bold text-slate-500 font-display">02</span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 font-display">
+                    ONDERZOEK
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display tracking-tight leading-snug">
+                    Locatiegericht Woonwensenonderzoek
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Specifiek ophalen van woonwensen en doelgroepvoorkeuren voor één specifiek plangebied of kern.
+                  </p>
+                </div>
+              </div>
+
+              {/* Watermark Illustration */}
+              <div className="absolute right-2 bottom-6 w-32 h-32 opacity-[0.04] text-slate-900 pointer-events-none">
+                <Users className="w-full h-full" />
+              </div>
+
+              <div className="pt-6 mt-8 border-t border-slate-100 flex items-center justify-between relative z-10">
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  <span>3–4 weken</span>
+                </div>
+                <button
+                  onClick={() => {
+                    setContactSubject('Locatiegericht Woonwensenonderzoek');
+                    scrollToSection('contact-advies');
+                  }}
+                  className="px-4 py-2 rounded-full bg-slate-100 hover:bg-[#080E1B] text-slate-900 hover:text-[#C9F31D] text-xs font-bold font-display transition-all inline-flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>Bekijk product</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* MODULE 03: OPTIMALISATIE */}
+            <div className="bg-white rounded-3xl p-7 sm:p-9 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+              <div className="space-y-6 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-[#080E1B] text-[#C9F31D] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                      <Sliders className="w-5 h-5 text-[#C9F31D]" />
+                    </div>
+                    <span className="text-sm font-bold text-slate-500 font-display">03</span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 font-display">
+                    OPTIMALISATIE
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display tracking-tight leading-snug">
+                    Programmavarianten &amp; Vraagscan
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Toetsing en benchmark van verschillende programmavarianten op marktaansluiting en afzetrisico.
+                  </p>
+                </div>
+              </div>
+
+              {/* Watermark Illustration */}
+              <div className="absolute right-2 bottom-6 w-32 h-32 opacity-[0.04] text-slate-900 pointer-events-none">
+                <Sliders className="w-full h-full" />
+              </div>
+
+              <div className="pt-6 mt-8 border-t border-slate-100 flex items-center justify-between relative z-10">
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  <span>2 weken</span>
+                </div>
+                <button
+                  onClick={() => {
+                    setContactSubject('Programmavarianten & Vraagscan');
+                    scrollToSection('contact-advies');
+                  }}
+                  className="px-4 py-2 rounded-full bg-slate-100 hover:bg-[#080E1B] text-slate-900 hover:text-[#C9F31D] text-xs font-bold font-display transition-all inline-flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>Bekijk product</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
 
       {/* ========================================================= */}
       {/* 6. CTA ONDERAAN                                           */}

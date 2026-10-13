@@ -143,9 +143,9 @@ export const WonenView: React.FC<WonenViewProps> = ({
                     href="#woonwensenscan"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#070D1C] hover:bg-slate-800 text-[#C9F31D] text-xs sm:text-sm font-black font-display transition-all shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-center"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#070D1C] hover:bg-[#C9F31D] text-[#C9F31D] hover:text-slate-950 text-xs sm:text-sm font-black font-display transition-all shadow-md hover:shadow-[0_0_20px_rgba(201,243,29,0.3)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-center group"
                   >
-                    <ExternalLink className="w-4 h-4 text-[#C9F31D]" />
+                    <ExternalLink className="w-4 h-4 text-[#C9F31D] group-hover:text-slate-950 transition-colors" />
                     <span>Open de enquête direct in een nieuw tabblad ↗</span>
                   </a>
                   <div className="flex items-center justify-center gap-4 text-[11px] text-slate-500 font-medium">

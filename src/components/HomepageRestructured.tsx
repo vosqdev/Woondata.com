@@ -597,16 +597,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
             </div>
           </div>
 
-          {/* Citaat: Data vertelt wat er gebeurt... */}
-          <div className="bg-[#0A1120] border border-slate-800 rounded-3xl p-6 sm:p-10 text-center max-w-4xl mx-auto space-y-3">
-            <blockquote className="text-lg sm:text-2xl font-black text-white font-display leading-snug">
-              &ldquo;Data vertelt wat er gebeurt. Onze lokale marktkennis helpt verklaren waarom.&rdquo;
-            </blockquote>
-            <p className="text-xs font-bold text-[#C9F31D] uppercase tracking-widest font-display">
-              KERREMANS MAKELAARDIJ • MAKELAARDIJ VAN DER LINDEN • DE MAKELAARS VAN 5VOOR12 • VOVON DEVELOPMENT
-            </p>
-          </div>
-
         </div>
       </section>
 

@@ -33,9 +33,20 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
     <div className="min-h-screen bg-[#FAFAF8] text-slate-900">
       
       {/* =========================================================================
-          HERO ENTRANCE: Mooie binnenkomst met afbeelding rechts
+          HERO ENTRANCE: Bovenin met achtergrondafbeelding en homepage-filter
          ========================================================================= */}
-      <section className="bg-[#070D1C] text-white pt-14 sm:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-white/[0.08]">
+      <section className="relative bg-[#070D1C] text-white pt-14 sm:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-white/[0.08]">
+        {/* Background Image with the same filter as Homepage */}
+        <div className="absolute inset-0 z-0 overflow-hidden opacity-55 pointer-events-none">
+          <img
+            src="https://www.image2url.com/r2/default/images/1791915963994-b0bda852-f37a-4931-aadb-fe0b332c36e8.jpg"
+            alt="Over Woondata Achtergrond"
+            className="w-full h-full object-cover object-center"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070D1C]/65 via-[#070D1C]/45 to-[#070D1C]/80" />
+        </div>
+
         {/* Subtle Ambient Glow */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-[#C9F31D]/[0.05] blur-[130px] rounded-full pointer-events-none" />
         <div className="absolute -bottom-20 left-10 w-[400px] h-[300px] bg-blue-500/[0.04] blur-[120px] rounded-full pointer-events-none" />
@@ -220,16 +231,6 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
               </div>
 
             </div>
-          </div>
-
-          {/* Citaat: Data vertelt wat er gebeurt... */}
-          <div className="bg-[#0A1120] border border-slate-800 rounded-3xl p-6 sm:p-10 text-center max-w-4xl mx-auto space-y-3.5 shadow-xl">
-            <blockquote className="text-lg sm:text-2xl font-black text-white font-display leading-snug">
-              &ldquo;Data vertelt wat er gebeurt. Onze lokale marktkennis helpt verklaren waarom.&rdquo;
-            </blockquote>
-            <p className="text-xs font-bold text-[#C9F31D] uppercase tracking-widest font-display">
-              KERREMANS MAKELAARDIJ • MAKELAARDIJ VAN DER LINDEN • DE MAKELAARS VAN 5VOOR12 • VOVON DEVELOPMENT
-            </p>
           </div>
 
         </div>

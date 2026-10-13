@@ -298,27 +298,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
             </div>
           </div>
 
-          {/* Quote (Afbeelding 2): Tussen het tekstvlak en donkere vlak */}
-          <div className="bg-[#0A1120] border border-slate-800/90 rounded-3xl sm:rounded-[32px] p-8 sm:p-12 lg:p-14 text-center shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-center mb-5">
-              <svg 
-                className="w-10 h-10 sm:w-12 sm:h-12 text-[#C9F31D]" 
-                viewBox="0 0 24 24" 
-                fill="currentColor"
-              >
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-            </div>
-
-            <blockquote className="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-black text-white font-display tracking-tight leading-snug max-w-4xl mx-auto">
-              &ldquo;Data vertelt wat er gebeurt. Onze lokale marktkennis helpt verklaren waarom.&rdquo;
-            </blockquote>
-
-            <p className="text-xs sm:text-sm font-extrabold text-[#C9F31D] uppercase tracking-widest font-display mt-4 sm:mt-5">
-              KERREMANS MAKELAARDIJ • MAKELAARDIJ VAN DER LINDEN • DE MAKELAARS VAN 5VOOR12
-            </p>
-          </div>
-
         </div>
       </section>
 

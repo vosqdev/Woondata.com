@@ -565,10 +565,10 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
 
                 <div>
                   <h3 className="text-2xl font-extrabold text-slate-950 font-display">
-                    Wonen &amp; woonwensen
+                    Wonen &amp; wensen
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed font-normal">
-                    Denk mee over wonen in Dronten, Biddinghuizen en Swifterbant en ontdek welke nieuwbouwprojecten bij uw woonwensen passen.
+                    Denk actief mee over wonen en ontdek welke nieuwbouwprojecten bij uw situatie passen.
                   </p>
                 </div>
 

@@ -151,7 +151,7 @@ export const OpiniepeilerModal: React.FC<OpiniepeilerModalProps> = ({
                 Aanmelden als inwoner voor de opiniepeiler
               </h2>
               <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-                Het Woonpanel bestaat uit inwoners die periodiek hun mening geven over woonwensen, woningbouwlocaties, gewenste woningtypen, voorzieningen en de kwaliteit van leefomgevingen.
+                Het Woonpanel van Woondata slaat een brug tussen de daadwerkelijke woonwensen van inwoners en de besluitvorming van gemeenten, ontwikkelaars en bouwers. Het Woonpanel bestaat uit inwoners die (periodiek) hun mening geven over woonwensen, gewenste woningtypen, voorzieningen en de kwaliteit van leefomgevingen.
               </p>
             </div>
 

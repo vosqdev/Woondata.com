@@ -11,7 +11,8 @@ import {
   Layers, 
   Search, 
   CheckCircle2, 
-  Vote
+  Vote,
+  ExternalLink
 } from 'lucide-react';
 import { PROJECTS_DATA } from '../data/mockData';
 import { Project } from '../types';
@@ -105,10 +106,10 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
 
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-black text-slate-950 font-display tracking-tight">
-                    Wonen &amp; woonwensen
+                    Wonen &amp; wensen
                   </h3>
                   <p className="text-sm text-slate-600 mt-2.5 leading-relaxed">
-                    Denk actief mee over wonen in Dronten, Biddinghuizen en Swifterbant en ontdek welke nieuwbouwprojecten bij uw situatie passen.
+                    Denk actief mee over wonen en ontdek welke nieuwbouwprojecten bij uw situatie passen.
                   </p>
                 </div>
 
@@ -159,7 +160,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                   onClick={() => onNavigate('wonen')}
                   className="w-full py-2.5 px-4 bg-slate-100 hover:bg-[#070D1C] text-slate-800 hover:text-white font-bold rounded-2xl text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md group/wonenBtn"
                 >
-                  <span>Naar Wonen &amp; Woonwensen</span>
+                  <span>Naar Wonen &amp; Wensen</span>
                   <ArrowRight className="w-3.5 h-3.5 text-slate-700 group-hover/wonenBtn:text-[#C9F31D] group-hover/wonenBtn:translate-x-0.5 transition-all" />
                 </button>
                 <div className="text-center">
@@ -621,6 +622,15 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
             >
               Woonwens doorgeven
             </button>
+            <a
+              href="#woonwensenscan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#070D1C] hover:bg-black text-[#C9F31D] hover:text-[#C9F31D] text-xs sm:text-sm font-bold rounded-full transition-all cursor-pointer shadow-md hover:scale-[1.02] active:scale-[0.98] font-display border border-[#C9F31D]/30 hover:border-[#C9F31D]/80 hover:shadow-[0_0_15px_rgba(201,243,29,0.25)]"
+            >
+              <ExternalLink className="w-4 h-4 text-[#C9F31D]" />
+              <span>Open de enquête direct in een nieuw tabblad ↗</span>
+            </a>
             <button
               onClick={() => onNavigate('ontwikkelaars')}
               className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-full transition-all cursor-pointer border border-slate-200/80 hover:scale-[1.02] active:scale-[0.98] font-display"

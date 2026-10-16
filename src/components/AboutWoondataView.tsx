@@ -15,6 +15,7 @@ import {
   Home,
   Compass,
   Zap,
+  ExternalLink,
 } from 'lucide-react';
 import { WoonDataLogo } from './WoonDataLogo';
 
@@ -470,7 +471,7 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
           <h4 className="text-lg font-bold text-slate-900 font-display">
             Direct aan de slag op Woondata.com
           </h4>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center items-center gap-3">
             <button
               onClick={onNavigateToProjects}
               className="px-5 py-2.5 bg-[#070D1C] hover:bg-black text-white text-xs font-bold rounded-full transition-colors cursor-pointer"
@@ -483,6 +484,15 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
             >
               Woonwens doorgeven
             </button>
+            <a
+              href="#woonwensenscan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#070D1C] hover:bg-black text-[#C9F31D] text-xs font-bold rounded-full transition-all cursor-pointer shadow-sm border border-[#C9F31D]/30 hover:border-[#C9F31D]/80"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-[#C9F31D]" />
+              <span>Open de enquête direct in een nieuw tabblad ↗</span>
+            </a>
             <button
               onClick={onNavigateToDeveloper}
               className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-full transition-colors cursor-pointer"

@@ -83,9 +83,9 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
                   </div>
                 </div>
                 <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-display">100+</div>
+                  <div className="text-2xl sm:text-3xl font-black text-white font-display">4</div>
                   <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
-                    Actieve panelleden
+                    Lokale partners
                   </div>
                 </div>
                 <div className="bg-white/[0.05] border border-[#C9F31D]/30 rounded-2xl p-4 backdrop-blur-sm">
@@ -150,11 +150,6 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
                     <span className="w-2 h-2 rounded-full bg-[#C9F31D] shrink-0" />
                     <span>Lokale makelaarsexpertise &amp; marktdata</span>
                   </div>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-between text-xs text-slate-400 font-medium">
-                  <span className="text-slate-300 font-bold font-display">4 Lokale partners</span>
-                  <span className="text-[#C9F31D] font-bold">100% Onafhankelijk</span>
                 </div>
               </div>
             </div>

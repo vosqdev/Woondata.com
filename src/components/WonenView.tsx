@@ -84,9 +84,9 @@ export const WonenView: React.FC<WonenViewProps> = ({
                   </div>
                 </div>
                 <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-display">100+</div>
+                  <div className="text-2xl sm:text-3xl font-black text-white font-display">4</div>
                   <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
-                    Actieve panelleden
+                    Lokale partners
                   </div>
                 </div>
                 <div className="bg-white/[0.05] border border-[#C9F31D]/30 rounded-2xl p-4 backdrop-blur-sm">
@@ -201,58 +201,63 @@ export const WonenView: React.FC<WonenViewProps> = ({
             </div>
 
             <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/80">
-                  <div className="text-2xl font-black text-slate-900 font-display">100+</div>
-                  <div className="text-xs text-slate-500 mt-1">Actieve inwoners aangemeld</div>
+              {/* Van woononderzoek naar waardevolle inzichten */}
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display tracking-tight">
+                    Van woononderzoek naar waardevolle inzichten
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    De onderzoeksresultaten die via <strong className="font-semibold text-slate-900">www.woonpanel.com</strong> worden verzameld, vormen een waardevolle databron voor Woondata. Door de ervaringen, wensen en meningen van inwoners te verbinden met actuele woningmarktgegevens en kennis, ontstaan inzichten die helpen om beter onderbouwde keuzes te maken en toekomstgerichte plannen te ontwikkelen.
+                  </p>
                 </div>
-                <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/80">
-                  <div className="text-2xl font-black text-slate-900 font-display">4x / jaar</div>
-                  <div className="text-xs text-slate-500 mt-1">Korte online peiling over nieuwbouw</div>
-                </div>
-                <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/80">
-                  <div className="text-2xl font-black text-slate-900 font-display">Directe invloed</div>
-                  <div className="text-xs text-slate-500 mt-1">Op nieuwbouw en leefomgeving</div>
-                </div>
-              </div>
 
-              {/* Vervanging van knoppen voor teksten en kader blok */}
-              <div className="pt-6 border-t border-slate-100 space-y-4">
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-                  De onderzoeksresultaten die via <strong className="font-semibold text-slate-900">www.woonpanel.com</strong> binnenkomen vormen een databron voor Woondata en wat kan bijdragen aan betere besluitvorming en plannen voor gemeenten en projectontwikkelaars.
-                </p>
-
-                <div className="space-y-2.5">
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#070D1C] mt-2 shrink-0" />
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+                    <span className="w-2 h-2 rounded-full bg-[#070D1C] mt-1.5 shrink-0" />
                     <div>
-                      <strong className="text-slate-950 font-bold font-display">Woonwensen</strong>{' '}
-                      <span>levert vraagdata op: welke woningen zijn er nodig, waar, voor wie en tegen welke prijs?</span>
+                      <strong className="text-slate-950 font-bold font-display block sm:inline mr-1">
+                        Woonwensen – Wat hebben inwoners nodig?
+                      </strong>
+                      <span className="text-slate-600 block sm:inline">
+                        Brengt de actuele en toekomstige woningbehoefte in beeld. Welke woningen zijn gewenst, op welke locaties, voor welke doelgroepen en binnen welke prijsklassen?
+                      </span>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#070D1C] mt-2 shrink-0" />
+                  <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+                    <span className="w-2 h-2 rounded-full bg-[#070D1C] mt-1.5 shrink-0" />
                     <div>
-                      <strong className="text-slate-950 font-bold font-display">Woonscan</strong>{' '}
-                      <span>levert informatie op over de bestaande woningvoorraad en hoe bewoners de kwaliteit, betaalbaarheid en toekomstbestendigheid ervaren.</span>
+                      <strong className="text-slate-950 font-bold font-display block sm:inline mr-1">
+                        Woonscan – Hoe ervaren inwoners hun woning?
+                      </strong>
+                      <span className="text-slate-600 block sm:inline">
+                        Geeft inzicht in de bestaande woningvoorraad en hoe bewoners hun woonsituatie beoordelen. Van woonkwaliteit en betaalbaarheid tot duurzaamheid, woonlasten en toekomstbestendigheid.
+                      </span>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#070D1C] mt-2 shrink-0" />
+                  <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+                    <span className="w-2 h-2 rounded-full bg-[#070D1C] mt-1.5 shrink-0" />
                     <div>
-                      <strong className="text-slate-950 font-bold font-display">Woonopinie</strong>{' '}
-                      <span>levert gebiedsgerichte inzichten op: wat vinden inwoners van voorgenomen ontwikkelingen en welke belangen en aandachtspunten spelen er?</span>
+                      <strong className="text-slate-950 font-bold font-display block sm:inline mr-1">
+                        Woonopinie – Wat vinden inwoners van hun leefomgeving?
+                      </strong>
+                      <span className="text-slate-600 block sm:inline">
+                        Maakt zichtbaar hoe inwoners denken over ruimtelijke ontwikkelingen en plannen in hun buurt, wijk of gemeente. Welke kansen zien zij, welke zorgen leven er en wat verdient extra aandacht?
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 {/* Kader blok */}
-                <div className="mt-4 p-5 rounded-2xl bg-slate-50 border border-slate-300/80 text-xs sm:text-sm text-slate-800 leading-relaxed font-medium shadow-sm">
-                  <p>
-                    Door deze drie databronnen binnen Woondata te combineren met CBS-, WOZ-, lokale woningmarkt- en projectgegevens ontstaat uiteindelijk een interessant instrument voor vraaggestuurde gebieds- en woningbouwontwikkeling.
+                <div className="mt-4 p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-300/80 space-y-3 shadow-sm">
+                  <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium">
+                    Samen vormen deze drie een waardevolle basis voor datagedreven woningbouw, gebiedsontwikkeling en bewonersparticipatie. Zo verbinden Woonpanel en Woondata de stem van inwoners met de inzichten die nodig zijn om betere plannen te maken.
                   </p>
+                  <div className="pt-2 border-t border-slate-200/80 text-xs sm:text-sm font-black text-slate-950 font-display tracking-wide">
+                    Lokale kennis. Actuele data. Betere keuzes.
+                  </div>
                 </div>
               </div>
             </div>

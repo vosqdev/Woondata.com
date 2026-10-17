@@ -11,7 +11,6 @@ import {
   Layers, 
   Search, 
   CheckCircle2, 
-  Vote,
   ExternalLink
 } from 'lucide-react';
 import { PROJECTS_DATA } from '../data/mockData';
@@ -147,33 +146,15 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                 </div>
               </div>
 
-              {/* CTA Knoppen */}
-              <div className="pt-6 mt-6 border-t border-slate-100 space-y-2.5">
-                <button
-                  onClick={() => onOpenOpiniepeiler ? onOpenOpiniepeiler() : openSurvey()}
-                  className="w-full py-3.5 px-5 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 font-black rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer font-display"
-                >
-                  <Vote className="w-4 h-4 text-slate-950 stroke-[2.5]" />
-                  <span>Aanmelden voor opiniepeiler</span>
-                </button>
+              {/* CTA Knop */}
+              <div className="pt-6 mt-6 border-t border-slate-100">
                 <button
                   onClick={() => onNavigate('wonen')}
-                  className="w-full py-2.5 px-4 bg-slate-100 hover:bg-[#070D1C] text-slate-800 hover:text-white font-bold rounded-2xl text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md group/wonenBtn"
+                  className="w-full py-3.5 px-5 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 font-black rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer font-display"
                 >
-                  <span>Naar Wonen &amp; Wensen</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-700 group-hover/wonenBtn:text-[#C9F31D] group-hover/wonenBtn:translate-x-0.5 transition-all" />
+                  <span>Bekijk wonen &amp; wensen</span>
+                  <ArrowRight className="w-4 h-4 text-slate-950 stroke-[2.5]" />
                 </button>
-                <div className="text-center">
-                  <a
-                    href="#woonwensenscan"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[11px] font-bold text-slate-500 hover:text-slate-900 underline cursor-pointer"
-                  >
-                    <span>Of doe direct de WoonwensenScan</span>
-                    <ArrowRight className="w-3 h-3 inline" />
-                  </a>
-                </div>
               </div>
             </div>
 
@@ -233,7 +214,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
               </div>
 
               {/* CTA Knop */}
-              <div className="pt-6 mt-6 border-t border-slate-100 space-y-2.5">
+              <div className="pt-6 mt-6 border-t border-slate-100">
                 <button
                   onClick={() => onNavigate('ontwikkelaars')}
                   className="w-full py-3.5 px-5 bg-[#070D1C] hover:bg-black text-white hover:text-[#C9F31D] font-black rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer font-display"
@@ -241,14 +222,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                   <span>Bekijk marktdata &amp; plannen</span>
                   <ArrowRight className="w-4 h-4 text-[#C9F31D]" />
                 </button>
-                <div className="text-center">
-                  <button
-                    onClick={() => onNavigate('ontwikkelaars')}
-                    className="text-[11px] font-bold text-slate-500 hover:text-slate-900 underline cursor-pointer"
-                  >
-                    Naar het ontwikkelaarsplatform →
-                  </button>
-                </div>
               </div>
             </div>
 
@@ -308,7 +281,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
               </div>
 
               {/* CTA Knop */}
-              <div className="pt-6 mt-6 border-t border-slate-100 space-y-2.5">
+              <div className="pt-6 mt-6 border-t border-slate-100">
                 <button
                   onClick={() => onNavigate('ontwikkelaars')}
                   className="w-full py-3.5 px-5 bg-[#070D1C] hover:bg-black text-white hover:text-[#C9F31D] font-black rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer font-display"
@@ -316,14 +289,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                   <span>Voor ontwikkelaars</span>
                   <ArrowRight className="w-4 h-4 text-[#C9F31D]" />
                 </button>
-                <div className="text-center">
-                  <button
-                    onClick={openDeveloperPortal}
-                    className="text-[11px] font-bold text-slate-500 hover:text-slate-900 underline cursor-pointer"
-                  >
-                    Open het besloten ontwikkelaarsportaal →
-                  </button>
-                </div>
               </div>
             </div>
 

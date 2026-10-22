@@ -473,20 +473,14 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
             >
               Bekijk actuele projecten
             </button>
-            <button
-              onClick={onNavigateToSurvey}
-              className="px-5 py-2.5 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 text-xs font-bold rounded-full transition-colors cursor-pointer"
-            >
-              Woonwens doorgeven
-            </button>
             <a
-              href="#woonwensenscan"
+              href="https://www.woonpanel.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#070D1C] hover:bg-black text-[#C9F31D] text-xs font-bold rounded-full transition-all cursor-pointer shadow-sm border border-[#C9F31D]/30 hover:border-[#C9F31D]/80"
             >
               <ExternalLink className="w-3.5 h-3.5 text-[#C9F31D]" />
-              <span>Open de enquête direct in een nieuw tabblad ↗</span>
+              <span>Open de enquête direct op woonpanel.com ↗</span>
             </a>
             <button
               onClick={onNavigateToDeveloper}

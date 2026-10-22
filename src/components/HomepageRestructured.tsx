@@ -590,20 +590,14 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
             >
               Bekijk actuele projecten
             </button>
-            <button
-              onClick={openSurvey}
-              className="px-6 py-3 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 text-xs sm:text-sm font-bold rounded-full transition-all cursor-pointer shadow-md hover:scale-[1.02] active:scale-[0.98] font-display"
-            >
-              Woonwens doorgeven
-            </button>
             <a
-              href="#woonwensenscan"
+              href="https://www.woonpanel.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#070D1C] hover:bg-black text-[#C9F31D] hover:text-[#C9F31D] text-xs sm:text-sm font-bold rounded-full transition-all cursor-pointer shadow-md hover:scale-[1.02] active:scale-[0.98] font-display border border-[#C9F31D]/30 hover:border-[#C9F31D]/80 hover:shadow-[0_0_15px_rgba(201,243,29,0.25)]"
             >
               <ExternalLink className="w-4 h-4 text-[#C9F31D]" />
-              <span>Open de enquête direct in een nieuw tabblad ↗</span>
+              <span>Open de enquête direct op woonpanel.com ↗</span>
             </a>
             <button
               onClick={() => onNavigate('ontwikkelaars')}

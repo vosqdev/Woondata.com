@@ -236,9 +236,9 @@ interface BuurtIdee {
 const INITIAL_IDEAS: BuurtIdee[] = [
   {
     id: 'idee-1',
-    projectId: 'dronten-oost-haringweg-4',
-    title: 'Groene bufferzone en wandelpad langs de Haringweg',
-    description: 'Zorg voor een brede ecologische zone met inheemse bomen en een halfverhard wandelpad tussen de bestaande agrarische percelen en de nieuwe woonstraten. Dit zorgt voor rust en een natuurlijke overgang naar het polderlandschap.',
+    projectId: 'waterrijk-dronten',
+    title: 'Groene oeverzone en wandelpad langs de Lage Vaart',
+    description: 'Zorg voor een brede ecologische oeverzone met inheemse rietkragen en een halfverhard wandelpad langs het water bij Waterrijk. Dit zorgt voor rust en een natuurlijke aansluiting op het Hanzekwartier.',
     theme: 'Groen',
     author: 'Sander van der Meer',
     authorType: 'Omwonende',
@@ -246,28 +246,28 @@ const INITIAL_IDEAS: BuurtIdee[] = [
     votes: 24,
     hasVoted: false,
     status: 'In Behandeling',
-    locationNote: 'Langs de noordzijde van Haringweg 4',
+    locationNote: 'Langs de oeverzone van Waterrijk Fase 1',
     comments: [
       {
         id: 'c-1',
         author: 'Gemeente Dronten (Stedenbouw)',
-        text: 'Uitstekende suggestie die perfect past binnen Woonwaarde 01 (Groen & Ruimtelijk). We nemen deze groenstructuur mee in het verkennend vlekkenplan.',
+        text: 'Uitstekende suggestie die perfect past binnen Woonwaarde 01 (Groen & Ruimtelijk). We nemen deze groenstructuur mee in het inrichtingsplan.',
         date: '2 dagen geleden',
         isOfficial: true
       },
       {
         id: 'c-2',
         author: 'Elise B.',
-        text: 'Graag ook bankjes en een openbare watertappunt voor wandelaars en hardlopers toevoegen!',
+        text: 'Graag ook bankjes en een openbare watertappunt voor wandelaars en watersporters toevoegen!',
         date: 'Gisteren'
       }
     ]
   },
   {
     id: 'idee-2',
-    projectId: 'dronten-oost-haringweg-4',
-    title: 'Autoluw hofje met levensloopbestendige patiowoningen voor senioren',
-    description: 'Veel ouderen in Dronten willen graag doorstromen naar een gelijkvloerse woning met een compact tuintje of patio, zodat er gezinswoningen vrijkomen. Een beschut, verkeersluw hofje stimuleert tevens ontmoeting.',
+    projectId: 'waterrijk-dronten',
+    title: 'Autoluw hofje met veilige speelzone voor kinderen',
+    description: 'Veel gezinnen die zich oriënteren op Waterrijk zoeken een verkeersluwe woonomgeving waar kinderen veilig buiten kunnen spelen rond het water.',
     theme: 'Speelruimte',
     author: 'Marja & Kees Brouwer',
     authorType: 'Inwoner Dronten',
@@ -279,8 +279,8 @@ const INITIAL_IDEAS: BuurtIdee[] = [
     comments: [
       {
         id: 'c-3',
-        author: 'VOSQ Development / Partner',
-        text: 'Dit sluit naadloos aan bij onze doelgroepanalyse voor Dronten Oost: 30% van het programma reserveren wij voor senioren en levensloopbestendig bouwen.',
+        author: 'Van Wijnen / Projectteam',
+        text: 'Dit sluit naadloos aan bij onze doelgroepanalyse voor Waterrijk: verkeersluwe straten met wadi-speelplekken.',
         date: '3 dagen geleden',
         isOfficial: true
       }
@@ -288,9 +288,9 @@ const INITIAL_IDEAS: BuurtIdee[] = [
   },
   {
     id: 'idee-3',
-    projectId: 'dronten-oost-haringweg-4',
-    title: 'Veilige vrijliggende fietsverbinding naar station & scholen',
-    description: 'Voorkom dat scholieren en fietsers over drukke landbouwwegen moeten fietsen. Maak een directe, verlichte snelfietsroute aansluitend op het bestaande fietspadennetwerk richting het centrum van Dronten.',
+    projectId: 'dok-van-dronten',
+    title: 'Veilige directe fietsverbinding naar Station Dronten',
+    description: 'Maak een directe, comfortabele fietsdoorsteek tussen het Dok van Dronten en het Stationsplein zodat forenzen snel de trein richting Zwolle of Almere kunnen pakken.',
     theme: 'Verkeer',
     author: 'Jeroen W.',
     authorType: 'Woningzoekende',
@@ -298,21 +298,21 @@ const INITIAL_IDEAS: BuurtIdee[] = [
     votes: 41,
     hasVoted: false,
     status: 'Populair idee',
-    locationNote: 'Aansluiting op fietspad Educalaan / Hanzelijn',
+    locationNote: 'Aansluiting op fietspad De Noord / Station Dronten',
     comments: [
       {
         id: 'c-4',
         author: 'Peter K.',
-        text: 'Zeer belangrijk, zeker met de toenemende e-bikes en schoolgaande jeugd.',
+        text: 'Zeer belangrijk voor de bereikbaarheid van de compacte stadsappartementen.',
         date: '4 dagen geleden'
       }
     ]
   },
   {
     id: 'idee-4',
-    projectId: 'dronten-oost-haringweg-4',
-    title: 'Waterberging inrichten als natuurlijke speel- en kanovijver',
-    description: 'In plaats van een standaard afgesloten wadi kunnen we de wateropgave combineren met een natuurlijke belevingsvijver met stapstenen en rietoevers waar kinderen veilig kunnen spelen en de biodiversiteit toeneemt.',
+    projectId: 'havenkwartier-dronten',
+    title: 'Waterberging inrichten met ecologische aanlegsteigers',
+    description: 'Combineer wateropvang en vaarwater met ecologische drijvende tuinen en nette ligplaatsen voor sloepen en kano\'s.',
     theme: 'Water',
     author: 'Nathalie de Graaf',
     authorType: 'Woningzoekende',
@@ -320,14 +320,14 @@ const INITIAL_IDEAS: BuurtIdee[] = [
     votes: 19,
     hasVoted: false,
     status: 'In Verkenning',
-    locationNote: 'Zuidwestelijke laagte',
+    locationNote: 'Havenkom Lage Vaart',
     comments: []
   },
   {
     id: 'idee-5',
-    projectId: 'dronten-oost-haringweg-4',
+    projectId: 'waterrijk-dronten',
     title: 'Collectieve buurt-energiehub met laadplein & deelauto’s',
-    description: 'Plaats een centrale buurt-hub met zonnepanelen op overkappingen en 4 elektrische deelauto’s. Dit verlaagt de parkeerdruk op straat en maakt duurzaam rijden voor iedereen toegankelijk.',
+    description: 'Plaats een centrale buurt-hub met slimme laadpalen en 2 elektrische deelauto’s bij het Hanzekwartier om de parkeerdruk te ontlasten.',
     theme: 'Energie',
     author: 'Timon V.',
     authorType: 'Inwoner Dronten',

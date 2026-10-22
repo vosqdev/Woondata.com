@@ -9,10 +9,12 @@ import {
   FileCheck2,
   Calendar,
   HeartHandshake,
-  ShieldCheck
+  ShieldCheck,
+  Home
 } from 'lucide-react';
 import { PROJECTS_DATA } from '../data/mockData';
 import { Project } from '../types';
+import { getProjectIconInfo } from '../data/projectIconMap';
 
 interface WonenViewProps {
   onNavigateToProjects: () => void;
@@ -285,54 +287,70 @@ export const WonenView: React.FC<WonenViewProps> = ({
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {PROJECTS_DATA.map((project) => (
-                <div
-                  key={project.id}
-                  onClick={() => onSelectProject ? onSelectProject(project) : onNavigateToProjects()}
-                  className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="relative h-48 overflow-hidden bg-slate-100">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 text-[11px] font-black rounded-lg bg-[#C9F31D] text-slate-950 font-display shadow-sm">
+              {PROJECTS_DATA.map((project, idx) => {
+                const { icon: ProjectIcon } = getProjectIconInfo(project.id);
+                return (
+                  <div
+                    key={project.id}
+                    onClick={() => onSelectProject ? onSelectProject(project) : onNavigateToProjects()}
+                    className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden min-h-[340px]"
+                  >
+                    {/* Background Watermark Icon */}
+                    <ProjectIcon className="w-36 h-36 absolute -bottom-6 -right-6 text-slate-900/[0.035] stroke-[1] pointer-events-none group-hover:scale-110 group-hover:text-slate-900/[0.055] transition-all duration-500" />
+
+                    {/* Card Top & Body */}
+                    <div className="relative z-10">
+                      {/* Top row: Squircle icon + Number + Status pill badge */}
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] shadow-sm group-hover:scale-105 transition-transform shrink-0">
+                            <ProjectIcon className="w-6 h-6 stroke-[2.2]" />
+                          </div>
+                          <span className="text-sm font-black font-display text-slate-300">
+                            {String(idx + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+
+                        <span className={`px-3 py-1 text-[11px] uppercase tracking-wider rounded-full shadow-xs ${
+                          project.status === 'Verkoop gestart'
+                            ? 'bg-[#C9F31D] text-slate-950 font-black'
+                            : project.status === 'In voorbereiding'
+                            ? 'bg-sky-50 text-sky-800 border border-sky-200/80 font-bold'
+                            : 'bg-amber-50 text-amber-900 border border-amber-200/80 font-bold'
+                        }`}>
                           {project.status}
                         </span>
                       </div>
-                      <div className="absolute bottom-3 right-3 px-2 py-0.5 bg-black/75 rounded text-[10px] font-bold text-white">
-                        {project.kern}
+
+                      {/* Body Text */}
+                      <div className="mt-5 space-y-1.5">
+                        <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-display">
+                          {project.kern} • {project.locationName}
+                        </div>
+                        <h4 className="text-lg sm:text-xl font-black text-slate-950 font-display tracking-tight group-hover:text-black line-clamp-1">
+                          {project.title}
+                        </h4>
+                        <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed pt-1">
+                          {project.description}
+                        </p>
                       </div>
                     </div>
 
-                    <div className="p-5 space-y-2">
-                      <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wide">
-                        {project.locationName}
+                    {/* Footer: Homes Count + Action Pill Button */}
+                    <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between relative z-10">
+                      <div className="flex items-center gap-1.5 text-xs text-slate-600 font-bold font-display">
+                        <Home className="w-3.5 h-3.5 text-slate-400" />
+                        <span>{project.totalHomes} woningen</span>
                       </div>
-                      <h4 className="text-base font-bold text-slate-950 font-display group-hover:text-black">
-                        {project.title}
-                      </h4>
-                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                        {project.description}
-                      </p>
+
+                      <div className="px-3.5 py-1.5 bg-slate-100 group-hover:bg-[#080E1B] text-slate-900 group-hover:text-white rounded-full text-xs font-black font-display flex items-center gap-1.5 transition-all shadow-xs">
+                        <span>Bekijk project</span>
+                        <ArrowRight className="w-3 h-3 group-hover:text-[#C9F31D] group-hover:translate-x-0.5 transition-transform" />
+                      </div>
                     </div>
                   </div>
-
-                  <div className="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span className="font-extrabold text-slate-900 font-display">
-                      {project.totalHomes} woningen
-                    </span>
-                    <span className="text-slate-500 text-[11px] font-medium flex items-center gap-1 group-hover:text-slate-900">
-                      <span>Bekijk op kaart</span>
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                    </span>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

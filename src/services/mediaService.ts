@@ -40,22 +40,22 @@ export const DEFAULT_MEDIA_ITEMS: MediaItem[] = [
     tags: ['Waterrijk', 'Hanzekwartier', 'Watervilla', 'Aan het water', 'Duurzaam'],
     altText: 'Artist impression van royale watervilla’s aan de open vaarroute in Waterrijk Dronten',
     caption: 'Fase 2a - Luxe watervilla’s met eigen aanlegsteiger en A++++ bodemwarmtepomp',
-    url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+    url: '/assets/aistudio/Scherm_afbeelding_2026-10-22_om_07.46.34_e0f1a413.png',
     variants: {
       thumbnail: {
-        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=320&q=70',
+        url: '/assets/aistudio/Scherm_afbeelding_2026-10-22_om_07.46.34_e0f1a413.png',
         width: 320,
         height: 213,
         sizeBytes: 24000
       },
       medium: {
-        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
+        url: '/assets/aistudio/Scherm_afbeelding_2026-10-22_om_07.46.34_e0f1a413.png',
         width: 800,
         height: 533,
         sizeBytes: 112000
       },
       full: {
-        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=85',
+        url: '/assets/aistudio/Scherm_afbeelding_2026-10-22_om_07.46.34_e0f1a413.png',
         width: 1600,
         height: 1067,
         sizeBytes: 384000

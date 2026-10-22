@@ -11,7 +11,6 @@ import {
   X,
   Check,
   Send,
-  Sparkles,
   Map as MapIcon,
   ListFilter,
   BarChart3,
@@ -124,7 +123,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
   });
 
   const kernen: (Kern | 'Alle')[] = ['Alle', 'Dronten', 'Biddinghuizen', 'Swifterbant'];
-  const statuses: (ProjectStatus | 'Alle')[] = ['Alle', 'Oriëntatie', 'In voorbereiding', 'Verkoop gestart', 'In aanbouw'];
+  const statuses: (ProjectStatus | 'Alle')[] = ['Alle', 'Verkoop gestart', 'In aanbouw'];
 
   const handleInterestSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -215,7 +214,7 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
             </div>
           </div>
 
-          {/* Secondary Filters - Crisp pills inspired by image 2 */}
+          {/* Secondary Filters - Status pills */}
           <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-100 text-xs">
             <span className="font-bold text-slate-500 mr-1 uppercase tracking-wider text-[10px] font-display">Status:</span>
             {statuses.map((st) => (
@@ -324,21 +323,23 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                         href={`https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${mapHoveredProject.coordinates?.lat ?? 52.518},${mapHoveredProject.coordinates?.lng ?? 5.700}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors border border-slate-200/80"
+                        className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors border border-slate-200/80 font-display"
                         title="Bekijk omgeving in 360° Street View"
                       >
                         <Eye className="w-3.5 h-3.5 text-slate-700" />
                         <span>360° View</span>
                       </a>
-                      {onOpenParticipation && (mapHoveredProject.hasActiveSurvey || mapHoveredProject.status === 'Oriëntatie' || mapHoveredProject.status === 'In voorbereiding') && (
-                        <button
-                          onClick={() => onOpenParticipation(mapHoveredProject)}
-                          className="flex-1 py-2.5 bg-purple-700 hover:bg-purple-800 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer font-display"
-                          title="Doe mee aan de participatie en deel uw ideeën voor dit project"
+                      {mapHoveredProject.sourceUrl && (
+                        <a
+                          href={mapHoveredProject.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 py-2.5 bg-orange-50 hover:bg-orange-100 text-orange-700 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors border border-orange-200 font-display"
+                          title="Bekijk project op Funda.nl"
                         >
-                          <Sparkles className="w-3.5 h-3.5 text-purple-200" />
-                          <span>Denk mee</span>
-                        </button>
+                          <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
+                          <span>Funda</span>
+                        </a>
                       )}
                     </div>
                   </div>
@@ -506,11 +507,23 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                     <div className="p-6 pt-0 mt-2 flex flex-wrap gap-2">
                       <button
                         onClick={() => setSelectedProject(project)}
-                        className="flex-1 min-w-[100px] flex items-center justify-center gap-1.5 py-3 text-xs font-bold rounded-2xl bg-[#080E18] text-white hover:bg-black transition-all shadow-md cursor-pointer font-display active:scale-98"
+                        className="flex-1 min-w-[120px] flex items-center justify-center gap-1.5 py-3 text-xs font-bold rounded-2xl bg-[#080E18] text-white hover:bg-black transition-all shadow-md cursor-pointer font-display active:scale-98"
                       >
                         <span>Bekijk project</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </button>
+                      {project.sourceUrl && (
+                        <a
+                          href={project.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3.5 py-3 bg-orange-50 hover:bg-orange-100 text-orange-700 rounded-2xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors border border-orange-200 font-display"
+                          title="Bekijk project op Funda.nl"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
+                          <span>Funda</span>
+                        </a>
+                      )}
                       <a
                         href={`https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${project.coordinates?.lat ?? 52.518},${project.coordinates?.lng ?? 5.700}`}
                         target="_blank"
@@ -521,16 +534,6 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                         <Eye className="w-3.5 h-3.5 text-slate-700" />
                         <span>360°</span>
                       </a>
-                      {onOpenParticipation && (project.hasActiveSurvey || project.status === 'Oriëntatie' || project.status === 'In voorbereiding') && (
-                        <button
-                          onClick={() => onOpenParticipation(project)}
-                          className="px-3.5 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-2xl text-xs font-bold flex items-center justify-center gap-1 transition-all shadow-xs cursor-pointer font-display"
-                          title="Doe mee aan de participatie en deel uw ideeën voor dit project"
-                        >
-                          <Sparkles className="w-3.5 h-3.5 text-purple-200" />
-                          <span>Denk mee</span>
-                        </button>
-                      )}
                     </div>
                   </div>
                 ))}
@@ -563,7 +566,6 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#080E18] text-[#C9F31D] font-bold border border-slate-800 font-display">68%</span>
                   </div>
                   <div className="text-2xl font-black text-slate-950 font-display">2.250 <span className="text-xs text-slate-500 font-normal">woningen</span></div>
-                  <p className="text-[11px] text-slate-500 font-normal">Havenkwartier, Spoorpark, De Gilden Zuid.</p>
                 </div>
 
                 <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
@@ -572,7 +574,6 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200 font-display">16%</span>
                   </div>
                   <div className="text-2xl font-black text-slate-950 font-display">530 <span className="text-xs text-slate-500 font-normal">woningen</span></div>
-                  <p className="text-[11px] text-slate-500 font-normal">De Kleine Weide, Havenweg CPO, Noordoostrand.</p>
                 </div>
 
                 <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
@@ -581,7 +582,6 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200 font-display">16%</span>
                   </div>
                   <div className="text-2xl font-black text-slate-950 font-display">529 <span className="text-xs text-slate-500 font-normal">woningen</span></div>
-                  <p className="text-[11px] text-slate-500 font-normal">De Houtsnip, Swifterzant Zuid, dorpshofjes.</p>
                 </div>
               </div>
 
@@ -722,20 +722,6 @@ export const ProjectsMapSection: React.FC<ProjectsMapSectionProps> = ({
                       <Eye className="w-4 h-4 text-slate-700" />
                       <span>360° Street View</span>
                     </a>
-                    {onOpenParticipation && (selectedProject.hasActiveSurvey || selectedProject.status === 'Oriëntatie' || selectedProject.status === 'In voorbereiding') && (
-                      <button
-                        onClick={() => {
-                          const p = selectedProject;
-                          setSelectedProject(null);
-                          onOpenParticipation(p);
-                        }}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-purple-700 hover:bg-purple-800 text-white text-xs font-bold transition-all shadow-md cursor-pointer font-display"
-                        title="Open de participatie & co-creatie omgeving voor dit project"
-                      >
-                        <Sparkles className="w-4 h-4 text-purple-200" />
-                        <span>Denk mee (Participatie)</span>
-                      </button>
-                    )}
                   </div>
                 </div>
 

@@ -349,9 +349,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                   <h4 className="text-xl font-bold text-white mb-2 font-display">
                     De Makelaars van 5VOOR12
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                    Lokale makelaardij met diepe wortels in Dronten. Specialist in bewonerswensen, particuliere verkoop en bestaande woningvoorraad.
-                  </p>
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
@@ -370,10 +367,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                       <Mail className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
                       <span className="truncate">dronten@5voor12.nl</span>
                     </a>
-                    <div className="text-xs text-slate-400 flex items-start gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-[#C9F31D] shrink-0 mt-0.5" />
-                      <span>De Rede 80, 8254 KE Dronten</span>
-                    </div>
                   </div>
 
                   <a
@@ -398,9 +391,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                   <h4 className="text-xl font-bold text-white mb-2 font-display">
                     Makelaardij Van der Linden
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                    Gespecialiseerd in grootschalige nieuwbouwprojecten, marktvalidatie, verkoopbegeleiding en projectmatige marktontwikkeling.
-                  </p>
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
@@ -419,10 +409,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                       <Mail className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
                       <span className="truncate">dronten@vanderlinden.nl</span>
                     </a>
-                    <div className="text-xs text-slate-400 flex items-start gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-[#C9F31D] shrink-0 mt-0.5" />
-                      <span>De Bolder 2, 8251 KC Dronten</span>
-                    </div>
                   </div>
 
                   <a
@@ -447,9 +433,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                   <h4 className="text-xl font-bold text-white mb-2 font-display">
                     Kerremans Makelaardij
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                    Jarenlang een vertrouwd baken in Dronten. Uitgebreide marktervaring in de dorpskernen, vrije kavels en particuliere verkoop.
-                  </p>
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
@@ -468,10 +451,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                       <Mail className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
                       <span className="truncate">info@kerremansmakelaardij.nl</span>
                     </a>
-                    <div className="text-xs text-slate-400 flex items-start gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-[#C9F31D] shrink-0 mt-0.5" />
-                      <span>De Rede 44, 8251 EX Dronten</span>
-                    </div>
                   </div>
 
                   <a
@@ -496,9 +475,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                   <h4 className="text-xl font-bold text-white mb-2 font-display">
                     Vovon Development
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                    Onafhankelijke strategische schakel tussen beleid, marktpartijen en gemeente. Focus op planhaalbaarheid en data-analyses.
-                  </p>
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-700/60 space-y-4">
@@ -517,10 +493,6 @@ export const ThreeRoutesSection: React.FC<ThreeRoutesSectionProps> = ({
                       <Mail className="w-3.5 h-3.5 text-[#C9F31D] shrink-0" />
                       <span className="truncate">info@vovon.nl</span>
                     </a>
-                    <div className="text-xs text-slate-400 flex items-start gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-[#C9F31D] shrink-0 mt-0.5" />
-                      <span>Leeuwerik 4, 8081 ZJ Elburg</span>
-                    </div>
                   </div>
 
                   <a

@@ -40,7 +40,7 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
         {/* Background Image with the same filter as Homepage */}
         <div className="absolute inset-0 z-0 overflow-hidden opacity-55 pointer-events-none">
           <img
-            src="https://www.image2url.com/r2/default/images/1791915963994-b0bda852-f37a-4931-aadb-fe0b332c36e8.jpg"
+            src="https://www.image2url.com/r2/default/images/1793040981776-581c1e84-f85b-44dc-8ad6-73e954e5deea.jpg"
             alt="Over Woondata Achtergrond"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -53,107 +53,62 @@ export const AboutWoondataView: React.FC<AboutWoondataViewProps> = ({
         <div className="absolute -bottom-20 left-10 w-[400px] h-[300px] bg-blue-500/[0.04] blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
-            {/* Left Column: Intro copy & metrics */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/10 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-widest backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[#C9F31D] animate-pulse" />
-                <span>Onafhankelijk Platform • Gemeente Dronten</span>
-              </div>
-
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-[1.08]">
-                  Over Woondata
-                </h1>
-                <p className="text-lg sm:text-xl text-[#C9F31D] font-bold font-display">
-                  Waar actuele data, beleid en lokale praktijkkennis samenkomen.
-                </p>
-                <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
-                  De gemeente Dronten staat voor een enorme woningbouwopgave: minstens 3.309 nieuwe woningen tot 2030, met sturing op de 7 gemeentelijke Woonwaarden en het Bewonersperspectief 2040. Woondata fungeert als hét onafhankelijke, verbindende platform tussen inwoners, gemeente en marktpartijen.
-                </p>
-              </div>
-
-              {/* 3 Key Metric Pills */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
-                <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-display">3.309</div>
-                  <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
-                    Woningbouwopgave
-                  </div>
-                </div>
-                <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-display">4</div>
-                  <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
-                    Lokale partners
-                  </div>
-                </div>
-                <div className="bg-white/[0.05] border border-[#C9F31D]/30 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">100%</div>
-                  <div className="text-[11px] font-semibold text-slate-300 mt-1 uppercase tracking-wider">
-                    Onafhankelijk &amp; lokaal
-                  </div>
-                </div>
-              </div>
-
-              {/* Action buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-1">
-                <a
-                  href="#methodiek"
-                  className="px-6 py-3 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-slate-950 text-xs sm:text-sm font-black font-display transition-all cursor-pointer shadow-[0_0_20px_rgba(201,243,29,0.3)] hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2"
-                >
-                  <span>Ontdek de methodiek</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="#contacten"
-                  className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-bold font-display border border-white/15 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  Bekijk lokale partners &amp; contact
-                </a>
-              </div>
+          <div className="max-w-4xl space-y-6 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/10 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-widest backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#C9F31D] animate-pulse" />
+              <span>Onafhankelijk Platform • Gemeente Dronten</span>
             </div>
 
-            {/* Right Column: Lokale Validatie & Kwaliteitsborging Card (afbeelding verwijderd) */}
-            <div className="lg:col-span-5">
-              <div className="bg-[#0B1322] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
-                <div className="flex items-center justify-between">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#C9F31D]/10 border border-[#C9F31D]/30 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-wider">
-                    <ShieldCheck className="w-4 h-4 text-[#C9F31D]" />
-                    <span>Lokale Validatie</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-400 font-display">
-                    <MapPin className="w-3.5 h-3.5 text-[#C9F31D]" />
-                    <span>Dronten • Biddinghuizen • Swifterbant</span>
-                  </div>
-                </div>
+            <div className="space-y-4">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-[1.08]">
+                Over Woondata
+              </h1>
+              <p className="text-lg sm:text-xl text-[#C9F31D] font-bold font-display">
+                Waar actuele data, beleid en lokale praktijkkennis samenkomen.
+              </p>
+              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-3xl">
+                De gemeente Dronten staat voor een enorme woningbouwopgave: minstens 3.309 nieuwe woningen tot 2030, met sturing op de 7 gemeentelijke Woonwaarden en het Bewonersperspectief 2040. Woondata fungeert als hét onafhankelijke, verbindende platform tussen inwoners, gemeente en marktpartijen.
+              </p>
+            </div>
 
-                <div className="space-y-3">
-                  <h3 className="text-xl sm:text-2xl font-black text-white font-display">
-                    Lokale validatie &amp; samenwerking
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                    Gebaseerd op officiële kerncijfers, continu inwonersonderzoek en de actuele praktijkkennis van lokale makelaars en adviseurs in Dronten, Biddinghuizen en Swifterbant.
-                  </p>
+            {/* 3 Key Metric Pills */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 max-w-2xl">
+              <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-black text-white font-display">3.309</div>
+                <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
+                  Woningbouwopgave
                 </div>
-
-                <div className="space-y-3 pt-4 border-t border-white/10">
-                  <div className="flex items-center gap-3 text-xs text-slate-300">
-                    <span className="w-2 h-2 rounded-full bg-[#C9F31D] shrink-0" />
-                    <span>Gemeentelijke Woonwaarden &amp; Visie 2040</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-300">
-                    <span className="w-2 h-2 rounded-full bg-[#C9F31D] shrink-0" />
-                    <span>Actieve koppeling met 100+ panelleden</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-300">
-                    <span className="w-2 h-2 rounded-full bg-[#C9F31D] shrink-0" />
-                    <span>Lokale makelaarsexpertise &amp; marktdata</span>
-                  </div>
+              </div>
+              <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-black text-white font-display">4</div>
+                <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
+                  Lokale partners
+                </div>
+              </div>
+              <div className="bg-white/[0.05] border border-[#C9F31D]/30 rounded-2xl p-4 backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">100%</div>
+                <div className="text-[11px] font-semibold text-slate-300 mt-1 uppercase tracking-wider">
+                  Onafhankelijk &amp; lokaal
                 </div>
               </div>
             </div>
 
+            {/* Action buttons */}
+            <div className="flex flex-wrap items-center gap-3.5 pt-1">
+              <a
+                href="#methodiek"
+                className="px-6 py-3 rounded-full bg-[#C9F31D] hover:bg-[#bce617] text-slate-950 text-xs sm:text-sm font-black font-display transition-all cursor-pointer shadow-[0_0_20px_rgba(201,243,29,0.3)] hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2"
+              >
+                <span>Ontdek de methodiek</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#contacten"
+                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-bold font-display border border-white/15 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Bekijk lokale partners &amp; contact
+              </a>
+            </div>
           </div>
         </div>
       </section>

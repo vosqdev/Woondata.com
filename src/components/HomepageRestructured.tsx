@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Building2, 
   Users, 
@@ -11,13 +11,10 @@ import {
   Layers, 
   Search, 
   CheckCircle2, 
-  ExternalLink,
-  Home
+  ExternalLink
 } from 'lucide-react';
-import { PROJECTS_DATA } from '../data/mockData';
 import { Project } from '../types';
 import { WoonDataLogo } from './WoonDataLogo';
-import { getProjectIconInfo } from '../data/projectIconMap';
 
 interface HomepageRestructuredProps {
   onNavigate: (tab: string, extra?: { kern?: string; status?: string }) => void;
@@ -36,13 +33,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
   onOpenOpiniepeiler,
   onSelectProject
 }) => {
-  const [activeProjectFilter, setActiveProjectFilter] = useState<string>('Alle');
-
-  // Filtered projects for the compact showcase
-  const filteredProjects = PROJECTS_DATA.filter(p => {
-    if (activeProjectFilter === 'Alle') return true;
-    return p.kern === activeProjectFilter;
-  }).slice(0, 4);
 
   return (
     <div className="w-full bg-[#FAFAF8] text-slate-900 overflow-hidden">
@@ -93,12 +83,12 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
              ========================================================================= */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 pt-4">
             
-            {/* KAART 1: Wonen & woonwensen */}
+            {/* KAART 1: Voor consumenten - Woonwensen & vraagvalidatie */}
             <div className="bg-white rounded-3xl p-7 sm:p-9 text-slate-900 flex flex-col justify-between border border-slate-200/90 shadow-2xl hover:shadow-[0_20px_45px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300 group">
               <div className="space-y-5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500 font-display">
-                    Voor inwoners &amp; zoekers
+                    Voor consumenten
                   </span>
                   <div className="w-9 h-9 rounded-2xl bg-slate-100 flex items-center justify-center group-hover:bg-[#C9F31D] text-slate-900 transition-colors">
                     <Users className="w-5 h-5" />
@@ -107,44 +97,11 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
 
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-black text-slate-950 font-display tracking-tight">
-                    Wonen &amp; wensen
+                    Woonwensen &amp; vraagvalidatie
                   </h3>
                   <p className="text-sm text-slate-600 mt-2.5 leading-relaxed">
-                    Denk actief mee over wonen en ontdek welke nieuwbouwprojecten bij uw situatie passen.
+                    Toets nieuwbouwplannen aan realtime consumentenbehoeften en benut gevalideerde data uit de WoonwensenScan en het lokale Woonpanel.
                   </p>
-                </div>
-
-                {/* 3 Kernpunten */}
-                <div className="space-y-3 pt-5 border-t border-slate-100 text-xs sm:text-sm">
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">WoonwensenScan</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Geef binnen 5 minuten uw wensen en voorkeuren door</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">Woonpanel</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Denk mee met 100+ geregistreerde inwoners</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">Nieuwbouwprojecten</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Actueel overzicht van kavels, huur en koop</p>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -154,18 +111,18 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                   onClick={() => onNavigate('wonen')}
                   className="w-full py-3.5 px-5 bg-[#C9F31D] hover:bg-[#BFE51A] text-slate-950 font-black rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer font-display"
                 >
-                  <span>Bekijk wonen &amp; wensen</span>
+                  <span>Bekijk marktvraag &amp; projecten</span>
                   <ArrowRight className="w-4 h-4 text-slate-950 stroke-[2.5]" />
                 </button>
               </div>
             </div>
 
-            {/* KAART 2: Woonmarkt & inzicht */}
+            {/* KAART 2: Voor programmering - Woonmarkt & beleidskaders */}
             <div className="bg-white rounded-3xl p-7 sm:p-9 text-slate-900 flex flex-col justify-between border border-slate-200/90 shadow-2xl hover:shadow-[0_20px_45px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300 group">
               <div className="space-y-5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500 font-display">
-                    Voor beleid &amp; onderzoek
+                    Voor programmering
                   </span>
                   <div className="w-9 h-9 rounded-2xl bg-slate-100 flex items-center justify-center group-hover:bg-[#C9F31D] text-slate-900 transition-colors">
                     <BarChart3 className="w-5 h-5" />
@@ -174,44 +131,11 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
 
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-black text-slate-950 font-display tracking-tight">
-                    Woonmarkt &amp; inzicht
+                    Woonmarkt &amp; beleidskaders
                   </h3>
                   <p className="text-sm text-slate-600 mt-2.5 leading-relaxed">
-                    Objectief inzicht in woningbouw, woonbehoefte en marktdynamiek. Volg de voortgang van de gemeentelijke opgave.
+                    Objectieve monitoring van de woningbouwprogrammering, gemeentelijke kwaliteitskaders en sociaal-demografische marktdynamiek.
                   </p>
-                </div>
-
-                {/* 3 Kernpunten */}
-                <div className="space-y-3 pt-5 border-t border-slate-100 text-xs sm:text-sm">
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">Woningbouwopgave</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">3.309 woningen opgave gemonitord tot 2030</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">7 Woonwaarden</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Gemeentelijk kwaliteits- en toetsingskader</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">Marktdata en woonbehoefte</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Onderbouwde data over vraag en prijsklassen</p>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -221,13 +145,13 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                   onClick={() => onNavigate('ontwikkelaars')}
                   className="w-full py-3.5 px-5 bg-[#070D1C] hover:bg-black text-white hover:text-[#C9F31D] font-black rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer font-display"
                 >
-                  <span>Bekijk marktdata &amp; plannen</span>
+                  <span>Bekijk beleid &amp; marktdata</span>
                   <ArrowRight className="w-4 h-4 text-[#C9F31D]" />
                 </button>
               </div>
             </div>
 
-            {/* KAART 3: Plannen & marktdata */}
+            {/* KAART 3: Voor ontwikkelaars - Projectontwikkeling & beleggers */}
             <div className="bg-white rounded-3xl p-7 sm:p-9 text-slate-900 flex flex-col justify-between border border-slate-200/90 shadow-2xl hover:shadow-[0_20px_45px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300 group">
               <div className="space-y-5">
                 <div className="flex items-center justify-between">
@@ -241,44 +165,11 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
 
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-black text-slate-950 font-display tracking-tight">
-                    Plannen &amp; marktdata
+                    Projectontwikkeling &amp; beleggers
                   </h3>
                   <p className="text-sm text-slate-600 mt-2.5 leading-relaxed">
-                    Onderbouw nieuwbouwplannen met lokale validatie, demografie en toetsing aan gemeentelijke beleidskaders.
+                    Onderbouw plannen, tenders en grondbiedingen met geaccrediteerde marktinformatie, haalbaarheidsscans en buurtpaspoorten.
                   </p>
-                </div>
-
-                {/* 3 Kernpunten */}
-                <div className="space-y-3 pt-5 border-t border-slate-100 text-xs sm:text-sm">
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">Doelgroepanalyse</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Inzicht in woonvraag en prijssegmentering</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">Projectscan</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Snelle haalbaarheidstoets aan Woonvisie</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#070D1C] text-[#C9F31D] flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">
-                      ✓
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-900">Woningprogramma &amp; data</span>
-                      <p className="text-[11px] text-slate-500 leading-tight">Buurtpaspoorten en verkooponderbouwing</p>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -288,7 +179,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                   onClick={() => onNavigate('ontwikkelaars')}
                   className="w-full py-3.5 px-5 bg-[#070D1C] hover:bg-black text-white hover:text-[#C9F31D] font-black rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer font-display"
                 >
-                  <span>Voor ontwikkelaars</span>
+                  <span>Naar ontwikkelaarsportaal</span>
                   <ArrowRight className="w-4 h-4 text-[#C9F31D]" />
                 </button>
               </div>
@@ -300,124 +191,7 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
       </section>
 
 
-      {/* =========================================================================
-          COMPACTE SECTIE 1: ACTUELE PROJECTEN
-          Overzicht van nieuwbouwprojecten in Dronten, Biddinghuizen en Swifterbant
-         ========================================================================= */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
-        
-        {/* Section Header with Segmented Filter */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2 border-b border-slate-200">
-          <div>
-            <span className="text-xs font-extrabold uppercase tracking-wider text-[#95B810] font-display">
-              NIEUWBOUWAANBOD GEMEENTE DRONTEN
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-950 font-display tracking-tight mt-1">
-              Actuele projecten
-            </h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl">
-              Lopende en toekomstige plangebieden in Dronten, Biddinghuizen en Swifterbant.
-            </p>
-          </div>
 
-          {/* Kern Filter Tabs */}
-          <div className="flex flex-wrap gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200 self-start md:self-auto">
-            {['Alle', 'Dronten', 'Biddinghuizen', 'Swifterbant'].map((kern) => (
-              <button
-                key={kern}
-                onClick={() => setActiveProjectFilter(kern)}
-                className={`px-3.5 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
-                  activeProjectFilter === kern
-                    ? 'bg-white text-slate-950 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                {kern}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 4 Compact Project Cards - Icon-driven design inspired by Image 2 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredProjects.map((project, idx) => {
-            const { icon: ProjectIcon } = getProjectIconInfo(project.id);
-            return (
-              <div
-                key={project.id}
-                onClick={() => onSelectProject(project)}
-                className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden min-h-[340px]"
-              >
-                {/* Background Watermark Icon */}
-                <ProjectIcon className="w-36 h-36 absolute -bottom-6 -right-6 text-slate-900/[0.035] stroke-[1] pointer-events-none group-hover:scale-110 group-hover:text-slate-900/[0.055] transition-all duration-500" />
-
-                {/* Card Top & Body */}
-                <div className="relative z-10">
-                  {/* Top row: Squircle icon + Number + Status pill badge */}
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] shadow-sm group-hover:scale-105 transition-transform shrink-0">
-                        <ProjectIcon className="w-6 h-6 stroke-[2.2]" />
-                      </div>
-                      <span className="text-sm font-black font-display text-slate-300">
-                        {String(idx + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-
-                    <span className={`px-3 py-1 text-[11px] uppercase tracking-wider rounded-full shadow-xs ${
-                      project.status === 'Verkoop gestart'
-                        ? 'bg-[#C9F31D] text-slate-950 font-black'
-                        : project.status === 'In voorbereiding'
-                        ? 'bg-sky-50 text-sky-800 border border-sky-200/80 font-bold'
-                        : 'bg-amber-50 text-amber-900 border border-amber-200/80 font-bold'
-                    }`}>
-                      {project.status}
-                    </span>
-                  </div>
-
-                  {/* Body Text */}
-                  <div className="mt-5 space-y-1.5">
-                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-display">
-                      {project.kern} • {project.locationName}
-                    </div>
-                    <h4 className="text-lg sm:text-xl font-black text-slate-950 font-display tracking-tight group-hover:text-black line-clamp-1">
-                      {project.title}
-                    </h4>
-                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed pt-1">
-                      {project.description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Footer: Homes Count + Action Pill Button */}
-                <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between relative z-10">
-                  <div className="flex items-center gap-1.5 text-xs text-slate-600 font-bold font-display">
-                    <Home className="w-3.5 h-3.5 text-slate-400" />
-                    <span>{project.totalHomes} woningen</span>
-                  </div>
-
-                  <div className="px-3.5 py-1.5 bg-slate-100 group-hover:bg-[#080E1B] text-slate-900 group-hover:text-white rounded-full text-xs font-black font-display flex items-center gap-1.5 transition-all shadow-xs">
-                    <span>Bekijk project</span>
-                    <ArrowRight className="w-3 h-3 group-hover:text-[#C9F31D] group-hover:translate-x-0.5 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* View All Projects Button */}
-        <div className="text-center pt-2">
-          <button
-            onClick={() => onNavigate('projecten')}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#070D1C] hover:bg-black text-white hover:text-[#C9F31D] rounded-full text-xs sm:text-sm font-black transition-all cursor-pointer shadow-md font-display"
-          >
-            <span>Bekijk alle projecten &amp; interactieve kaart ({PROJECTS_DATA.length})</span>
-            <ArrowRight className="w-4 h-4 text-[#C9F31D]" />
-          </button>
-        </div>
-
-      </section>
 
 
       {/* =========================================================================
@@ -428,15 +202,15 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
       <section className="py-16 sm:py-24 bg-[#070D1C] text-white border-y border-white/[0.08] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
           
-          <div className="text-center max-w-2xl mx-auto space-y-2">
+          <div className="text-center max-w-3xl mx-auto space-y-2.5">
             <span className="text-xs font-bold text-[#C9F31D] uppercase tracking-wider font-display">
-              LOCALE WONINGMARKT INDICATOREN
+              LOKALE MARKTINDICATOREN
             </span>
             <h2 className="text-2xl sm:text-4xl font-black text-white font-display tracking-tight">
               Wonen in cijfers
             </h2>
-            <p className="text-sm text-slate-300">
-              Objectieve cijfers en lokale onderbouwing voor een toekomstbestendig Wonen.
+            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+              Harde data, lokale validatie en actuele marktdynamiek die woningbouw in de gemeente Dronten krachtig vooruitstuwen.
             </p>
           </div>
 
@@ -469,13 +243,6 @@ export const HomepageRestructured: React.FC<HomepageRestructuredProps> = ({
                   <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-display">
                     Inwoners Woonpanel
                   </div>
-                  <button
-                    onClick={() => onOpenOpiniepeiler ? onOpenOpiniepeiler() : openSurvey()}
-                    className="text-[10px] font-black text-emerald-700 hover:text-emerald-950 flex items-center gap-1 mt-1 cursor-pointer font-display"
-                  >
-                    <span>Meld u aan als inwoner</span>
-                    <ArrowRight className="w-2.5 h-2.5" />
-                  </button>
                 </div>
               </div>
 

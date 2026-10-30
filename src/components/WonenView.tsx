@@ -1,20 +1,8 @@
 import React from 'react';
 import { 
-  Users, 
-  Sparkles, 
-  Building2, 
-  ArrowRight, 
-  Check, 
-  MapPin, 
-  FileCheck2,
-  Calendar,
-  HeartHandshake,
-  ShieldCheck,
-  Home
+  ArrowRight 
 } from 'lucide-react';
-import { PROJECTS_DATA } from '../data/mockData';
 import { Project } from '../types';
-import { getProjectIconInfo } from '../data/projectIconMap';
 
 interface WonenViewProps {
   onNavigateToProjects: () => void;
@@ -56,120 +44,45 @@ export const WonenView: React.FC<WonenViewProps> = ({
         <div className="absolute -bottom-20 left-10 w-[400px] h-[300px] bg-blue-500/[0.04] blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-            
-            {/* Left Column: Intro copy, badges, metrics & action buttons */}
-            <div className="lg:col-span-5 space-y-6 sm:space-y-8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/10 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-widest backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[#C9F31D] animate-pulse" />
-                <span>Voor inwoners &amp; woningzoekenden</span>
-              </div>
+          <div className="max-w-4xl space-y-6 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/10 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-widest backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#C9F31D] animate-pulse" />
+              <span>Voor inwoners &amp; woningzoekenden</span>
+            </div>
 
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-[1.08]">
-                  Wonen &amp; wensen
-                </h1>
-                <p className="text-lg sm:text-xl text-[#C9F31D] font-bold font-display leading-snug">
-                  Denk actief mee over wonen en ontdek welke nieuwbouwprojecten bij uw situatie passen.
-                </p>
-                <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                  Voor inwoners en woningzoekenden brengt Woondata woonbehoeften, bestaande voorraad en gebiedsontwikkeling samen met officiële kerncijfers. Uw input leidt rechtstreeks tot vraaggestuurde besluitvorming voor Dronten, Biddinghuizen en Swifterbant.
-                </p>
-              </div>
+            <div className="space-y-4">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-[1.08]">
+                Wonen &amp; wensen
+              </h1>
+              <p className="text-lg sm:text-xl text-[#C9F31D] font-bold font-display leading-snug">
+                Inwoners en woningzoekers denken actief mee over wonen en hun leefomgeving.
+              </p>
+              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-3xl">
+                Woondata brengt de lokale woningmarkt volop in beweging! We verbinden actuele woonbehoeften, bestaande woningvoorraad en gebiedsontwikkeling naadloos met krachtige data. De directe input van inwoners vormt zo de drijvende kracht achter scherpe marktinzichten en kansrijke plannen voor Dronten, Biddinghuizen en Swifterbant.
+              </p>
+            </div>
 
-              {/* 3 Key Metric Pills */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
-                <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-display">3</div>
-                  <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
-                    Onderzoeksvormen
-                  </div>
+            {/* 3 Key Metric Pills */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 max-w-2xl">
+              <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-black text-white font-display">3.309</div>
+                <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
+                  Woningbouwopgave
                 </div>
-                <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-display">4</div>
-                  <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
-                    Lokale partners
-                  </div>
+              </div>
+              <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-black text-white font-display">4</div>
+                <div className="text-[11px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">
+                  Lokale partners
                 </div>
-                <div className="bg-white/[0.05] border border-[#C9F31D]/30 rounded-2xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">100%</div>
-                  <div className="text-[11px] font-semibold text-slate-300 mt-1 uppercase tracking-wider">
-                    Anoniem &amp; lokaal
-                  </div>
+              </div>
+              <div className="bg-white/[0.05] border border-[#C9F31D]/30 rounded-2xl p-4 backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-black text-[#C9F31D] font-display">100%</div>
+                <div className="text-[11px] font-semibold text-slate-300 mt-1 uppercase tracking-wider">
+                  Anoniem &amp; lokaal
                 </div>
               </div>
             </div>
-
-            {/* Right Column: De 3 Onderzoeksvormen & Databronnen Card */}
-            <div className="lg:col-span-7">
-              <div className="bg-[#0B1322]/95 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 backdrop-blur-xl">
-                
-                {/* Header card badges */}
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#C9F31D]/10 border border-[#C9F31D]/30 text-[#C9F31D] text-xs font-bold font-display uppercase tracking-wider">
-                    <ShieldCheck className="w-4 h-4 text-[#C9F31D]" />
-                    <span>Onderzoeksvormen &amp; Burgerdata</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-400 font-display">
-                    <MapPin className="w-3.5 h-3.5 text-[#C9F31D]" />
-                    <span>Dronten • Biddinghuizen • Swifterbant</span>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <h2 className="text-xl sm:text-2xl font-black text-white font-display tracking-tight">
-                    Drie afzonderlijke onderzoeksvormen voor inwoners en zoekers
-                  </h2>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                    Voor inwoners en zoekers er zijn drie afzonderlijke onderzoeksvormen die we bij woondata ondersteunen:
-                  </p>
-                </div>
-
-                {/* 3 Onderzoeksvormen Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                  {/* Vorm 1 */}
-                  <div className="bg-slate-900/90 rounded-2xl p-4 sm:p-5 border border-white/10 space-y-2 hover:border-[#C9F31D]/50 transition-colors">
-                    <div className="flex items-center gap-2 text-[#C9F31D]">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#C9F31D]" />
-                      <h3 className="text-sm sm:text-base font-black font-display text-white">Woonwensen</h3>
-                    </div>
-                    <p className="text-xs text-slate-300 font-medium leading-relaxed">
-                      Wat zoeken inwoners in hun toekomstige woning?
-                    </p>
-                  </div>
-
-                  {/* Vorm 2 */}
-                  <div className="bg-slate-900/90 rounded-2xl p-4 sm:p-5 border border-white/10 space-y-2 hover:border-[#C9F31D]/50 transition-colors">
-                    <div className="flex items-center gap-2 text-[#C9F31D]">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#C9F31D]" />
-                      <h3 className="text-sm sm:text-base font-black font-display text-white">Woonscan</h3>
-                    </div>
-                    <p className="text-xs text-slate-300 font-medium leading-relaxed">
-                      Hoe wonen inwoners nu en hoe beoordelen zij hun woonsituatie?
-                    </p>
-                  </div>
-
-                  {/* Vorm 3 */}
-                  <div className="bg-slate-900/90 rounded-2xl p-4 sm:p-5 border border-white/10 space-y-2 hover:border-[#C9F31D]/50 transition-colors">
-                    <div className="flex items-center gap-2 text-[#C9F31D]">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#C9F31D]" />
-                      <h3 className="text-sm sm:text-base font-black font-display text-white">Woonopinie</h3>
-                    </div>
-                    <p className="text-xs text-slate-300 font-medium leading-relaxed">
-                      Wat vinden inwoners van woningbouwplannen, voorzieningen en ontwikkelingen in hun buurt?
-                    </p>
-                  </div>
-                </div>
-
-                {/* Bottom status bar identical to Image 1 Over Woondata */}
-                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-between text-xs text-slate-400 font-medium">
-                  <span className="text-slate-300 font-bold font-display">Onderzoek via www.woonpanel.com</span>
-                  <span className="text-[#C9F31D] font-bold">100% Onafhankelijk</span>
-                </div>
-
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
@@ -265,9 +178,9 @@ export const WonenView: React.FC<WonenViewProps> = ({
             </div>
           </div>
 
-          {/* SECTIE 3: PROJECTEN SNEAK-PEEK */}
-          <div className="space-y-8 animate-fadeIn">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
+          {/* SECTIE 3: PROJECTEN HEADER MET LINK NAAR DE KAART */}
+          <div className="pt-4 pb-2 animate-fadeIn">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
               <div>
                 <h2 className="text-xl sm:text-2xl font-black text-slate-950 font-display">
                   Nieuwbouwprojecten in de gemeente
@@ -279,78 +192,11 @@ export const WonenView: React.FC<WonenViewProps> = ({
 
               <button
                 onClick={onNavigateToProjects}
-                className="px-5 py-2.5 bg-[#070D1C] hover:bg-black text-white hover:text-[#C9F31D] font-black rounded-full text-xs flex items-center gap-2 transition-all cursor-pointer font-display self-start sm:self-auto"
+                className="px-5 py-2.5 bg-[#070D1C] hover:bg-black text-white hover:text-[#C9F31D] font-black rounded-full text-xs flex items-center gap-2 transition-all cursor-pointer font-display self-start sm:self-auto shadow-sm"
               >
                 <span>Naar de interactieve kaart</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {PROJECTS_DATA.map((project, idx) => {
-                const { icon: ProjectIcon } = getProjectIconInfo(project.id);
-                return (
-                  <div
-                    key={project.id}
-                    onClick={() => onSelectProject ? onSelectProject(project) : onNavigateToProjects()}
-                    className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden min-h-[340px]"
-                  >
-                    {/* Background Watermark Icon */}
-                    <ProjectIcon className="w-36 h-36 absolute -bottom-6 -right-6 text-slate-900/[0.035] stroke-[1] pointer-events-none group-hover:scale-110 group-hover:text-slate-900/[0.055] transition-all duration-500" />
-
-                    {/* Card Top & Body */}
-                    <div className="relative z-10">
-                      {/* Top row: Squircle icon + Number + Status pill badge */}
-                      <div className="flex items-center justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-2xl bg-[#080E1B] flex items-center justify-center text-[#C9F31D] shadow-sm group-hover:scale-105 transition-transform shrink-0">
-                            <ProjectIcon className="w-6 h-6 stroke-[2.2]" />
-                          </div>
-                          <span className="text-sm font-black font-display text-slate-300">
-                            {String(idx + 1).padStart(2, '0')}
-                          </span>
-                        </div>
-
-                        <span className={`px-3 py-1 text-[11px] uppercase tracking-wider rounded-full shadow-xs ${
-                          project.status === 'Verkoop gestart'
-                            ? 'bg-[#C9F31D] text-slate-950 font-black'
-                            : project.status === 'In voorbereiding'
-                            ? 'bg-sky-50 text-sky-800 border border-sky-200/80 font-bold'
-                            : 'bg-amber-50 text-amber-900 border border-amber-200/80 font-bold'
-                        }`}>
-                          {project.status}
-                        </span>
-                      </div>
-
-                      {/* Body Text */}
-                      <div className="mt-5 space-y-1.5">
-                        <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-display">
-                          {project.kern} • {project.locationName}
-                        </div>
-                        <h4 className="text-lg sm:text-xl font-black text-slate-950 font-display tracking-tight group-hover:text-black line-clamp-1">
-                          {project.title}
-                        </h4>
-                        <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed pt-1">
-                          {project.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Footer: Homes Count + Action Pill Button */}
-                    <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between relative z-10">
-                      <div className="flex items-center gap-1.5 text-xs text-slate-600 font-bold font-display">
-                        <Home className="w-3.5 h-3.5 text-slate-400" />
-                        <span>{project.totalHomes} woningen</span>
-                      </div>
-
-                      <div className="px-3.5 py-1.5 bg-slate-100 group-hover:bg-[#080E1B] text-slate-900 group-hover:text-white rounded-full text-xs font-black font-display flex items-center gap-1.5 transition-all shadow-xs">
-                        <span>Bekijk project</span>
-                        <ArrowRight className="w-3 h-3 group-hover:text-[#C9F31D] group-hover:translate-x-0.5 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>

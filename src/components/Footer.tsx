@@ -137,8 +137,15 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Divider & Navigation / Copyright */}
         <div className="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4 font-display">
-          <div className="text-xs text-slate-400 text-center md:text-left">
-            <div>© 2026 Woondata.com · Alle rechten voorbehouden.</div>
+          <div className="text-xs text-slate-400 text-center md:text-left flex flex-wrap items-center gap-2">
+            <span>© 2026 Woondata.com · Alle rechten voorbehouden.</span>
+            <a 
+              href="#coming-soon"
+              className="text-[11px] text-slate-500 hover:text-[#C9F31D] transition-colors"
+              title="Bekijk de Under Construction publicatiemodus"
+            >
+              • Under Construction preview
+            </a>
           </div>
 
           {/* Quick Nav Links */}

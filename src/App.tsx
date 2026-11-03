@@ -27,6 +27,7 @@ import { BuurtGebiedspaspoortModule } from './components/BuurtGebiedspaspoortMod
 import { ProjectParticipationPortal } from './components/ProjectParticipationPortal';
 import { OntdekPlatformPortal } from './components/OntdekPlatformPortal';
 import { WoonwensenScanPage } from './components/WoonwensenScanPage';
+import { ComingSoonPage } from './components/ComingSoonPage';
 
 export default function App() {
   // Main tabs: home | wonen | projecten | inzicht | ontwikkelaars | over-woondata
@@ -50,6 +51,10 @@ export default function App() {
   const [isDisclaimerModalOpen, setIsDisclaimerModalOpen] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
   const [focusedMapProject, setFocusedMapProject] = useState<Project | null>(null);
+
+  // Publication mode: VITE_PUBLIC_SITE_MODE can be 'coming_soon' or 'development'
+  const isForcedComingSoon = import.meta.env.VITE_PUBLIC_SITE_MODE === 'coming_soon';
+  const [isPreviewComingSoon, setIsPreviewComingSoon] = useState(false);
 
   const handleNavigateToInteractiveMap = (project?: Project) => {
     setActiveTab('projecten');
@@ -115,10 +120,13 @@ export default function App() {
         setActiveTab('wonen');
         setIsDeveloperPortalOpen(false);
         setIsWoonwensenScanPageOpen(false);
+      } else if (hash === '#coming-soon' || hash === '#under-construction' || hash === '#binnenkort') {
+        setIsPreviewComingSoon(true);
       } else if (hash === '' || hash === '#home') {
         setActiveTab('home');
         setIsDeveloperPortalOpen(false);
         setIsWoonwensenScanPageOpen(false);
+        setIsPreviewComingSoon(false);
       }
     };
 
@@ -268,6 +276,18 @@ export default function App() {
           window.location.hash = '';
           setActiveTab('home');
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+    );
+  }
+
+  // IF COMING SOON / UNDER CONSTRUCTION MODE IS ACTIVE:
+  if (isForcedComingSoon || isPreviewComingSoon) {
+    return (
+      <ComingSoonPage 
+        onSwitchToDev={isForcedComingSoon ? undefined : () => {
+          setIsPreviewComingSoon(false);
+          window.location.hash = '';
         }}
       />
     );

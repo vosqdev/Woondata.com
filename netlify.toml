@@ -1,0 +1,28 @@
+# Netlify Configuration for Woondata.com
+
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  # PUBLIC PRODUCTION MODE:
+  # - 'coming_soon': Only bundles and serves the isolated Under Construction homepage.
+  #                  No internal routes, dashboards, mock data or Firebase logic are bundled.
+  # - 'development' (or 'full'): Deploys the complete platform once ready to go live.
+  VITE_PUBLIC_SITE_MODE = "coming_soon"
+  NODE_VERSION = "20"
+
+# Redirect all paths and legacy URLs to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# HTTP Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

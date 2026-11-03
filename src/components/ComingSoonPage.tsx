@@ -122,7 +122,7 @@ export const ComingSoonPage: React.FC<ComingSoonPageProps> = ({ onSwitchToDev })
                   Gebiedsinzichten
                 </h2>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Strategische onderbouwing voor gemeenten en ontwikkelaars.
+                  Strategische onderbouwing voor gemeente en ontwikkelaars.
                 </p>
               </div>
             </div>
